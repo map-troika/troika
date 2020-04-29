@@ -15,7 +15,7 @@ public class Client
         {
             // Apre una comunicazione socket
             socket = new Socket("localhost", 4000);
-            // Apre i canali di comunicazione e la connessione con il server
+            // Apre i canali di comunicazione e la connessione con il  server
             in = new BufferedReader(
                     new InputStreamReader(socket.getInputStream()));
             out = new PrintStream(socket.getOutputStream(), true);
