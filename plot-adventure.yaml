@@ -1,0 +1,207 @@
+---
+commands:
+  - north
+  - east
+  - west
+  - south
+  - take beer
+  - take gommitolo
+room:
+
+
+  - number: 0
+    title: pippo
+    descr: |
+      IL LABIRINTO DI CNOSSO: l'impresa di Tesèo contro il Minotauro
+
+      BENVENUTO NEL LABIRINTO DI CNOSSO! Sull’isola di Creta, nel periodo del
+      regno di Minosse, che sposa Pasifae, in seguito ad un’offesa fatta ad
+      Afrodite nasce un figlio mostruoso, metà uomo e metà toro, il Minotauro.
+      Minosse lo imprigiona in un labirinto e, per sfamarlo, impone alle città
+      sotto la sua dominazione un tributo annuale di sette fanciulle e sette
+      fanciulli. Un anno, però, tra loro viene condotto il principe di Atene,
+      Tesèo, che non vuole arrendersi al tragico destino e tenterà di sconfiggere
+      il letale mostro...
+    command:
+      - nord
+      - est
+      - ovest
+      - sud
+    objects:
+      - gomitolo
+      - pipistrello
+      - pipistrello
+    prev:
+    next: 1
+
+  - number: 1
+    title: pippo
+    descr: |
+      Inizio della partita entrando in una stanza buia. Per uscire dal labirinto
+      è necessario raccogliere il gomitolo in questa stanza, posto difronte
+      all'entrata. Accanto il gomitolo c'è un pipistrello al cui fatale morso
+      non si può scampare se non si possiede un antidoto. In questa stanza l'unica
+      soluzione è raccogliere la lampada che farà allontanare i pipistrelli e
+      permetterà di ricevere infomrazioni più approfondite sulle stanze e gli
+      obiettivi.
+    command:
+      - nord
+      - est
+      - ovest
+      - sud
+    objects:
+      - gomitolo
+      - pipistrello
+      - pipistrello
+    prev: 0
+    next: 2
+
+
+  - number: 2
+    descr: |
+      Ad ogni accesso in una nuova stanza è necessario raccogliere l'olio per
+      ricaricare la lampada altrimenti la stanza rimarrà buia, che si trova
+      generalemente vicino all'entrata. In questa stanza è possibile incontrare
+      un fanciullo che chiederà in cambio della libertà di sbloccare altre
+      stanze un antidoto. Questo antidoto è presente e va cercato in tale stanza.
+    command:
+      - nord
+      - est
+      - ovest
+      - sud
+    objects:
+      - olio
+      - fanciullo
+      - antidoto
+    prev: 2
+    next: 3, 5
+
+
+  - number: 3
+    descr: |
+      Ad ogni accesso in una nuova stanza è necessario raccogliere l'olio per
+      ricaricare la lampada altrimenti la stanza rimarrà buia, che si trova
+      generalemente vicino all'entrata. In questa stanza è possibile raccogliere
+      un gomitolo, che servirà successivamente per la fanciulla in cambio della
+      spada per sconfiggere il minotauro. Inoltre è presente un pipistrello.
+    command:
+      - nord
+      - est
+      - ovest
+      - sud
+    objects:
+      - olio
+      - gomitolo
+      - pipistrello
+    neighbor: [ 2, 4 ]
+
+  - number: 4
+    descr: |
+      Ad ogni accesso in una nuova stanza è necessario raccogliere l'olio per
+      ricaricare la lampada altrimenti la stanza rimarrà buia, che si trova
+      generalemente vicino all'entrata. In questa stanza è possibile incontrare
+      un pipistrello e una fanciulla che richiederà un gomitolo in cambio di
+      poter raccogliere la spada che custodisce per uccidere il minotauro.
+    command:
+      - nord
+      - est
+      - ovest
+      - sud
+    objects:
+      - pipistrello
+      - fanciulla
+      - pipistrello
+    prev: 3
+    next: 3
+
+
+  - number: 5
+    descr: |
+      Ad ogni accesso in una nuova stanza è necessario raccogliere l'olio per
+      ricaricare la lampada altrimenti la stanza rimarrà buia, che si trova
+      generalemente vicino all'entrata. In questa stanza è possibile raccogliere
+      un antidoto, che servirà in caso si abbia incontrato precedentemente il
+      fanciullo e si sia dovuto lasciare quello precedentemente raccolto.
+    command:
+      - nord
+      - est
+      - ovest
+      - sud
+    objects:
+      - olio
+      - antidoto
+    prev: 3
+    next: 3, 6
+
+  - number: 6
+    descr: |
+      Ad ogni accesso in una nuova stanza è necessario raccogliere l'olio per
+      ricaricare la lampada altrimenti la stanza rimarrà buia, che si trova
+      generalemente vicino all'entrata. In questa stanza è possibile raccogliere
+      un gomitolo, che servirà successivamente per la fanciulla in cambio della
+      spada per sconfiggere il minotauro. Inoltre è presente un pipistrello.
+    command:
+      - nord
+      - est
+      - ovest
+      - sud
+    objects:
+      - olio
+      - gomitolo
+      - pipistrello
+    prev: 5
+    next: 5, 7
+
+
+  - number: 7
+    descr: |
+      Ad ogni accesso in una nuova stanza è necessario raccogliere l'olio per
+      ricaricare la lampada altrimenti la stanza rimarrà buia, che si trova
+      generalemente vicino all'entrata. Da questa stanza è possibile accedere
+      a quella che contiene il minotauro.
+    command:
+      - nord
+      - est
+      - ovest
+      - sud
+    objects:
+      - olio
+    prev: 6
+    next: 6, 8, 9
+
+
+  - number: 8
+    descr: |
+      In questa stanza buia è presente il minotauro ilq uale è possibile
+      sconfiggere solo se si è precedentemente raccolta la fatale spada
+      altrimenti si verrà mangiati dallo spietato minotauro e il gioco termina.
+      Se si combatte il minotauro il gioco finisce con la vittoria di Teseo.
+    command:
+      - nord
+      - est
+      - ovest
+      - sud
+    objects:
+      - minotauro
+    prev: 7
+    next: 7
+
+
+  - number: 9
+    descr: |
+      Ad ogni accesso in una nuova stanza è necessario raccogliere l'olio per
+      ricaricare la lampada altrimenti la stanza rimarrà buia, che si trova
+      generalemente vicino all'entrata. in questa stanza è possibile raccogliere
+      la bandiera di resa e uscire dal gioco automaticamente perdendo. inoltre è
+      possibile incontrare il fatale pipistrello.
+    command:
+      - nord
+      - est
+      - ovest
+      - sud
+    objects:
+      - pipistrello
+      - bandiera
+      - olio
+    prev: 7
+    next: 7
