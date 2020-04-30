@@ -1,7 +1,6 @@
-package ClientServer;
+package clientServer;
 import java.io.*;
 import java.net.*;
-import java.util.*;
 
 public class Client
 {

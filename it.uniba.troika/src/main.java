@@ -1,5 +1,4 @@
-import ClientServer.Server;
-import gameController.Controller;
+import clientServer.Server;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
