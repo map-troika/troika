@@ -18,7 +18,8 @@ class Connect extends Thread {
         client = clientSocket;
         try {
             in = new BufferedReader(
-                    new InputStreamReader(client.getInputStream()));
+                    new InputStreamReader(client.getInputStream())
+            );
             out = new PrintStream(client.getOutputStream(), true);
         } catch (Exception e1) {
             try {
