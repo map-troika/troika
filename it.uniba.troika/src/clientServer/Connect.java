@@ -1,46 +1,63 @@
 package clientServer;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
+import java.io.*;
 import java.net.Socket;
+import java.util.Scanner;
 
 
-class Connect extends Thread {
-    private Socket client = null;
-    BufferedReader in = null;
-    PrintStream out = null;
+class Connect implements Runnable {
+    private Socket s;
+    private int count;
+    private long id;
+    private String name;
+    InputStream is;
+    OutputStream os;
+    private PrintWriter pw;
 
-    public Connect() {
+
+    Connect(Socket s, int count) {
+        this.s = s;
+        this.count = count;
+        System.out.println("Connect count = " + count);
     }
 
-    public Connect(Socket clientSocket) {
-        client = clientSocket;
-        try {
-            in = new BufferedReader(
-                    new InputStreamReader(client.getInputStream())
-            );
-            out = new PrintStream(client.getOutputStream(), true);
-        } catch (Exception e1) {
-            try {
-                client.close();
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-            return;
-        }
-        this.start();
+    public long getId() {
+        id = Thread.currentThread().getId();
+        return id;
     }
 
+    public String getName() {
+        name = Thread.currentThread().getName();
+        return name;
+    }
+
+    @Override
     public void run() {
         try {
-            out.println("Generico messaggio per il Client");
-            out.flush();
-// chiude gli stream e le connessioni
-            out.close();
-            in.close();
-            client.close();
-        } catch (Exception e) {
+            is = s.getInputStream();
+            os = s.getOutputStream();
+        } catch (IOException e) {
+            System.err.println(e);
+        }
+        try (Scanner sc = new Scanner(is)) {
+            pw = new PrintWriter(os, true);
+            pw.println("Connected: " + this.getName());
+            while (sc.hasNextLine()) {
+                String line = sc.nextLine();
+
+                // < il codice applicativo va messo qui, passando line
+
+                pw.println(line);
+                if (line.trim().equals("quit")) break;
+            }
+        } finally {
+            System.out.println("Client " + this.getName() + " left the session.");
+            try {
+                s.close();
+            } // close socket
+            catch (Exception e) {
+                ;
+            }
         }
     }
 }
