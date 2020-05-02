@@ -2,6 +2,7 @@ package clientServer;
 
 import java.io.*;
 import java.net.*;
+import java.util.Base64;
 
 public class Client {
 
@@ -29,21 +30,23 @@ public class Client {
             // Console BufferedReader
             BufferedReader cbr = new BufferedReader(new InputStreamReader(System.in));
 
-            // Server PrintStream
+            // Console PrintStream
             PrintStream cps = new PrintStream(System.out, true);
 
-            System.out.println("Messaggio Ricevuto : " + sbr.readLine());
             while(true) {
+                // Stampa messagio ricevuto
+                // System.out.println("Messaggio Ricevuto undecoded: >>" + sbr.readLine() + "<<");
+                String response = new String(Base64.getDecoder().decode(sbr.readLine()));
+                System.out.println("Messaggio Ricevuto decoded: " + response);
+
                 // Lettura di un messaggio ricevuto dalla console
-                String console = cbr.readLine();
+                String request = cbr.readLine();
 
                 // Send messaggio letto dal console a server
-                sps.println(console);
+                request = Base64.getEncoder().encodeToString(request.getBytes());
+                sps.println(request);
 
-                // Lettura di un messaggio ricevuto dal server
-                String message = sbr.readLine();
-                cps.println("Messaggio Ricevuto : " + message);
-                if (console.trim().equals("quit")) break;
+                if (request.trim().equals("quit")) break;
             }
 
             // Chiude i canali di comunicazione e la connessione con il server

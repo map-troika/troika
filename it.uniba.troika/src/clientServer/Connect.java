@@ -3,7 +3,7 @@ package clientServer;
 import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
-
+import java.util.Base64;
 
 class Connect implements Runnable {
     private Socket s;
@@ -41,14 +41,19 @@ class Connect implements Runnable {
         }
         try (Scanner sc = new Scanner(is)) {
             pw = new PrintWriter(os, true);
-            pw.println("Connected: " + this.getName());
+            pw.println(Base64.getEncoder().encodeToString(("Connected: \n" + this.getName()).getBytes()));
             while (sc.hasNextLine()) {
                 String line = sc.nextLine();
+                // Decode recieved string
+                line = new String(Base64.getDecoder().decode(line));
 
                 // < il codice applicativo va messo qui, passando line
 
-                pw.println(line);
+
                 if (line.trim().equals("quit")) break;
+                // Encode sended string for multiline string
+                line = Base64.getEncoder().encodeToString(line.getBytes());
+                pw.println(line);
             }
         } finally {
             System.out.println("Client " + this.getName() + " left the session.");
