@@ -1,4 +1,4 @@
-package clientServer;
+package it.uniba.server;
 
 import java.io.*;
 import java.net.Socket;

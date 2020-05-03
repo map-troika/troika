@@ -1,4 +1,4 @@
-package gameController;
+package it.uniba.controller;
 
 public class Controller {
 

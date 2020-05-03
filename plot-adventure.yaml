@@ -6,9 +6,8 @@ commands:
   - south
   - take beer
   - take gommitolo
-room:
 
-
+rooms:
   - number: 0
     title: pippo
     descr: |
