@@ -4,30 +4,36 @@ import org.yaml.snakeyaml.Yaml;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 
 public class Plot {
 
     private Map<String, Object> config;
-    private ArrayList<String> commandList;
-    private List<Room> roomList;
+    private ArrayList<String> directionList;
+    private ArrayList<String> objectsList;
+    private ArrayList<String> actionList;
+    private ArrayList<Room> roomList;
 
     public static void main(String[] args) {
-        // write your code here
-        System.out.println("Plot Test!");
+
+        System.out.println("*** Plot main");
+
         Plot p = new Plot();
-        // System.out.println(p.getCommanList());
-        // System.out.println(p.getRoomList());
+        /*
+        p.dumpdirectionList();
+        p.dumpObjectsList();
+        p.dumpActionList();
+        p.dumpRoomList();
+        */
     }
 
     public Plot() {
-        System.out.println("Plot constructor!");
+        System.out.println("*** Plot constructor");
 
         File fin = new File("plot-adventure.yaml");
 
-        // Map<String, Object> xxx = null;
+        Map<String, Object> temp = null;
 
         try (InputStream input = new FileInputStream(fin)) {
             Yaml yaml = new Yaml();
@@ -38,36 +44,63 @@ public class Plot {
             e.printStackTrace();
         }
 
-        this.commandList = (ArrayList<String>) config.get("command");
-/*
-        List<Document> docs = obj.get("documents");
-        Document doc = new Document(docs.get(0));
- */
-        // this.roomList    = (List<Room>) config.get("room");
-        // dumpRoomList();
+        this.directionList = (ArrayList<String>) config.get("direction");
+        this.objectsList = (ArrayList<String>) config.get("objects");
+        this.actionList = (ArrayList<String>) config.get("action");
+        this.roomList = (ArrayList<Room>) config.get("room");
     }
 
-    public ArrayList<String> getCommandList() {
-        return commandList;
+    public ArrayList<String> getdirectionList() {
+        return directionList;
     }
 
-    public void dumpCommandList() {
-        System.out.println("*** command list = " + commandList);
+    public void dumpdirectionList() {
+        System.out.println("*** direction list = " + directionList);
     }
 
-    public List<Room> getRoomList() {
+    public ArrayList<String> getObjectsList() {
+        return objectsList;
+    }
+
+    public void dumpObjectsList() {
+        System.out.println("*** objects list = " + objectsList);
+    }
+
+    public ArrayList<String> getActionList() {
+        return actionList;
+    }
+
+    public void dumpActionList() {
+        System.out.println("*** action list = " + actionList);
+    }
+
+    public ArrayList<Room> getRoomList() {
         return roomList;
     }
 
-    public void dumpRoomList() {
-        // System.out.println("*** room list = " + roomList);
-        System.out.print("*** room list = [");
-        for (int i= 0; i < roomList.size(); i++) {
-            Room r = roomList.get(i);
-            System.out.println(r + ", ");
-        }
-        System.out.println("]");
+    public Room getRoom(int id) {
+        return new Room(roomList.get(id));
     }
 
+    public void dumpRoomList() {
+
+        int ellipses = 20;
+        System.out.println("*** room list = ");
+
+        for (int i = 0; i < roomList.size(); i++) {
+            Room r = new Room(roomList.get(i));
+            System.out.println("===");
+            System.out.println("\tid:\t\t\t" + r.id);
+            System.out.println("\ttitle:\t\t" + r.title);
+            System.out.println("\tdescr:\t\t" + (
+                            r.descr.length() > ellipses
+                            ? (r.descr.substring(0, ellipses - 3) + "...")
+                            : r.descr
+                    )
+            );
+            System.out.println("\tobjects:\t" + r.objects);
+            System.out.println("\tdirection:\t" + r.direction);
+        }
+    }
 }
 

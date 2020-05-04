@@ -2,23 +2,27 @@ package it.uniba.server;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Base64;
 
+import it.uniba.plot.Plot;
+import it.uniba.plot.Room;
+
 class Connect implements Runnable {
     private Socket s;
-    private int count;
     private long id;
     private String name;
-    InputStream is;
-    OutputStream os;
+    private InputStream is;
+    private OutputStream os;
     private PrintWriter pw;
+    private int roomId;
+    private Plot plot;
 
-
-    Connect(Socket s, int count) {
+    Connect(Socket s) {
         this.s = s;
-        this.count = count;
-        System.out.println("Connect count = " + count);
+        this.roomId = 0;
+        this.plot = new Plot();
     }
 
     public long getId() {
@@ -41,19 +45,39 @@ class Connect implements Runnable {
         }
         try (Scanner sc = new Scanner(is)) {
             pw = new PrintWriter(os, true);
-            pw.println(Base64.getEncoder().encodeToString(("Connected: \n" + this.getName()).getBytes()));
-            while (sc.hasNextLine()) {
-                String line = sc.nextLine();
+            String response = "Initial message!";
+            String request;
+
+            // System.out.println("room id = " + plot.getRoom(roomId).descr);
+            response = plot.getRoom(roomId).descr;
+
+            while (true) {
+                // Send message to clieent
+                response = Base64.getEncoder().encodeToString(response.getBytes());
+                pw.println(response);
+
+                // recieve request from client
+                request = sc.nextLine();
                 // Decode recieved string
-                line = new String(Base64.getDecoder().decode(line));
+                request = new String(Base64.getDecoder().decode(request));
 
-                // < il codice applicativo va messo qui, passando line
+                if (request.trim().equals("quit")) break;
 
-
-                if (line.trim().equals("quit")) break;
-                // Encode sended string for multiline string
-                line = Base64.getEncoder().encodeToString(line.getBytes());
-                pw.println(line);
+                if (request.trim().equals("go")) {
+                    if (roomId < 9) {
+                        roomId++;
+                    }
+                    response = plot.getRoom(roomId).descr;
+                }
+                else if (request.trim().equals("back")) {
+                    if (roomId > 0) {
+                        roomId--;
+                    }
+                    response = plot.getRoom(roomId).descr;
+                }
+                else
+                    // process request and prepare respost
+                    response = request;
             }
         } finally {
             System.out.println("Client " + this.getName() + " left the session.");
