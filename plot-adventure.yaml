@@ -4,6 +4,7 @@ direction:
   - east
   - west
   - south
+  - home # torna in posizione iniziale
 
 # command :
 #  action  + [ object | direction ]
@@ -11,6 +12,8 @@ action:
   - take
   - leave
   - go
+  - help
+  - position
 
 objects:
   - olio
@@ -55,7 +58,7 @@ room:
     objects:
       - gomitolo
       - pipistrello
-      - pipistrello
+      - lanterna
     direction:
       north: 0
       south: 2
