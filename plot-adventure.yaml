@@ -9,11 +9,12 @@ direction:
 # command :
 #  action  + [ object | direction ]
 action:
-  - take
-  - leave
-  - go
-  - help
-  - position
+  - take      # objects
+  - use       # objects
+  - leave     # objects
+  - go        # direction
+  - help      # view help
+  - position  # get current room id (postion)
 
 objects:
   - olio
