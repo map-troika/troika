@@ -100,36 +100,42 @@ public class Parser {
                 "accendo la lanterna",
                 "sconfiggo il minotauro",
                 "prendo la bandiera",
-                "nord est"
+                "nord est",
+                "pluto p paperino",
+                "pos",
+                "pluto n paperino",
+                "enigma e totrtura",
+                "ov",
+                "c"
         };
 
 
+        Parser p = new Parser();
         for (String t : testCaseIT) {
-            Parser p = new Parser(t);
+            System.out.printf("*** %-20s>>%s<<\n", p.parse(t), t);
         }
     }
 
-    public Parser(String token) {
+    public Parser() {
         pattern = Pattern.compile(
-            "(?<north>(vado a nord|nord))|" +
-            "(?<east>(vado ad est|est))|" + 
-            "(?<south>(vado a sud|sud))|" +
-            "(?<west>(vado ad ovest|ovest))|" +
-            "(?<home>(vado a casa|casa))|" +
+            "(?<north>\\b(nord|n)\\b)|" +
+            "(?<east>\\b(est|e)\\b)|" +
+            "(?<south>\\b(sud|s)\\b)|" +
+            "(?<west>\\b(ovest|o)\\b)|" +
+            "(?<home>\\b(casa|c)\\b)|" +
             "(?<help>(aiuto))|" +
-            "(?<position>(dove sono|posizione))|" +
-            "(?<oil>(prendo l'olio|raccolgo l'olio|olio))|" +
-            "(?<boy>(fanciullo))|" +
-            "(?<antidote>(prendo antidoto|raccolgo antidoto|antidoto))|" +
-            "(?<clew>(prendo gomitolo|raccolgo gomitolo|gomitolo))|" +
-            "(?<bat>(pipistrello))|" +
-            "(?<minotaur>(sconfiggo il minotauro|combatto il minotauro|uccido il minotauro|sconfiggo|combato|uccido|minotauro))|" +
-            "(?<flag>(prendo la bandiera|raccolgo la bandiera|bandiera|prendo|raccolgo))|" +
-            "(?<takelantern>(prendo la lanterna|raccolgo la lanterna|lanterna|prendo|raccolgo))|" +
-            "(?<uselantern>(uso la lanterna|uso))"
+            "(?<position>\\b(dove sono|posizione|pos|p)\\b)|" +
+            "(?<oil>\\b(olio|ol)\\b)|" +
+            "(?<boy>\\b(fanciullo|fan|f)\\b)|" +
+            "(?<antidote>\\b(antidoto|ant|a)\\b)|" +
+            "(?<clew>\\b(gomitolo|gom|g)\\b)|" +
+            "(?<bat>\\b(pipistrello|pip)\\b)|" +
+            "(?<minotaur>\\b(minotauro|non|m)\\b)|" +
+            "(?<flag>\\b(bandiera|ban|b)\\b)|" +
+            "(?<takelantern>\\b(lanterna|lan|l)\\b)|" +
+            "(?<uselantern>\\b(uso.*lanterna)\\b)"
         );
 
-        parse(token);
     }
 
     private Enum parse(String token) {
@@ -149,15 +155,12 @@ public class Parser {
         }
 
         if (commandList.isEmpty()) {
-            System.out.println("*** " + commandType.UNRECOGNISED + " >>" + token + "<<");
             return commandType.UNRECOGNISED;
         }
         else if (commandList.size() == 1) {
-            System.out.println("*** " + commandList.get(0) + " >>" + token + "<<");
             return commandList.get(0);
         }
         else {
-            System.out.println("*** " + commandType.AMBIGUOUS + " >>" + token + "<<");
             return commandType.AMBIGUOUS;
         }
     }
