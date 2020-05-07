@@ -2,7 +2,7 @@
 
 Sull’isola di Creta, nel periodo del regno di Minosse, che sposa Pasifae, in seguito ad un’offesa fatta ad Afrodite 
 nasce un figlio mostruoso, metà uomo e metà toro, il Minotauro. Minosse lo imprigiona in un labirinto e, per sfamarlo, 
-impone alle città sotto la sua dominazione un tributo annuale di sette fanciulle e settefanciulli. Un anno, però, tra 
+impone alle città sotto la sua dominazione un tributo annuale di sette fanciulle e sette fanciulli. Un anno, però, tra 
 loro viene condotto il principe di Atene, Tesèo, che non vuole arrendersi al tragico destino e tenterà di sconfiggere il
 letale mostro...<br/><br/><br/>![Map](Map.PNG)<br/><br/><br/>Il gioco inizia con Tesèo posto all'esterno del labirinto, 
 dirigendosi verso **Sud** si avrà modo di entrare nell'*Ala d'ingresso* in cui possiamo osservare una **candela** ed un 
