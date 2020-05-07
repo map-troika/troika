@@ -15,7 +15,7 @@ possibile raccogliere la **spada** che servirà in seguito quando si incontrerà
 presente la solita **candela** che a questo punto ci indicherà la direzione del Minotauro, se la **spada** è stata 
 raccolta, oppure ci consiglierà di raccogliere la **spada**. Da questa stanza è possibile soltanto tornare alla 
 precedente inserendo **Nord-Est** da cui poi si può proseguire il cammino.<br/><br/>Proseguendo quindi verso **Sud-Est**
-si entra nell'*Ala del grande passo* in cui possiamo raccogliere sempre la nostra **candela** suggeritrice. in questo 
+si entra nell'*Ala del grande passo* in cui possiamo raccogliere sempre la nostra **candela** suggeritrice. In questo 
 momento se la **spada** è stata raccolta ci indicherà di proseguire verso nord per andare a sconfiggere il temuto 
 Minotauro, altrimenti ci indicherà di tornare indietro per raccogliere la **spada**.<br/><br/>Verso **Nord** si entra 
 nella Stanza della Battaglia dove si dovrà affrontare il **Minotauro** se si è in possesso della **spada**, altrimenti 
