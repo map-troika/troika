@@ -1,4 +1,4 @@
-## IL LABIRINTO DI CNOSSO: l'impresa di Tesèo contro il Minotauro<br/><br/>
+# IL LABIRINTO DI CNOSSO: l'impresa di Tesèo contro il Minotauro<br/><br/>
 
 Sull’isola di Creta, nel periodo del regno di Minosse, che sposa Pasifae, in seguito ad un’offesa fatta ad Afrodite 
 nasce un figlio mostruoso, metà uomo e metà toro, il Minotauro. Minosse lo imprigiona in un labirinto e, per sfamarlo, 
