@@ -18,7 +18,7 @@ precedente inserendo **Nord-Est** da cui poi si può proseguire il cammino.<br/>
 si entra nell'*Ala del grande passo* in cui possiamo raccogliere sempre la nostra **candela** suggeritrice. In questo 
 momento se la **spada** è stata raccolta ci indicherà di proseguire verso nord per andare a sconfiggere il temuto 
 Minotauro, altrimenti ci indicherà di tornare indietro per raccogliere la **spada**.<br/><br/>Verso **Nord** si entra 
-nella Stanza della Battaglia dove si dovrà affrontare il **Minotauro** se si è in possesso della **spada**, altrimenti 
+nella *Stanza della Battaglia* dove si dovrà affrontare il **Minotauro** se si è in possesso della **spada**, altrimenti 
 incontrarlo sarà letale e il gioco finirà. Se invece prima di incontrarlo, pur non avendo la **spada**, è stata raccolta
 la **bandiera** la si può utilizzare come simbolo di resa e il gioco continuerà.<br/><br/>La magica **bandiera** si 
 trova esattamente ad **Est** dell'*Ala del grande passo*, in particolare nell'*Ala finale* che ospita anch'essa una 
