@@ -14,7 +14,7 @@ action:
   - leave     # objects
   - go        # direction
   - help      # view help
-  - position  # get current room id (postion)
+  - position  # get current room id (position)
 
 objects:
   - olio
