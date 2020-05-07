@@ -1,5 +1,7 @@
 package it.uniba.server;
 
+import it.uniba.plot.Plot;
+
 import java.io.IOException;
 import java.net.*;
 
@@ -15,32 +17,32 @@ public class Server extends Thread {
         long[] ids = new long[10];
 
         InetAddress inetAddress = InetAddress.getLocalHost();
-        System.out.println("IP Address: " + inetAddress.getHostAddress());
-        System.out.println("Host Name: " + inetAddress.getHostName());
+        System.out.println("*** Server IP Address: " + inetAddress.getHostAddress());
+        System.out.println("*** Server Host Name: " + inetAddress.getHostName());
 
         new Server();
 
         try (ServerSocket ss = new ServerSocket(4000))
         {
-            System.out.println("Listening...");
-            System.out.println("inizial_count = " + initial_count);
+            System.out.println("*** Listening...");
+            System.out.println("*** inizial_count = " + initial_count);
 
             while(true)
             {
                 count++;
-                System.out.println("Wail connect = " + count);
+                System.out.println("*** Wail connect1 = " + count);
                 Socket s = ss.accept();
-                Runnable r = new Connect(s, count);
+                Runnable r = new Connect(s);
                 Thread t = new Thread(r); // Create task (Application)
-                t.setName("client thread " + count);
+                t.setName("*** client thread " + count);
                 System.out.println("Thread = " + t);
                 t.start(); // Launch new Thread
                 ids[count] = t.getId();
-                System.out.println("Now connected: "+ count);
-                System.out.println("Ids: "+ ids[count]);
+                System.out.println("*** Now connected: "+ count);
+                System.out.println("*** Ids: "+ ids[count]);
 
-                System.out.println("Connected clients: " + (Thread.activeCount() - initial_count));
-                System.out.println("ids count: " + ids[count]);
+                System.out.println("*** Connected clients: " + (Thread.activeCount() - initial_count));
+                System.out.println("*** ids count: " + ids[count]);
 
             }
         }

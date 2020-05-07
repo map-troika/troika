@@ -1,13 +1,20 @@
 ---
-moving:
+direction:
   - north
   - east
   - west
   - south
+  - home # torna in posizione iniziale
 
+# command :
+#  action  + [ object | direction ]
 action:
-  - take beer
-  - take gommitolo
+  - take      # objects
+  - use       # objects
+  - leave     # objects
+  - go        # direction
+  - help      # view help
+  - position  # get current room id (postion)
 
 objects:
   - olio
@@ -32,15 +39,15 @@ room:
       fanciulli. Un anno, però, tra loro viene condotto il principe di Atene,
       Tesèo, che non vuole arrendersi al tragico destino e tenterà di sconfiggere
       il letale mostro...
-    moving:
-      nord: 1
+    direction:
+      north: 1
     objects:
       - gomitolo
       - pipistrello
       - pipistrello
 
   - id: 1
-    title: pippo
+    title: Title 1
     descr: |
       Inizio della partita entrando in una stanza buia. Per uscire dal labirinto
       è necessario raccogliere il gomitolo in questa stanza, posto difronte
@@ -52,13 +59,13 @@ room:
     objects:
       - gomitolo
       - pipistrello
-      - pipistrello
-    moving:
-      nord: 0
+      - lanterna
+    direction:
+      north: 0
       south: 2
 
-
   - id: 2
+    title: Title 2
     descr: |
       Ad ogni accesso in una nuova stanza è necessario raccogliere l'olio per
       ricaricare la lampada altrimenti la stanza rimarrà buia, che si trova
@@ -69,13 +76,13 @@ room:
       - olio
       - fanciullo
       - antidoto
-    moving:
-      nord: 2
+    direction:
+      north: 2
       south: 3
       east: 5
 
-
   - id: 3
+    title: Title 3
     descr: |
       Ad ogni accesso in una nuova stanza è necessario raccogliere l'olio per
       ricaricare la lampada altrimenti la stanza rimarrà buia, che si trova
@@ -86,11 +93,12 @@ room:
       - olio
       - gomitolo
       - pipistrello
-    moving:
-      nord: 2
+    direction:
+      north: 2
       south: 4
 
   - id: 4
+    title: Title 4
     descr: |
       Ad ogni accesso in una nuova stanza è necessario raccogliere l'olio per
       ricaricare la lampada altrimenti la stanza rimarrà buia, che si trova
@@ -101,12 +109,12 @@ room:
       - pipistrello
       - fanciulla
       - pipistrello
-    moving:
-      nord: 3
+    direction:
+      north: 3
       south: 3
 
-
   - id: 5
+    title: Title 5
     descr: |
       Ad ogni accesso in una nuova stanza è necessario raccogliere l'olio per
       ricaricare la lampada altrimenti la stanza rimarrà buia, che si trova
@@ -116,11 +124,12 @@ room:
     objects:
       - olio
       - antidoto
-    moving:
-      nord: 3
+    direction:
+      north: 3
       south: 6
 
   - id: 6
+    title: Title 6
     descr: |
       Ad ogni accesso in una nuova stanza è necessario raccogliere l'olio per
       ricaricare la lampada altrimenti la stanza rimarrà buia, che si trova
@@ -131,11 +140,12 @@ room:
       - olio
       - gomitolo
       - pipistrello
-    moving:
-      nord: 5
+    direction:
+      north: 5
       south: 7
 
   - id: 7
+    title: Title 7
     descr: |
       Ad ogni accesso in una nuova stanza è necessario raccogliere l'olio per
       ricaricare la lampada altrimenti la stanza rimarrà buia, che si trova
@@ -143,12 +153,13 @@ room:
       a quella che contiene il minotauro.
     objects:
       - olio
-    moving:
-      nord: 6
+    direction:
+      north: 6
       south: 8
       east: 9
 
   - id: 8
+    title: Title 8
     descr: |
       In questa stanza buia è presente il minotauro ilq uale è possibile
       sconfiggere solo se si è precedentemente raccolta la fatale spada
@@ -156,11 +167,12 @@ room:
       Se si combatte il minotauro il gioco finisce con la vittoria di Teseo.
     objects:
       - minotauro
-    moving:
-      nord: 7
+    direction:
+      north: 7
       south: 9
 
   - id: 9
+    title: Title 9
     descr: |
       Ad ogni accesso in una nuova stanza è necessario raccogliere l'olio per
       ricaricare la lampada altrimenti la stanza rimarrà buia, che si trova
@@ -171,5 +183,5 @@ room:
       - pipistrello
       - bandiera
       - olio
-    moving:
-      nord: 7
+    direction:
+      north: 7

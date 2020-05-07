@@ -35,9 +35,9 @@ public class Client {
 
             while(true) {
                 // Stampa messagio ricevuto
-                // System.out.println("Messaggio Ricevuto undecoded: >>" + sbr.readLine() + "<<");
                 String response = new String(Base64.getDecoder().decode(sbr.readLine()));
-                System.out.println("Messaggio Ricevuto decoded: " + response);
+                cps.println("Response:\n" + response);
+                cps.print("command (go|back|quit): ");
 
                 // Lettura di un messaggio ricevuto dalla console
                 String request = cbr.readLine();
