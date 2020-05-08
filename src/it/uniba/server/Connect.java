@@ -67,7 +67,8 @@ class Connect implements Runnable {
                     if (roomId < 9) {
                         roomId++;
                     }
-                    response = plot.getRoom(roomId).descr;
+                    // response = plot.getRoom(roomId).descr;
+                    response = plot.printRoom(roomId);
                 }
                 else if (request.trim().equals("back")) {
                     if (roomId > 0) {

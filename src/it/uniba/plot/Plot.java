@@ -10,9 +10,9 @@ import java.util.Map;
 public class Plot {
 
     private Map<String, Object> config;
-    private ArrayList<String> directionList;
-    private ArrayList<String> objectsList;
-    private ArrayList<String> actionList;
+    private ArrayList<String> exitsList;
+    private ArrayList<String> itemsList;
+    private ArrayList<String> actionsList;
     private ArrayList<Room> roomList;
 
     public static void main(String[] args) {
@@ -21,9 +21,9 @@ public class Plot {
 
         Plot p = new Plot();
         /*
-        p.dumpdirectionList();
-        p.dumpObjectsList();
-        p.dumpActionList();
+        p.dumpexitsList();
+        p.dumpitemsList();
+        p.dumpactionsList();
         p.dumpRoomList();
         */
     }
@@ -44,34 +44,34 @@ public class Plot {
             e.printStackTrace();
         }
 
-        this.directionList = (ArrayList<String>) config.get("direction");
-        this.objectsList = (ArrayList<String>) config.get("objects");
-        this.actionList = (ArrayList<String>) config.get("action");
+        this.exitsList = (ArrayList<String>) config.get("exits");
+        this.itemsList = (ArrayList<String>) config.get("items");
+        this.actionsList = (ArrayList<String>) config.get("actions");
         this.roomList = (ArrayList<Room>) config.get("room");
     }
 
-    public ArrayList<String> getdirectionList() {
-        return directionList;
+    public ArrayList<String> getexitsList() {
+        return exitsList;
     }
 
-    public void dumpdirectionList() {
-        System.out.println("*** direction list = " + directionList);
+    public void dumpexitsList() {
+        System.out.println("*** exits list = " + exitsList);
     }
 
-    public ArrayList<String> getObjectsList() {
-        return objectsList;
+    public ArrayList<String> getitemsList() {
+        return itemsList;
     }
 
-    public void dumpObjectsList() {
-        System.out.println("*** objects list = " + objectsList);
+    public void dumpitemsList() {
+        System.out.println("*** items list = " + itemsList);
     }
 
-    public ArrayList<String> getActionList() {
-        return actionList;
+    public ArrayList<String> getactionsList() {
+        return actionsList;
     }
 
-    public void dumpActionList() {
-        System.out.println("*** action list = " + actionList);
+    public void dumpactionsList() {
+        System.out.println("*** actions list = " + actionsList);
     }
 
     public ArrayList<Room> getRoomList() {
@@ -80,6 +80,16 @@ public class Plot {
 
     public Room getRoom(int id) {
         return new Room(roomList.get(id));
+    }
+
+    public String printRoom(int id) {
+        String out = "";
+
+        out += "\n" + new Room(roomList.get(id)).title + "\n";
+        out +=  "-".repeat((new Room(roomList.get(id)).title).length()) + "\n"; // separatori della lunghezza del titolo
+        out += new Room(roomList.get(id)).descr + "\n";
+
+        return out;
     }
 
     public void dumpRoomList() {
@@ -98,8 +108,8 @@ public class Plot {
                             : r.descr
                     )
             );
-            System.out.println("\tobjects:\t" + r.objects);
-            System.out.println("\tdirection:\t" + r.direction);
+            System.out.println("\titems:\t" + r.items);
+            System.out.println("\texits:\t" + r.exits);
         }
     }
 }
