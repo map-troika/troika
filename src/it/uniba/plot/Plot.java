@@ -83,7 +83,7 @@ public class Plot {
     }
 
     public String printRoom(int id) {
-        String out = "";
+        String out = "\033[2J\033[H"; // pulisce schermo e vai in alto a sinistra
 
         out += "\n" + new Room(roomList.get(id)).title + "\n";
         out +=  "-".repeat((new Room(roomList.get(id)).title).length()) + "\n"; // separatori della lunghezza del titolo

@@ -37,21 +37,26 @@ items:
 
 room:
   - id: 0
-    title: Esterno
+    title: ""
+    # http://patorjk.com/software/taag/#p=display&h=0&v=1&f=Calvin%20S&t=IL%20LABIRINTO%20DI%20CNOSSO%0A------------------%0A
     descr: |
-      IL LABIRINTO DI CNOSSO: l'impresa di Tesèo contro il Minotauro
+      ╦╦    ╦  ╔═╗╔╗ ╦╦═╗╦╔╗╔╔╦╗╔═╗  ╔╦╗╦  ╔═╗╔╗╔╔═╗╔═╗╔═╗╔═╗
+      ║║    ║  ╠═╣╠╩╗║╠╦╝║║║║ ║ ║ ║   ║║║  ║  ║║║║ ║╚═╗╚═╗║ ║
+      ╩╩═╝  ╩═╝╩ ╩╚═╝╩╩╚═╩╝╚╝ ╩ ╚═╝  ═╩╝╩  ╚═╝╝╚╝╚═╝╚═╝╚═╝╚═╝
+      ──────────────────────────────────────────────────────
+      L'impresa di Tesèo contro il Minotauro
 
-      BENVENUTO NEL LABIRINTO DI CNOSSO! Sull’isola di Creta, nel periodo del
-      regno di Minosse, in seguito ad un’offesa fatta ad Afrodite nasce un figlio
-      mostruoso, metà uomo e metà toro, il Minotauro.
-      Minosse lo imprigiona in un labirinto e, per sfamarlo, impone alle città
-      sotto la sua dominazione un tributo annuale di sette fanciulle e sette
-      fanciulli. Un anno, però, tra loro viene condotto il principe di Atene,
-      Tesèo, che non vuole arrendersi al tragico destino e tenterà di sconfiggere
-      il letale mostro...
+      BENVENUTO! Sull’isola di Creta, nel periodo del regno di Minosse, in seguito ad
+      un’offesa fatta ad Afrodite nasce un figlio mostruoso, metà uomo e metà toro,
+      il Minotauro. Minosse lo imprigiona in un labirinto e, per sfamarlo, impone
+      alle città sotto la sua dominazione un tributo annuale di sette fanciulle e
+      sette fanciulli. Un anno, però, tra loro viene condotto il principe di Atene,
+      Tesèo, che non vuole arrendersi al tragico destino e tenterà di sconfiggere il
+      letale mostro.
 
       Sei nel giardino profumato che costeggia il labirinto, a sud si scorge un
       ingresso malridotto...
+
     exits:
       sud: 1
 
@@ -64,7 +69,6 @@ room:
       del giardino...
     items:
       - gomitolo
-      - candela
     exits:
       nord: 0
       est: 2
@@ -75,7 +79,6 @@ room:
       Che stanza tetra! Segui il tuo istinto, ci sono tre  passaggi: ad ovest,
       sud ed est...
     items:
-      - candela
     exits:
       ovest: 1
       sud: 3
@@ -88,7 +91,6 @@ room:
       sembra non avere altre uscite oltre quella a nord per tornare
       indietro...
     items:
-      - candela
       - spada
     exits:
       nord: 2
@@ -100,7 +102,6 @@ room:
       se ti senti pronto... Altrimenti procedi verso ovest per tornare
       nell'Ala del bivio o verso sud...
     items:
-      - candela
     exits:
       nord: 5
       sud: 6
@@ -114,7 +115,6 @@ room:
       Altrimenti torna verso sud finchè sei ancora in tempo!
     items:
       - minotauro
-      - candela
     exits:
       sud: 4
 
@@ -126,6 +126,5 @@ room:
       se sei meno coraggioso di quanto pensavi potrebbe servirti...
     items:
       - bandiera
-      - candela
     exits:
       nord: 4
