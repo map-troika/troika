@@ -42,26 +42,24 @@ room:
       IL LABIRINTO DI CNOSSO: l'impresa di Tesèo contro il Minotauro
 
       BENVENUTO NEL LABIRINTO DI CNOSSO! Sull’isola di Creta, nel periodo del
-      regno di Minosse, che sposa Pasifae, in seguito ad un’offesa fatta ad
-      Afrodite nasce un figlio mostruoso, metà uomo e metà toro, il Minotauro.
+      regno di Minosse, in seguito ad un’offesa fatta ad Afrodite nasce un figlio
+      mostruoso, metà uomo e metà toro, il Minotauro.
       Minosse lo imprigiona in un labirinto e, per sfamarlo, impone alle città
       sotto la sua dominazione un tributo annuale di sette fanciulle e sette
       fanciulli. Un anno, però, tra loro viene condotto il principe di Atene,
       Tesèo, che non vuole arrendersi al tragico destino e tenterà di sconfiggere
       il letale mostro...
+
+      Sei nel giardino profumato che costeggia il labirinto, a sud si scorge un
+      ingresso malridotto...
     exits:
       sud: 1
 
   - id: 1
     title: Ala d'ingresso
     descr: |
-      Inizio della partita entrando in una stanza buia. Per uscire dal labirinto
-      è necessario raccogliere il gomitolo in questa stanza, posto difronte
-      all'entrata. Accanto il gomitolo c'è un pipistrello al cui fatale morso
-      non si può scampare se non si possiede un antidoto. In questa stanza l'unica
-      soluzione è raccogliere la lampada che farà allontanare i pipistrelli e
-      permetterà di ricevere infomrazioni più approfondite sulle stanze e gli
-      obiettivi.
+      Sei appena entrato e non sai cosa fare, la stanza è buia e hai bisogno
+      di qualcosa che ti faccia strada... Sarà il caso di dare un'occhiata!
     items:
       - gomitolo
       - candela
@@ -72,11 +70,7 @@ room:
   - id: 2
     title: Ala del bivio
     descr: |
-      Ad ogni accesso in una nuova stanza è necessario raccogliere l'olio per
-      ricaricare la lampada altrimenti la stanza rimarrà buia, che si trova
-      generalemente vicino all'entrata. In questa stanza è possibile incontrare
-      un fanciullo che chiederà in cambio della libertà di sbloccare altre
-      stanze un antidoto. Questo antidoto è presente e va cercato in tale stanza.
+      Che stanza tetra! Prova a vedere se trovi qualcosa che ti suggerisca dove andare...
     items:
       - candela
     exits:
@@ -87,11 +81,7 @@ room:
   - id: 3
     title: Ala della spada
     descr: |
-      Ad ogni accesso in una nuova stanza è necessario raccogliere l'olio per
-      ricaricare la lampada altrimenti la stanza rimarrà buia, che si trova
-      generalemente vicino all'entrata. In questa stanza è possibile raccogliere
-      un gomitolo, che servirà successivamente per la fanciulla in cambio della
-      spada per sconfiggere il minotauro. Inoltre è presente un pipistrello.
+      C'è qualcosa che luccica laggiù... riesci a vedere di cosa si tratta?
     items:
       - candela
       - spada
@@ -101,11 +91,7 @@ room:
   - id: 4
     title: Ala del grande passo
     descr: |
-      Ad ogni accesso in una nuova stanza è necessario raccogliere l'olio per
-      ricaricare la lampada altrimenti la stanza rimarrà buia, che si trova
-      generalemente vicino all'entrata. In questa stanza è possibile incontrare
-      un pipistrello e una fanciulla che richiederà un gomitolo in cambio di
-      poter raccogliere la spada che custodisce per uccidere il minotauro.
+      Da qui si riescono a sentire solo dei lontani versi spaventosi...
     items:
       - candela
     exits:
@@ -116,11 +102,8 @@ room:
   - id: 5
     title: Stanza della battaglia
     descr: |
-      Ad ogni accesso in una nuova stanza è necessario raccogliere l'olio per
-      ricaricare la lampada altrimenti la stanza rimarrà buia, che si trova
-      generalemente vicino all'entrata. In questa stanza è possibile raccogliere
-      un antidoto, che servirà in caso si abbia incontrato precedentemente il
-      fanciullo e si sia dovuto lasciare quello precedentemente raccolto.
+      GULP! Sei davanti ad un'enorme ombra che soffia fiato dal naso umido... se ti senti pronto è il caso di vedere
+      di cosa si tratta...
     items:
       - minotauro
       - candela
@@ -130,11 +113,7 @@ room:
   - id: 6
     title: Ala finale
     descr: |
-      Ad ogni accesso in una nuova stanza è necessario raccogliere l'olio per
-      ricaricare la lampada altrimenti la stanza rimarrà buia, che si trova
-      generalemente vicino all'entrata. In questa stanza è possibile raccogliere
-      un gomitolo, che servirà successivamente per la fanciulla in cambio della
-      spada per sconfiggere il minotauro. Inoltre è presente un pipistrello.
+      Ora che non puoi più scoprire nuove stanze dovresti iniziare a pensare a come uscire da qui...
     items:
       - bandiera
       - candela
