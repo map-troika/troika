@@ -59,7 +59,9 @@ room:
     title: Ala d'ingresso
     descr: |
       Sei appena entrato e non sai cosa fare, la stanza è buia e hai bisogno
-      di qualcosa che ti faccia strada... Sarà il caso di dare un'occhiata!
+      di qualcosa che ti faccia strada... A terra c'è un gomitolo e sul lato
+      est una porta piuttosto grande, a nord si intravedono ancora i fiori
+      del giardino...
     items:
       - gomitolo
       - candela
@@ -70,7 +72,8 @@ room:
   - id: 2
     title: Ala del bivio
     descr: |
-      Che stanza tetra! Prova a vedere se trovi qualcosa che ti suggerisca dove andare...
+      Che stanza tetra! Segui il tuo istinto, ci sono tre  passaggi: ad ovest,
+      sud ed est...
     items:
       - candela
     exits:
@@ -81,7 +84,9 @@ room:
   - id: 3
     title: Ala della spada
     descr: |
-      C'è qualcosa che luccica laggiù... riesci a vedere di cosa si tratta?
+      Ehi! C'è qualcosa che luccica laggiù... è una spada! Questa stanza
+      sembra non avere altre uscite oltre quella a nord per tornare
+      indietro...
     items:
       - candela
       - spada
@@ -91,7 +96,9 @@ room:
   - id: 4
     title: Ala del grande passo
     descr: |
-      Da qui si riescono a sentire solo dei lontani versi spaventosi...
+      Verso nord si riescono già a sentire dei versi spaventosi, vai pure
+      se ti senti pronto... Altrimenti procedi verso ovest per tornare
+      nell'Ala del bivio o verso sud...
     items:
       - candela
     exits:
@@ -102,8 +109,9 @@ room:
   - id: 5
     title: Stanza della battaglia
     descr: |
-      GULP! Sei davanti ad un'enorme ombra che soffia fiato dal naso umido... se ti senti pronto è il caso di vedere
-      di cosa si tratta...
+      GULP! Sei davanti ad un'enorme ombra che soffia fiato dal naso umido...
+      fagli vedere di che pasta sei fatto con la tua preziosa spada...
+      Altrimenti torna verso sud finchè sei ancora in tempo!
     items:
       - minotauro
       - candela
@@ -113,7 +121,9 @@ room:
   - id: 6
     title: Ala finale
     descr: |
-      Ora che non puoi più scoprire nuove stanze dovresti iniziare a pensare a come uscire da qui...
+      Ora che non puoi più scoprire nuove stanze dovresti iniziare a pensare
+      a come uscire da qui... Ma prima aspetta... C'è una bandiera bianca,
+      se sei meno coraggioso di quanto pensavi potrebbe servirti...
     items:
       - bandiera
       - candela
