@@ -1,5 +1,22 @@
 ---
-exits:
+# comandi disponibili in questo gioco
+commands:
+  - name: prendo    # item
+    pattern: "prend|racco"
+  - name: uso       # item
+    pattern: "us"
+  - name: lascio    # item
+    pattern: "lasci|pos"
+  - name: aiuto     # help menu
+    pattern: "aiuto|a"
+  - name: posizione # restituisce la stanza corrente
+    pattern: "posizione|pos"
+  - name: osservo   # restituisce descrizione degli oggetti presenti nella stanza e numero di uscite
+    pattern: "osserv|oss"
+  - name: indietro  # torna nella stanza precedente
+    pattern: "indietro|indietr"
+  - name: combatto  # minotauro
+    pattern: "combatt|sconfigg|uccid"
   - name: nord
     pattern: "nord|n"
   - name: est
@@ -9,32 +26,30 @@ exits:
   - name: ovest
     pattern: "ovest|o"
 
-# command :
-#  action  + [ object | direction ]
+# azioni che mettono in relazione comando-oggetto
 actions:
-  - prendo    # item
-  - uso       # item
-  - lascio    # item
-  - aiuto     # help menu
-  - posizione # restituisce la stanza corrente
-  - osservo   # restituisce descrizione degli oggetti presenti nella stanza e numero di uscite
-  - indietro  # torna nella stanza precedente
+  - name: prendo
+    items:
+      - gomitolo
+      - spada
+  - name: lascio
+    items:
+      - gomitolo
+      - spada
+  - name: combatto
+    items:
+      - minotauro
 
+# articoli disponibili in questo gioco
 items:
   - name: gomitolo
-    regex: "gomitolo|gom"
-    action:
-      - prendo
-      -
-  - name: minotauro
-    regex: "minotauro|min|m"
-  - name: bandiera
-    regex: "bandiera|ban|b"
-  - name: candela
-    regex: "candela|can|c"
+    pattern: "gomitolo|gom|g"
+   - name: minotauro
+    pattern: "minotauro|min|m"
   - name: spada
-    regex: "spada|spad"
+    pattern: "spada|spad"
 
+# stanze disponibili in questo gioco
 room:
   - id: 0
     title: ""
@@ -56,7 +71,6 @@ room:
 
       Sei nel giardino profumato che costeggia il labirinto, a sud si scorge un
       ingresso malridotto...
-
     exits:
       sud: 1
 
@@ -78,7 +92,6 @@ room:
     descr: |
       Che stanza tetra! Segui il tuo istinto, ci sono tre  passaggi: ad ovest,
       sud ed est...
-    items:
     exits:
       ovest: 1
       sud: 3
@@ -101,7 +114,6 @@ room:
       Verso nord si riescono già a sentire dei versi spaventosi, vai pure
       se ti senti pronto... Altrimenti procedi verso ovest per tornare
       nell'Ala del bivio o verso sud...
-    items:
     exits:
       nord: 5
       sud: 6
@@ -145,7 +157,5 @@ room:
       Ora che non puoi più scoprire nuove stanze dovresti iniziare a pensare
       a come uscire da qui... Ma prima aspetta... C'è una bandiera bianca,
       se sei meno coraggioso di quanto pensavi potrebbe servirti...
-    items:
-      - bandiera
     exits:
       nord: 4

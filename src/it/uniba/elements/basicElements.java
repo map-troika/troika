@@ -1,4 +1,4 @@
-package it.uniba.elemnts;
+package it.uniba.elements;
 
 public class basicElements {
 }
