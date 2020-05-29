@@ -11,6 +11,8 @@ commands:
     pattern: "aiuto|a"
   - name: posizione # restituisce la stanza corrente
     pattern: "posizione|pos"
+  - name: inventario    # mostra gli items
+    pattern: "inventario"
   - name: osservo   # restituisce descrizione degli oggetti presenti nella stanza e numero di uscite
     pattern: "osserv|oss"
   - name: indietro  # torna nella stanza precedente
