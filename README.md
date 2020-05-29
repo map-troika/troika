@@ -4,7 +4,7 @@ Sull’isola di Creta, nel periodo del regno di Minosse, che sposa Pasifae, in s
 nasce un figlio mostruoso, metà uomo e metà toro, il Minotauro. Minosse lo imprigiona in un labirinto e, per sfamarlo, 
 impone alle città sotto la sua dominazione un tributo annuale di sette fanciulle e sette fanciulli. Un anno, però, tra 
 loro viene condotto il principe di Atene, Tesèo, che non vuole arrendersi al tragico destino e tenterà di sconfiggere il
-letale mostro...<br/><br/><br/>![Map](Map.PNG)<br/><br/><br/>Il gioco inizia con Tesèo posto all'esterno del labirinto, 
+letale mostro...<br/><br/><br/>![Map](MapNew.svg)<br/><br/><br/>Il gioco inizia con Tesèo posto all'esterno del labirinto, 
 dirigendosi verso **Sud** si avrà modo di entrare nell'*Ala d'ingresso* in cui possiamo osservare un 
 **gomitolo**. Raccogliere ed usare il **gomitolo** 
 permetterà di uscire automaticamente dal labirinto una volta sconfitto il Minotauro.<br/><br/>Dirigendosi verso **Est** si 
