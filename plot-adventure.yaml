@@ -26,6 +26,15 @@ commands:
   - name: ovest
     pattern: "ovest|o"
 
+# articoli disponibili in questo gioco
+items:
+  - name: gomitolo
+    pattern: "gomitolo|gom|g"
+  - name: minotauro
+  pattern: "minotauro|min|m"
+  - name: spada
+    pattern: "spada|spad"
+
 # azioni che mettono in relazione comando-oggetto
 actions:
   - name: prendo
@@ -40,17 +49,8 @@ actions:
     items:
       - minotauro
 
-# articoli disponibili in questo gioco
-items:
-  - name: gomitolo
-    pattern: "gomitolo|gom|g"
-   - name: minotauro
-    pattern: "minotauro|min|m"
-  - name: spada
-    pattern: "spada|spad"
-
 # stanze disponibili in questo gioco
-room:
+rooms:
   - id: 0
     title: ""
     # http://patorjk.com/software/taag/#p=display&h=0&v=1&f=Calvin%20S&t=IL%20LABIRINTO%20DI%20CNOSSO%0A------------------%0A
