@@ -1,187 +1,163 @@
 ---
-direction:
-  - north
-  - east
-  - west
-  - south
-  - home # torna in posizione iniziale
+# comandi disponibili in questo gioco
+commands:
+  - name: prendo    # item
+    pattern: "prend|racco"
+  - name: uso       # item
+    pattern: "us"
+  - name: lascio    # item
+    pattern: "lasci|pos"
+  - name: aiuto     # help menu
+    pattern: "aiuto|a"
+  - name: posizione # restituisce la stanza corrente
+    pattern: "posizione|pos"
+  - name: inventario    # mostra gli items
+    pattern: "inventario"
+  - name: osservo   # restituisce descrizione degli oggetti presenti nella stanza e numero di uscite
+    pattern: "osserv|oss"
+  - name: indietro  # torna nella stanza precedente
+    pattern: "indietro|indietr"
+  - name: combatto  # minotauro
+    pattern: "combatt|sconfigg|uccid"
+  - name: nord
+    pattern: "nord|n"
+  - name: est
+    pattern: "est|e"
+  - name: sud
+    pattern: "sud|s"
+  - name: ovest
+    pattern: "ovest|o"
 
-# command :
-#  action  + [ object | direction ]
-action:
-  - take      # objects
-  - use       # objects
-  - leave     # objects
-  - go        # direction
-  - help      # view help
-  - position  # get current room id (position)
+# articoli disponibili in questo gioco
+items:
+  - name: gomitolo
+    pattern: "gomitolo|gom|g"
+  - name: minotauro
+  pattern: "minotauro|min|m"
+  - name: spada
+    pattern: "spada|spad"
 
-objects:
-  - olio
-  - fanciullo
-  - antidoto
-  - gomitolo
-  - pipistrello
-  - minotauro
-  - bandiera
-
-room:
-  - id: 0
-    title: Benvenuto
-    descr: |
-      IL LABIRINTO DI CNOSSO: l'impresa di Tesèo contro il Minotauro
-
-      BENVENUTO NEL LABIRINTO DI CNOSSO! Sull’isola di Creta, nel periodo del
-      regno di Minosse, che sposa Pasifae, in seguito ad un’offesa fatta ad
-      Afrodite nasce un figlio mostruoso, metà uomo e metà toro, il Minotauro.
-      Minosse lo imprigiona in un labirinto e, per sfamarlo, impone alle città
-      sotto la sua dominazione un tributo annuale di sette fanciulle e sette
-      fanciulli. Un anno, però, tra loro viene condotto il principe di Atene,
-      Tesèo, che non vuole arrendersi al tragico destino e tenterà di sconfiggere
-      il letale mostro...
-    direction:
-      north: 1
-    objects:
+# azioni che mettono in relazione comando-oggetto
+actions:
+  - name: prendo
+    items:
       - gomitolo
-      - pipistrello
-      - pipistrello
+      - spada
+  - name: lascio
+    items:
+      - gomitolo
+      - spada
+  - name: combatto
+    items:
+      - minotauro
+
+# stanze disponibili in questo gioco
+rooms:
+  - id: 0
+    title: ""
+    # http://patorjk.com/software/taag/#p=display&h=0&v=1&f=Calvin%20S&t=IL%20LABIRINTO%20DI%20CNOSSO%0A------------------%0A
+    descr: |
+      ╦╦    ╦  ╔═╗╔╗ ╦╦═╗╦╔╗╔╔╦╗╔═╗  ╔╦╗╦  ╔═╗╔╗╔╔═╗╔═╗╔═╗╔═╗
+      ║║    ║  ╠═╣╠╩╗║╠╦╝║║║║ ║ ║ ║   ║║║  ║  ║║║║ ║╚═╗╚═╗║ ║
+      ╩╩═╝  ╩═╝╩ ╩╚═╝╩╩╚═╩╝╚╝ ╩ ╚═╝  ═╩╝╩  ╚═╝╝╚╝╚═╝╚═╝╚═╝╚═╝
+      ──────────────────────────────────────────────────────
+      L'impresa di Tesèo contro il Minotauro
+
+      BENVENUTO! Sull’isola di Creta, nel periodo del regno di Minosse, in seguito ad
+      un’offesa fatta ad Afrodite nasce un figlio mostruoso, metà uomo e metà toro,
+      il Minotauro. Minosse lo imprigiona in un labirinto e, per sfamarlo, impone
+      alle città sotto la sua dominazione un tributo annuale di sette fanciulle e
+      sette fanciulli. Un anno, però, tra loro viene condotto il principe di Atene,
+      Tesèo, che non vuole arrendersi al tragico destino e tenterà di sconfiggere il
+      letale mostro.
+
+      Sei nel giardino profumato che costeggia il labirinto, a sud si scorge un
+      ingresso malridotto...
+    exits:
+      sud: 1
 
   - id: 1
-    title: Title 1
+    title: Ala d'ingresso
     descr: |
-      Inizio della partita entrando in una stanza buia. Per uscire dal labirinto
-      è necessario raccogliere il gomitolo in questa stanza, posto difronte
-      all'entrata. Accanto il gomitolo c'è un pipistrello al cui fatale morso
-      non si può scampare se non si possiede un antidoto. In questa stanza l'unica
-      soluzione è raccogliere la lampada che farà allontanare i pipistrelli e
-      permetterà di ricevere infomrazioni più approfondite sulle stanze e gli
-      obiettivi.
-    objects:
+      Sei appena entrato e non sai cosa fare, la stanza è buia e hai bisogno
+      di qualcosa che ti faccia strada... A terra c'è un gomitolo e sul lato
+      est una porta piuttosto grande, a nord si intravedono ancora i fiori
+      del giardino...
+    items:
       - gomitolo
-      - pipistrello
-      - lanterna
-    direction:
-      north: 0
-      south: 2
+    exits:
+      nord: 0
+      est: 2
 
   - id: 2
-    title: Title 2
+    title: Ala del bivio
     descr: |
-      Ad ogni accesso in una nuova stanza è necessario raccogliere l'olio per
-      ricaricare la lampada altrimenti la stanza rimarrà buia, che si trova
-      generalemente vicino all'entrata. In questa stanza è possibile incontrare
-      un fanciullo che chiederà in cambio della libertà di sbloccare altre
-      stanze un antidoto. Questo antidoto è presente e va cercato in tale stanza.
-    objects:
-      - olio
-      - fanciullo
-      - antidoto
-    direction:
-      north: 2
-      south: 3
-      east: 5
+      Che stanza tetra! Segui il tuo istinto, ci sono tre  passaggi: ad ovest,
+      sud ed est...
+    exits:
+      ovest: 1
+      sud: 3
+      est: 4
 
   - id: 3
-    title: Title 3
+    title: Ala della spada
     descr: |
-      Ad ogni accesso in una nuova stanza è necessario raccogliere l'olio per
-      ricaricare la lampada altrimenti la stanza rimarrà buia, che si trova
-      generalemente vicino all'entrata. In questa stanza è possibile raccogliere
-      un gomitolo, che servirà successivamente per la fanciulla in cambio della
-      spada per sconfiggere il minotauro. Inoltre è presente un pipistrello.
-    objects:
-      - olio
-      - gomitolo
-      - pipistrello
-    direction:
-      north: 2
-      south: 4
+      Ehi! C'è qualcosa che luccica laggiù... è una spada! Questa stanza
+      sembra non avere altre uscite oltre quella a nord per tornare
+      indietro...
+    items:
+      - spada
+    exits:
+      nord: 2
 
   - id: 4
-    title: Title 4
+    title: Ala del grande passo
     descr: |
-      Ad ogni accesso in una nuova stanza è necessario raccogliere l'olio per
-      ricaricare la lampada altrimenti la stanza rimarrà buia, che si trova
-      generalemente vicino all'entrata. In questa stanza è possibile incontrare
-      un pipistrello e una fanciulla che richiederà un gomitolo in cambio di
-      poter raccogliere la spada che custodisce per uccidere il minotauro.
-    objects:
-      - pipistrello
-      - fanciulla
-      - pipistrello
-    direction:
-      north: 3
-      south: 3
+      Verso nord si riescono già a sentire dei versi spaventosi, vai pure
+      se ti senti pronto... Altrimenti procedi verso ovest per tornare
+      nell'Ala del bivio o verso sud...
+    exits:
+      nord: 5
+      sud: 6
+      ovest: 2
 
   - id: 5
-    title: Title 5
+    title: Stanza della battaglia
     descr: |
-      Ad ogni accesso in una nuova stanza è necessario raccogliere l'olio per
-      ricaricare la lampada altrimenti la stanza rimarrà buia, che si trova
-      generalemente vicino all'entrata. In questa stanza è possibile raccogliere
-      un antidoto, che servirà in caso si abbia incontrato precedentemente il
-      fanciullo e si sia dovuto lasciare quello precedentemente raccolto.
-    objects:
-      - olio
-      - antidoto
-    direction:
-      north: 3
-      south: 6
+      GULP! Sei davanti ad un'enorme ombra che soffia fiato dal naso umido...
+      fagli vedere di che pasta sei fatto con la tua preziosa spada...
+      Altrimenti torna verso sud finchè sei ancora in tempo!
+
+                     -*@*                      *@*-
+                   -@WW*                        *WW@-
+                  :WWW@           :++:           @WWW:
+                  =WWWW+      -#WWWWWWWW#-      *WWWW=
+                  +WWWWWWWW:-#WWWWWWWWWWWW#-:WWWWWWWW+
+                   -@WWWW# +WWWWWWWWWWWWWWWW+ #WWWW@-
+                   -- :** *WWWWWWWWWWWWWWWWWW* **: --
+                 +WWWWW* =WWWWWWWWWWWWWWWWWWWW= *WWWWW+
+                   -*#= *WWWWWWWWWWWWWWWWWWWWWW* =#*-
+                       +WWWW-#WWWWWWWWWWWW#-WWWW+
+                      -WWWWW+  -#WWWWWW#-  +WWWWW-
+                        +WWWWW#=@WWWWWW@=#WWWWW+
+                          *WWWWWWWWWWWWWWWWWW*
+                           :WWWWWWWWWWWWWWWW:
+                            :WWWWWWWWWWWWWW:
+                             =WWWWWWWWWWWW=
+                             +W@  =WW=  @W+
+                              -+-WWWWWW-+-
+                               =W-    -W=
+                                *W@==@W*
+    items:
+      - minotauro
+    exits:
+      sud: 4
 
   - id: 6
-    title: Title 6
+    title: Ala finale
     descr: |
-      Ad ogni accesso in una nuova stanza è necessario raccogliere l'olio per
-      ricaricare la lampada altrimenti la stanza rimarrà buia, che si trova
-      generalemente vicino all'entrata. In questa stanza è possibile raccogliere
-      un gomitolo, che servirà successivamente per la fanciulla in cambio della
-      spada per sconfiggere il minotauro. Inoltre è presente un pipistrello.
-    objects:
-      - olio
-      - gomitolo
-      - pipistrello
-    direction:
-      north: 5
-      south: 7
-
-  - id: 7
-    title: Title 7
-    descr: |
-      Ad ogni accesso in una nuova stanza è necessario raccogliere l'olio per
-      ricaricare la lampada altrimenti la stanza rimarrà buia, che si trova
-      generalemente vicino all'entrata. Da questa stanza è possibile accedere
-      a quella che contiene il minotauro.
-    objects:
-      - olio
-    direction:
-      north: 6
-      south: 8
-      east: 9
-
-  - id: 8
-    title: Title 8
-    descr: |
-      In questa stanza buia è presente il minotauro ilq uale è possibile
-      sconfiggere solo se si è precedentemente raccolta la fatale spada
-      altrimenti si verrà mangiati dallo spietato minotauro e il gioco termina.
-      Se si combatte il minotauro il gioco finisce con la vittoria di Teseo.
-    objects:
-      - minotauro
-    direction:
-      north: 7
-      south: 9
-
-  - id: 9
-    title: Title 9
-    descr: |
-      Ad ogni accesso in una nuova stanza è necessario raccogliere l'olio per
-      ricaricare la lampada altrimenti la stanza rimarrà buia, che si trova
-      generalemente vicino all'entrata. in questa stanza è possibile raccogliere
-      la bandiera di resa e uscire dal gioco automaticamente perdendo. inoltre è
-      possibile incontrare il fatale pipistrello.
-    objects:
-      - pipistrello
-      - bandiera
-      - olio
-    direction:
-      north: 7
+      Ora che non puoi più scoprire nuove stanze dovresti iniziare a pensare
+      a come uscire da qui... Ma prima aspetta... C'è una bandiera bianca,
+      se sei meno coraggioso di quanto pensavi potrebbe servirti...
+    exits:
+      nord: 4

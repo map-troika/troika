@@ -49,7 +49,8 @@ class Connect implements Runnable {
             String request;
 
             // System.out.println("room id = " + plot.getRoom(roomId).descr);
-            response = plot.getRoom(roomId).descr;
+            // response = plot.getRoom(roomId).descr;
+            response = plot.printRoom(roomId);
 
             while (true) {
                 // Send message to clieent
@@ -64,10 +65,11 @@ class Connect implements Runnable {
                 if (request.trim().equals("quit")) break;
 
                 if (request.trim().equals("go")) {
-                    if (roomId < 9) {
+                    if (roomId < 6) {
                         roomId++;
                     }
-                    response = plot.getRoom(roomId).descr;
+                    // response = plot.getRoom(roomId).descr;
+                    response = plot.printRoom(roomId);
                 }
                 else if (request.trim().equals("back")) {
                     if (roomId > 0) {
