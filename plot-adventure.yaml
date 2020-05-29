@@ -33,7 +33,7 @@ items:
   - name: gomitolo
     pattern: "gomitolo|gom|g"
   - name: minotauro
-  pattern: "minotauro|min|m"
+    pattern: "minotauro|min|m"
   - name: spada
     pattern: "spada|spad"
 
