@@ -1,4 +1,4 @@
-package it.uniba.controller;
+package it.uniba.model;
 
 public class Player {
 

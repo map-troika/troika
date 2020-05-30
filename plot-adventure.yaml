@@ -50,6 +50,10 @@ actions:
   - name: combatto
     items:
       - minotauro
+  - name: uso
+    items:
+      - gomitolo
+      - spada
 
 # stanze disponibili in questo gioco
 rooms:
@@ -79,10 +83,9 @@ rooms:
   - id: 1
     title: Ala d'ingresso
     descr: |
-      Sei appena entrato e non sai cosa fare, la stanza è buia e hai bisogno
-      di qualcosa che ti faccia strada... A terra c'è un gomitolo e sul lato
-      est una porta piuttosto grande, a nord si intravedono ancora i fiori
-      del giardino...
+      Sei appena entrato e non sai cosa fare, la stanza è buia e hai appena calpestato
+      qualcosa... A terra c'è un gomitolo e sul lato est una porta piuttosto grande,
+      a nord si intravedono ancora i fiori del giardino...
     items:
       - gomitolo
     exits:
@@ -157,7 +160,6 @@ rooms:
     title: Ala finale
     descr: |
       Ora che non puoi più scoprire nuove stanze dovresti iniziare a pensare
-      a come uscire da qui... Ma prima aspetta... C'è una bandiera bianca,
-      se sei meno coraggioso di quanto pensavi potrebbe servirti...
+      a come uscire da qui...
     exits:
       nord: 4
