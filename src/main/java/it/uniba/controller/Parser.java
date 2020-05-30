@@ -1,7 +1,5 @@
 package it.uniba.controller;
 
-import it.uniba.plot.Plot;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -28,7 +26,6 @@ public class Parser {
         FLAG,
         TAKELANTERN,
         USELANTERN,
-
         UNRECOGNISED,
         AMBIGUOUS
     }

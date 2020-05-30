@@ -1,9 +1,9 @@
-package it.uniba.server;
-
-import it.uniba.plot.Plot;
+package it.uniba.controller;
 
 import java.io.IOException;
-import java.net.*;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 
 public class Server extends Thread {
@@ -32,7 +32,7 @@ public class Server extends Thread {
                 count++;
                 System.out.println("*** Wail connect1 = " + count);
                 Socket s = ss.accept();
-                Runnable r = new Connect(s);
+                Runnable r = new Game(s);
                 Thread t = new Thread(r); // Create task (Application)
                 t.setName("*** client thread " + count);
                 System.out.println("Thread = " + t);

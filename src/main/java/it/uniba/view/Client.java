@@ -1,4 +1,4 @@
-package it.uniba.server;
+package it.uniba.view;
 
 import java.io.*;
 import java.net.*;
@@ -19,7 +19,7 @@ public class Client {
         try {
             System.out.println("Apre una comunicazione socket");
             Socket s = new Socket("localhost", 4000);
-            // Apre i canali di comunicazione e la connessione con il  server
+            // Apre i canali di comunicazione e la connessione con il  view
 
             // Server BufferedReader
             BufferedReader sbr = new BufferedReader(new InputStreamReader(s.getInputStream()));
@@ -42,14 +42,14 @@ public class Client {
                 // Lettura di un messaggio ricevuto dalla console
                 String request = cbr.readLine();
 
-                // Send messaggio letto dal console a server
+                // Send messaggio letto dal console a view
                 request = Base64.getEncoder().encodeToString(request.getBytes());
                 sps.println(request);
 
                 if (request.trim().equals("quit")) break;
             }
 
-            // Chiude i canali di comunicazione e la connessione con il server
+            // Chiude i canali di comunicazione e la connessione con il view
             cbr.close();
             sps.close();
             sbr.close();

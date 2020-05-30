@@ -1,15 +1,16 @@
-package it.uniba.server;
+package it.uniba.controller;
 
-import java.io.*;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.io.IOException;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Base64;
 
-import it.uniba.plot.Plot;
-import it.uniba.plot.Room;
+import it.uniba.model.Plot;
 
-class Connect implements Runnable {
+class Game implements Runnable {
     private Socket s;
     private long id;
     private String name;
@@ -19,7 +20,7 @@ class Connect implements Runnable {
     private int roomId;
     private Plot plot;
 
-    Connect(Socket s) {
+    Game(Socket s) {
         this.s = s;
         this.roomId = 0;
         this.plot = new Plot();

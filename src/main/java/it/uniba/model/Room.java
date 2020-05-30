@@ -1,4 +1,4 @@
-package it.uniba.plot;
+package it.uniba.model;
 
 import java.util.ArrayList;
 import java.util.Map;
