@@ -36,7 +36,7 @@ jobs:
     # Build Docker image and push it to DockerHub
     - name: Push image
       run: |
-        IMAGE_ID=docker.pkg.github.com/map-troika/troika
+        IMAGE_ID=docker.pkg.github.com/map-troika/troika/image
 
         docker tag image $IMAGE_ID:latest
         docker push $IMAGE_ID:latest
