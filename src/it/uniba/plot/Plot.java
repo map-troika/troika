@@ -47,7 +47,7 @@ public class Plot {
         this.exitsList = (ArrayList<String>) config.get("exits");
         this.itemsList = (ArrayList<String>) config.get("items");
         this.actionsList = (ArrayList<String>) config.get("actions");
-        this.roomList = (ArrayList<Room>) config.get("room");
+        this.roomList = (ArrayList<Room>) config.get("rooms");
     }
 
     public ArrayList<String> getexitsList() {
