@@ -1,7 +1,6 @@
 package it.uniba.plot;
 
-import org.yaml.snakeyaml.Yaml;
-
+import org.yaml.snakeyaml.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Map;
