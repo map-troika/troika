@@ -1,7 +1,6 @@
 package it.uniba.plot;
 
-import org.yaml.snakeyaml.Yaml;
-
+import org.yaml.snakeyaml.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Map;
@@ -47,7 +46,7 @@ public class Plot {
         this.exitsList = (ArrayList<String>) config.get("exits");
         this.itemsList = (ArrayList<String>) config.get("items");
         this.actionsList = (ArrayList<String>) config.get("actions");
-        this.roomList = (ArrayList<Room>) config.get("room");
+        this.roomList = (ArrayList<Room>) config.get("rooms");
     }
 
     public ArrayList<String> getexitsList() {
