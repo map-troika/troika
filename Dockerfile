@@ -1,4 +1,4 @@
-FROM openjdk:11-alpine
+FROM ubuntu
 RUN mkdir /app
 COPY ./target/cnosso-1.0-SNAPSHOT.jar /app
 WORKDIR /app
