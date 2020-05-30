@@ -31,7 +31,7 @@ jobs:
  
     # Log into registry (DockerHub)
     - name: Log into registry
-      run: echo "${{ secrets.GITHUB_ACCESS_TOKEN }}" | docker login docker.pkg.github.com -u ${{ secrets.GITHUB_USERNAME }} --password-stdin
+      run: echo "${{ secrets.ACCESS_TOKEN }}" | docker login docker.pkg.github.com -u ${{ secrets.USERNAME }} --password-stdin
 
     # Build Docker image and push it to DockerHub
     - name: Push image
