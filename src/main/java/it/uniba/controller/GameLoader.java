@@ -50,5 +50,13 @@ public class GameLoader {
                 )
             );
         }
+        plotItems = items;
+
+
+    }
+
+    private HashMap<String, Item> getPlotItems () {
+
+        return plotItems;
     }
 }
