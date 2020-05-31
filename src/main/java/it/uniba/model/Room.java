@@ -1,26 +1,40 @@
 package it.uniba.model;
 
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.HashMap;
+
 
 
 public class Room {
 
-    public int id;
-    public String title;
-    public String descr;
-    public Map<String, Integer> exits;
-    public ArrayList<String> items;
+    private int id;
+    private String title;
+    private String description;
+    private HashMap<String, Integer> exits;
+    private ArrayList<Item> items;
 
-    public Room(Object r) {
+    public Room(
+            int roomId,
+            String roomTitle,
+            String roomDescription
+    ) {
 
-        Map m = (Map) r;
 
-        this.id = (int) m.get("id");
-        this.title = (String) m.get("title");
-        this.descr = (String) m.get("descr");
-        this.items = (ArrayList<String>) m.get("items");
-        this.exits = (Map<String, Integer>) m.get("exits");
 
+        this.id =  roomId;
+        this.title = roomTitle;
+        this.description = roomDescription;
+        this.exits = new HashMap<String, Integer>();
+        this.items = new ArrayList<Item>();
+    }
+
+    public void addExitRoom (String exit, Integer roomId) {
+        exits.put(exit, roomId);
+    }
+    public void addItemRoom (Item item) {
+        items.add(item);
+    }
+    public ArrayList<Item> getItemsList () {
+        return items;
     }
 }

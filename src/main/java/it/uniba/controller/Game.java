@@ -51,7 +51,7 @@ class Game implements Runnable {
 
             // System.out.println("room id = " + plot.getRoom(roomId).descr);
             // response = plot.getRoom(roomId).descr;
-            response = plot.printRoom(roomId);
+            //response = plot.printRoom(roomId);
 
             while (true) {
                 // Send message to clieent
@@ -70,13 +70,13 @@ class Game implements Runnable {
                         roomId++;
                     }
                     // response = plot.getRoom(roomId).descr;
-                    response = plot.printRoom(roomId);
+                    //response = plot.printRoom(roomId);
                 }
                 else if (request.trim().equals("back")) {
                     if (roomId > 0) {
                         roomId--;
                     }
-                    response = plot.getRoom(roomId).descr;
+                    //response = plot.getRoom(roomId).descr;
                 }
                 else
                     // process request and prepare respost
