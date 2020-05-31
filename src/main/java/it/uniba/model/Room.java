@@ -28,13 +28,13 @@ public class Room {
         this.items = new ArrayList<Item>();
     }
 
-    public void addExitRoom (String exit, Integer roomId) {
-        exits.put(exit, roomId);
+    public void setExitRoom (HashMap<String, Integer> exitsRooms) {
+        this.exits = exitsRooms;
     }
     public void addItemRoom (Item item) {
-        items.add(item);
+        this.items.add(item);
     }
     public ArrayList<Item> getItemsList () {
-        return items;
+        return this.items;
     }
 }
