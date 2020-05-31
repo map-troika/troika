@@ -8,4 +8,14 @@ public class Item {
         this.name = itemName;
         this.pattern = itemPattern;
     }
+
+    public String getItemName () {
+
+        return name;
+    }
+
+    public String getItemPattern () {
+
+        return pattern;
+    }
 }
