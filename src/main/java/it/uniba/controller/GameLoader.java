@@ -13,6 +13,7 @@ public class GameLoader {
     private HashMap<String, Item>  plotItems;
     private HashMap<Integer, Room>  plotRooms;
     private HashMap<String, String>  plotCommands;
+    private HashMap<String, ArrayList<String>> plotActions;
 
     //costanti
     private final String pathNameYaml="plot-adventure.yaml";
@@ -21,6 +22,7 @@ public class GameLoader {
         plotItems = new HashMap<String, Item>();
         plotRooms = new HashMap<Integer, Room>();
         plotCommands = new HashMap<String, String>();
+        plotActions = new HashMap<String, ArrayList<String>>();
 
         loadGameConfiguration(pathNameYaml);
     }
@@ -29,6 +31,7 @@ public class GameLoader {
         HashMap<String, Item> generatedItems = new HashMap<String, Item>();
         HashMap<Integer, Room> generatedRooms = new HashMap<Integer, Room>();
         HashMap<String, String> generatedCommands = new HashMap<String, String>();
+        HashMap<String, ArrayList<String>> generatedActions = new HashMap<String, ArrayList<String>>();
 
         File fin = new File(pathNameYaml);
         Map<String, Object> yamlData = new HashMap<>();
@@ -100,6 +103,17 @@ public class GameLoader {
             );
         }
         plotCommands = generatedCommands;
+
+        //estrazione actions
+        ArrayList<HashMap<String,Object>> rowActions = (ArrayList) yamlData.get("actions");
+        for (int i = 0; i<rowActions.size(); i++) {
+
+            generatedActions.put(
+                    (String)rowActions.get(i).get("name"),
+                    (ArrayList<String>)rowActions.get(i).get("items")
+            );
+        }
+        plotActions = generatedActions;
     }
 
 
@@ -121,5 +135,9 @@ public class GameLoader {
 
     public HashMap<String, String> getPlotCommands() {
         return plotCommands;
+    }
+
+    public HashMap<String, ArrayList<String>> getPlotActions() {
+        return plotActions;
     }
 }
