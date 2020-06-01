@@ -8,8 +8,6 @@ import java.net.Socket;
 import java.util.Scanner;
 import java.util.Base64;
 
-import it.uniba.model.Plot;
-
 class Game implements Runnable {
     private Socket s;
     private long id;
@@ -18,12 +16,12 @@ class Game implements Runnable {
     private OutputStream os;
     private PrintWriter pw;
     private int roomId;
-    private Plot plot;
+    private GameLoader gLoader;
 
     Game(Socket s) {
         this.s = s;
         this.roomId = 0;
-        this.plot = new Plot();
+        this.gLoader = new GameLoader();
     }
 
     public long getId() {
@@ -49,9 +47,9 @@ class Game implements Runnable {
             String response = "Initial message!";
             String request;
 
-            // System.out.println("room id = " + plot.getRoom(roomId).descr);
-            // response = plot.getRoom(roomId).descr;
-            //response = plot.printRoom(roomId);
+            System.out.println("room id = " + gLoader.getPlotRooms().get(roomId).getDescription());
+            // response = gLoader.getPlotRooms().get(roomId).getDescription();
+            //response = gLoader.getPlotRooms().get(roomId;
 
             while (true) {
                 // Send message to clieent
@@ -66,17 +64,18 @@ class Game implements Runnable {
                 if (request.trim().equals("quit")) break;
 
                 if (request.trim().equals("go")) {
+                    response = gLoader.getPlotRooms().get(roomId).getDescription();
                     if (roomId < 6) {
                         roomId++;
                     }
-                    // response = plot.getRoom(roomId).descr;
+
                     //response = plot.printRoom(roomId);
                 }
                 else if (request.trim().equals("back")) {
                     if (roomId > 0) {
                         roomId--;
                     }
-                    //response = plot.getRoom(roomId).descr;
+                    response = gLoader.getPlotRooms().get(roomId).getDescription();
                 }
                 else
                     // process request and prepare respost

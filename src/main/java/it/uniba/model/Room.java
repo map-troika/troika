@@ -37,4 +37,7 @@ public class Room {
     public ArrayList<Item> getItemsList () {
         return this.items;
     }
+    public String getDescription () {
+        return description;
+    }
 }
