@@ -1,5 +1,7 @@
 package it.uniba.controller;
 
+import it.uniba.model.Room;
+
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -47,9 +49,9 @@ class Game implements Runnable {
             String response = "Initial message!";
             String request;
 
-            System.out.println("room id = " + gLoader.getPlotRooms().get(roomId).getDescription());
-            response = gLoader.getPlotRooms().get(roomId).getDescription();
-            //response = gLoader.getPlotRooms().get(roomId);
+            //System.out.println("room id = " + gLoader.getPlotRooms().get(roomId).getDescription());
+            //response = gLoader.getPlotRooms().get(roomId).getDescription();
+            response = printRoom(roomId);
 
             while (true) {
                 // Send message to clieent
@@ -68,8 +70,8 @@ class Game implements Runnable {
                     if (roomId < 6) {
                         roomId++;
                     }
-                    response = gLoader.getPlotRooms().get(roomId).getDescription();
-                    //response = plot.printRoom(roomId);
+                    //response = gLoader.getPlotRooms().get(roomId).getDescription();
+                    response = printRoom(roomId);
                 }
                 else if (request.trim().equals("back")) {
                     if (roomId > 0) {
@@ -90,5 +92,16 @@ class Game implements Runnable {
                 ;
             }
         }
+    }
+
+    public String printRoom(int id) {
+        String out = "\033[2J\033[H"; // pulisce schermo e va in alto a sinistra
+
+
+        out += "\n" + gLoader.getPlotRooms().get(id).getTitle() + "\n";
+        out +=  "-".repeat(gLoader.getPlotRooms().get(id).getTitle().length()) + "\n"; // separatori lunghezza del titolo
+        out += gLoader.getPlotRooms().get(id).getDescription() + "\n";
+
+        return out;
     }
 }
