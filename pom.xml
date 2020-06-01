@@ -7,6 +7,7 @@
     <groupId>org.troika</groupId>
     <artifactId>cnosso</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <url>https://github.com/map-troika/troika/</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -24,6 +25,11 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.7.1</version>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -63,4 +69,43 @@
             </plugin>
         </plugins>
     </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.0.0</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>index</report>
+                            <report>licenses</report>
+                            <report>team</report>
+                            <report>distribution-management</report>
+                            <report>dependencies</report>
+                            <report>scm</report>
+                            <report>mailing-lists</report>
+                            <report>issue-management</report>
+                            <report>ci-management</report>
+                            <report>summary</report>
+                        </reports>
+                        <configuration>
+                            <linkOnly>true</linkOnly>
+                        </configuration>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.1.1</version>
+                <configuration>
+                    <linkXRef>false</linkXRef>
+                    <configLocation>config/checkstyle/checkstyle.xml</configLocation>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+
 </project>
