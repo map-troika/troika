@@ -49,7 +49,7 @@ class Game implements Runnable {
 
             System.out.println("room id = " + gLoader.getPlotRooms().get(roomId).getDescription());
             response = gLoader.getPlotRooms().get(roomId).getDescription();
-            //response = gLoader.getPlotRooms().get(roomId;
+            //response = gLoader.getPlotRooms().get(roomId);
 
             while (true) {
                 // Send message to clieent
