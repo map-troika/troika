@@ -12,18 +12,23 @@ import java.util.Map;
 public class GameLoader {
     private HashMap<String, Item>  plotItems;
     private HashMap<Integer, Room>  plotRooms;
+    private HashMap<String, String>  plotCommands;
 
     //costanti
     private final String pathNameYaml="plot-adventure.yaml";
 
     public GameLoader() {
         plotItems = new HashMap<String, Item>();
+        plotRooms = new HashMap<Integer, Room>();
+        plotCommands = new HashMap<String, String>();
+
         loadGameConfiguration(pathNameYaml);
     }
 
     private void loadGameConfiguration (String yamlPlotPath) {
         HashMap<String, Item> generatedItems = new HashMap<String, Item>();
         HashMap<Integer, Room> generatedRooms = new HashMap<Integer, Room>();
+        HashMap<String, String> generatedCommands = new HashMap<String, String>();
 
         File fin = new File(pathNameYaml);
         Map<String, Object> yamlData = new HashMap<>();
@@ -40,8 +45,7 @@ public class GameLoader {
 
         //estrazione items
         ArrayList<HashMap<String,Object>> rowItems = (ArrayList) yamlData.get("items");
-        for (int i=0; i<rowItems.size(); i++)
-        {
+        for (int i=0; i<rowItems.size(); i++) {
 
             generatedItems.put(
                     rowItems.get(i).get("name").toString(),
@@ -55,8 +59,7 @@ public class GameLoader {
 
         //estrazione rooms
         ArrayList<HashMap<String,Object>> rowRooms = (ArrayList) yamlData.get("rooms");
-        for (int i = 0; i<rowRooms.size(); i++)
-        {
+        for (int i = 0; i<rowRooms.size(); i++) {
             Room generatedRoom = new Room(
                     (int)rowRooms.get(i).get("id"),
                     (String)rowRooms.get(i).get("title"),
@@ -87,6 +90,16 @@ public class GameLoader {
             );
         }
         plotRooms = generatedRooms;
+
+        //estrazione commands
+        ArrayList<HashMap<String,Object>> rowCommands = (ArrayList) yamlData.get("commands");
+        for (int i = 0; i<rowCommands.size(); i++) {
+            generatedCommands.put(
+                    (String)rowCommands.get(i).get("name"),
+                    (String)rowCommands.get(i).get("pattern")
+            );
+        }
+        plotCommands = generatedCommands;
     }
 
 
@@ -104,5 +117,9 @@ public class GameLoader {
 
     public HashMap<Integer, Room> getPlotRooms() {
         return plotRooms;
+    }
+
+    public HashMap<String, String> getPlotCommands() {
+        return plotCommands;
     }
 }
