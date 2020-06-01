@@ -48,7 +48,7 @@ class Game implements Runnable {
             String request;
 
             System.out.println("room id = " + gLoader.getPlotRooms().get(roomId).getDescription());
-            // response = gLoader.getPlotRooms().get(roomId).getDescription();
+            response = gLoader.getPlotRooms().get(roomId).getDescription();
             //response = gLoader.getPlotRooms().get(roomId;
 
             while (true) {
@@ -64,11 +64,11 @@ class Game implements Runnable {
                 if (request.trim().equals("quit")) break;
 
                 if (request.trim().equals("go")) {
-                    response = gLoader.getPlotRooms().get(roomId).getDescription();
+
                     if (roomId < 6) {
                         roomId++;
                     }
-
+                    response = gLoader.getPlotRooms().get(roomId).getDescription();
                     //response = plot.printRoom(roomId);
                 }
                 else if (request.trim().equals("back")) {
