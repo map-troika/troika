@@ -25,7 +25,7 @@ public class Server extends Thread {
         try (ServerSocket ss = new ServerSocket(4000))
         {
             System.out.println("*** Listening...");
-            System.out.println("*** inizial_count = " + initial_count);
+            System.out.println("*** initial_count = " + initial_count);
 
             while(true)
             {

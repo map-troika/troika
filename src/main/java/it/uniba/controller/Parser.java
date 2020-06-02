@@ -1,5 +1,6 @@
 package it.uniba.controller;
 
+import javax.xml.stream.events.StartDocument;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -8,157 +9,117 @@ import java.util.regex.Pattern;
 public class Parser {
 
     private Pattern pattern;
-
-    public enum commandType {
-        NORTH,
-        EAST,
-        SOUTH,
-        WEST,
-        HOME,
-        HELP,
-        POSITION,
-        OIL,
-        BAT,
-        BOY,
-        MINOTAUR,
-        CLEW,
-        ANTIDOTE,
-        FLAG,
-        TAKELANTERN,
-        USELANTERN,
-        UNRECOGNISED,
-        AMBIGUOUS
-    }
+    private GameLoader gLoader;
 
     public static void main(String[] args) {
 
         System.out.println("*** Parser main");
-        String[] testCase = {
-                "go north",
-                "go east",
-                "go south",
-                "go west",
-                "north",
-                "east",
-                "south",
-                "west",
-                "go home",
-                "home",
-                "help",
-                "get postion",
-                "postion",
-
-                "oil",
-                "boy",
-                "antidote",
-                "clew",
-                "bat",
-                "minotaur",
-                "flag",
-
-                "take oil",
-                "boy",
-                "take antidote",
-                "give antidote",
-                "take clew",
-                "take bat",
-                "defeat minotaur",
-                "take flag"
-        };
 
         String[] testCaseIT = {
+                // commands
                 "vado a nord",
-                "vado ad est",
-                "vado a sud",
-                "vado ad ovest",
+                "vai a nord",
                 "nord",
+                "vado ad est",
+                "vai ad est",
                 "est",
+                "vado a sud",
+                "vai a sud",
                 "sud",
+                "vado ad ovest",
+                "vai ad ovest",
                 "ovest",
-                "vado a casa",
-                "casa",
                 "aiuto",
                 "dove sono",
-                "posizione",
+                "prendo",
+                "uso",
+                "lascio",
+                "inventario",
+                "osservo",
+                "indietro",
+                "combatto",
 
-                "olio",
-                "fanciullo",
-                "antidoto",
+                // items
                 "gomitolo",
-                "pipistrello",
                 "minotauro",
-                "bandiera",
+                "spada",
 
-                "prendo l'olio",
-                "fanciullo",
-                "prendo l'antidoto",
-                "do l'antidoto",
+                // actions
+                "prendo",
+                "prendi",
+                "pren",
+                "prendo la spada",
                 "prendo il gomitolo",
-                "accendo la lanterna",
+                "raccolgo",
+                "raccogli",
+                "raccowihewf",
+                "raccolgo la spada",
+                "raccolgo il gomitolo",
+                "lascio",
+                "lascia",
+                "lascio la spada",
+                "lascio il gomitolo",
+                "usi",
+                "usa",
+                "uso il gomitolo",
+                "uso la spada",
+                "sconfiggi",
+                "sconfiggo",
                 "sconfiggo il minotauro",
-                "prendo la bandiera",
-                "nord est",
-                "pluto p paperino",
-                "pos",
-                "pluto n paperino",
-                "enigma e totrtura",
-                "ov",
-                "c"
+                "sconfiggwef l minot",
+                "combatti",
+                "combatto",
+                "combatto il minotauro",
+                "uccidi",
+                "uccido",
+                "uccido il minotauro",
         };
 
-
-        Parser p = new Parser();
+        Parser p = new Parser(new GameLoader());
         for (String t : testCaseIT) {
             System.out.printf("*** %-20s>>%s<<\n", p.parse(t), t);
         }
-    }
-
-    public Parser() {
-        pattern = Pattern.compile(
-            "(?<north>\\b(nord|n)\\b)|" +
-            "(?<east>\\b(est|e)\\b)|" +
-            "(?<south>\\b(sud|s)\\b)|" +
-            "(?<west>\\b(ovest|o)\\b)|" +
-            "(?<home>\\b(casa|c)\\b)|" +
-            "(?<help>(aiuto))|" +
-            "(?<position>\\b(dove sono|posizione|pos|p)\\b)|" +
-            "(?<oil>\\b(olio|ol)\\b)|" +
-            "(?<boy>\\b(fanciullo|fan|f)\\b)|" +
-            "(?<antidote>\\b(antidoto|ant|a)\\b)|" +
-            "(?<clew>\\b(gomitolo|gom|g)\\b)|" +
-            "(?<bat>\\b(pipistrello|pip)\\b)|" +
-            "(?<minotaur>\\b(minotauro|non|m)\\b)|" +
-            "(?<flag>\\b(bandiera|ban|b)\\b)|" +
-            "(?<takelantern>\\b(lanterna|lan|l)\\b)|" +
-            "(?<uselantern>\\b(uso.*lanterna)\\b)"
-        );
 
     }
 
-    private Enum parse(String token) {
+    public Parser(GameLoader gl) {
+        this.gLoader = gl;
+        // System.out.println("*** Parser!!!");
+        // System.out.println("*** keySet:" + gl.getPlotCommands().keySet());
+        String[] pa = new String[gl.getPlotCommands().size()];
+        int i = 0;
+        for (String k: gl.getPlotCommands().keySet()) {
+            pa[i++] = String.format("(?<%s>\\b(%s)\\b)", k, gl.getPlotCommands().get(k));
+        }
+
+        System.out.println("*** Pattern:" + String.join("|", pa));
+        pattern = Pattern.compile(String.join("|", pa));
+    }
+
+
+
+    public String parse(String token) {
 
         Matcher m = pattern.matcher(token);
-        List<Enum<commandType>> commandList = new ArrayList();
+        List<String> commandList = new ArrayList();
 
         if (m.find()) {
-            commandType cmd[] = commandType.values();
 
-            for(commandType c  : cmd) {
-                if (c != commandType.UNRECOGNISED && c != commandType.AMBIGUOUS)
-                    if (m.group(c.toString().toLowerCase()) != null) {
-                        commandList.add(c);
-                    }
+            for(String c  : gLoader.getPlotCommands().keySet()) {
+                if (m.group(c.toLowerCase()) != null) {
+                    commandList.add(c);
+                }
             }
         }
 
         if (commandList.isEmpty()) {
-            return commandType.UNRECOGNISED;
+            return "unrecognised";
         }
         else if (commandList.size() == 1) {
             return commandList.get(0);
         }
         else {
-            return commandType.AMBIGUOUS;
+            return "ambiguous";
         }
     }
 }
