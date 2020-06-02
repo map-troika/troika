@@ -34,6 +34,9 @@ public class Room {
     public void addItemRoom (Item item) {
         this.items.add(item);
     }
+    public void removeItemRoom (Item item) {
+        this.items.remove(item);
+    }
     public ArrayList<Item> getItemsList () {
         return this.items;
     }
@@ -43,5 +46,13 @@ public class Room {
 
     public String getTitle() {
         return title;
+    }
+
+    /**
+     *
+     * @return id della stanza
+     */
+    public int getId() {
+        return this.id;
     }
 }
