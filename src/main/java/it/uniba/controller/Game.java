@@ -1,5 +1,7 @@
 package it.uniba.controller;
 
+import it.uniba.model.Room;
+
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -7,8 +9,6 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.Scanner;
 import java.util.Base64;
-
-import it.uniba.model.Plot;
 
 class Game implements Runnable {
     private Socket s;
@@ -18,12 +18,12 @@ class Game implements Runnable {
     private OutputStream os;
     private PrintWriter pw;
     private int roomId;
-    private Plot plot;
+    private GameLoader gLoader;
 
     Game(Socket s) {
         this.s = s;
         this.roomId = 0;
-        this.plot = new Plot();
+        this.gLoader = new GameLoader();
     }
 
     public long getId() {
@@ -49,9 +49,9 @@ class Game implements Runnable {
             String response = "Initial message!";
             String request;
 
-            // System.out.println("room id = " + plot.getRoom(roomId).descr);
-            // response = plot.getRoom(roomId).descr;
-            response = plot.printRoom(roomId);
+            //System.out.println("room id = " + gLoader.getPlotRooms().get(roomId).getDescription());
+            //response = gLoader.getPlotRooms().get(roomId).getDescription();
+            response = printRoom(roomId);
 
             while (true) {
                 // Send message to clieent
@@ -66,17 +66,18 @@ class Game implements Runnable {
                 if (request.trim().equals("quit")) break;
 
                 if (request.trim().equals("go")) {
+
                     if (roomId < 6) {
                         roomId++;
                     }
-                    // response = plot.getRoom(roomId).descr;
-                    response = plot.printRoom(roomId);
+                    //response = gLoader.getPlotRooms().get(roomId).getDescription();
+                    response = printRoom(roomId);
                 }
                 else if (request.trim().equals("back")) {
                     if (roomId > 0) {
                         roomId--;
                     }
-                    response = plot.getRoom(roomId).descr;
+                    response = gLoader.getPlotRooms().get(roomId).getDescription();
                 }
                 else
                     // process request and prepare respost
@@ -91,5 +92,16 @@ class Game implements Runnable {
                 ;
             }
         }
+    }
+
+    public String printRoom(int id) {
+        String out = "\033[2J\033[H"; // pulisce schermo e va in alto a sinistra
+
+
+        out += "\n" + gLoader.getPlotRooms().get(id).getTitle() + "\n";
+        out +=  "-".repeat(gLoader.getPlotRooms().get(id).getTitle().length()) + "\n"; // separatori lunghezza del titolo
+        out += gLoader.getPlotRooms().get(id).getDescription() + "\n";
+
+        return out;
     }
 }
