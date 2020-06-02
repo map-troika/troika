@@ -17,7 +17,7 @@ class Game implements Runnable {
     private InputStream is;
     private OutputStream os;
     private PrintWriter pw;
-    private int roomId;
+    private static int roomId;
     private GameLoader gLoader;
 
     Game(Socket s) {
@@ -29,6 +29,10 @@ class Game implements Runnable {
     public long getId() {
         id = Thread.currentThread().getId();
         return id;
+    }
+
+    public static void setRoomId(int id) {
+        roomId = id;
     }
 
     public String getName() {
