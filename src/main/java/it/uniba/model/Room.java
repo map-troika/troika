@@ -40,6 +40,10 @@ public class Room {
     public ArrayList<Item> getItemsList () {
         return this.items;
     }
+
+    public HashMap<String, Integer> getExits () {
+        return this.exits;
+    }
     public String getDescription () {
         return description;
     }
