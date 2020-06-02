@@ -29,5 +29,39 @@ public class Action {
         System.out.println(loader.getPlotRooms().get(roomId).getDescription());
     }
 
+    public static void moveNorth(int roomId) {
+        GameLoader loader = new GameLoader();
+        int destId = -1;
+        if (loader.getPlotRooms().get(roomId).getExits().get("nord") != null) {
+            destId = loader.getPlotRooms().get(roomId).getExits().get("nord");
+            Game.setRoomId(destId);
+        }
+    }
 
+    public static void moveSouth(int roomId) {
+        GameLoader loader = new GameLoader();
+        int destId = -1;
+        if (loader.getPlotRooms().get(roomId).getExits().get("sud") != null) {
+            destId = loader.getPlotRooms().get(roomId).getExits().get("sud");
+            Game.setRoomId(destId);
+        }
+    }
+
+    public static void moveEast(int roomId) {
+        GameLoader loader = new GameLoader();
+        int destId = -1;
+        if (loader.getPlotRooms().get(roomId).getExits().get("est") != null) {
+            destId = loader.getPlotRooms().get(roomId).getExits().get("est");
+            Game.setRoomId(destId);
+        }
+    }
+
+    public static void moveWest(int roomId) {
+        GameLoader loader = new GameLoader();
+        int destId = -1;
+        if (loader.getPlotRooms().get(roomId).getExits().get("ovest") != null) {
+            destId = loader.getPlotRooms().get(roomId).getExits().get("ovest");
+            Game.setRoomId(destId);
+        }
+    }
 }
