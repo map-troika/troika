@@ -1,7 +1,5 @@
 package it.uniba.controller;
 
-import it.uniba.model.Room;
-
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -20,8 +18,8 @@ class Game implements Runnable {
     private int roomId;
     private GameLoader gLoader;
 
-    Game(Socket s) {
-        this.s = s;
+    Game(final Socket s1) {
+        this.s = s1;
         this.roomId = 0;
         this.gLoader = new GameLoader();
     }
@@ -71,7 +69,7 @@ class Game implements Runnable {
 
                     case "go":
 
-                        if (roomId < ( gLoader.getPlotRooms().size() -1)) {
+                        if (roomId < (gLoader.getPlotRooms().size() - 1)) {
                             roomId++;
                         }
                         response = printRoom(roomId);
@@ -99,8 +97,7 @@ class Game implements Runnable {
                         if (gLoader.getPlotRooms().get(roomId).getExitRoom(cmd) != null) {
                             roomId = gLoader.getPlotRooms().get(roomId).getExitRoom(cmd);
                             response = gLoader.getPlotRooms().get(roomId).getDescription();
-                        }
-                        else {
+                        } else {
                             response = "me, non sai d cz andare (" + request + ").  Riprova!";
                         }
                         break;
@@ -135,26 +132,23 @@ class Game implements Runnable {
         } finally {
             System.out.println("Client " + this.getName() + " left the session.");
             try {
-                s.close();
-            } // close socket
-            catch (Exception e) {
-                ;
+                s.close(); // close socket
+            } catch (Exception e) {
             }
         }
     }
 
-    public String printRoom(int id) {
+    public String printRoom(final int id1) {
         String out = "\033[2J\033[H"; // pulisce schermo e va in alto a sinistra
 
-
-        out += "\n" + gLoader.getPlotRooms().get(id).getTitle() + "\n";
-        out +=  "-".repeat(gLoader.getPlotRooms().get(id).getTitle().length()) + "\n"; // separatori lunghezza del titolo
-        out += gLoader.getPlotRooms().get(id).getDescription() + "\n";
+        out += "\n" + gLoader.getPlotRooms().get(id1).getTitle() + "\n";
+        out +=  "-".repeat(gLoader.getPlotRooms().get(id1).getTitle().length()) + "\n"; // separatori lunghezza del titolo
+        out += gLoader.getPlotRooms().get(id1).getDescription() + "\n";
 
         return out;
     }
 
-    public String exeCommand(String c) {
+    public String exeCommand(final String c) {
         switch (c) {
             case "nord":
                 break;

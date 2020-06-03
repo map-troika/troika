@@ -1,17 +1,16 @@
 package it.uniba.controller;
 
-import javax.xml.stream.events.StartDocument;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Parser {
+public final class Parser {
 
     private Pattern pattern;
     private GameLoader gLoader;
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 
         System.out.println("*** Parser main");
 
@@ -76,18 +75,20 @@ public class Parser {
         };
 
         Parser p = new Parser(new GameLoader());
+
         for (String t : testCaseIT) {
             System.out.printf("*** %-20s>>%s<<\n", p.parse(t), t);
         }
 
     }
 
-    public Parser(GameLoader gl) {
+    public Parser(final GameLoader gl) {
         this.gLoader = gl;
         // System.out.println("*** Parser!!!");
         // System.out.println("*** keySet:" + gl.getPlotCommands().keySet());
         String[] pa = new String[gl.getPlotCommands().size()];
         int i = 0;
+
         for (String k: gl.getPlotCommands().keySet()) {
             pa[i++] = String.format("(?<%s>\\b(%s)\\b)", k, gl.getPlotCommands().get(k));
         }
@@ -98,14 +99,12 @@ public class Parser {
 
 
 
-    public String parse(String token) {
-
+    public String parse(final String token) {
         Matcher m = pattern.matcher(token);
         List<String> commandList = new ArrayList();
 
         if (m.find()) {
-
-            for(String c  : gLoader.getPlotCommands().keySet()) {
+            for (String c  : gLoader.getPlotCommands().keySet()) {
                 if (m.group(c.toLowerCase()) != null) {
                     commandList.add(c);
                 }
@@ -114,11 +113,9 @@ public class Parser {
 
         if (commandList.isEmpty()) {
             return "unrecognised";
-        }
-        else if (commandList.size() == 1) {
+        } else if (commandList.size() == 1) {
             return commandList.get(0);
-        }
-        else {
+        } else {
             return "ambiguous";
         }
     }

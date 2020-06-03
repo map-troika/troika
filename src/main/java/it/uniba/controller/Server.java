@@ -6,15 +6,16 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 
-public class Server extends Thread {
+public final class Server extends Thread {
 
     private int port;
+    static final int MAX_SESSION = 10;
+    static final int PORT_NUMBER = 4000;
 
-    public static void main(String[] args) throws IOException
-    {
+    public static void main(final String[] args) throws IOException {
         int count = 0; // 2 ?
-        int initial_count = Thread.activeCount(); // 2 ?
-        long[] ids = new long[10];
+        int initialCount = Thread.activeCount(); // 2 ?
+        long[] ids = new long[MAX_SESSION];
 
         InetAddress inetAddress = InetAddress.getLocalHost();
         System.out.println("*** Server IP Address: " + inetAddress.getHostAddress());
@@ -22,13 +23,11 @@ public class Server extends Thread {
 
         new Server();
 
-        try (ServerSocket ss = new ServerSocket(4000))
-        {
+        try (ServerSocket ss = new ServerSocket(PORT_NUMBER)) {
             System.out.println("*** Listening...");
-            System.out.println("*** initial_count = " + initial_count);
+            System.out.println("*** initialCount = " + initialCount);
 
-            while(true)
-            {
+            while (true) {
                 count++;
                 System.out.println("*** Wail connect1 = " + count);
                 Socket s = ss.accept();
@@ -38,18 +37,17 @@ public class Server extends Thread {
                 System.out.println("Thread = " + t);
                 t.start(); // Launch new Thread
                 ids[count] = t.getId();
-                System.out.println("*** Now connected: "+ count);
-                System.out.println("*** Ids: "+ ids[count]);
+                System.out.println("*** Now connected: " + count);
+                System.out.println("*** Ids: " + ids[count]);
 
-                System.out.println("*** Connected clients: " + (Thread.activeCount() - initial_count));
+                System.out.println("*** Connected clients: " + (Thread.activeCount() - initialCount));
                 System.out.println("*** ids count: " + ids[count]);
-
             }
         }
     }
 
-    public void Server() throws IOException {
-        port = 4000;
+    public void server() throws IOException {
+        port = PORT_NUMBER;
 
         InetAddress inetAddress = InetAddress.getLocalHost();
         System.out.println("IP Address:- " + inetAddress.getHostAddress());
