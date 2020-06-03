@@ -17,17 +17,17 @@ commands:
   - name: lascio    # item
     pattern: "lasci.*|pos"
   - name: aiuto     # help menu
-    pattern: "aiuto|aiut"
+    pattern: "aiuto|aiut.*"
   - name: posizione # restituisce la stanza corrente
     pattern: "posizione|pos|dove"
   - name: inventario    # mostra gli items
     pattern: "inventario"
   - name: osservo   # restituisce descrizione degli oggetti presenti nella stanza e numero di uscite
-    pattern: "osserv|oss"
+    pattern: "osserv.*|oss"
   - name: indietro  # torna nella stanza precedente
-    pattern: "indietro|indietr"
+    pattern: "indietro|indietr.*"
   - name: combatto  # minotauro
-    pattern: "combatt|sconfigg|uccid"
+    pattern: "combatt.*|sconfigg.*|uccid.*"
   - name: nord
     pattern: "nord|north"
   - name: est
