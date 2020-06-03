@@ -15,8 +15,9 @@ public class Database {
     }
 
 
-    public void getLogin(String username, String password) {
+    public boolean getLogin(String username, String password) {
         String sql = "SELECT * FROM users WHERE username=? and password=?";
+        boolean rc = false;
 
         try (PreparedStatement pstmt  = this.conn.prepareStatement(sql)){
 
@@ -27,16 +28,17 @@ public class Database {
 
             // loop through the result set
             while (rs.next()) {
+                rc = true;
                 System.out.println(
-                    rs.getString("id") +  "\t" +
-                    rs.getString("username") + "\t" +
-                    rs.getString("password") + "\t" +
-                    rs.getString("email")
+                    "*** Login user: " +
+                    rs.getString("username")
                 );
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+
+        return rc;
     }
 
     private void connect(String dbpath) {
@@ -45,7 +47,7 @@ public class Database {
             String url = "jdbc:sqlite:" + dbpath;
             // create a connection to the database
             this.conn = DriverManager.getConnection(url);
-            System.out.println("Connection to SQLite has been established.");
+            System.out.println("*** Connection to " + dbpath + " SQLite has been established.");
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());

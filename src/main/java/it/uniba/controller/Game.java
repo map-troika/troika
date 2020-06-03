@@ -17,6 +17,7 @@ class Game implements Runnable {
     private PrintWriter pw;
     private int roomId;
     private GameLoader gLoader;
+    private boolean authUser = false;
 
     Game(final Socket s1) {
         this.s = s1;
@@ -47,6 +48,27 @@ class Game implements Runnable {
             String response = "Initial message!";
             String request;
             Parser p = new Parser(gLoader);
+
+            while(!authUser) {
+                response = "username: ";
+                response = Base64.getEncoder().encodeToString(response.getBytes());
+                pw.println(response);
+                request = sc.nextLine();
+                request = new String(Base64.getDecoder().decode(request));
+                String username = request.trim();
+
+                response = "password: ";
+                response = Base64.getEncoder().encodeToString(response.getBytes());
+                pw.println(response);
+                request = sc.nextLine();
+                request = new String(Base64.getDecoder().decode(request));
+                String password = request.trim();
+
+                Database db = new Database("users.db");
+                this.authUser = db.getLogin(username, password);
+                System.out.println("*** User: " +  username + " logged now");
+            }
+
 
             //System.out.println("room id = " + gLoader.getPlotRooms().get(roomId).getDescription());
             //response = gLoader.getPlotRooms().get(roomId).getDescription();
