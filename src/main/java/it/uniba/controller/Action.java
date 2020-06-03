@@ -3,27 +3,31 @@ package it.uniba.controller;
 import it.uniba.model.Item;
 import it.uniba.model.Player;
 
-public class Action {
+public final class Action {
 
-    public static void pickUpItem(int roomId, Item item) {
+    static final int ID5 = 5;
+    private Action() {
+
+    }
+    public static void pickUpItem(final int roomId, final Item item) {
         GameLoader loader = new GameLoader();
         Player.addItemInventory(item);
         loader.getPlotRooms().get(roomId).removeItemRoom(item);
     }
 
-    public static void leaveItem(int roomId, Item item) {
+    public static void leaveItem(final int roomId, final Item item) {
         GameLoader loader = new GameLoader();
         Player.removeItemInventory(item);
         loader.getPlotRooms().get(roomId).addItemRoom(item);
     }
 
-    public static String position(int roomId) {
+    public static String position(final int roomId) {
         GameLoader loader = new GameLoader();
         String out = "\033[2J\033[H";
-        if(roomId == 5) {
-            out += "Ti trovi nella " ;
+        if (roomId == ID5) {
+            out += "Ti trovi nella ";
         } else {
-            out += "Ti trovi nell'" ;
+            out += "Ti trovi nell'";
         }
         out += loader.getPlotRooms().get(roomId).getTitle().toLowerCase();
         return out;
@@ -37,7 +41,7 @@ public class Action {
         if (Player.getItemsList().size() == 0) {
             out += "\n" + "L'inventario è vuoto" + "\n";
         } else {
-            out += "Il tuo inventario\n" ;
+            out += "Il tuo inventario\n";
             for (Item i : Player.getItemsList()) {
                 out += "\n" + i.getItemName() + "\n" + "-".repeat(i.getItemName().length());
             }
@@ -45,14 +49,14 @@ public class Action {
         return out;
     }
 
-    public static String observeRoom(int roomId) {
+    public static String observeRoom(final int roomId) {
         GameLoader loader = new GameLoader();
         String out = "\033[2J\033[H";
         out += loader.getPlotRooms().get(roomId).getDescription();
         return out;
     }
 
-    public static boolean moveNorth(int roomId) {
+    public static boolean moveNorth(final int roomId) {
         GameLoader loader = new GameLoader();
         int destId = -1;
         if (loader.getPlotRooms().get(roomId).getExits().get("nord") != null) {
@@ -64,7 +68,7 @@ public class Action {
         }
     }
 
-    public static boolean moveSouth(int roomId) {
+    public static boolean moveSouth(final int roomId) {
         GameLoader loader = new GameLoader();
         int destId = -1;
         if (loader.getPlotRooms().get(roomId).getExits().get("sud") != null) {
@@ -76,7 +80,7 @@ public class Action {
         }
     }
 
-    public static boolean moveEast(int roomId) {
+    public static boolean moveEast(final int roomId) {
         GameLoader loader = new GameLoader();
         int destId = -1;
         if (loader.getPlotRooms().get(roomId).getExits().get("est") != null) {
@@ -88,7 +92,7 @@ public class Action {
         }
     }
 
-    public static boolean moveWest(int roomId) {
+    public static boolean moveWest(final int roomId) {
         GameLoader loader = new GameLoader();
         int destId = -1;
         if (loader.getPlotRooms().get(roomId).getExits().get("ovest") != null) {

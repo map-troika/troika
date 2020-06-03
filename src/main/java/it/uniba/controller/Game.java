@@ -29,7 +29,7 @@ class Game implements Runnable {
         return id;
     }
 
-    public static void setRoomId(int id) {
+    public static void setRoomId(final int id) {
         roomId = id;
     }
 
@@ -95,7 +95,7 @@ class Game implements Runnable {
 
                     case "sud":
 
-                        if(Action.moveSouth(roomId)) {
+                        if (Action.moveSouth(roomId)) {
                             response = printRoom(roomId);
                         } else {
                             response = "C'è un muro da questa parte!";
@@ -104,7 +104,7 @@ class Game implements Runnable {
                         break;
                     case "nord":
 
-                        if(Action.moveNorth(roomId)) {
+                        if (Action.moveNorth(roomId)) {
                             response = printRoom(roomId);
                         } else {
                             response = "C'è un muro da questa parte!";
@@ -112,15 +112,15 @@ class Game implements Runnable {
                         break;
                     case "est":
 
-                        if(Action.moveEast(roomId)) {
+                        if (Action.moveEast(roomId)) {
                             response = printRoom(roomId);
                         } else {
                             response = "C'è un muro da questa parte!";
                         }
-                        break ;
+                        break;
                     case "ovest":
 
-                        if(Action.moveWest(roomId)) {
+                        if (Action.moveWest(roomId)) {
                             response = printRoom(roomId);
                         } else {
                             response = "C'è un muro da questa parte!";

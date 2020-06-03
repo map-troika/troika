@@ -2,19 +2,23 @@ package it.uniba.model;
 
 import java.util.ArrayList;
 
-public class Player {
+public final class Player {
+
+    private Player() {
+
+    }
 
     private static ArrayList<Item> inventory = new ArrayList<Item>();
 
-    public static void addItemInventory(Item item) {
+    public static void addItemInventory(final Item item) {
         inventory.add(item);
     }
 
-    public static void removeItemInventory(Item item) {
+    public static void removeItemInventory(final Item item) {
         inventory.remove(item);
     }
 
-    public static ArrayList<Item> getItemsList () {
+    public static ArrayList<Item> getItemsList() {
         return inventory;
     }
 }
