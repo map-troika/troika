@@ -147,8 +147,12 @@ class Game implements Runnable {
                     case "posizione":
                         break;
                     case "inventario":
+
+                        response = Action.showInventory();
                         break;
                     case "osservo":
+
+                        response = Action.observeRoom(roomId);
                         break;
                     case "quit":
                         response = "quit";

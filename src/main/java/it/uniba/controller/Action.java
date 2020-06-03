@@ -17,16 +17,27 @@ public class Action {
         loader.getPlotRooms().get(roomId).addItemRoom(item);
     }
 
-    public static void showInventory() {
-        System.out.println("Il tuo inventario");
-        for(Item i : Player.getItemsList()) {
-            System.out.println(i.getItemName() + "-".repeat(i.getItemName().length()));
+    public static String showInventory() {
+      //  GameLoader loader = new GameLoader();
+      //  Player.addItemInventory(loader.getPlotRooms().get(1).getItemsList().get(0));
+      //  Player.addItemInventory(loader.getPlotRooms().get(3).getItemsList().get(0));
+        String out = "\033[2J\033[H";
+        if (Player.getItemsList().size() == 0) {
+            out += "\n" + "L'inventario è vuoto" + "\n";
+        } else {
+            out += "Il tuo inventario\n" ;
+            for (Item i : Player.getItemsList()) {
+                out += "\n" + i.getItemName() + "\n" + "-".repeat(i.getItemName().length());
+            }
         }
+        return out;
     }
 
-    public static void observeRoom(int roomId) {
+    public static String observeRoom(int roomId) {
         GameLoader loader = new GameLoader();
-        System.out.println(loader.getPlotRooms().get(roomId).getDescription());
+        String out = "\033[2J\033[H";
+        out += loader.getPlotRooms().get(roomId).getDescription();
+        return out;
     }
 
     public static boolean moveNorth(int roomId) {
