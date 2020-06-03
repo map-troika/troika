@@ -31,6 +31,20 @@ public class Room {
     public void setExitRoom (HashMap<String, Integer> exitsRooms) {
         this.exits = exitsRooms;
     }
+
+    public HashMap<String, Integer> getExitRoom () {
+        return this.exits;
+    }
+
+    public Integer getExitRoom (String cmd) {
+        if (this.exits.containsKey(cmd)) {
+            return this.exits.get(cmd);
+        }
+        else {
+            return null;
+        }
+    }
+
     public void addItemRoom (Item item) {
         this.items.add(item);
     }

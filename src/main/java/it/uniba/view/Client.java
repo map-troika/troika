@@ -1,24 +1,28 @@
 package it.uniba.view;
 
-import java.io.*;
-import java.net.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
+import java.net.Socket;
 import java.util.Base64;
 
-public class Client {
+public final class Client {
 
-    public static void main(String argv[]) {
+    static final int PORT_NUMBER = 4000;
+
+    public static void main(final String[] argv) {
         System.out.println("Client start");
         Client c = new Client("client1");
         System.out.println("Client end");
     }
 
-    public Client(String client_name) {
+    private Client(final String clientName) {
 
-        System.out.println("Client: " + client_name);
+        System.out.println("Client: " + clientName);
 
         try {
             System.out.println("Apre una comunicazione socket");
-            Socket s = new Socket("localhost", 4000);
+            Socket s = new Socket("localhost", PORT_NUMBER);
             // Apre i canali di comunicazione e la connessione con il  view
 
             // Server BufferedReader
@@ -33,7 +37,7 @@ public class Client {
             // Console PrintStream
             PrintStream cps = new PrintStream(System.out, true);
 
-            while(true) {
+            while (true) {
                 // Stampa messagio ricevuto
                 String response = new String(Base64.getDecoder().decode(sbr.readLine()));
                 cps.println("Response:\n" + response);
@@ -46,7 +50,9 @@ public class Client {
                 request = Base64.getEncoder().encodeToString(request.getBytes());
                 sps.println(request);
 
-                if (request.trim().equals("quit")) break;
+                if (request.trim().equals("quit")) {
+                    break;
+                }
             }
 
             // Chiude i canali di comunicazione e la connessione con il view

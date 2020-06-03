@@ -1,39 +1,48 @@
 ---
 # comandi disponibili in questo gioco
 commands:
+  - name: go
+    pattern: "go|g"
+  - name: back
+    pattern: "back|b"
+  - name: quit
+    pattern: "quit|q"
+  - name: home
+    pattern: "home|h"
+
   - name: prendo    # item
-    pattern: "prend|racco"
+    pattern: "prend.*|racco.*"
   - name: uso       # item
-    pattern: "us"
+    pattern: "us.*"
   - name: lascio    # item
-    pattern: "lasci|pos"
+    pattern: "lasci.*|pos"
   - name: aiuto     # help menu
-    pattern: "aiuto|a"
+    pattern: "aiuto|aiut.*"
   - name: posizione # restituisce la stanza corrente
-    pattern: "posizione|pos"
+    pattern: "posizione|pos|dove"
   - name: inventario    # mostra gli items
     pattern: "inventario"
   - name: osservo   # restituisce descrizione degli oggetti presenti nella stanza e numero di uscite
-    pattern: "osserv|oss"
+    pattern: "osserv.*|oss"
   - name: indietro  # torna nella stanza precedente
-    pattern: "indietro|indietr"
+    pattern: "indietro|indietr.*"
   - name: combatto  # minotauro
-    pattern: "combatt|sconfigg|uccid"
+    pattern: "combatt.*|sconfigg.*|uccid.*"
   - name: nord
-    pattern: "nord|n"
+    pattern: "nord|north"
   - name: est
-    pattern: "est|e"
+    pattern: "est|east"
   - name: sud
-    pattern: "sud|s"
+    pattern: "sud|south"
   - name: ovest
-    pattern: "ovest|o"
+    pattern: "ovest|west"
 
 # articoli disponibili in questo gioco
 items:
   - name: gomitolo
-    pattern: "gomitolo|gom|g"
+    pattern: "gomitolo|gom"
   - name: minotauro
-    pattern: "minotauro|min|m"
+    pattern: "minotauro|min"
   - name: spada
     pattern: "spada|spad"
 
