@@ -94,16 +94,46 @@ class Game implements Runnable {
                         break;
 
                     case "sud":
+
+                        if(Action.moveSouth(roomId)) {
+                            response = printRoom(roomId);
+                        } else {
+                            response = "C'è un muro da questa parte!";
+                        }
+
+                        break;
                     case "nord":
+
+                        if(Action.moveNorth(roomId)) {
+                            response = printRoom(roomId);
+                        } else {
+                            response = "C'è un muro da questa parte!";
+                        }
+                        break;
                     case "est":
+
+                        if(Action.moveEast(roomId)) {
+                            response = printRoom(roomId);
+                        } else {
+                            response = "C'è un muro da questa parte!";
+                        }
+                        break ;
                     case "ovest":
 
+                        if(Action.moveWest(roomId)) {
+                            response = printRoom(roomId);
+                        } else {
+                            response = "C'è un muro da questa parte!";
+                        }
+                       /*
                         if (gLoader.getPlotRooms().get(roomId).getExitRoom(cmd) != null) {
                             roomId = gLoader.getPlotRooms().get(roomId).getExitRoom(cmd);
                             response = gLoader.getPlotRooms().get(roomId).getDescription();
                         } else {
                             response = "me, non sai d cz andare (" + request + ").  Riprova!";
                         }
+
+                        */
                         break;
 
                     case "prendo":

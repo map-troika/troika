@@ -29,39 +29,51 @@ public class Action {
         System.out.println(loader.getPlotRooms().get(roomId).getDescription());
     }
 
-    public static void moveNorth(int roomId) {
+    public static boolean moveNorth(int roomId) {
         GameLoader loader = new GameLoader();
         int destId = -1;
         if (loader.getPlotRooms().get(roomId).getExits().get("nord") != null) {
             destId = loader.getPlotRooms().get(roomId).getExits().get("nord");
             Game.setRoomId(destId);
+            return true;
+        } else {
+            return false;
         }
     }
 
-    public static void moveSouth(int roomId) {
+    public static boolean moveSouth(int roomId) {
         GameLoader loader = new GameLoader();
         int destId = -1;
         if (loader.getPlotRooms().get(roomId).getExits().get("sud") != null) {
             destId = loader.getPlotRooms().get(roomId).getExits().get("sud");
             Game.setRoomId(destId);
+            return true;
+        } else {
+            return false;
         }
     }
 
-    public static void moveEast(int roomId) {
+    public static boolean moveEast(int roomId) {
         GameLoader loader = new GameLoader();
         int destId = -1;
         if (loader.getPlotRooms().get(roomId).getExits().get("est") != null) {
             destId = loader.getPlotRooms().get(roomId).getExits().get("est");
             Game.setRoomId(destId);
+            return true;
+        } else {
+            return false;
         }
     }
 
-    public static void moveWest(int roomId) {
+    public static boolean moveWest(int roomId) {
         GameLoader loader = new GameLoader();
         int destId = -1;
         if (loader.getPlotRooms().get(roomId).getExits().get("ovest") != null) {
             destId = loader.getPlotRooms().get(roomId).getExits().get("ovest");
             Game.setRoomId(destId);
+            return true;
+        } else {
+            return false;
         }
     }
 }
