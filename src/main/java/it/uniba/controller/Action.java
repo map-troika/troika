@@ -17,6 +17,18 @@ public class Action {
         loader.getPlotRooms().get(roomId).addItemRoom(item);
     }
 
+    public static String position(int roomId) {
+        GameLoader loader = new GameLoader();
+        String out = "\033[2J\033[H";
+        if(roomId == 5) {
+            out += "Ti trovi nella " ;
+        } else {
+            out += "Ti trovi nell'" ;
+        }
+        out += loader.getPlotRooms().get(roomId).getTitle().toLowerCase();
+        return out;
+    }
+
     public static String showInventory() {
       //  GameLoader loader = new GameLoader();
       //  Player.addItemInventory(loader.getPlotRooms().get(1).getItemsList().get(0));

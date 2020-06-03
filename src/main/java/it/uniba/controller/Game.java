@@ -145,6 +145,8 @@ class Game implements Runnable {
                     case "aiuto":
                         break;
                     case "posizione":
+
+                        response = Action.position(roomId);
                         break;
                     case "inventario":
 
