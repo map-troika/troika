@@ -6,35 +6,35 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.DriverManager;
 
-public class Database {
+public final class Database {
     private Connection conn = null;
 
-    public Database(String dbpath){
+    public Database(final String dbpath) {
         connect(dbpath);
     }
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         Database db = new Database("users.db");
         db.getLogin("nicole500", "nicole123!");
     }
 
-    public boolean getLogin(String username, String password) {
+    public boolean getLogin(final String username, final String password) {
         String sql = "SELECT * FROM users WHERE username=? and password=?";
         boolean rc = false;
 
-        try (PreparedStatement pstmt  = this.conn.prepareStatement(sql)){
+        try (PreparedStatement pstmt  = this.conn.prepareStatement(sql)) {
 
             // set the value
-            pstmt.setString(1,username);
-            pstmt.setString(2,password);
+            pstmt.setString(1, username);
+            pstmt.setString(2, password);
             ResultSet rs  = pstmt.executeQuery();
 
             // loop through the result set
             while (rs.next()) {
                 rc = true;
                 System.out.println(
-                    "*** Login user: " +
-                    rs.getString("username")
+                    "*** Login user: "
+                            + rs.getString("username")
                 );
             }
         } catch (SQLException e) {
@@ -44,7 +44,7 @@ public class Database {
         return rc;
     }
 
-    private void connect(String dbpath) {
+    private void connect(final String dbpath) {
         try {
             // db parameters
             String url = "jdbc:sqlite:" + dbpath;

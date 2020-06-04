@@ -49,7 +49,7 @@ class Game implements Runnable {
             String request;
             Parser p = new Parser(gLoader);
 
-            while(!authUser) {
+            while (!authUser) {
                 response = "username: ";
                 response = Base64.getEncoder().encodeToString(response.getBytes());
                 pw.println(response);

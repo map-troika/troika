@@ -40,7 +40,7 @@ public final class Client {
             loop: while (true) {
                 // Stampa messagio ricevuto
                 String response = new String(Base64.getDecoder().decode(sbr.readLine()));
-                if (response.contains("username:") || response.contains("password:") ) {
+                if (response.contains("username:") || response.contains("password:")) {
                     cps.print(response);
                 } else {
                     cps.println("Response:\n" + response);
