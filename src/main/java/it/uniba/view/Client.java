@@ -37,11 +37,15 @@ public final class Client {
             // Console PrintStream
             PrintStream cps = new PrintStream(System.out, true);
 
-            while (true) {
+            loop: while (true) {
                 // Stampa messagio ricevuto
                 String response = new String(Base64.getDecoder().decode(sbr.readLine()));
-                cps.println("Response:\n" + response);
-                cps.print("command (go|back|quit): ");
+                if (response.contains("username:") || response.contains("password:")) {
+                    cps.print(response);
+                } else {
+                    cps.println("Response:\n" + response);
+                    cps.print("command (help): ");
+                }
 
                 // Lettura di un messaggio ricevuto dalla console
                 String request = cbr.readLine();
@@ -51,7 +55,7 @@ public final class Client {
                 sps.println(request);
 
                 if (request.trim().equals("quit")) {
-                    break;
+                    break loop;
                 }
             }
 
