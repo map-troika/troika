@@ -1,6 +1,10 @@
 package it.uniba.controller;
-import java.sql.*;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.DriverManager;
 
 public class Database {
     private Connection conn = null;
@@ -13,7 +17,6 @@ public class Database {
         Database db = new Database("users.db");
         db.getLogin("nicole500", "nicole123!");
     }
-
 
     public boolean getLogin(String username, String password) {
         String sql = "SELECT * FROM users WHERE username=? and password=?";
