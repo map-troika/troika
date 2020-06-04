@@ -112,7 +112,7 @@ class Game implements Runnable {
                     case "home":
 
                         roomId = 0;
-                        response = gLoader.getPlotRooms().get(roomId).getDescription();
+                        response = printRoom (roomId);
                         break;
 
                     case "sud":

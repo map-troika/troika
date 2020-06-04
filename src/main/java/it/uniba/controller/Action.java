@@ -9,6 +9,9 @@ public final class Action {
     private Action() {
 
     }
+    public static void help() {
+
+    }
     public static void pickUpItem(final int roomId, final Item item) {
         GameLoader loader = new GameLoader();
         Player.addItemInventory(item);
@@ -21,6 +24,12 @@ public final class Action {
         loader.getPlotRooms().get(roomId).addItemRoom(item);
     }
 
+    /**
+     * Restituisce una stringa contenente il nome della stanza corrente
+     *
+     * @param roomId stanza attuale
+     * @return output string
+     */
     public static String position(final int roomId) {
         GameLoader loader = new GameLoader();
         String out = "\033[2J\033[H";
@@ -29,6 +38,13 @@ public final class Action {
         return out;
     }
 
+    /**
+     * Restituisce una stringa contenente la lista formattata degli oggetti
+     * presenti nell'inventario, o un messaggio d'avviso nel caso l'inventario
+     * sia vuoto
+     *
+     * @return output string
+     */
     public static String showInventory() {
       //  GameLoader loader = new GameLoader();
       //  Player.addItemInventory(loader.getPlotRooms().get(1).getItemsList().get(0));
@@ -45,6 +61,12 @@ public final class Action {
         return out;
     }
 
+    /**
+     * Restituisce la descrizione della stanza corrente
+     *
+     * @param roomId stanza corrente
+     * @return output string
+     */
     public static String observeRoom(final int roomId) {
         GameLoader loader = new GameLoader();
         String out = "\033[2J\033[H";
@@ -52,6 +74,14 @@ public final class Action {
         return out;
     }
 
+    /**
+     * Controlla che la stanza corrente abbia una exit a nord
+     * e nel caso sia presente compie lo spostamento nella
+     * stanza di destinazione, altrimenti restituisce false
+     *
+     * @param roomId stanza corrente
+     * @return true/false
+     */
     public static boolean moveNorth(final int roomId) {
         GameLoader loader = new GameLoader();
         int destId = -1;
@@ -64,6 +94,14 @@ public final class Action {
         }
     }
 
+    /**
+     * Controlla che la stanza corrente abbia una exit a sud
+     * e nel caso sia presente compie lo spostamento nella
+     * stanza di destinazione, altrimenti restituisce false
+     *
+     * @param roomId stanza corrente
+     * @return true/false
+     */
     public static boolean moveSouth(final int roomId) {
         GameLoader loader = new GameLoader();
         int destId = -1;
@@ -76,6 +114,14 @@ public final class Action {
         }
     }
 
+    /**
+     * Controlla che la stanza corrente abbia una exit a est
+     * e nel caso sia presente compie lo spostamento nella
+     * stanza di destinazione, altrimenti restituisce false
+     *
+     * @param roomId stanza corrente
+     * @return true/false
+     */
     public static boolean moveEast(final int roomId) {
         GameLoader loader = new GameLoader();
         int destId = -1;
@@ -88,6 +134,14 @@ public final class Action {
         }
     }
 
+    /**
+     * Controlla che la stanza corrente abbia una exit a ovest
+     * e nel caso sia presente compie lo spostamento nella
+     * stanza di destinazione, altrimenti restituisce false
+     *
+     * @param roomId stanza corrente
+     * @return true/false
+     */
     public static boolean moveWest(final int roomId) {
         GameLoader loader = new GameLoader();
         int destId = -1;
