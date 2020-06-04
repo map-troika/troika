@@ -24,12 +24,8 @@ public final class Action {
     public static String position(final int roomId) {
         GameLoader loader = new GameLoader();
         String out = "\033[2J\033[H";
-        if (roomId == ID5) {
-            out += "Ti trovi nella ";
-        } else {
-            out += "Ti trovi nell'";
-        }
-        out += loader.getPlotRooms().get(roomId).getTitle().toLowerCase();
+        out += "Ti trovi nella stanza: ";
+        out += loader.getPlotRooms().get(roomId).getTitle();
         return out;
     }
 
