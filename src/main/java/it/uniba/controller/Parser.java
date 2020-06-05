@@ -5,10 +5,27 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * La classe <code>Parser</code> consente di analizzare un flusso di token in ingresso e determinarne la correttezza
+ * interpretando un pattern grazie ad una data espressione regolare. Questa classe implementa metodi che restituiscono
+ * un valore booleano per identificare l'input, che traducono il contenuto di una
+ * partita di scacchi in formato PGN dall'inglese all'italiano (permettendo un rapido test delle mosse) e per pulire il
+ * contenuto del file da commenti e stringhe non necessarie al fine di giocare la partita.
+ *
+ * @author Nicole Stolbovoi
+ */
+
 public final class Parser {
 
     private Pattern pattern;
     private GameLoader gLoader;
+
+    /**
+     * Legge in input un array di stringhe contenente una serie di comandi del gioco, per testare che vengano
+     * decodificati correttamente.
+     *
+     * @param args  stringhe da parsificare
+     */
 
     public static void main(final String[] args) {
 
@@ -82,6 +99,12 @@ public final class Parser {
 
     }
 
+    /**
+     * Crea un costruttore della classe <code>Parser</code> parametrizzato.
+     *
+     * @param gl    gioco caricato
+     */
+
     public Parser(final GameLoader gl) {
         this.gLoader = gl;
         // System.out.println("*** Parser!!!");
@@ -97,7 +120,11 @@ public final class Parser {
         pattern = Pattern.compile(String.join("|", pa));
     }
 
-
+    /**
+     * Parsifica i token in input.
+     *
+     * @param token stringa da parsificare
+     */
 
     public String parse(final String token) {
         Matcher m = pattern.matcher(token);

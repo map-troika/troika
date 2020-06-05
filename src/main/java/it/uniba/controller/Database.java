@@ -6,6 +6,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.DriverManager;
 
+/**
+ * La classe <code>Database</code> consente di analizzare un flusso di token in ingresso e
+ * determinarne la correttezza interpretando un pattern grazie ad una data espressione regolare. Questa classe
+ * implementa metodi che restituiscono un valore booleano per identificare l'input, che traducono il contenuto di una
+ * partita di scacchi in formato PGN dall'inglese all'italiano (permettendo un rapido test delle mosse) e per pulire il
+ * contenuto del file da commenti e stringhe non necessarie al fine di giocare la partita.
+ *
+ * @author Nicole Stolbovoi
+ */
+
 public final class Database {
     private Connection conn = null;
 
@@ -24,7 +34,7 @@ public final class Database {
 
         try (PreparedStatement pstmt  = this.conn.prepareStatement(sql)) {
 
-            // set the value
+            // Imposta il valore
             pstmt.setString(1, username);
             pstmt.setString(2, password);
             ResultSet rs  = pstmt.executeQuery();
@@ -46,9 +56,9 @@ public final class Database {
 
     private void connect(final String dbpath) {
         try {
-            // db parameters
+            // Parametri del database
             String url = "jdbc:sqlite:" + dbpath;
-            // create a connection to the database
+            // Crea una connessione con il database
             this.conn = DriverManager.getConnection(url);
             System.out.println("*** Connection to " + dbpath + " SQLite has been established.");
 

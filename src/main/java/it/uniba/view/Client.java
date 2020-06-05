@@ -6,15 +6,29 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Base64;
 
+/**
+ * La classe <code>Client</code> implementa i socket del server. Un socket del server attende che le richieste arrivino
+ * attraverso il <code>Client</code>. Esegue alcune operazioni in base a tale richiesta e quindi restituisce
+ * eventualmente un risultato al richiedente.
+ *
+ * @author Nicole Stolbovoi
+ */
+
 public final class Client {
 
     static final int PORT_NUMBER = 4000;
 
-    public static void main(final String[] argv) {
+    public static void main(final String[] args) {
         System.out.println("Client start");
         Client c = new Client("client1");
         System.out.println("Client end");
     }
+
+    /**
+     * Crea un costruttore della classe <code>Client</code> parametrizzato.
+     *
+     * @param clientName nome del client
+     */
 
     private Client(final String clientName) {
 
@@ -23,12 +37,9 @@ public final class Client {
         try {
             System.out.println("Apre una comunicazione socket");
             Socket s = new Socket("localhost", PORT_NUMBER);
-            // Apre i canali di comunicazione e la connessione con il  view
 
-            // Server BufferedReader
+            // Crea i canali di comunicazione con il Server
             BufferedReader sbr = new BufferedReader(new InputStreamReader(s.getInputStream()));
-
-            // Server PrintStream
             PrintStream sps = new PrintStream(s.getOutputStream(), true);
 
             // Console BufferedReader
@@ -38,7 +49,7 @@ public final class Client {
             PrintStream cps = new PrintStream(System.out, true);
 
             loop: while (true) {
-                // Stampa messagio ricevuto
+                // Stampa il messaggio ricevuto
                 String response = new String(Base64.getDecoder().decode(sbr.readLine()));
                 if (response.contains("username:") || response.contains("password:")) {
                     cps.print(response);
@@ -47,10 +58,10 @@ public final class Client {
                     cps.print("command (help): ");
                 }
 
-                // Lettura di un messaggio ricevuto dalla console
+                // Lettura del messaggio ricevuto dalla console
                 String request = cbr.readLine();
 
-                // Send messaggio letto dal console a view
+                // Manda il messaggio letto dalla console al Client
                 request = Base64.getEncoder().encodeToString(request.getBytes());
                 sps.println(request);
 
@@ -59,7 +70,7 @@ public final class Client {
                 }
             }
 
-            // Chiude i canali di comunicazione e la connessione con il view
+            // Disalloca le risorse impiegate: chiude i canali di comunicazione e la connessione con il Server
             cbr.close();
             sps.close();
             sbr.close();
