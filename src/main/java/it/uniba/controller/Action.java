@@ -84,9 +84,8 @@ public final class Action {
      */
     public static boolean moveNorth(final int roomId) {
         GameLoader loader = new GameLoader();
-        int destId = -1;
-        if (loader.getPlotRooms().get(roomId).getExits().get("nord") != null) {
-            destId = loader.getPlotRooms().get(roomId).getExits().get("nord");
+        if (loader.getPlotRooms().get(roomId).getExits().containsKey("nord")) {
+            int destId = loader.getPlotRooms().get(roomId).getExits().get("nord");
             Game.setRoomId(destId);
             return true;
         } else {
@@ -104,9 +103,8 @@ public final class Action {
      */
     public static boolean moveSouth(final int roomId) {
         GameLoader loader = new GameLoader();
-        int destId = -1;
-        if (loader.getPlotRooms().get(roomId).getExits().get("sud") != null) {
-            destId = loader.getPlotRooms().get(roomId).getExits().get("sud");
+        if (loader.getPlotRooms().get(roomId).getExits().containsKey("sud")) {
+            int destId = loader.getPlotRooms().get(roomId).getExits().get("sud");
             Game.setRoomId(destId);
             return true;
         } else {
@@ -124,9 +122,8 @@ public final class Action {
      */
     public static boolean moveEast(final int roomId) {
         GameLoader loader = new GameLoader();
-        int destId = -1;
-        if (loader.getPlotRooms().get(roomId).getExits().get("est") != null) {
-            destId = loader.getPlotRooms().get(roomId).getExits().get("est");
+        if (loader.getPlotRooms().get(roomId).getExits().containsKey("est")) {
+            int destId = loader.getPlotRooms().get(roomId).getExits().get("est");
             Game.setRoomId(destId);
             return true;
         } else {
@@ -144,9 +141,8 @@ public final class Action {
      */
     public static boolean moveWest(final int roomId) {
         GameLoader loader = new GameLoader();
-        int destId = -1;
-        if (loader.getPlotRooms().get(roomId).getExits().get("ovest") != null) {
-            destId = loader.getPlotRooms().get(roomId).getExits().get("ovest");
+        if (loader.getPlotRooms().get(roomId).getExits().containsKey("ovest")) {
+            int destId = loader.getPlotRooms().get(roomId).getExits().get("ovest");
             Game.setRoomId(destId);
             return true;
         } else {
