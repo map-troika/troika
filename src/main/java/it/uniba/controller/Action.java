@@ -12,16 +12,25 @@ public final class Action {
     public static void help() {
 
     }
-    public static void pickUpItem(final int roomId, final Item item) {
+    public static void pickUpItem(final int roomId, final String itemName) {
         GameLoader loader = new GameLoader();
-        Player.addItemInventory(item);
-        loader.getPlotRooms().get(roomId).removeItemRoom(item);
+        for (Item item : loader.getPlotRooms().get(roomId).getItemsList()) {
+            if (item.getItemName().equals(itemName)) {
+                Player.addItemInventory(item);
+                loader.getPlotRooms().get(roomId).removeItemRoom(item);
+            }
+        }
     }
 
-    public static void leaveItem(final int roomId, final Item item) {
+    public static void leaveItem(final int roomId, final String itemName) {
         GameLoader loader = new GameLoader();
-        Player.removeItemInventory(item);
-        loader.getPlotRooms().get(roomId).addItemRoom(item);
+        for (Item item : Player.getItemsList()) {
+            if (item.getItemName().equals(itemName)) {
+                Player.removeItemInventory(item);
+                loader.getPlotRooms().get(roomId).addItemRoom(item);
+            }
+        }
+
     }
 
     /**
