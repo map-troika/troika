@@ -13,16 +13,15 @@ public final class Server implements Runnable {
     static final int MAX_SESSION = 10;
     static final int PORT_NUMBER = 4000;
 
+    private static ServerGUI sGUI;
     public static void main(final String[] args) throws IOException {
-        Runnable r = new Server();
-        Thread t = new Thread(r); // Create task (Application)
-        t.setName("***Thread flusso Server");
-        t.start();
+        sGUI = new ServerGUI();
     }
 
     @Override
     public void run() {
-        System.out.println("prova");
+
+
         int count = 0; // 2 ?
         int initialCount = Thread.activeCount(); // 2 ?
         long[] ids = new long[MAX_SESSION];
@@ -33,31 +32,31 @@ public final class Server implements Runnable {
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
-        System.out.println("*** Server IP Address: " + inetAddress.getHostAddress());
-        System.out.println("*** Server Host Name: " + inetAddress.getHostName());
+        Server.sGUI.appendOutputServerText("\n" + "*** Server IP Address: " + inetAddress.getHostAddress());
+        Server.sGUI.appendOutputServerText("\n" + "*** Server Host Name: " + inetAddress.getHostName());
 
         new Server();
 
         try {
             try (ServerSocket ss = new ServerSocket(PORT_NUMBER)) {
-                System.out.println("*** Listening...");
-                System.out.println("*** initialCount = " + initialCount);
+                Server.sGUI.appendOutputServerText("\n" + "*** Listening...");
+                Server.sGUI.appendOutputServerText("\n" + "*** initialCount = " + initialCount);
 
                 while (true) {
                     count++;
-                    System.out.println("*** Wail connect1 = " + count);
+                    Server.sGUI.appendOutputServerText("\n" + "*** Wail connect1 = " + count);
                     Socket s = ss.accept();
                     Runnable r = new Game(s);
                     Thread t = new Thread(r); // Create task (Application)
-                    t.setName("*** client thread " + count);
-                    System.out.println("Thread = " + t);
+                    Server.sGUI.appendOutputServerText("\n" + "*** client thread " + count);
+                    Server.sGUI.appendOutputServerText("\n" + "Thread = " + t);
                     t.start(); // Launch new Thread
                     ids[count] = t.getId();
-                    System.out.println("*** Now connected: " + count);
-                    System.out.println("*** Ids: " + ids[count]);
+                    Server.sGUI.appendOutputServerText("\n" + "*** Now connected: " + count);
+                    Server.sGUI.appendOutputServerText("\n" + "*** Ids: " + ids[count]);
 
-                    System.out.println("*** Connected clients: " + (Thread.activeCount() - initialCount));
-                    System.out.println("*** ids count: " + ids[count]);
+                    Server.sGUI.appendOutputServerText("\n" + "*** Connected clients: " + (Thread.activeCount() - initialCount));
+                    Server.sGUI.appendOutputServerText("\n" + "*** ids count: " + ids[count]);
                 }
             }
         } catch (IOException e) {
@@ -65,12 +64,11 @@ public final class Server implements Runnable {
         }
     }
 
-    public void server() throws IOException {
-        port = PORT_NUMBER;
-
-        InetAddress inetAddress = InetAddress.getLocalHost();
-        System.out.println("IP Address:- " + inetAddress.getHostAddress());
-        System.out.println("Host Name:- " + inetAddress.getHostName());
+    public void runThreadServerInstance () {
+        Runnable r = new Server();
+        Thread t = new Thread(r); // Create task (Application)
+        Server.sGUI.appendOutputServerText("\n" + "***Thread flusso Server");
+        t.start();
     }
 
 }
