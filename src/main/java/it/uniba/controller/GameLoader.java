@@ -137,6 +137,10 @@ public class GameLoader {
         return plotCommands;
     }
 
+    public HashMap<String, Item> getPlotItems() {
+        return plotItems;
+    }
+
     public HashMap<String, ArrayList<String>> getPlotActions() {
         return plotActions;
     }

@@ -8,6 +8,15 @@ import java.net.Socket;
 import java.util.Scanner;
 import java.util.Base64;
 
+/**
+ * {@inheritDoc}
+ * La classe <code>Game</code> implementando l'interfaccia <code>Runnable</code> crea il canale di comunicazione in
+ * input ed output, in caso di errori si chiude la connessione. Il metodo <code>run()</code> legge la richiesta da
+ * <code>Client</code> e fornisce una risposta.
+ *
+ * @author Nicole Stolbovoi
+ */
+
 class Game implements Runnable {
     private Socket s;
     private long id;
@@ -35,6 +44,10 @@ class Game implements Runnable {
         return name;
     }
 
+    /**
+      *  Insert the {@inheritDoc} inline tag in a method main description
+      */
+    
     @Override
     public void run() {
         try {
@@ -66,56 +79,50 @@ class Game implements Runnable {
 
                 Database db = new Database("users.db");
                 this.authUser = db.getLogin(username, password);
-                System.out.println("*** User: " +  username + " logged now");
+                System.out.println("*** User: " + username + " logged now");
             }
-
 
             //System.out.println("room id = " + gLoader.getPlotRooms().get(roomId).getDescription());
             //response = gLoader.getPlotRooms().get(roomId).getDescription();
             response = printRoom(roomId);
 
-            loop: while (true) {
-                // Send message to clieent
+            loop:
+            while (true) {
+                // Manda un messaggio al Client
                 response = Base64.getEncoder().encodeToString(response.getBytes());
                 pw.println(response);
 
-                // recieve request from client
+                // Riceve una richiesta dal Client
                 request = sc.nextLine();
 
-                // Decode recieved string
+                // Decodifica la stringa ricevuta
                 request = new String(Base64.getDecoder().decode(request));
 
-                // parser qui
-                String cmd = p.parse(request);
+                // Parser
+                String[] cp = p.parse(request);
+                String cmd = cp[0];
+
                 switch (cmd) {
-
                     case "go":
-
                         if (roomId < (gLoader.getPlotRooms().size() - 1)) {
                             roomId++;
                         }
                         response = printRoom(roomId);
                         break;
-
                     case "back":
-
                         if (roomId > 0) {
                             roomId--;
                         }
                         response = gLoader.getPlotRooms().get(roomId).getDescription();
                         break;
-
                     case "home":
-
                         roomId = 0;
                         response = gLoader.getPlotRooms().get(roomId).getDescription();
                         break;
-
                     case "sud":
                     case "nord":
                     case "est":
                     case "ovest":
-
                         if (gLoader.getPlotRooms().get(roomId).getExitRoom(cmd) != null) {
                             roomId = gLoader.getPlotRooms().get(roomId).getExitRoom(cmd);
                             response = gLoader.getPlotRooms().get(roomId).getDescription();
@@ -123,7 +130,6 @@ class Game implements Runnable {
                             response = "me, non sai d cz andare (" + request + ").  Riprova!";
                         }
                         break;
-
                     case "prendo":
                         break;
                     case "uso":
@@ -147,50 +153,23 @@ class Game implements Runnable {
                         System.out.println("*** Invalid command: " + cmd);
                         response = "me, non so che cz vuoi (" + request + ").  Riprova!";
                 }
-
-
-
             }
         } finally {
             System.out.println("Client " + this.getName() + " left the session.");
             try {
-                s.close(); // close socket
+                s.close(); // chiude il socket
             } catch (Exception e) {
             }
         }
     }
 
     public String printRoom(final int id1) {
-        String out = "\033[2J\033[H"; // pulisce schermo e va in alto a sinistra
+        String out = "\033[2J\033[H"; // pulisce lo schermo e va in alto a sinistra
 
         out += "\n" + gLoader.getPlotRooms().get(id1).getTitle() + "\n";
-        out +=  "-".repeat(gLoader.getPlotRooms().get(id1).getTitle().length()) + "\n"; // separatori lunghezza del titolo
+        out += "-".repeat(gLoader.getPlotRooms().get(id1).getTitle().length()) + "\n"; // separatori lunghezza titolo
         out += gLoader.getPlotRooms().get(id1).getDescription() + "\n";
 
         return out;
-    }
-
-    public String exeCommand(final String c) {
-        switch (c) {
-            case "nord":
-                break;
-            case "prendo":
-                break;
-            case "uso":
-                break;
-            case "lascio":
-                break;
-            case "aiuto":
-                break;
-            case "posizione":
-                break;
-            case "inventario":
-                break;
-            case "osservo":
-                break;
-            default:
-                System.out.println("Invalid command: " + c);
-        }
-        return c;
     }
 }
