@@ -13,6 +13,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Boundary Class
+ *
+ * La classe implementa metodo per estrarre e inizializzare i dati del plot da un file di configurazione,
+ * mettendo a disposizione dei metodi per ottenere gli oggetti del plot inizializzati
+ */
 public class GameLoader {
     private HashMap<String, Item> plotItems;
     private HashMap<Integer, Room> plotRooms;
