@@ -169,7 +169,7 @@ class Game implements Runnable {
                         }
                         break;
                     case "combatto":
-                        response = Action.fight(roomId);
+                        response = Action.fight(gLoader, roomId);
                         break ;
                     case "lascio":
                         if (Action.leaveItem(gLoader, roomId, cp[1])) {

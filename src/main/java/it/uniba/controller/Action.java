@@ -52,7 +52,7 @@ public final class Action {
         return  false;
     }
 
-    public static String fight(int roomId) {
+    public static String fight(final GameLoader loader, final int roomId) {
         String out = "\033[2J\033[H";
         out += "In questa stanza non è presente il minotauro";
         if (roomId == ID5) {
@@ -63,6 +63,11 @@ public final class Action {
                     if (item.getUse()) {
                         out = "\033[2J\033[H";
                         out += "Armato di spada hai sconfitto il minotauro";
+                        for (Item minotauro : loader.getPlotRooms().get(roomId).getItemsList()) {
+                            if (item.getItemName().equals(minotauro.getItemName())) {
+                                loader.getPlotRooms().get(roomId).removeItemRoom(minotauro);
+                            }
+                        }
                     } else {
                         out = "\033[2J\033[H";
                         out += "Non usando la spada sei stato sconfitto";
