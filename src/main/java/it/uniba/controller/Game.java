@@ -175,6 +175,11 @@ class Game implements Runnable {
                     case "uso":
                         break;
                     case "lascio":
+                        if(Action.leaveItem(gLoader, roomId, cp[1])) {
+                            response = "Hai lasciato l'oggetto " + cp[1];
+                        } else {
+                            response = "Nel tuo inventario non è presente l'oggetto " + cp[1];
+                        };
                         break;
                     case "aiuto":
                         break;

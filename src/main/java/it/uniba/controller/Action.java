@@ -23,15 +23,15 @@ public final class Action {
         return  false;
     }
 
-    public static void leaveItem(final int roomId, final String itemName) {
-        GameLoader loader = new GameLoader();
+    public static boolean leaveItem(GameLoader loader, final int roomId, final String itemName) {
         for (Item item : Player.getItemsList()) {
             if (item.getItemName().equals(itemName)) {
                 Player.removeItemInventory(item);
                 loader.getPlotRooms().get(roomId).addItemRoom(item);
+                return true;
             }
         }
-
+        return  false;
     }
 
     /**
