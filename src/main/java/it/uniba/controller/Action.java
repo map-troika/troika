@@ -4,7 +4,7 @@ import it.uniba.model.Item;
 import it.uniba.model.Player;
 
 public final class Action {
-
+    final static int ID5 = 5;
     private Action() {
 
     }
@@ -50,6 +50,27 @@ public final class Action {
             }
         }
         return  false;
+    }
+
+    public static String fight(int roomId) {
+        String out = "\033[2J\033[H";
+        out += "In questa stanza non è presente il minotauro";
+        if (roomId == ID5) {
+            out = "\033[2J\033[H";
+            out += "Non possedendo una spada, il minotauro non ti ha lasciato scampo!";
+            for (Item item : Player.getItemsList()) {
+                if (item.getItemName().equals("spada")) {
+                    if (item.getUse()) {
+                        out = "\033[2J\033[H";
+                        out += "Armato di spada hai sconfitto il minotauro";
+                    } else {
+                        out = "\033[2J\033[H";
+                        out += "Non usando la spada sei stato sconfitto";
+                    }
+                }
+            }
+        }
+        return out;
     }
 
     /**

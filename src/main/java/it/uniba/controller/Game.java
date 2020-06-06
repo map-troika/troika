@@ -168,6 +168,9 @@ class Game implements Runnable {
                             response = "Nel tuo inventario non è presente l'oggetto " + cp[1];
                         }
                         break;
+                    case "combatto":
+                        response = Action.fight(roomId);
+                        break ;
                     case "lascio":
                         if (Action.leaveItem(gLoader, roomId, cp[1])) {
                             response = "Hai lasciato l'oggetto " + cp[1];
