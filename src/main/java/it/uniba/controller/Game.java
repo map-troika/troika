@@ -9,8 +9,9 @@ import java.util.Scanner;
 import java.util.Base64;
 
 /**
- * La classe <code>Game</code> implementando l'interfaccia <code>Runnable</code> rappresenta una connessione tra la
- * classe <code>Client</code> e la classe <code>Server</code>. Il metodo <code>run()</code> legge la richiesta da
+ * {@inheritDoc}
+ * La classe <code>Game</code> implementando l'interfaccia <code>Runnable</code> crea il canale di comunicazione in
+ * input ed output, in caso di errori si chiude la connessione. Il metodo <code>run()</code> legge la richiesta da
  * <code>Client</code> e fornisce una risposta.
  *
  * @author Nicole Stolbovoi
@@ -44,10 +45,9 @@ class Game implements Runnable {
     }
 
     /**
-     * Gestisce una singola richiesta, ma poiché è un thread separato, può essere eseguito contemporaneamente ad altre
-     * richieste.
-     */
-
+      *  Insert the {@inheritDoc} inline tag in a method main description
+      */
+    
     @Override
     public void run() {
         try {
@@ -79,15 +79,15 @@ class Game implements Runnable {
 
                 Database db = new Database("users.db");
                 this.authUser = db.getLogin(username, password);
-                System.out.println("*** User: " +  username + " logged now");
+                System.out.println("*** User: " + username + " logged now");
             }
-
 
             //System.out.println("room id = " + gLoader.getPlotRooms().get(roomId).getDescription());
             //response = gLoader.getPlotRooms().get(roomId).getDescription();
             response = printRoom(roomId);
 
-            loop: while (true) {
+            loop:
+            while (true) {
                 // Manda un messaggio al Client
                 response = Base64.getEncoder().encodeToString(response.getBytes());
                 pw.println(response);
@@ -98,8 +98,10 @@ class Game implements Runnable {
                 // Decodifica la stringa ricevuta
                 request = new String(Base64.getDecoder().decode(request));
 
-                // parser qui
-                String cmd = p.parse(request);
+                // Parser
+                String[] cp = p.parse(request);
+                String cmd = cp[0];
+
                 switch (cmd) {
                     case "go":
                         if (roomId < (gLoader.getPlotRooms().size() - 1)) {
@@ -165,33 +167,9 @@ class Game implements Runnable {
         String out = "\033[2J\033[H"; // pulisce lo schermo e va in alto a sinistra
 
         out += "\n" + gLoader.getPlotRooms().get(id1).getTitle() + "\n";
-        out +=  "-".repeat(gLoader.getPlotRooms().get(id1).getTitle().length()) + "\n"; // separatori lunghezza titolo
+        out += "-".repeat(gLoader.getPlotRooms().get(id1).getTitle().length()) + "\n"; // separatori lunghezza titolo
         out += gLoader.getPlotRooms().get(id1).getDescription() + "\n";
 
         return out;
-    }
-
-    public String exeCommand(final String c) {
-        switch (c) {
-            case "nord":
-                break;
-            case "prendo":
-                break;
-            case "uso":
-                break;
-            case "lascio":
-                break;
-            case "aiuto":
-                break;
-            case "posizione":
-                break;
-            case "inventario":
-                break;
-            case "osservo":
-                break;
-            default:
-                System.out.println("Invalid command: " + c);
-        }
-        return c;
     }
 }

@@ -18,19 +18,13 @@ public final class Client {
 
     static final int PORT_NUMBER = 4000;
 
-    public static void main(final String[] args) {
-        System.out.println("Client start");
-        Client c = new Client("client1");
-        System.out.println("Client end");
-    }
-
     /**
      * Crea un costruttore della classe <code>Client</code> parametrizzato.
      *
      * @param clientName nome del client
      */
 
-    private Client(final String clientName) {
+    public Client(final String clientName) {
 
         System.out.println("Client: " + clientName);
 
@@ -48,7 +42,8 @@ public final class Client {
             // Console PrintStream
             PrintStream cps = new PrintStream(System.out, true);
 
-            loop: while (true) {
+            loop:
+            while (true) {
                 // Stampa il messaggio ricevuto
                 String response = new String(Base64.getDecoder().decode(sbr.readLine()));
                 if (response.contains("username:") || response.contains("password:")) {
@@ -79,5 +74,16 @@ public final class Client {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    /**
+     * Istanzia un oggetto di <code>Client</code> che si collegherà al <code>Server</code>.
+     * @param args xxx
+     */
+
+    public static void main(final String[] args) {
+        System.out.println("Client start");
+        Client c = new Client("client1");
+        System.out.println("Client end");
     }
 }
