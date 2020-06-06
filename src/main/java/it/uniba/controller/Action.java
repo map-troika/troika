@@ -5,14 +5,22 @@ import it.uniba.model.Player;
 
 public final class Action {
 
-    static final int ID5 = 5;
     private Action() {
 
     }
-    public static void help() {
+    public static String help() {
+        String out = "\033[2J\033[H";
+        out += "Lista comandi:\n";
+        out += "\tprendo:             raccoglie un oggetto\n";
+        out += "\tlascio:             lascia un oggetto\n";
+        out += "\tposizione:          stanza corrente\n";
+        out += "\tinventario:         lista oggetti nell'inventario\n";
+        out += "\tosserva:            descrive la stanza\n";
+        out += "\tnord/sud/est/ovest: movimenti tra le stanze\n";
+        return out;
 
     }
-    public static boolean pickUpItem(GameLoader loader, final int roomId, final String itemName) {
+    public static boolean pickUpItem(final GameLoader loader, final int roomId, final String itemName) {
         for (Item item : loader.getPlotRooms().get(roomId).getItemsList()) {
             if (item.getItemName().equals(itemName)) {
                 Player.addItemInventory(item);
@@ -23,11 +31,21 @@ public final class Action {
         return  false;
     }
 
-    public static boolean leaveItem(GameLoader loader, final int roomId, final String itemName) {
+    public static boolean leaveItem(final GameLoader loader, final int roomId, final String itemName) {
         for (Item item : Player.getItemsList()) {
             if (item.getItemName().equals(itemName)) {
                 Player.removeItemInventory(item);
                 loader.getPlotRooms().get(roomId).addItemRoom(item);
+                return true;
+            }
+        }
+        return  false;
+    }
+
+    public static boolean useItem(final String itemName) {
+        for (Item item : Player.getItemsList()) {
+            if (item.getItemName().equals(itemName)) {
+                item.setUse(true);
                 return true;
             }
         }

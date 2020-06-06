@@ -121,16 +121,14 @@ class Game implements Runnable {
                         break;
                     case "home":
                         roomId = 0;
-                        response = printRoom (roomId);
+                        response = printRoom(roomId);
                         break;
                     case "sud":
-
                         if (Action.moveSouth(roomId)) {
                             response = printRoom(roomId);
                         } else {
                             response = "C'è un muro da questa parte!";
                         }
-
                         break;
                     case "nord":
 
@@ -155,44 +153,38 @@ class Game implements Runnable {
                         } else {
                             response = "C'è un muro da questa parte!";
                         }
-                       /*
-                        if (gLoader.getPlotRooms().get(roomId).getExitRoom(cmd) != null) {
-                            roomId = gLoader.getPlotRooms().get(roomId).getExitRoom(cmd);
-                            response = gLoader.getPlotRooms().get(roomId).getDescription();
-                        } else {
-                            response = "me, non sai d cz andare (" + request + ").  Riprova!";
-                        }
-
-                        */
                         break;
                     case "prendo":
-                        if(Action.pickUpItem(gLoader, roomId, cp[1])) {
+                        if (Action.pickUpItem(gLoader, roomId, cp[1])) {
                             response = "Hai raccolto l'oggetto " + cp[1];
                         } else {
                             response = "In questa stanza non è presente l'oggetto " + cp[1];
-                        };
+                        }
                         break;
                     case "uso":
+                        if (Action.useItem(cp[1])) {
+                            response = "L'oggetto " + cp[1] + " è ora in uso";
+                        } else {
+                            response = "Nel tuo inventario non è presente l'oggetto " + cp[1];
+                        }
                         break;
                     case "lascio":
-                        if(Action.leaveItem(gLoader, roomId, cp[1])) {
+                        if (Action.leaveItem(gLoader, roomId, cp[1])) {
                             response = "Hai lasciato l'oggetto " + cp[1];
                         } else {
                             response = "Nel tuo inventario non è presente l'oggetto " + cp[1];
-                        };
+                        }
                         break;
                     case "aiuto":
+                        response = Action.help();
                         break;
                     case "posizione":
-
                         response = Action.position(roomId);
                         break;
                     case "inventario":
-
                         response = Action.showInventory();
                         break;
                     case "osservo":
-
                         response = Action.observeRoom(roomId);
                         break;
                     case "quit":

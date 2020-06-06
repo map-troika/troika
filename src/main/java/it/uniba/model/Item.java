@@ -3,6 +3,7 @@ package it.uniba.model;
 public class Item {
     private String name;
     private String pattern;
+    private boolean use;
 
     /**
      * Crea un costruttore della classe <code>Item</code> parametrizzato
@@ -13,6 +14,7 @@ public class Item {
     public Item(String itemName, String itemPattern) {
         this.name = itemName;
         this.pattern = itemPattern;
+        this.use = false;
     }
 
     /**
@@ -33,5 +35,13 @@ public class Item {
     public String getItemPattern () {
 
         return pattern;
+    }
+
+    public void setUse(boolean useOn) {
+        this.use = useOn;
+    }
+
+    public boolean getUse() {
+        return use;
     }
 }
