@@ -12,14 +12,15 @@ public final class Action {
     public static void help() {
 
     }
-    public static void pickUpItem(final int roomId, final String itemName) {
-        GameLoader loader = new GameLoader();
+    public static boolean pickUpItem(GameLoader loader, final int roomId, final String itemName) {
         for (Item item : loader.getPlotRooms().get(roomId).getItemsList()) {
             if (item.getItemName().equals(itemName)) {
                 Player.addItemInventory(item);
                 loader.getPlotRooms().get(roomId).removeItemRoom(item);
+                return  true;
             }
         }
+        return  false;
     }
 
     public static void leaveItem(final int roomId, final String itemName) {

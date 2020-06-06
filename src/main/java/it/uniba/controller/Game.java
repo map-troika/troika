@@ -166,6 +166,11 @@ class Game implements Runnable {
                         */
                         break;
                     case "prendo":
+                        if(Action.pickUpItem(gLoader, roomId, cp[1])) {
+                            response = "Hai raccolto l'oggetto " + cp[1];
+                        } else {
+                            response = "In questa stanza non è presente l'oggetto " + cp[1];
+                        };
                         break;
                     case "uso":
                         break;
