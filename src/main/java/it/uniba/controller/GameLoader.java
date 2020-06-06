@@ -174,6 +174,15 @@ public class GameLoader {
      *
      * @return restituisce struttura dati plotActions
      */
+    public HashMap<String, Item> getPlotItems() {
+        return plotItems;
+    }
+
+    /**
+     * metodo pubblico che restituisce la struttura dati delle Actions
+     *
+     * @return restituisce struttura dati plotActions
+     */
     public HashMap<String, ArrayList<String>> getPlotActions() {
         return plotActions;
     }
