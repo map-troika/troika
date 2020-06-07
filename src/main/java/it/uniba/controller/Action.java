@@ -4,7 +4,7 @@ import it.uniba.model.Item;
 import it.uniba.model.Player;
 
 public final class Action {
-    final static int ID5 = 5;
+    static final int ID5 = 5;
     private Action() {
 
     }
@@ -32,7 +32,7 @@ public final class Action {
                             break;
                         }
                     }
-                    if(minAlive == false) {
+                    if (!minAlive) {
                         Game.setRoomId(0);
                         return true;
                     }

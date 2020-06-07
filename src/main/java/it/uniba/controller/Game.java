@@ -65,7 +65,6 @@ class Game implements Runnable {
             String response = "Initial message!";
             String request;
             Parser p = new Parser(gLoader);
-
             while (!authUser) {
                 response = "username: ";
                 response = Base64.getEncoder().encodeToString(response.getBytes());
@@ -73,39 +72,31 @@ class Game implements Runnable {
                 request = sc.nextLine();
                 request = new String(Base64.getDecoder().decode(request));
                 String username = request.trim();
-
                 response = "password: ";
                 response = Base64.getEncoder().encodeToString(response.getBytes());
                 pw.println(response);
                 request = sc.nextLine();
                 request = new String(Base64.getDecoder().decode(request));
                 String password = request.trim();
-
                 Database db = new Database("users.db");
                 this.authUser = db.getLogin(username, password);
                 System.out.println("*** User: " + username + " logged now");
             }
-
             //System.out.println("room id = " + gLoader.getPlotRooms().get(roomId).getDescription());
             //response = gLoader.getPlotRooms().get(roomId).getDescription();
             response = printRoom(roomId);
-
             loop:
             while (true) {
                 // Manda un messaggio al Client
                 response = Base64.getEncoder().encodeToString(response.getBytes());
                 pw.println(response);
-
                 // Riceve una richiesta dal Client
                 request = sc.nextLine();
-
                 // Decodifica la stringa ricevuta
                 request = new String(Base64.getDecoder().decode(request));
-
                 // Parser
                 String[] cp = p.parse(request);
                 String cmd = cp[0];
-
                 switch (cmd) {
                     case "go":
                         if (roomId < (gLoader.getPlotRooms().size() - 1)) {
@@ -120,16 +111,11 @@ class Game implements Runnable {
                         response = gLoader.getPlotRooms().get(roomId).getDescription();
                         break;
                     case "home":
-                        if(Action.home(gLoader)) {
+                        if (Action.home(gLoader)) {
                             response = printRoom(roomId);
                         } else {
                             response = "Comando non disponibile";
                         }
-
-                        /*
-                        roomId = 0;
-                        response = printRoom(roomId);
-                         */
                         break;
                     case "sud":
                         if (Action.moveSouth(roomId)) {
@@ -139,7 +125,6 @@ class Game implements Runnable {
                         }
                         break;
                     case "nord":
-
                         if (Action.moveNorth(roomId)) {
                             response = printRoom(roomId);
                         } else {
@@ -147,7 +132,6 @@ class Game implements Runnable {
                         }
                         break;
                     case "est":
-
                         if (Action.moveEast(roomId)) {
                             response = printRoom(roomId);
                         } else {
@@ -155,7 +139,6 @@ class Game implements Runnable {
                         }
                         break;
                     case "ovest":
-
                         if (Action.moveWest(roomId)) {
                             response = printRoom(roomId);
                         } else {
@@ -178,7 +161,7 @@ class Game implements Runnable {
                         break;
                     case "combatto":
                         response = Action.fight(gLoader, roomId);
-                        break ;
+                        break;
                     case "lascio":
                         if (Action.leaveItem(gLoader, roomId, cp[1])) {
                             response = "Hai lasciato l'oggetto " + cp[1];
