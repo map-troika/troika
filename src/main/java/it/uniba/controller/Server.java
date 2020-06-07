@@ -64,8 +64,8 @@ public final class Server implements Runnable {
         }
     }
 
-    public void runThreadServerInstance () {
-        Runnable r = new Server();
+    public void runThreadServer () {
+        Runnable r = this;
         Thread t = new Thread(r); // Create task (Application)
         Server.sGUI.appendOutputServerText("\n" + "***Thread flusso Server");
         t.start();

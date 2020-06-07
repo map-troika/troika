@@ -1,27 +1,35 @@
 package it.uniba.view;
 
+import it.uniba.controller.Server;
+import it.uniba.controller.ServerGUI;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Base64;
 
-public final class Client {
+public final class Client implements Runnable {
 
+    private String clientName;
     static final int PORT_NUMBER = 4000;
 
+    private static ClientGUI cGUI;
+
     public static void main(final String[] argv) {
-        System.out.println("Client start");
-        Client c = new Client("client1");
-        System.out.println("Client end");
+        cGUI = new ClientGUI();
+
     }
 
-    private Client(final String clientName) {
+    public Client() {
+    }
 
+    @Override
+    public void run() {
         System.out.println("Client: " + clientName);
 
         try {
-            System.out.println("Apre una comunicazione socket");
+            cGUI.appendOutputClientText("\n" + "Apre una comunicazione socket");
             Socket s = new Socket("localhost", PORT_NUMBER);
             // Apre i canali di comunicazione e la connessione con il  view
 
@@ -66,7 +74,14 @@ public final class Client {
             s.close();
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            cGUI.appendOutputClientText("\n" + e.getMessage());
         }
+    }
+
+    public void runThreadServer () {
+        cGUI.appendOutputClientText("\n" + "Client start");
+        Runnable c = this;
+        Thread t = new Thread(c); // Create task (Application)
+        t.start();
     }
 }

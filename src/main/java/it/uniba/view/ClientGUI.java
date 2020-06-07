@@ -1,36 +1,27 @@
-package it.uniba.controller;
-
-import it.uniba.controller.Server;
+package it.uniba.view;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ServerGUI {
+public class ClientGUI {
+    private JButton startClientButton;
+    private JTextArea outputClientText;
+    private JButton endSessionButton;
     private JPanel mainPanel;
-    private JButton avviaServerButton;
-    private JTextArea outputServerText;
 
-
-    public ServerGUI() {
+    public ClientGUI () {
         this.startGUI();
-        avviaServerButton.addActionListener(new ActionListener() {
+        startClientButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Client client = new Client();
+                client.runThreadServer();
 
-                //avvia thread server
-                Server server = new Server();
-                server.runThreadServer();
-
-                //disabilita bottone avvia server
-                avviaServerButton.setEnabled(false);
+                startClientButton.setEnabled(false);
             }
         });
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
     }
 
     public void startGUI () {
@@ -50,7 +41,7 @@ public class ServerGUI {
         frame.setLocation(x, y);
     }
 
-    public void appendOutputServerText (String textToAppend) {
-        outputServerText.append(textToAppend);
+    public void appendOutputClientText (String textToAppend) {
+        outputClientText.append(textToAppend);
     }
 }
