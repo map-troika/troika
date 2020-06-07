@@ -179,7 +179,7 @@ class Game implements Runnable {
                         response = Action.showInventory();
                         break;
                     case "osservo":
-                        response = Action.observeRoom(roomId);
+                        response = Action.observeRoom(gLoader, roomId);
                         break;
                     case "quit":
                         response = "quit";

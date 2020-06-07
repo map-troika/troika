@@ -41,10 +41,16 @@ commands:
 items:
   - name: gomitolo
     pattern: "gomitolo|gom"
+    description: |
+      per terra cè un gomitolo, potrebbe aiutarti a tornare sui tuoi passi
   - name: minotauro
     pattern: "minotauro|min"
+    description: |
+      hai di fronte il minotauro, pronto all'attacco
   - name: spada
     pattern: "spada|spad"
+    description: |
+      in lontananza cè una spada, degna dei più nobili guerrieri
 
 # azioni che mettono in relazione comando-oggetto
 actions:

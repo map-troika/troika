@@ -3,6 +3,7 @@ package it.uniba.model;
 public class Item {
     private String name;
     private String pattern;
+    private String description;
     private boolean use;
 
     /**
@@ -11,9 +12,10 @@ public class Item {
      * @param itemName nome oggetto
      * @param itemPattern pattern oggetto
      */
-    public Item(String itemName, String itemPattern) {
+    public Item(String itemName, String itemPattern, String itemDescription) {
         this.name = itemName;
         this.pattern = itemPattern;
+        this.description = itemDescription;
         this.use = false;
     }
 
@@ -35,6 +37,10 @@ public class Item {
     public String getItemPattern () {
 
         return pattern;
+    }
+
+    public String getDescription() {
+        return  description;
     }
 
     public void setUse(boolean useOn) {

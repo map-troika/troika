@@ -146,10 +146,18 @@ public final class Action {
      * @param roomId stanza corrente
      * @return output string
      */
-    public static String observeRoom(final int roomId) {
-        GameLoader loader = new GameLoader();
+    public static String observeRoom(final GameLoader loader, final int roomId) {
         String out = "\033[2J\033[H";
-        out += loader.getPlotRooms().get(roomId).getDescription();
+        if (loader.getPlotRooms().get(roomId).getItemsList().size() != 0) {
+            out += "guardati intorno: ";
+            for (Item item : loader.getPlotRooms().get(roomId).getItemsList()) {
+                out += "\n" + item.getDescription();
+            }
+
+        } else {
+            out = "\033[2J\033[H";
+            out += "In questa stanza non cè niente da vedere, continua ad esplorare";
+        }
         return out;
     }
 
