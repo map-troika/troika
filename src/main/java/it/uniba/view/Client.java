@@ -1,9 +1,5 @@
 package it.uniba.view;
 
-import it.uniba.controller.LoginRequestGUI;
-import it.uniba.controller.Server;
-import it.uniba.controller.ServerGUI;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintStream;

@@ -1,4 +1,4 @@
-package it.uniba.controller;
+package it.uniba.view;
 
 import javax.swing.*;
 import java.awt.*;
