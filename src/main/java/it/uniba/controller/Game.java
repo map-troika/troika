@@ -120,8 +120,16 @@ class Game implements Runnable {
                         response = gLoader.getPlotRooms().get(roomId).getDescription();
                         break;
                     case "home":
+                        if(Action.home(gLoader)) {
+                            response = printRoom(roomId);
+                        } else {
+                            response = "Comando non disponibile";
+                        }
+
+                        /*
                         roomId = 0;
                         response = printRoom(roomId);
+                         */
                         break;
                     case "sud":
                         if (Action.moveSouth(roomId)) {

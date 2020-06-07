@@ -20,6 +20,28 @@ public final class Action {
         return out;
 
     }
+
+    public static boolean home(final GameLoader loader) {
+        boolean minAlive = false;
+        for (Item item : Player.getItemsList()) {
+            if (item.getItemName().equals("gomitolo")) {
+                if (item.getUse()) {
+                    for (Item minotauro : loader.getPlotRooms().get(ID5).getItemsList()) {
+                        if (minotauro.getItemName().equals("minotauro")) {
+                            minAlive = true;
+                            break;
+                        }
+                    }
+                    if(minAlive == false) {
+                        Game.setRoomId(0);
+                        return true;
+                    }
+                }
+                break;
+            }
+        }
+        return false;
+    }
     public static boolean pickUpItem(final GameLoader loader, final int roomId, final String itemName) {
         for (Item item : loader.getPlotRooms().get(roomId).getItemsList()) {
             if (item.getItemName().equals(itemName)) {
@@ -63,9 +85,12 @@ public final class Action {
                     if (item.getUse()) {
                         out = "\033[2J\033[H";
                         out += "Armato di spada hai sconfitto il minotauro";
-                        for (Item minotauro : loader.getPlotRooms().get(roomId).getItemsList()) {
-                            if (item.getItemName().equals(minotauro.getItemName())) {
-                                loader.getPlotRooms().get(roomId).removeItemRoom(minotauro);
+                        for (int i = 0; i < loader.getPlotRooms().get(roomId).getItemsList().size(); i++) {
+
+                            if (loader.getPlotRooms().get(roomId).getItemsList().get(i)
+                                    .getItemName().equals("minotauro")) {
+                                loader.getPlotRooms().get(roomId)
+                                        .removeItemRoom(loader.getPlotRooms().get(roomId).getItemsList().get(i));
                             }
                         }
                     } else {
