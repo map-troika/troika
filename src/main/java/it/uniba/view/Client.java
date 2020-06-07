@@ -1,5 +1,6 @@
 package it.uniba.view;
 
+import it.uniba.controller.LoginRequestGUI;
 import it.uniba.controller.Server;
 import it.uniba.controller.ServerGUI;
 
@@ -11,7 +12,7 @@ import java.util.Base64;
 
 public final class Client implements Runnable {
 
-    private String clientName;
+    private String clientName = "nuovoClient";
     static final int PORT_NUMBER = 4000;
 
     private static ClientGUI cGUI;
@@ -45,24 +46,43 @@ public final class Client implements Runnable {
             // Console PrintStream
             PrintStream cps = new PrintStream(System.out, true);
 
+
+
             loop: while (true) {
+                String userRequest = "";
+
+                //jframe inserimento credenziali
+                LoginRequestGUI credentialRequestGUI;
+
                 // Stampa messagio ricevuto
                 String response = new String(Base64.getDecoder().decode(sbr.readLine()));
                 if (response.contains("username:") || response.contains("password:")) {
+
+                    //inizializzazione e avvia thread finestra "richiesta credenziale
+                    credentialRequestGUI = new LoginRequestGUI(response);
+                    Thread reqGUIt = new Thread(credentialRequestGUI, "thread credential req");
+                    reqGUIt.start();
+                    cGUI.appendOutputClientText("\n" + "in attesa della credenziale"); //imposta titolo
+                    while (reqGUIt.isAlive()) {
+
+                        Thread.sleep(2000);
+                    }
+                    cps.print(credentialRequestGUI.getStringUserResponse());
+                    userRequest = credentialRequestGUI.getStringUserResponse();
                     cps.print(response);
+
                 } else {
-                    cps.println("Response:\n" + response);
-                    cps.print("command (help): ");
+                    cGUI.appendOutputClientText("\n" + "Response:\n" + response);
+                    cGUI.appendOutputClientText("\n" + "command (help): ");
+                    userRequest = cbr.readLine();
                 }
 
-                // Lettura di un messaggio ricevuto dalla console
-                String request = cbr.readLine();
 
                 // Send messaggio letto dal console a view
-                request = Base64.getEncoder().encodeToString(request.getBytes());
-                sps.println(request);
+                userRequest = Base64.getEncoder().encodeToString(userRequest.getBytes());
+                sps.println(userRequest);
 
-                if (request.trim().equals("quit")) {
+                if (userRequest.trim().equals("quit")) {
                     break loop;
                 }
             }
@@ -74,11 +94,15 @@ public final class Client implements Runnable {
             s.close();
 
         } catch (Exception e) {
-            cGUI.appendOutputClientText("\n" + e.getMessage());
+            try {
+                cGUI.appendOutputClientText("\n" + e.getMessage());
+            } catch (InterruptedException interruptedException) {
+                interruptedException.printStackTrace();
+            }
         }
     }
 
-    public void runThreadServer () {
+    public void runThreadClient () throws InterruptedException {
         cGUI.appendOutputClientText("\n" + "Client start");
         Runnable c = this;
         Thread t = new Thread(c); // Create task (Application)
