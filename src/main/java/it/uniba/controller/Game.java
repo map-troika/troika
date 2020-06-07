@@ -1,5 +1,7 @@
 package it.uniba.controller;
 
+import it.uniba.model.Player;
+
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -146,27 +148,58 @@ class Game implements Runnable {
                         }
                         break;
                     case "prendo":
-                        if (Action.pickUpItem(gLoader, roomId, cp[1])) {
-                            response = "Hai raccolto l'oggetto " + cp[1];
-                        } else {
-                            response = "In questa stanza non è presente l'oggetto " + cp[1];
-                        }
+                            if (Action.pickUpItem(gLoader, roomId, cp)) {
+                                if (cp.length == 1) {
+                                    response = "Hai raccolto l'oggetto "
+                                            + Player.getItemsList().get(Player.getItemsList().size() - 1).getItemName();
+                                } else {
+                                    response = "Hai raccolto l'oggetto " + cp[1];
+                                }
+
+                            } else {
+                                if (cp.length == 1) {
+                                    response = "Specifica un oggetto valido da raccogliere";
+                                } else {
+                                    response = "In questa stanza non è presente l'oggetto " + cp[1];
+                                }
+
+                            }
                         break;
                     case "uso":
-                        if (Action.useItem(cp[1])) {
-                            response = "L'oggetto " + cp[1] + " è ora in uso";
+                        if (Action.useItem(cp)) {
+                            if (cp.length == 1) {
+                                response = "L'oggetto "
+                                        + Player.getItemsList().get(Player.getItemsList().size() - 1).getItemName()
+                                        + " è ora in uso";
+                            } else {
+                                response = "Hai raccolto l'oggetto " + cp[1];
+                            }
                         } else {
-                            response = "Nel tuo inventario non è presente l'oggetto " + cp[1];
+                            if (cp.length == 1) {
+                                response = "Specifica un oggetto valido da usare";
+                            } else {
+                                response = "Nel tuo inventario non è presente l'oggetto " + cp[1];
+                            }
                         }
                         break;
                     case "combatto":
                         response = Action.fight(gLoader, roomId);
                         break;
                     case "lascio":
-                        if (Action.leaveItem(gLoader, roomId, cp[1])) {
-                            response = "Hai lasciato l'oggetto " + cp[1];
+                        if (Action.leaveItem(gLoader, roomId, cp)) {
+                            if (cp.length == 1) {
+                                response = "Hai lasciato l'oggetto "
+                                        + gLoader.getPlotRooms().get(roomId).getItemsList()
+                                        .get(gLoader.getPlotRooms().get(roomId).getItemsList().size() -1).getItemName();
+                            } else {
+                                response = "Hai lasciato l'oggetto " + cp[1];
+                            }
                         } else {
-                            response = "Nel tuo inventario non è presente l'oggetto " + cp[1];
+                            if (cp.length == 1) {
+                                response = "Specifica un oggetto valido da lasciare";
+                            } else {
+                                response = "Nel tuo inventario non è presente l'oggetto " + cp[1];
+                            }
                         }
                         break;
                     case "aiuto":

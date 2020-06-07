@@ -42,36 +42,67 @@ public final class Action {
         }
         return false;
     }
-    public static boolean pickUpItem(final GameLoader loader, final int roomId, final String itemName) {
-        for (Item item : loader.getPlotRooms().get(roomId).getItemsList()) {
-            if (item.getItemName().equals(itemName)) {
-                Player.addItemInventory(item);
-                loader.getPlotRooms().get(roomId).removeItemRoom(item);
-                return  true;
-            }
+    public static boolean pickUpItem(final GameLoader loader, final int roomId, final String[] tk) {
+        if (tk.length == 1 && loader.getPlotRooms().get(roomId).getItemsList().size() == 1) {
+            Item selI = loader.getPlotRooms().get(roomId).getItemsList().get(0);
+            Player.addItemInventory(selI);
+            loader.getPlotRooms().get(roomId).removeItemRoom(selI);
+            return  true;
         }
-        return  false;
+        else if (tk.length == 1 && loader.getPlotRooms().get(roomId).getItemsList().size() != 1) {
+            return false;
+        }
+        else {
+            for (Item item : loader.getPlotRooms().get(roomId).getItemsList()) {
+                if (item.getItemName().equals(tk[1])) {
+                    Player.addItemInventory(item);
+                    loader.getPlotRooms().get(roomId).removeItemRoom(item);
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 
-    public static boolean leaveItem(final GameLoader loader, final int roomId, final String itemName) {
-        for (Item item : Player.getItemsList()) {
-            if (item.getItemName().equals(itemName)) {
-                Player.removeItemInventory(item);
-                loader.getPlotRooms().get(roomId).addItemRoom(item);
-                return true;
-            }
+    public static boolean leaveItem(final GameLoader loader, final int roomId, final String[] tk) {
+        if (tk.length == 1 && Player.getItemsList().size() == 1) {
+            Item selI = Player.getItemsList().get(0);
+            Player.removeItemInventory(selI);
+            loader.getPlotRooms().get(roomId).addItemRoom(selI);
+            return  true;
         }
-        return  false;
+        else if (tk.length == 1 && Player.getItemsList().size() != 1) {
+            return false;
+        }
+        else {
+            for (Item item : Player.getItemsList()) {
+                if (item.getItemName().equals(tk[1])) {
+                    Player.removeItemInventory(item);
+                    loader.getPlotRooms().get(roomId).addItemRoom(item);
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 
-    public static boolean useItem(final String itemName) {
-        for (Item item : Player.getItemsList()) {
-            if (item.getItemName().equals(itemName)) {
-                item.setUse(true);
-                return true;
-            }
+    public static boolean useItem(final String[] tk) {
+        if (tk.length == 1 && Player.getItemsList().size() == 1) {
+            Player.getItemsList().get(0).setUse(true);
+            return true;
         }
-        return  false;
+        else if (tk.length == 1 && Player.getItemsList().size() != 1) {
+            return false;
+        }
+        else {
+            for (Item item : Player.getItemsList()) {
+                if (item.getItemName().equals(tk[1])) {
+                    item.setUse(true);
+                    return true;
+                }
+            }
+            return  false;
+        }
     }
 
     public static String fight(final GameLoader loader, final int roomId) {
