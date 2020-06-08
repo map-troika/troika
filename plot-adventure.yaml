@@ -98,7 +98,7 @@ rooms:
   - id: 1
     title: Ala d'ingresso
     descr: |
-      Sei appena entrato e non sai cosa fare, la stanza è buia e hai appena calpestato
+      Sei nell'ala d'ingresso e non sai cosa fare, la stanza è buia e hai appena calpestato
       qualcosa... A terra c'è un gomitolo e sul lato est una porta piuttosto grande,
       a nord si intravedono ancora i fiori del giardino...
     items:

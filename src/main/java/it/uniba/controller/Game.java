@@ -166,19 +166,23 @@ class Game implements Runnable {
                             }
                         break;
                     case "uso":
-                        if (Action.useItem(cp)) {
-                            if (cp.length == 1) {
-                                response = "L'oggetto "
-                                        + Player.getItemsList().get(Player.getItemsList().size() - 1).getItemName()
-                                        + " è ora in uso";
-                            } else {
-                                response = "L'oggetto " + cp[1] + " è ora in uso";
-                            }
+                        if (Player.getNItemUse() == 2) {
+                            response = "Hai già due oggetti in uso";
                         } else {
-                            if (cp.length == 1) {
-                                response = "Specifica un oggetto valido da usare";
+                            if (Action.useItem(cp)) {
+                                if (cp.length == 1) {
+                                    response = "L'oggetto "
+                                            + Player.getItemsList().get(Player.getItemsList().size() - 1).getItemName()
+                                            + " è ora in uso";
+                                } else {
+                                    response = "L'oggetto " + cp[1] + " è ora in uso";
+                                }
                             } else {
-                                response = "Nel tuo inventario non è presente l'oggetto " + cp[1];
+                                if (cp.length == 1) {
+                                    response = "Specifica un oggetto valido da usare";
+                                } else {
+                                    response = "Nel tuo inventario non è presente l'oggetto " + cp[1];
+                                }
                             }
                         }
                         break;

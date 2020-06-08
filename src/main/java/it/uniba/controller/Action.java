@@ -66,6 +66,8 @@ public final class Action {
 
     public static boolean leaveItem(final GameLoader loader, final int roomId, final String[] tk) {
         if (tk.length == 1 && Player.getItemsList().size() == 1) {
+            Player.getItemsList().get(0).setUse(false);
+            Player.setNItemUse(Player.getNItemUse() - 1);
             Item selI = Player.getItemsList().get(0);
             Player.removeItemInventory(selI);
             loader.getPlotRooms().get(roomId).addItemRoom(selI);
@@ -77,6 +79,8 @@ public final class Action {
         else {
             for (Item item : Player.getItemsList()) {
                 if (item.getItemName().equals(tk[1])) {
+                    item.setUse(false);
+                    Player.setNItemUse(Player.getNItemUse() - 1);
                     Player.removeItemInventory(item);
                     loader.getPlotRooms().get(roomId).addItemRoom(item);
                     return true;
@@ -88,6 +92,9 @@ public final class Action {
 
     public static boolean useItem(final String[] tk) {
         if (tk.length == 1 && Player.getItemsList().size() == 1) {
+            if (!Player.getItemsList().get(0).getUse()) {
+                Player.setNItemUse(Player.getNItemUse() + 1);
+            }
             Player.getItemsList().get(0).setUse(true);
             return true;
         }
@@ -97,6 +104,9 @@ public final class Action {
         else {
             for (Item item : Player.getItemsList()) {
                 if (item.getItemName().equals(tk[1])) {
+                    if (!item.getUse()) {
+                        Player.setNItemUse(Player.getNItemUse() + 1);
+                    }
                     item.setUse(true);
                     return true;
                 }

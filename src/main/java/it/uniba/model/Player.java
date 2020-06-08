@@ -8,6 +8,8 @@ public final class Player {
 
     }
 
+    private static int nItemUse = 0;
+
     private static ArrayList<Item> inventory = new ArrayList<Item>();
 
     public static void addItemInventory(final Item item) {
@@ -20,5 +22,13 @@ public final class Player {
 
     public static ArrayList<Item> getItemsList() {
         return inventory;
+    }
+
+    public static int getNItemUse() {
+        return nItemUse;
+    }
+
+    public static void setNItemUse(int nItemUse1) {
+        nItemUse = nItemUse1;
     }
 }
