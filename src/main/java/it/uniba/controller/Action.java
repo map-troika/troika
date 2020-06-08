@@ -3,6 +3,8 @@ package it.uniba.controller;
 import it.uniba.model.Item;
 import it.uniba.model.Player;
 
+import java.util.ArrayList;
+
 public final class Action {
     static final int ID5 = 5;
     private Action() {
@@ -114,8 +116,44 @@ public final class Action {
             return  false;
         }
     }
-
     public static String fight(final GameLoader loader, final int roomId) {
+        String out = "\033[2J\033[H";
+        ArrayList<Item> roomItems = loader.getPlotRooms().get(roomId).getItemsList();
+        Item enemy = null;
+        Item weapon = null;
+        for (int i = 0; i < roomItems.size(); i++) {
+            Item itm = roomItems.get(i);
+            if (itm.getIsEnemy()) {
+                enemy = itm;
+            }
+        }
+        for (int i = 0; i < Player.getItemsList().size(); i++) {
+            Item itm = Player.getItemsList().get(i);
+            if (itm.getIsWeapon()) {
+                weapon = itm;
+            }
+        }
+        if (enemy != null && weapon != null) {
+            if (weapon.getUse()) {
+                loader.getPlotRooms().get(roomId)
+                        .removeItemRoom(enemy);
+                out += "Armato di " + weapon.getItemName() + " hai sconfitto il " + enemy.getItemName();
+            } else {
+                out += "Come pensavi di sconfiggere il " + enemy.getItemName()
+                        + " senza l'uso di un' arma";
+            }
+        }
+        else if (enemy != null && weapon == null) {
+            out += "Come pensavi di sconfiggere il " + enemy.getItemName()
+                    + " senza l'uso di un' arma";
+        }
+        else {
+            out += "Non cè nessuno da combattere qui!";
+        }
+        return out;
+    }
+    /*
+    public static String oldFight(final GameLoader loader, final int roomId) {
         String out = "\033[2J\033[H";
         out += "In questa stanza non è presente il minotauro";
         if (roomId == ID5) {
@@ -143,6 +181,7 @@ public final class Action {
         }
         return out;
     }
+    */
 
     /**
      * Restituisce una stringa contenente il nome della stanza corrente

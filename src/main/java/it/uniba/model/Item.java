@@ -5,6 +5,8 @@ public class Item {
     private String pattern;
     private String description;
     private boolean use;
+    private boolean isEnemy;
+    private boolean isWeapon;
 
     /**
      * Crea un costruttore della classe <code>Item</code> parametrizzato
@@ -12,11 +14,13 @@ public class Item {
      * @param itemName nome oggetto
      * @param itemPattern pattern oggetto
      */
-    public Item(String itemName, String itemPattern, String itemDescription) {
+    public Item(String itemName, String itemPattern, String itemDescription, boolean enemy, boolean weapon) {
         this.name = itemName;
         this.pattern = itemPattern;
         this.description = itemDescription;
         this.use = false;
+        this.isEnemy = enemy;
+        this.isWeapon = weapon;
     }
 
     /**
@@ -49,5 +53,13 @@ public class Item {
 
     public boolean getUse() {
         return use;
+    }
+
+    public boolean getIsEnemy() {
+        return isEnemy;
+    }
+
+    public boolean getIsWeapon() {
+        return isWeapon;
     }
 }
