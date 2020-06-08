@@ -6,7 +6,6 @@ import it.uniba.model.Player;
 import java.util.ArrayList;
 
 public final class Action {
-    static final int ID5 = 5;
     private Action() {
 
     }
@@ -24,24 +23,15 @@ public final class Action {
     }
 
     public static boolean home(final GameLoader loader) {
-        boolean minAlive = false;
         for (Item item : Player.getItemsList()) {
             if (item.getItemName().equals("gomitolo")) {
                 if (item.getUse()) {
-                    for (Item minotauro : loader.getPlotRooms().get(ID5).getItemsList()) {
-                        if (minotauro.getItemName().equals("minotauro")) {
-                            minAlive = true;
-                            break;
-                        }
-                    }
-                    if (!minAlive) {
                         Game.setRoomId(0);
                         return true;
                     }
                 }
                 break;
             }
-        }
         return false;
     }
     public static boolean pickUpItem(final GameLoader loader, final int roomId, final String[] tk) {
