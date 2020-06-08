@@ -104,9 +104,8 @@ rooms:
   - id: 1
     title: Ala d'ingresso
     descr: |
-      Sei nell'ala d'ingresso e non sai cosa fare, la stanza è buia e hai appena calpestato
-      qualcosa... A terra c'è un gomitolo e sul lato est una porta piuttosto grande,
-      a nord si intravedono ancora i fiori del giardino...
+      Sei nell'ala d'ingresso e non sai cosa fare, la stanza è buia e sul lato est si intravede
+      una porta piuttosto grande, a nord si intravedono ancora i fiori del giardino...
     items:
       - gomitolo
     exits:
@@ -126,9 +125,8 @@ rooms:
   - id: 3
     title: Ala della spada
     descr: |
-      Ehi! C'è qualcosa che luccica laggiù... è una spada! Questa stanza
-      sembra non avere altre uscite oltre quella a nord per tornare
-      indietro...
+      Ehi! Sei nell'ala della spada...potresti trovare un' arma degna di un guerriero, se nessuno ti ha preceduto!
+      Questa stanza sembra non avere altre uscite oltre quella a nord per tornare indietro...
     items:
       - spada
     exits:
