@@ -172,7 +172,7 @@ class Game implements Runnable {
                                         + Player.getItemsList().get(Player.getItemsList().size() - 1).getItemName()
                                         + " è ora in uso";
                             } else {
-                                response = "Hai raccolto l'oggetto " + cp[1];
+                                response = "L'oggetto " + cp[1] + " è ora in uso";
                             }
                         } else {
                             if (cp.length == 1) {
