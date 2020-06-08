@@ -22,7 +22,7 @@ public class ClientGUI {
         startClientButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Client client = new Client();
+                ClientGUIVersion client = new ClientGUIVersion();
                 try {
                     client.runThreadClient();
                 } catch (InterruptedException interruptedException) {

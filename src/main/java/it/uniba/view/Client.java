@@ -6,34 +6,34 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Base64;
 
-public final class Client implements Runnable {
+/**
+ * La classe <code>Client</code> implementa i socket del server. Un socket del server attende che le richieste arrivino
+ * attraverso il <code>Client</code>. Esegue alcune operazioni in base a tale richiesta e quindi restituisce
+ * eventualmente un risultato al richiedente.
+ *
+ * @author Nicole Stolbovoi
+ */
 
-    private String clientName = "nuovoClient";
+public final class Client {
+
     static final int PORT_NUMBER = 4000;
 
-    private static ClientGUI cGUI;
+    /**
+     * Crea un costruttore della classe <code>Client</code> parametrizzato.
+     *
+     * @param clientName nome del client
+     */
 
-    public static void main(final String[] argv) {
-        cGUI = new ClientGUI();
+    public Client(final String clientName) {
 
-    }
-
-    public Client() {
-    }
-
-    @Override
-    public void run() {
         System.out.println("Client: " + clientName);
 
         try {
-            cGUI.appendOutputClientText("\n" + "Apre una comunicazione socket");
+            System.out.println("Apre una comunicazione socket");
             Socket s = new Socket("localhost", PORT_NUMBER);
-            // Apre i canali di comunicazione e la connessione con il  view
 
-            // Server BufferedReader
+            // Crea i canali di comunicazione con il Server
             BufferedReader sbr = new BufferedReader(new InputStreamReader(s.getInputStream()));
-
-            // Server PrintStream
             PrintStream sps = new PrintStream(s.getOutputStream(), true);
 
             // Console BufferedReader
@@ -42,66 +42,48 @@ public final class Client implements Runnable {
             // Console PrintStream
             PrintStream cps = new PrintStream(System.out, true);
 
-
-
-            loop: while (true) {
-                String userRequest = "";
-
-                //jframe inserimento credenziali
-                LoginRequestGUI credentialRequestGUI;
-
-                // Stampa messagio ricevuto
+            loop:
+            while (true) {
+                // Stampa il messaggio ricevuto
                 String response = new String(Base64.getDecoder().decode(sbr.readLine()));
                 if (response.contains("username:") || response.contains("password:")) {
-
-                    //inizializzazione e avvia thread finestra "richiesta credenziale
-                    credentialRequestGUI = new LoginRequestGUI(response);
-                    Thread reqGUIt = new Thread(credentialRequestGUI, "thread credential req");
-                    reqGUIt.start();
-                    cGUI.appendOutputClientText("\n" + "in attesa della credenziale"); //imposta titolo
-                    while (reqGUIt.isAlive()) {
-
-                        Thread.sleep(2000);
-                    }
-                    cps.print(credentialRequestGUI.getStringUserResponse());
-                    userRequest = credentialRequestGUI.getStringUserResponse();
                     cps.print(response);
-
                 } else {
-                    cGUI.appendOutputClientText("\n" + "Response:\n" + response);
-                    cGUI.appendOutputClientText("\n" + "command (help): ");
-                    userRequest = cbr.readLine();
+                    cps.println("Response:\n" + response);
+                    cps.print("command (help): ");
                 }
 
+                // Lettura del messaggio ricevuto dalla console
+                String request = cbr.readLine();
 
-                // Send messaggio letto dal console a view
-                userRequest = Base64.getEncoder().encodeToString(userRequest.getBytes());
-                sps.println(userRequest);
+                // Manda il messaggio letto dalla console al Client
+                request = Base64.getEncoder().encodeToString(request.getBytes());
+                sps.println(request);
 
-                if (userRequest.trim().equals("quit")) {
+                if (request.trim().equals("quit")) {
                     break loop;
                 }
             }
 
-            // Chiude i canali di comunicazione e la connessione con il view
+            // Disalloca le risorse impiegate: chiude i canali di comunicazione e la connessione con il Server
             cbr.close();
             sps.close();
             sbr.close();
             s.close();
 
         } catch (Exception e) {
-            try {
-                cGUI.appendOutputClientText("\n" + e.getMessage());
-            } catch (InterruptedException interruptedException) {
-                interruptedException.printStackTrace();
-            }
+            System.out.println(e.getMessage());
         }
     }
 
-    public void runThreadClient () throws InterruptedException {
-        cGUI.appendOutputClientText("\n" + "Client start");
-        Runnable c = this;
-        Thread t = new Thread(c); // Create task (Application)
-        t.start();
+    /**
+     * Istanzia un oggetto di <code>Client</code> che si collegherà al <code>Server</code>.
+     * @param args xxx
+     */
+
+    public static void main(final String[] args) {
+        System.out.println("Client start");
+        Client c = new Client("client1");
+        System.out.println("Client end");
     }
 }
