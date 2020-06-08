@@ -28,7 +28,7 @@ public final class Player {
         return nItemUse;
     }
 
-    public static void setNItemUse(int nItemUse1) {
+    public static void setNItemUse(final int nItemUse1) {
         nItemUse = nItemUse1;
     }
 }

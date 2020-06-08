@@ -50,11 +50,9 @@ public final class Action {
             Player.addItemInventory(selI);
             loader.getPlotRooms().get(roomId).removeItemRoom(selI);
             return  true;
-        }
-        else if (tk.length == 1 && loader.getPlotRooms().get(roomId).getItemsList().size() != 1) {
+        } else if (tk.length == 1 && loader.getPlotRooms().get(roomId).getItemsList().size() != 1) {
             return false;
-        }
-        else {
+        } else {
             for (Item item : loader.getPlotRooms().get(roomId).getItemsList()) {
                 if (item.getItemName().equals(tk[1])) {
                     Player.addItemInventory(item);
@@ -74,11 +72,9 @@ public final class Action {
             Player.removeItemInventory(selI);
             loader.getPlotRooms().get(roomId).addItemRoom(selI);
             return  true;
-        }
-        else if (tk.length == 1 && Player.getItemsList().size() != 1) {
+        } else if (tk.length == 1 && Player.getItemsList().size() != 1) {
             return false;
-        }
-        else {
+        } else {
             for (Item item : Player.getItemsList()) {
                 if (item.getItemName().equals(tk[1])) {
                     item.setUse(false);
@@ -99,11 +95,9 @@ public final class Action {
             }
             Player.getItemsList().get(0).setUse(true);
             return true;
-        }
-        else if (tk.length == 1 && Player.getItemsList().size() != 1) {
+        } else if (tk.length == 1 && Player.getItemsList().size() != 1) {
             return false;
-        }
-        else {
+        } else {
             for (Item item : Player.getItemsList()) {
                 if (item.getItemName().equals(tk[1])) {
                     if (!item.getUse()) {
@@ -142,12 +136,10 @@ public final class Action {
                 out += "Come pensavi di sconfiggere il " + enemy.getItemName()
                         + " senza l'uso di un' arma";
             }
-        }
-        else if (enemy != null && weapon == null) {
+        } else if (enemy != null && weapon == null) {
             out += "Come pensavi di sconfiggere il " + enemy.getItemName()
                     + " senza l'uso di un' arma";
-        }
-        else {
+        } else {
             out += "Non cè nessuno da combattere qui!";
         }
         return out;

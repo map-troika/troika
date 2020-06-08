@@ -194,7 +194,7 @@ class Game implements Runnable {
                             if (cp.length == 1) {
                                 response = "Hai lasciato l'oggetto "
                                         + gLoader.getPlotRooms().get(roomId).getItemsList()
-                                        .get(gLoader.getPlotRooms().get(roomId).getItemsList().size() -1).getItemName();
+                                        .get(gLoader.getPlotRooms().get(roomId).getItemsList().size() - 1).getItemName();
                             } else {
                                 response = "Hai lasciato l'oggetto " + cp[1];
                             }

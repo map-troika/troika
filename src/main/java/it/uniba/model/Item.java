@@ -14,7 +14,8 @@ public class Item {
      * @param itemName nome oggetto
      * @param itemPattern pattern oggetto
      */
-    public Item(String itemName, String itemPattern, String itemDescription, boolean enemy, boolean weapon) {
+    public Item(final String itemName, final String itemPattern,
+                final String itemDescription, final boolean enemy, final boolean weapon) {
         this.name = itemName;
         this.pattern = itemPattern;
         this.description = itemDescription;
@@ -28,7 +29,7 @@ public class Item {
      *
      * @return name
      */
-    public String getItemName () {
+    public String getItemName() {
 
         return name;
     }
@@ -38,7 +39,7 @@ public class Item {
      *
      * @return pattern
      */
-    public String getItemPattern () {
+    public String getItemPattern() {
 
         return pattern;
     }
@@ -47,7 +48,7 @@ public class Item {
         return  description;
     }
 
-    public void setUse(boolean useOn) {
+    public void setUse(final boolean useOn) {
         this.use = useOn;
     }
 

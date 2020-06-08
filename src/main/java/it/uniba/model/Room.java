@@ -21,9 +21,9 @@ public class Room {
      * @param roomDescription descrizione stanza
      */
     public Room(
-            int roomId,
-            String roomTitle,
-            String roomDescription
+            final int roomId,
+            final String roomTitle,
+            final String roomDescription
     ) {
 
 
@@ -41,7 +41,7 @@ public class Room {
      *
      * @param exitsRooms Map
      */
-    public void setExitRoom (HashMap<String, Integer> exitsRooms) {
+    public void setExitRoom(final HashMap<String, Integer> exitsRooms) {
         this.exits = exitsRooms;
     }
 
@@ -51,7 +51,7 @@ public class Room {
      *
      * @return Map exits
      */
-    public HashMap<String, Integer> getExitRoom () {
+    public HashMap<String, Integer> getExitRoom() {
         return this.exits;
     }
 
@@ -62,11 +62,10 @@ public class Room {
      * @param cmd input
      * @return id stanza di destinazione
      */
-    public Integer getExitRoom (String cmd) {
+    public Integer getExitRoom(final String cmd) {
         if (this.exits.containsKey(cmd)) {
             return this.exits.get(cmd);
-        }
-        else {
+        } else {
             return null;
         }
     }
@@ -77,7 +76,7 @@ public class Room {
      *
      * @param item oggetto da aggiungere
      */
-    public void addItemRoom (Item item) {
+    public void addItemRoom(final Item item) {
         this.items.add(item);
     }
 
@@ -87,7 +86,7 @@ public class Room {
      *
      * @param item oggetto da rimuovere
      */
-    public void removeItemRoom (Item item) {
+    public void removeItemRoom(final Item item) {
         this.items.remove(item);
     }
 
@@ -97,7 +96,7 @@ public class Room {
      *
      * @return lista oggetti
      */
-    public ArrayList<Item> getItemsList () {
+    public ArrayList<Item> getItemsList() {
         return this.items;
     }
 
@@ -107,7 +106,7 @@ public class Room {
      *
      * @return map uscite
      */
-    public HashMap<String, Integer> getExits () {
+    public HashMap<String, Integer> getExits() {
         return this.exits;
     }
 
@@ -116,7 +115,7 @@ public class Room {
      *
      * @return descrizione
      */
-    public String getDescription () {
+    public String getDescription() {
         return description;
     }
 
