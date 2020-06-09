@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LoginRequestGUI implements Runnable {
-    private boolean isdatiInseriti = false;
+    private boolean isdataConfirmed = false;
 
     private JPanel mainPanel;
     private JTextField textFieldCredenziale;
@@ -26,7 +26,7 @@ public class LoginRequestGUI implements Runnable {
                 stringUserResponse = textFieldCredenziale.getText(); //set variabile credenziale inserita
 
                 //dati inseriti il thread può terminare
-                isdatiInseriti = true;
+                isdataConfirmed = true;
 
                 //distruggi finestra
                 frame.setVisible(false);
@@ -58,7 +58,7 @@ public class LoginRequestGUI implements Runnable {
 
     @Override
     public void run() {
-        while (!isdatiInseriti) {
+        while (!isdataConfirmed) {
             try {
                 Thread.sleep(1000);
                 System.out.println("Inserimento dati login");
