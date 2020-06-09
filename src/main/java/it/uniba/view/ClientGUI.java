@@ -17,21 +17,36 @@ public class ClientGUI {
     private JButton endSessionButton;
     private JScrollPane scrollBar;
     private JTextPane formattedOutputClient;
-    private JButton button1;
-    private JButton button2;
-    private JButton button3;
-    private JButton button4;
+    private JButton buttonUp;
+    private JButton buttonDown;
+    private JButton buttonLeft;
+    private JButton buttonRight;
     private JTextArea textInputArea;
     private JButton inviaComandoButton;
+
+    private ClientGUIVersion client; //classe operazioni Client
 
     HTMLDocument document; //documento componente text
 
     public ClientGUI() {
         this.startGUI();
+
+        //inizializza documento rendering di stampa
+        document = (HTMLDocument) formattedOutputClient.getStyledDocument();
+        try {
+            //inizializza tags html
+            document.insertAfterEnd(document.getCharacterElement(document.getLength()), "<html><body>");
+        } catch (BadLocationException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //creazione listner (events)
         startClientButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ClientGUIVersion client = new ClientGUIVersion();
+                client = new ClientGUIVersion();
                 try {
                     client.runThreadClient();
                 } catch (InterruptedException interruptedException) {
@@ -47,17 +62,30 @@ public class ClientGUI {
 
             }
         });
-
-        //inizializza documento rendering di stampa
-        document = (HTMLDocument) formattedOutputClient.getStyledDocument();
-        try {
-            //inizializza tags html
-            document.insertAfterEnd(document.getCharacterElement(document.getLength()), "<html><body>");
-        } catch (BadLocationException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        buttonUp.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                client.sendRequestToServer("nord");
+            }
+        });
+        buttonDown.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                client.sendRequestToServer("sud");
+            }
+        });
+        buttonLeft.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                client.sendRequestToServer("ovest");
+            }
+        });
+        buttonRight.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                client.sendRequestToServer("est");
+            }
+        });
     }
 
     public void startGUI() {

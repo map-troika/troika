@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="it.uniba.view.ClientGUI">
   <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="8" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-    <margin top="0" left="0" bottom="0" right="0"/>
+    <margin top="11" left="11" bottom="11" right="11"/>
     <constraints>
-      <xy x="20" y="20" width="700" height="719"/>
+      <xy x="20" y="20" width="800" height="719"/>
     </constraints>
     <properties>
       <autoscrolls value="true"/>
-      <minimumSize width="700" height="400"/>
+      <minimumSize width="800" height="400"/>
     </properties>
     <border type="none"/>
     <children>
@@ -67,7 +67,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="552a9" class="javax.swing.JButton" binding="button1" default-binding="true">
+          <component id="552a9" class="javax.swing.JButton" binding="buttonUp">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -76,7 +76,7 @@
               <text value="🡹"/>
             </properties>
           </component>
-          <component id="c094c" class="javax.swing.JButton" binding="button2" default-binding="true">
+          <component id="c094c" class="javax.swing.JButton" binding="buttonDown">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -85,7 +85,7 @@
               <text value="🡻"/>
             </properties>
           </component>
-          <component id="4bd1d" class="javax.swing.JButton" binding="button3" default-binding="true">
+          <component id="4bd1d" class="javax.swing.JButton" binding="buttonLeft">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -94,7 +94,7 @@
               <text value="🡸"/>
             </properties>
           </component>
-          <component id="90178" class="javax.swing.JButton" binding="button4" default-binding="true">
+          <component id="90178" class="javax.swing.JButton" binding="buttonRight">
             <constraints>
               <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -148,6 +148,20 @@
           <text value="Invia comando"/>
         </properties>
       </component>
+      <vspacer id="33285">
+        <constraints>
+          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="20"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <vspacer id="7d236">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="20"/>
+          </grid>
+        </constraints>
+      </vspacer>
     </children>
   </grid>
 </form>

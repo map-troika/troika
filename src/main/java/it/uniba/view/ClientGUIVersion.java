@@ -2,6 +2,7 @@ package it.uniba.view;
 
 import javax.swing.text.BadLocationException;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
@@ -20,6 +21,20 @@ public final class ClientGUIVersion implements Runnable {
 
     private static ClientGUI cGUI;
 
+    //stream comunicazione server
+    private PrintStream sps;
+
+    private Socket s;
+
+    // Server BufferedReader
+    private BufferedReader sbr;
+
+    // Console BufferedReader
+    private BufferedReader cbr;
+
+    // Console PrintStream
+    private PrintStream cps;
+
     public static void main(final String[] argv) {
         cGUI = new ClientGUI();
 
@@ -32,28 +47,25 @@ public final class ClientGUIVersion implements Runnable {
     public void run() {
         System.out.println("Client: " + clientName);
 
+
         try {
             cGUI.appendText("\n" + "<br>" + "Apre una comunicazione socket");
             Socket s = new Socket("localhost", PORT_NUMBER);
+
             // Apre i canali di comunicazione e la connessione con il  view
 
-            // Server BufferedReader
-            BufferedReader sbr = new BufferedReader(new InputStreamReader(s.getInputStream()));
+            sbr = new BufferedReader(new InputStreamReader(s.getInputStream()));
 
             // Server PrintStream
-            PrintStream sps = new PrintStream(s.getOutputStream(), true);
+            sps = new PrintStream(s.getOutputStream(), true);
 
             // Console BufferedReader
-            BufferedReader cbr = new BufferedReader(new InputStreamReader(System.in));
+            cbr = new BufferedReader(new InputStreamReader(System.in));
 
-            // Console PrintStream
-            PrintStream cps = new PrintStream(System.out, true);
-
+            cps = new PrintStream(System.out, true);
 
 
             loop: while (true) {
-                String userRequest = "";
-
                 //jframe inserimento credenziali
                 LoginRequestGUI credentialRequestGUI;
 
@@ -71,41 +83,41 @@ public final class ClientGUIVersion implements Runnable {
                         Thread.sleep(2000);
                     }
                     cps.print(credentialRequestGUI.getStringUserResponse());
-                    userRequest = credentialRequestGUI.getStringUserResponse();
+
+                    String userCredential = ""; //credenziale inserita dall'utente
+                    userCredential = credentialRequestGUI.getStringUserResponse();
+                    sendRequestToServer(userCredential);
                     cps.print(response);
 
                 } else {
                     cGUI.appendText("\n" + "<br>" + "Response:\n" + response + "<br>");
                     cGUI.appendText("\n" + "<br>" + "command (help): ");
-
-                    userRequest = cbr.readLine();
                 }
 
 
-                // Send messaggio letto dal console a view
-                userRequest = Base64.getEncoder().encodeToString(userRequest.getBytes());
-                sps.println(userRequest);
-
-                if (userRequest.trim().equals("quit")) {
-                    break loop;
-                }
+                Thread.sleep(100);
             }
 
-            // Chiude i canali di comunicazione e la connessione con il view
-            cbr.close();
-            sps.close();
-            sbr.close();
-            s.close();
+
 
         } catch (Exception e) {
-            try {
-                cGUI.appendText("\n" + "<br>" + e.getMessage());
-            } catch (InterruptedException interruptedException) {
-                interruptedException.printStackTrace();
-            }
+            cGUI.appendText("\n" + "<br>" + e.getMessage());
         }
     }
 
+    public void sendRequestToServer (String userRequest) {
+        // Send messaggio letto dal console a view
+        userRequest = Base64.getEncoder().encodeToString(userRequest.getBytes());
+        sps.println(userRequest);
+    }
+
+    public void closeServerComunications () throws IOException {
+        // Chiude i canali di comunicazione e la connessione con il view
+        cbr.close();
+        sps.close();
+        sbr.close();
+        s.close();
+    }
     /**
      * Il metodo <code>runThreadClient</code> permette di avviare un flusso che gestisce le operazioni
      * del Client
