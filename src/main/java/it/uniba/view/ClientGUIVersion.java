@@ -1,5 +1,6 @@
 package it.uniba.view;
 
+import javax.swing.text.BadLocationException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
@@ -26,7 +27,7 @@ public final class ClientGUIVersion implements Runnable {
         System.out.println("Client: " + clientName);
 
         try {
-            cGUI.appendOutputClientText("\n" + "Apre una comunicazione socket");
+            cGUI.appendOutputClientText("\n" + "<br>" + "Apre una comunicazione socket");
             Socket s = new Socket("localhost", PORT_NUMBER);
             // Apre i canali di comunicazione e la connessione con il  view
 
@@ -58,7 +59,7 @@ public final class ClientGUIVersion implements Runnable {
                     credentialRequestGUI = new LoginRequestGUI(response);
                     Thread reqGUIt = new Thread(credentialRequestGUI, "thread credential req");
                     reqGUIt.start();
-                    cGUI.appendOutputClientText("\n" + "in attesa della credenziale"); //imposta titolo
+                    cGUI.appendOutputClientText("\n" + "<br>" + "in attesa della credenziale"); //imposta titolo
                     while (reqGUIt.isAlive()) {
 
                         Thread.sleep(2000);
@@ -68,8 +69,9 @@ public final class ClientGUIVersion implements Runnable {
                     cps.print(response);
 
                 } else {
-                    cGUI.appendOutputClientText("\n" + "Response:\n" + response);
-                    cGUI.appendOutputClientText("\n" + "command (help): ");
+                    cGUI.appendOutputClientText("\n" + "<br>" + "Response:\n" + response);
+                    cGUI.appendOutputClientText("\n" + "<br>" + "command (help): ");
+
                     userRequest = cbr.readLine();
                 }
 
@@ -91,7 +93,7 @@ public final class ClientGUIVersion implements Runnable {
 
         } catch (Exception e) {
             try {
-                cGUI.appendOutputClientText("\n" + e.getMessage());
+                cGUI.appendOutputClientText("\n" + "<br>" + e.getMessage());
             } catch (InterruptedException interruptedException) {
                 interruptedException.printStackTrace();
             }
@@ -99,7 +101,7 @@ public final class ClientGUIVersion implements Runnable {
     }
 
     public void runThreadClient () throws InterruptedException {
-        cGUI.appendOutputClientText("\n" + "Client start");
+        cGUI.appendOutputClientText("\n" + "<br>" + "Client start");
         Runnable c = this;
         Thread t = new Thread(c); // Create task (Application)
         t.start();
