@@ -125,10 +125,14 @@ public final class Action {
             } else {
                 out += "Come pensavi di sconfiggere il " + enemy.getItemName()
                         + " senza l'uso di un' arma";
+                Game.setEnd(true);
+                Player.setIsAlive(false);
             }
         } else if (enemy != null && weapon == null) {
             out += "Come pensavi di sconfiggere il " + enemy.getItemName()
                     + " senza l'uso di un' arma";
+            Game.setEnd(true);
+            Player.setIsAlive(false);
         } else {
             out += "Non cè nessuno da combattere qui!";
         }

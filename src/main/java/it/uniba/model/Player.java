@@ -9,6 +9,7 @@ public final class Player {
     }
 
     private static int nItemUse = 0;
+    private static boolean isAlive = true;
 
     private static ArrayList<Item> inventory = new ArrayList<Item>();
 
@@ -30,5 +31,13 @@ public final class Player {
 
     public static void setNItemUse(final int nItemUse1) {
         nItemUse = nItemUse1;
+    }
+
+    public static void setIsAlive(final boolean alive) {
+        isAlive = alive;
+    }
+
+    public static boolean getIsAlive() {
+        return isAlive;
     }
 }

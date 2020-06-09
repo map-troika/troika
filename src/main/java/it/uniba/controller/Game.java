@@ -29,6 +29,8 @@ class Game implements Runnable {
     private static int roomId;
     private GameLoader gLoader;
     private boolean authUser = false;
+    private static boolean end = false;
+    private boolean isQuit = false;
 
     Game(final Socket s1) {
         this.s = s1;
@@ -50,6 +52,9 @@ class Game implements Runnable {
         return name;
     }
 
+    public static void setEnd(final boolean isEnd) {
+        end = isEnd;
+    }
     /**
       *  Insert the {@inheritDoc} inline tag in a method main description
       */
@@ -88,7 +93,7 @@ class Game implements Runnable {
             //response = gLoader.getPlotRooms().get(roomId).getDescription();
             response = printRoom(roomId);
             loop:
-            while (true) {
+            while (!end) {
                 // Manda un messaggio al Client
                 response = Base64.getEncoder().encodeToString(response.getBytes());
                 pw.println(response);
@@ -219,13 +224,31 @@ class Game implements Runnable {
                         response = Action.observeRoom(gLoader, roomId);
                         break;
                     case "quit":
-                        response = "quit";
-                        response = Base64.getEncoder().encodeToString(response.getBytes());
-                        pw.println(response);
-                        break loop;
+                        //response = "quit";
+                        //response = Base64.getEncoder().encodeToString(response.getBytes());
+                        //pw.println(response);
+                        // break loop;
+                        end = true;
+                        isQuit = true;
                     default:
                         System.out.println("*** Invalid command: " + cmd);
                         response = "me, non so che cz vuoi (" + request + ").  Riprova!";
+                }
+            }
+            String exitMessage;
+            if(isQuit) {
+                exitMessage = "Uscita in corso...";
+                exitMessage = Base64.getEncoder().encodeToString(exitMessage.getBytes());
+                pw.println(exitMessage);
+            } else {
+                if (Player.getIsAlive()) {
+                    exitMessage = "Hai vinto!";
+                    exitMessage = Base64.getEncoder().encodeToString(exitMessage.getBytes());
+                    pw.println(exitMessage);
+                } else {
+                    exitMessage = "Sei stato ucciso, hai perso!";
+                    exitMessage = Base64.getEncoder().encodeToString(exitMessage.getBytes());
+                    pw.println(exitMessage);
                 }
             }
         } finally {
