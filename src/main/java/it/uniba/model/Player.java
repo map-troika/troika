@@ -9,7 +9,7 @@ public final class Player {
     }
 
     private static int nItemUse = 0;
-    private static boolean isAlive = true;
+    private static boolean isWinner = false;
 
     private static ArrayList<Item> inventory = new ArrayList<Item>();
 
@@ -33,11 +33,11 @@ public final class Player {
         nItemUse = nItemUse1;
     }
 
-    public static void setIsAlive(final boolean alive) {
-        isAlive = alive;
+    public static void setIsWinner(final boolean winner) {
+        isWinner = winner;
     }
 
-    public static boolean getIsAlive() {
-        return isAlive;
+    public static boolean getIsWinner() {
+        return isWinner;
     }
 }

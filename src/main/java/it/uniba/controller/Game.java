@@ -241,7 +241,7 @@ class Game implements Runnable {
                 exitMessage = Base64.getEncoder().encodeToString(exitMessage.getBytes());
                 pw.println(exitMessage);
             } else {
-                if (Player.getIsAlive()) {
+                if (Player.getIsWinner()) {
                     exitMessage = "Hai vinto!";
                     exitMessage = Base64.getEncoder().encodeToString(exitMessage.getBytes());
                     pw.println(exitMessage);

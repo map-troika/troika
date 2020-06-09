@@ -27,6 +27,9 @@ public final class Action {
             if (item.getItemName().equals("gomitolo")) {
                 if (item.getUse()) {
                         Game.setRoomId(0);
+                        if(Player.getIsWinner()) {
+                            Game.setEnd(true);
+                        }
                         return true;
                     }
                 }
@@ -122,17 +125,16 @@ public final class Action {
                 loader.getPlotRooms().get(roomId)
                         .removeItemRoom(enemy);
                 out += "Armato di " + weapon.getItemName() + " hai sconfitto il " + enemy.getItemName();
+                Player.setIsWinner(true);
             } else {
                 out += "Come pensavi di sconfiggere il " + enemy.getItemName()
                         + " senza l'uso di un' arma";
                 Game.setEnd(true);
-                Player.setIsAlive(false);
             }
         } else if (enemy != null && weapon == null) {
             out += "Come pensavi di sconfiggere il " + enemy.getItemName()
                     + " senza l'uso di un' arma";
             Game.setEnd(true);
-            Player.setIsAlive(false);
         } else {
             out += "Non cè nessuno da combattere qui!";
         }
@@ -240,6 +242,9 @@ public final class Action {
         if (loader.getPlotRooms().get(roomId).getExits().containsKey("nord")) {
             int destId = loader.getPlotRooms().get(roomId).getExits().get("nord");
             Game.setRoomId(destId);
+            if(destId == 0 && Player.getIsWinner()) {
+                Game.setEnd(true);
+            }
             return true;
         } else {
             return false;
@@ -259,6 +264,9 @@ public final class Action {
         if (loader.getPlotRooms().get(roomId).getExits().containsKey("sud")) {
             int destId = loader.getPlotRooms().get(roomId).getExits().get("sud");
             Game.setRoomId(destId);
+            if(destId == 0 && Player.getIsWinner()) {
+                Game.setEnd(true);
+            }
             return true;
         } else {
             return false;
@@ -278,6 +286,9 @@ public final class Action {
         if (loader.getPlotRooms().get(roomId).getExits().containsKey("est")) {
             int destId = loader.getPlotRooms().get(roomId).getExits().get("est");
             Game.setRoomId(destId);
+            if(destId == 0 && Player.getIsWinner()) {
+                Game.setEnd(true);
+            }
             return true;
         } else {
             return false;
@@ -297,6 +308,9 @@ public final class Action {
         if (loader.getPlotRooms().get(roomId).getExits().containsKey("ovest")) {
             int destId = loader.getPlotRooms().get(roomId).getExits().get("ovest");
             Game.setRoomId(destId);
+            if(destId == 0 && Player.getIsWinner()) {
+                Game.setEnd(true);
+            }
             return true;
         } else {
             return false;
