@@ -2,7 +2,6 @@ package it.uniba.view;
 
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
-import javax.swing.text.StyledDocument;
 import javax.swing.text.html.HTMLDocument;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -21,7 +20,7 @@ public class ClientGUI {
     private JButton buttonDown;
     private JButton buttonLeft;
     private JButton buttonRight;
-    private JTextArea textInputArea;
+    private JTextArea textUserInputArea;
     private JButton inviaComandoButton;
 
     private ClientGUIVersion client; //classe operazioni Client
@@ -114,6 +113,20 @@ public class ClientGUI {
                 }
             }
         });
+        inviaComandoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (client != null) {
+                    client.sendRequestToServer(textUserInputArea.getText());
+                    textUserInputArea.setText("");
+                } else {
+                    appendText("<br><font color='orange' face=\"Agency FB\"><b>" +
+                            "Attenzione:" +
+                            "</b></font> " +
+                            "comando non disponbile, avvia una partita");
+                }
+            }
+        });
     }
 
     public void startGUI() {
@@ -125,7 +138,7 @@ public class ClientGUI {
         formattedOutputClient.setContentType("text/html");
 
         //setta colore text input area
-        textInputArea.setBackground(new Color(219, 241, 255));
+        textUserInputArea.setBackground(new Color(219, 241, 255));
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();

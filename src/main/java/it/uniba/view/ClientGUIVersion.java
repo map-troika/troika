@@ -90,7 +90,7 @@ public final class ClientGUIVersion implements Runnable {
                     cps.print(response);
 
                 } else {
-                    cps.println(response);
+                    cGUI.clearOutputText();
                     cGUI.appendText("<br>" + "<br>" + "Response:" + "<br>" + response + "<br>");
                     cGUI.appendText("<br>" + "command (help): ");
                 }
@@ -109,6 +109,7 @@ public final class ClientGUIVersion implements Runnable {
     public void sendRequestToServer (String userRequest) {
         // Send messaggio letto dal console a view
         userRequest = Base64.getEncoder().encodeToString(userRequest.getBytes());
+        sps.println(userRequest);
     }
 
     public void closeServerComunications () throws IOException {
