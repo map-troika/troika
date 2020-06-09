@@ -125,28 +125,28 @@ class Game implements Runnable {
                         }
                         break;
                     case "sud":
-                        if (Action.moveSouth(roomId)) {
+                        if (Action.goTo(roomId, cp[0])) {
                             response = printRoom(roomId);
                         } else {
                             response = "C'è un muro da questa parte!";
                         }
                         break;
                     case "nord":
-                        if (Action.moveNorth(roomId)) {
+                        if (Action.goTo(roomId, cp[0])) {
                             response = printRoom(roomId);
                         } else {
                             response = "C'è un muro da questa parte!";
                         }
                         break;
                     case "est":
-                        if (Action.moveEast(roomId)) {
+                        if (Action.goTo(roomId, cp[0])) {
                             response = printRoom(roomId);
                         } else {
                             response = "C'è un muro da questa parte!";
                         }
                         break;
                     case "ovest":
-                        if (Action.moveWest(roomId)) {
+                        if (Action.goTo(roomId, cp[0])) {
                             response = printRoom(roomId);
                         } else {
                             response = "C'è un muro da questa parte!";

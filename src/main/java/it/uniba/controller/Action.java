@@ -140,36 +140,6 @@ public final class Action {
         }
         return out;
     }
-    /*
-    public static String oldFight(final GameLoader loader, final int roomId) {
-        String out = "\033[2J\033[H";
-        out += "In questa stanza non è presente il minotauro";
-        if (roomId == ID5) {
-            out = "\033[2J\033[H";
-            out += "Non possedendo una spada, il minotauro non ti ha lasciato scampo!";
-            for (Item item : Player.getItemsList()) {
-                if (item.getItemName().equals("spada")) {
-                    if (item.getUse()) {
-                        out = "\033[2J\033[H";
-                        out += "Armato di spada hai sconfitto il minotauro";
-                        for (int i = 0; i < loader.getPlotRooms().get(roomId).getItemsList().size(); i++) {
-
-                            if (loader.getPlotRooms().get(roomId).getItemsList().get(i)
-                                    .getItemName().equals("minotauro")) {
-                                loader.getPlotRooms().get(roomId)
-                                        .removeItemRoom(loader.getPlotRooms().get(roomId).getItemsList().get(i));
-                            }
-                        }
-                    } else {
-                        out = "\033[2J\033[H";
-                        out += "Non usando la spada sei stato sconfitto";
-                    }
-                }
-            }
-        }
-        return out;
-    }
-    */
 
     /**
      * Restituisce una stringa contenente il nome della stanza corrente
@@ -229,84 +199,10 @@ public final class Action {
         return out;
     }
 
-    /**
-     * Controlla che la stanza corrente abbia una exit a nord
-     * e nel caso sia presente compie lo spostamento nella
-     * stanza di destinazione, altrimenti restituisce false
-     *
-     * @param roomId stanza corrente
-     * @return true/false
-     */
-    public static boolean moveNorth(final int roomId) {
-        GameLoader loader = new GameLoader();
-        if (loader.getPlotRooms().get(roomId).getExits().containsKey("nord")) {
-            int destId = loader.getPlotRooms().get(roomId).getExits().get("nord");
-            Game.setRoomId(destId);
-            if(destId == 0 && Player.getIsWinner()) {
-                Game.setEnd(true);
-            }
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Controlla che la stanza corrente abbia una exit a sud
-     * e nel caso sia presente compie lo spostamento nella
-     * stanza di destinazione, altrimenti restituisce false
-     *
-     * @param roomId stanza corrente
-     * @return true/false
-     */
-    public static boolean moveSouth(final int roomId) {
-        GameLoader loader = new GameLoader();
-        if (loader.getPlotRooms().get(roomId).getExits().containsKey("sud")) {
-            int destId = loader.getPlotRooms().get(roomId).getExits().get("sud");
-            Game.setRoomId(destId);
-            if(destId == 0 && Player.getIsWinner()) {
-                Game.setEnd(true);
-            }
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Controlla che la stanza corrente abbia una exit a est
-     * e nel caso sia presente compie lo spostamento nella
-     * stanza di destinazione, altrimenti restituisce false
-     *
-     * @param roomId stanza corrente
-     * @return true/false
-     */
-    public static boolean moveEast(final int roomId) {
-        GameLoader loader = new GameLoader();
-        if (loader.getPlotRooms().get(roomId).getExits().containsKey("est")) {
-            int destId = loader.getPlotRooms().get(roomId).getExits().get("est");
-            Game.setRoomId(destId);
-            if(destId == 0 && Player.getIsWinner()) {
-                Game.setEnd(true);
-            }
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Controlla che la stanza corrente abbia una exit a ovest
-     * e nel caso sia presente compie lo spostamento nella
-     * stanza di destinazione, altrimenti restituisce false
-     *
-     * @param roomId stanza corrente
-     * @return true/false
-     */
-    public static boolean moveWest(final int roomId) {
-        GameLoader loader = new GameLoader();
-        if (loader.getPlotRooms().get(roomId).getExits().containsKey("ovest")) {
-            int destId = loader.getPlotRooms().get(roomId).getExits().get("ovest");
+    public static boolean goTo(final int roomId, String cmd) {
+        GameLoader gLoader = new GameLoader();
+        if (gLoader.getPlotRooms().get(roomId).getExitRoom(cmd) != null) {
+            int destId = gLoader.getPlotRooms().get(roomId).getExitRoom(cmd);
             Game.setRoomId(destId);
             if(destId == 0 && Player.getIsWinner()) {
                 Game.setEnd(true);
