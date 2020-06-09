@@ -59,7 +59,7 @@ public class ClientGUI {
         JFrame frame = new JFrame("Client");
         frame.setContentPane(this.mainPanel);
 
-        //setta JtextPane per  html
+        //setta JtextPane per formato html
         formattedOutputClient.setContentType("text/html");
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

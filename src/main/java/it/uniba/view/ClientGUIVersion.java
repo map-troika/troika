@@ -7,6 +7,12 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Base64;
 
+/**
+ * La classe <code>ClientGUIVersion</code> è la versione dell'applicativo <code>Client</code> con
+ * interfaccia Swing
+ *
+ * @author Stefano Romanelli
+ */
 public final class ClientGUIVersion implements Runnable {
 
     private String clientName = "nuovoClient";
@@ -19,9 +25,9 @@ public final class ClientGUIVersion implements Runnable {
 
     }
 
-    public ClientGUIVersion() {
-    }
-
+    /**
+     * reimplementazione di run dell'interfacca Runnable per avviare il client come thread
+     */
     @Override
     public void run() {
         System.out.println("Client: " + clientName);
@@ -100,10 +106,16 @@ public final class ClientGUIVersion implements Runnable {
         }
     }
 
-    public void runThreadClient () throws InterruptedException {
+    /**
+     * Il metodo <code>runThreadClient</code> permette di avviare un flusso che gestisce le operazioni
+     * del Client
+     * @throws InterruptedException
+     */
+    public Thread runThreadClient () throws InterruptedException {
         cGUI.appendText("\n" + "<br>" + "Client start");
         Runnable c = this;
         Thread t = new Thread(c); // Create task (Application)
         t.start();
+        return t;
     }
 }
