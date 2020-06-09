@@ -125,26 +125,8 @@ class Game implements Runnable {
                         }
                         break;
                     case "sud":
-                        if (Action.goTo(roomId, cp[0])) {
-                            response = printRoom(roomId);
-                        } else {
-                            response = "C'è un muro da questa parte!";
-                        }
-                        break;
                     case "nord":
-                        if (Action.goTo(roomId, cp[0])) {
-                            response = printRoom(roomId);
-                        } else {
-                            response = "C'è un muro da questa parte!";
-                        }
-                        break;
                     case "est":
-                        if (Action.goTo(roomId, cp[0])) {
-                            response = printRoom(roomId);
-                        } else {
-                            response = "C'è un muro da questa parte!";
-                        }
-                        break;
                     case "ovest":
                         if (Action.goTo(roomId, cp[0])) {
                             response = printRoom(roomId);
@@ -236,7 +218,7 @@ class Game implements Runnable {
                 }
             }
             String exitMessage;
-            if(isQuit) {
+            if (isQuit) {
                 exitMessage = "Uscita in corso...";
                 exitMessage = Base64.getEncoder().encodeToString(exitMessage.getBytes());
                 pw.println(exitMessage);

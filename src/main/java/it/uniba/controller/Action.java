@@ -27,7 +27,7 @@ public final class Action {
             if (item.getItemName().equals("gomitolo")) {
                 if (item.getUse()) {
                         Game.setRoomId(0);
-                        if(Player.getIsWinner()) {
+                        if (Player.getIsWinner()) {
                             Game.setEnd(true);
                         }
                         return true;
@@ -199,12 +199,12 @@ public final class Action {
         return out;
     }
 
-    public static boolean goTo(final int roomId, String cmd) {
+    public static boolean goTo(final int roomId, final String cmd) {
         GameLoader gLoader = new GameLoader();
         if (gLoader.getPlotRooms().get(roomId).getExitRoom(cmd) != null) {
             int destId = gLoader.getPlotRooms().get(roomId).getExitRoom(cmd);
             Game.setRoomId(destId);
-            if(destId == 0 && Player.getIsWinner()) {
+            if (destId == 0 && Player.getIsWinner()) {
                 Game.setEnd(true);
             }
             return true;
