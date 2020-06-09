@@ -65,25 +65,53 @@ public class ClientGUI {
         buttonUp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                client.sendRequestToServer("nord");
+                if(client != null) {
+                    client.sendRequestToServer("nord");
+                } else {
+                    appendText("<br><font color='orange' face=\"Agency FB\"><b>" +
+                            "Attenzione:" +
+                            "</b></font> " +
+                            "comando non disponbile, avvia una partita");
+                }
             }
         });
         buttonDown.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                client.sendRequestToServer("sud");
+                if(client != null) {
+                    client.sendRequestToServer("sud");
+                } else {
+                    appendText("<br><font color='orange' face=\"Agency FB\"><b>" +
+                            "Attenzione:" +
+                            "</b></font> " +
+                            "comando non disponbile, avvia una partita");
+                }
             }
         });
         buttonLeft.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                client.sendRequestToServer("ovest");
+                if(client != null) {
+                    client.sendRequestToServer("ovest");
+                } else {
+                    appendText("<br><font color='orange' face=\"Agency FB\"><b>" +
+                            "Attenzione:" +
+                            "</b></font> " +
+                            "comando non disponbile, avvia una partita");
+                }
             }
         });
         buttonRight.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                client.sendRequestToServer("est");
+                if (client != null) {
+                    client.sendRequestToServer("est");
+                } else {
+                    appendText("<br><font color='orange' face=\"Agency FB\"><b>" +
+                            "Attenzione:" +
+                            "</b></font> " +
+                            "comando non disponbile, avvia una partita");
+                }
             }
         });
     }
@@ -121,7 +149,10 @@ public class ClientGUI {
     public void appendText(String textToAppend) {
 
         try {
-            document.insertAfterEnd(document.getCharacterElement(document.getLength()), textToAppend);
+            document.insertAfterEnd(
+                    document.getCharacterElement(document.getLength()),
+                    textToAppend.replaceAll("-", "")
+            );
         } catch (BadLocationException e) {
             e.printStackTrace();
         } catch (IOException e) {

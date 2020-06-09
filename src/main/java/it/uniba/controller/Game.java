@@ -118,7 +118,7 @@ class Game implements Runnable {
 
                         if (gLoader.getPlotRooms().get(roomId).getExitRoom(cmd) != null) {
                             roomId = gLoader.getPlotRooms().get(roomId).getExitRoom(cmd);
-                            response = gLoader.getPlotRooms().get(roomId).getDescription();
+                            response = printRoom(roomId);
                         } else {
                             response = "me, non sai d cz andare (" + request + ").  Riprova!";
                         }
@@ -166,7 +166,6 @@ class Game implements Runnable {
         out += "\n" + gLoader.getPlotRooms().get(id1).getTitle() + "\n";
         out +=  "-".repeat(gLoader.getPlotRooms().get(id1).getTitle().length()) + "\n"; // separatori lunghezza del titolo
         out += gLoader.getPlotRooms().get(id1).getDescription() + "\n";
-
         return out;
     }
 
