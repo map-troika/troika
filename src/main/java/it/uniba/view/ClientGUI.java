@@ -17,6 +17,12 @@ public class ClientGUI {
     private JButton endSessionButton;
     private JScrollPane scrollBar;
     private JTextPane formattedOutputClient;
+    private JButton button1;
+    private JButton button2;
+    private JButton button3;
+    private JButton button4;
+    private JTextArea textInputArea;
+    private JButton inviaComandoButton;
 
     HTMLDocument document; //documento componente text
 
@@ -61,6 +67,9 @@ public class ClientGUI {
 
         //setta JtextPane per formato html
         formattedOutputClient.setContentType("text/html");
+
+        //setta colore text input area
+        textInputArea.setBackground(new Color(219, 241, 255));
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();

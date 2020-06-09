@@ -70,30 +70,29 @@ rooms:
     title: ""
     # http://patorjk.com/software/taag/#p=display&h=0&v=1&f=Calvin%20S&t=IL%20LABIRINTO%20DI%20CNOSSO%0A------------------%0A
     descr:
-      #╦╦    ╦  ╔═╗╔╗ ╦╦═╗╦╔╗╔╔╦╗╔═╗  ╔╦╗╦  ╔═╗╔╗╔╔═╗╔═╗╔═╗╔═╗<br>
-      #║║    ║  ╠═╣╠╩╗║╠╦╝║║║║ ║ ║ ║   ║║║  ║  ║║║║ ║╚═╗╚═╗║ ║<br>
-      #╩╩═╝  ╩═╝╩ ╩╚═╝╩╩╚═╩╝╚╝ ╩ ╚═╝  ═╩╝╩  ╚═╝╝╚╝╚═╝╚═╝╚═╝╚═╝<br>
-      #──────────────────────────────────────────────────────<br>
       <br>
       <br>
       <br>
       <br>
       <br>
       <br>
-      <h1>IL LABIRINTO DI CNOSSO</h1><br>
+      <font face="Agency FB" size="10"><b>IL LABIRINTO DI CNOSSO</b></font>
       <hr>
-      <br>L'impresa di Tesèo contro il Minotauro<br>
       <br>
-      <font color='red'><b>BENVENUTO!</b></font> Sull’isola di Creta, nel periodo del regno di Minosse, in seguito ad<br>
-      un’offesa fatta ad Afrodite nasce un figlio mostruoso, metà uomo e metà toro,<br>
-      il Minotauro. Minosse lo imprigiona in un labirinto e, per sfamarlo, impone<br>
-      alle città sotto la sua dominazione un tributo annuale di sette fanciulle e<br>
-      sette fanciulli. Un anno, però, tra loro viene condotto il principe di Atene,<br>
-      Tesèo, che non vuole arrendersi al tragico destino e tenterà di sconfiggere il<br>
-      letale <font color='red'><b>mostro</b></font>.<br>
       <br>
-      Sei nel giardino profumato che costeggia il labirinto, a sud si scorge un<br>
-      ingresso malridotto...<br>
+      <font color='red' face="Agency FB" size="6"><b>L'impresa di Tesèo contro il Minotauro</b></font>
+      <br>
+      <br>
+      <font color='red' face="Agency FB"><b>BENVENUTO!</b></font> Sull’isola di Creta, nel periodo del regno di Minosse, in seguito ad  <br>
+      un’offesa fatta ad Afrodite nasce un figlio mostruoso, metà uomo e metà toro,  <br>
+      il Minotauro. Minosse lo imprigiona in un labirinto e, per sfamarlo, impone  <br>
+      alle città sotto la sua dominazione un tributo annuale di sette fanciulle e  <br>
+      sette fanciulli. Un anno, però, tra loro viene condotto il principe di Atene,  <br>
+      Tesèo, che non vuole arrendersi al tragico destino e tenterà di sconfiggere il  <br>
+      letale <font color='red'><b>mostro</b></font>.  <br>
+      <br>
+      Sei nel giardino profumato che costeggia il labirinto, a sud si scorge un  <br>
+      ingresso malridotto...  <br>
     exits:
       sud: 1
 

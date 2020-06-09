@@ -75,7 +75,7 @@ public final class ClientGUIVersion implements Runnable {
                     cps.print(response);
 
                 } else {
-                    cGUI.appendText("\n" + "<br>" + "Response:\n" + response);
+                    cGUI.appendText("\n" + "<br>" + "Response:\n" + response + "<br>");
                     cGUI.appendText("\n" + "<br>" + "command (help): ");
 
                     userRequest = cbr.readLine();

@@ -49,7 +49,7 @@ public final class Client {
                 if (response.contains("username:") || response.contains("password:")) {
                     cps.print(response);
                 } else {
-                    cps.println("Response:\n" + response);
+                    cps.println("Response:\n" + response.replaceAll("\\<[^>]*>","").replaceAll(" {2}", "\n"));
                     cps.print("command (help): ");
                 }
 
