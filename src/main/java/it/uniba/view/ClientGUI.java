@@ -18,9 +18,9 @@ public class ClientGUI {
     private JScrollPane scrollBar;
     private JTextPane formattedOutputClient;
 
-    HTMLDocument doc;
+    HTMLDocument document; //documento componente text
 
-    public ClientGUI () {
+    public ClientGUI() {
         this.startGUI();
         startClientButton.addActionListener(new ActionListener() {
             @Override
@@ -43,10 +43,10 @@ public class ClientGUI {
         });
 
         //inizializza documento rendering di stampa
-        doc = (HTMLDocument) formattedOutputClient.getStyledDocument();
+        document = (HTMLDocument) formattedOutputClient.getStyledDocument();
         try {
             //inizializza tags html
-            doc.insertAfterEnd(doc.getCharacterElement(doc.getLength()), "<html><body>");
+            document.insertAfterEnd(document.getCharacterElement(document.getLength()), "<html><body>");
         } catch (BadLocationException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -54,19 +54,18 @@ public class ClientGUI {
         }
     }
 
-    public void startGUI () {
+    public void startGUI() {
 
         JFrame frame = new JFrame("Client");
         frame.setContentPane(this.mainPanel);
 
-        //setta JtextPane per renderizzare html
+        //setta JtextPane per  html
         formattedOutputClient.setContentType("text/html");
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
         frame.setResizable(false);
-
 
         //posiziona frame al centro dello schermo
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
@@ -75,23 +74,38 @@ public class ClientGUI {
         frame.setLocation(x, y);
     }
 
-    public void appendOutputClientText (String textToAppend) throws InterruptedException {
+
+    /**
+     * aggiungi testo al documento da visualizzare nel Text component
+     *
+     * @param textToAppend parametro stringa "to append"
+     * @throws InterruptedException
+     */
+    public void appendText(String textToAppend) throws InterruptedException {
 
         try {
-            doc.insertAfterEnd(doc.getCharacterElement(doc.getLength()), textToAppend);
+            document.insertAfterEnd(document.getCharacterElement(document.getLength()), textToAppend);
         } catch (BadLocationException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        scroll(); //scrolla alla fine della scroll bar
+        scrollToEnd(); //scrolla alla fine
     }
 
-    public void clearOutputText () {
+    /**
+     * ripulisci text component
+     */
+    public void clearOutputText() {
         formattedOutputClient.setText("");
     }
 
-    public void scroll() throws InterruptedException {
+    /**
+     * Scrolla fino alla fine del componente text
+     *
+     * @throws InterruptedException
+     */
+    public void scrollToEnd() throws InterruptedException {
         Thread.sleep(100);
 
         //scrolla alla fine della JTextArea
