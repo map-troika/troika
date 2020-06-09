@@ -90,7 +90,7 @@ public class ClientGUI {
      * @param textToAppend parametro stringa "to append"
      * @throws InterruptedException
      */
-    public void appendText(String textToAppend) throws InterruptedException {
+    public void appendText(String textToAppend) {
 
         try {
             document.insertAfterEnd(document.getCharacterElement(document.getLength()), textToAppend);
@@ -114,8 +114,12 @@ public class ClientGUI {
      *
      * @throws InterruptedException
      */
-    public void scrollToEnd() throws InterruptedException {
-        Thread.sleep(100);
+    public void scrollToEnd() {
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         //scrolla alla fine della JTextArea
         this.scrollBar.getVerticalScrollBar().setValue(this.scrollBar.getVerticalScrollBar().getMaximum());
