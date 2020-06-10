@@ -62,12 +62,7 @@ public class ClientGUI {
         endSessionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                client.closeServerComunications();
-                client.sendRequestToServer("quit");
-
-                //update della GUI
-                endSessionButton.setEnabled(false);
-                startClientButton.setEnabled(true);
+                quitSession();
             }
         });
         buttonUp.addActionListener(new ActionListener() {
@@ -207,5 +202,14 @@ public class ClientGUI {
 
         //fa un redraw del component, risolve artefatti del render dopo aver scrollato automaticamente
         formattedOutputClient.repaint();
+    }
+
+    public void quitSession () {
+        client.closeServerComunications();
+        client.sendRequestToServer("quit");
+
+        //update della GUI
+        endSessionButton.setEnabled(false);
+        startClientButton.setEnabled(true);
     }
 }

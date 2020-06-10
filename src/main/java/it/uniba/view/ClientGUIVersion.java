@@ -77,10 +77,24 @@ public final class ClientGUIVersion implements Runnable {
                     sendRequestToServer(userCredential);
                     cps.print(response);
 
+                } else if (response.contains("Hai vinto!")) {
+                    cGUI.clearOutputText();
+                    cGUI.appendText(
+                            response.replaceAll("\u001B\\[2J\u001B\\[H", ""));
+                    cGUI.appendText("<br>sessione terminata");
+                    cGUI.quitSession();
+                    quitThread = true;
+                } else if (response.contains("Uscita in corso...")) {
+                    cGUI.clearOutputText();
+                    cGUI.appendText(
+                            response.replaceAll("\u001B\\[2J\u001B\\[H", ""));
+                    cGUI.appendText("<br>sessione terminata");
+                    cGUI.quitSession();
+                    quitThread = true;
                 } else {
                     cGUI.clearOutputText();
-                    cGUI.appendText("<br>" + "<br>" +
-                            response.replaceAll("\u001B\\[2J\u001B\\[H", "") + "<br>");
+                    cGUI.appendText(
+                            response.replaceAll("\u001B\\[2J\u001B\\[H", ""));
                     //cGUI.appendText("<br>" + "command (help): ");
                 }
 

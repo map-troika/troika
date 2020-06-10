@@ -247,9 +247,16 @@ class Game implements Runnable {
 
     public String printRoom(final int id1) {
         String out = "\033[2J\033[H"; // pulisce lo schermo e va in alto a sinistra
+        String titleWithNoTag;
 
         out += "\n" + gLoader.getPlotRooms().get(id1).getTitle() + "\n";
-        out += "-".repeat(gLoader.getPlotRooms().get(id1).getTitle().length()) + "\n"; // separatori lunghezza titolo
+
+        //rimuovi tag html prima della creazione dei separatori
+        titleWithNoTag = gLoader.getPlotRooms().get(id1).getTitle()
+                .replaceAll("\\<[^>]*>","");
+
+
+        out += "-".repeat(titleWithNoTag.length()) + "\n"; // separatori lunghezza titolo
         out += gLoader.getPlotRooms().get(id1).getDescription() + "\n";
         return out;
     }
