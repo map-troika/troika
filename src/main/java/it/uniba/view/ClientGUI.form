@@ -74,7 +74,7 @@
             </constraints>
             <properties>
               <font size="36"/>
-              <text value="🡹"/>
+              <text value="↑"/>
             </properties>
           </component>
           <component id="c094c" class="javax.swing.JButton" binding="buttonDown">
@@ -83,7 +83,7 @@
             </constraints>
             <properties>
               <font size="36"/>
-              <text value="🡻"/>
+              <text value="↓"/>
             </properties>
           </component>
           <component id="4bd1d" class="javax.swing.JButton" binding="buttonLeft">
@@ -92,7 +92,7 @@
             </constraints>
             <properties>
               <font size="36"/>
-              <text value="🡸"/>
+              <text value="←"/>
             </properties>
           </component>
           <component id="90178" class="javax.swing.JButton" binding="buttonRight">
@@ -102,7 +102,7 @@
             <properties>
               <font size="36"/>
               <horizontalAlignment value="0"/>
-              <text value="🡺"/>
+              <text value="→"/>
             </properties>
           </component>
           <component id="a48ff" class="javax.swing.JLabel">

@@ -99,22 +99,23 @@ public final class ClientGUIVersion implements Runnable {
         }
     }
 
-    public void sendRequestToServer (String userRequest) {
+    public void sendRequestToServer(String userRequest) {
         // Send messaggio letto dal console a view
         userRequest = Base64.getEncoder().encodeToString(userRequest.getBytes());
         sps.println(userRequest);
     }
 
-    public void closeServerComunications () {
+    public void closeServerComunications() {
         quitThread = true;
     }
 
     /**
      * Il metodo <code>runThreadClient</code> permette di avviare un flusso che gestisce le operazioni
      * del Client
+     *
      * @throws InterruptedException
      */
-    public Thread runThreadClient () throws InterruptedException {
+    public Thread runThreadClient() throws InterruptedException {
         cGUI.appendText("\n" + "<br>" + "Client start");
         Runnable c = this;
         Thread t = new Thread(c); // Create task (Application)

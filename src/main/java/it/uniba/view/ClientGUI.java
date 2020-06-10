@@ -73,7 +73,7 @@ public class ClientGUI {
         buttonUp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(client != null) {
+                if (client != null) {
                     client.sendRequestToServer("nord");
                 } else {
                     appendText("<br><font color='orange' face=\"Agency FB\"><b>" +
@@ -86,7 +86,7 @@ public class ClientGUI {
         buttonDown.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(client != null) {
+                if (client != null) {
                     client.sendRequestToServer("sud");
                 } else {
                     appendText("<br><font color='orange' face=\"Agency FB\"><b>" +
@@ -99,7 +99,7 @@ public class ClientGUI {
         buttonLeft.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(client != null) {
+                if (client != null) {
                     client.sendRequestToServer("ovest");
                 } else {
                     appendText("<br><font color='orange' face=\"Agency FB\"><b>" +
