@@ -48,7 +48,7 @@ uscire automaticamente dal labirinto una volta sconfitto il Minotauro inserendo 
 <p>Andando verso <b>Sud</b> si entra nell'<em>Ala della Spada</em> dove è appunto possibile raccogliere la <b>spada</b> 
 che servirà in seguito quando si incontrerà il Minotauro per sconfiggerlo. Da questa stanza è possibile soltanto tornare 
 alla precedente a <b>Nord</b> da cui poi si può proseguire.</p>
-<p>Proseguendo quindi verso <b>Est</b> si entra nell'<em>Ala del grande passo</em>>.</p>
+<p>Proseguendo quindi verso <b>Est</b> si entra nell'<em>Ala del grande passo</em>.</p>
 <p>Verso <b>Nord</b> si entra nella <em>Stanza della Battaglia</em> dove si dovrà affrontare il <b>Minotauro</b> se si è 
 in possesso della spada, altrimenti incontrarlo sarà letale e il gioco finirà.</p>
 <p>A <b>Sud</b> dell'<em>Ala del grande passo</em> c'è l'<em>Ala finale</em>.
