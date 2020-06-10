@@ -82,12 +82,6 @@ rooms:
     title: ""
     # http://patorjk.com/software/taag/#p=display&h=0&v=1&f=Calvin%20S&t=IL%20LABIRINTO%20DI%20CNOSSO%0A------------------%0A
     descr:
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
       <font face="Agency FB" size="10"><b>IL LABIRINTO DI CNOSSO</b></font>
       <hr>
       <br>
@@ -108,7 +102,7 @@ rooms:
       sud: 1
 
   - id: 1
-    title: <br><br><br><br><font face="Agency FB" size="6"><b>Ala d'ingresso</b></font><br><hr><br>
+    title: <font face="Agency FB" size="6"><b>Ala d'ingresso</b></font><br><hr><br>
     descr: |
       Sei nell'ala d'ingresso e non sai cosa fare, la stanza è buia e sul lato est si intravede
       una porta piuttosto grande, a nord si intravedono ancora i fiori del giardino...
