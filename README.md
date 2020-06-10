@@ -50,7 +50,7 @@ che servirà in seguito quando si incontrerà il Minotauro per sconfiggerlo. Da 
 alla precedente a <b>Nord</b> da cui poi si può proseguire.</p>
 <p>Proseguendo quindi verso <b>Est</b> si entra nell'<em>Ala del grande passo</em>.</p>
 <p>Verso <b>Nord</b> si entra nella <em>Stanza della Battaglia</em> dove si dovrà affrontare il <b>Minotauro</b> se si è 
-in possesso della spada, altrimenti incontrarlo sarà letale e il gioco finirà.</p>
+in possesso della spada e la si sta usando, altrimenti incontrarlo sarà letale e il gioco finirà.</p>
 <p>A <b>Sud</b> dell'<em>Ala del grande passo</em> c'è l'<em>Ala finale</em>.
 
 
