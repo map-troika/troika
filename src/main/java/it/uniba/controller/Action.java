@@ -6,9 +6,10 @@ import it.uniba.model.Player;
 import java.util.ArrayList;
 
 public final class Action {
-    private Action() {
 
+    private Action() {
     }
+
     public static String help() {
         String out = "\033[2J\033[H";
         out += "Lista comandi:\n";
@@ -37,6 +38,7 @@ public final class Action {
             }
         return false;
     }
+
     public static boolean pickUpItem(final GameLoader loader, final int roomId, final String[] tk) {
         if (tk.length == 1 && loader.getPlotRooms().get(roomId).getItemsList().size() == 1) {
             Item selI = loader.getPlotRooms().get(roomId).getItemsList().get(0);
@@ -103,6 +105,7 @@ public final class Action {
             return  false;
         }
     }
+
     public static String fight(final GameLoader loader, final int roomId) {
         String out = "\033[2J\033[H";
         ArrayList<Item> roomItems = loader.getPlotRooms().get(roomId).getItemsList();

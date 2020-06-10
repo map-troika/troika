@@ -17,91 +17,48 @@ nella *Stanza della Battaglia* dove si dovrà affrontare il **Minotauro** se si 
 incontrarlo sarà letale e il gioco finirà.<br/><br/>A **Sud** dell'*Ala del grande passo* c'è l'*Ala finale*.
 
 
-# scacchi-thacker <p> 
-![](res/img/UniBaLogo.svg)    
+# text adventure-troika <p> 
     
 # Indice  
 
 ### 1. [Introduzione](#1)  
-  
-### 2. [Modello di dominio](#2)  
- 1. [Generalizzazione](#2.1)  
-     1.1 [`BasePiece`](#2.1.1)  
- 2. [Aggregazione e composizione](#2.2)  
-      2.1 [`Match`](#2.2.1)  
-      2.2 [`Board`](#2.2.2)  
-      2.3 [`Move`](#2.2.3)  
-
-### 3. [Requisiti specifici](#3)          
- 1. [Requisiti funzionali](#3.1)          
- 2. [Requisiti non funzionali](#3.2)        
+      
+### 2. [Requisiti specifici](#2)          
+ 1. [Requisiti funzionali](#2.1)          
+ 2. [Requisiti non funzionali](#2.2)        
         
-### 4. [System Design](#4)          
- 1. [Stile architetturale](#4.1)          
- 2. [Rappresentazione dell’architettura](#4.2)          
+### 3. [System Design](#3)          
+ 1. [Stile architetturale](#3.1)          
+ 2. [Rappresentazione dell’architettura](#3.2)          
         
-### 5. [OO Design](#5)        
- 1. [Information hiding](#5.1)          
- 2. [Alta coesione](#5.2)          
- 3. [Basso accoppiamento](#5.3)     
- 4. [Don't Repeat Yourself (DRY)](#5.4)     
+### 4. [OO Design](#4)        
+ 1. [Information hiding](#4.1)          
+ 2. [Alta coesione](#4.2)          
+ 3. [Basso accoppiamento](#4.3)     
+ 4. [Don't Repeat Yourself (DRY)](#4.4)     
+ 5. [Polimorfismo per inclusione](#4.5)     
+ 6. [Polimorfismo parametrico](#4.6)     
 
-        
-### 6. [Riepilogo del test](#6)   
- 1. [Analisi statica del codice](#6.1)   
-     1.1 [Checkstyle](#7.1.1)  
-     1.2 [SpotBugs](#7.1.1)  
- 2. [Analisi dinamica del codice](#6.2)   
-      2.1 [Test di unità](#6.2.1)  
-      2.2 [Test funzionale](#6.2.2)  
+### 5. [Riepilogo del test](#5)   
+ 1. [Analisi statica del codice](#5.1)   
+     1.1 [Checkstyle](#5.1.1)  
 
-
-### 7. [Manuale utente](#7)
- 1. [Docker](#7.1)  
-    1.1 [Requisiti di sistema](#7.1.1)  
-    1.2 [Installazione Docker](#7.1.2)  
-    1.3 [Esecuzione immagine Docker](#7.1.3)
- 2. [Pezzi e movimenti sulla scacchiera](#7.2)  
-    2.1 [Notazione algebrica](#7.2.1)  
-    2.2 [Pedone](#7.2.2)  
-    2.3 [Torre](#7.2.3)  
-    2.4 [Cavallo](#7.2.4)  
-    2.5 [Alfiere](#7.2.5)  
-    2.6 [Donna](#7.2.6)  
-    2.7 [Re](#7.2.7)  
-    2.8 [Cattura](#7.2.8)  
- 3. [Menu](#7.3)  
-    3.1 [Menu principale](#7.3.1)  
-    3.2 [Menu di gioco](#7.3.2)  
- 4. [Comandi di gioco](#7.4)  
-    4.1 [`help`](#7.4.1)  
-    4.2 [`play`](#7.4.2)  
-    4.3 [`board`](#7.4.3)  
-    4.4 [`moves`](#7.4.4)  
-    4.5 [`captures`](#7.4.5)  
-    4.6 [`quit`](#7.4.6)
-
-### 8. [Processo di sviluppo e organizzazione del lavoro](#8)  
+### 6. [Processo di sviluppo e organizzazione del lavoro](#8)  
  1. [Manifesto Agile](#8.1)  
  2. [Scrum](#8.2)  
     2.1 [Product backlog](#8.2.1)  
     2.2 [Sprint goals](#8.2.2)  
   3. [Strumenti di lavoro](#8.3)
-    
-### 9. [Analisi retrospettiva](#9)          
- 1. [Soddisfazioni](#9.1)          
- 2. [Insoddisfazioni](#9.2)          
-              
+       
 # <span id = "1">1. Introduzione</span> 
-Questo documento è una relazione tecnica finale per il progetto che implementa il gioco degli Scacchi del gruppo Thacker.     
-<p>Lo scopo di questo progetto è quello di creare un'applicazione, in completa conformità con il regolamento degli scacchi 
-FIDE, che possa essere utilizzata da utenti che abbiano una conoscenza almeno dilettantistica di quest'ultimo.   
-<p>L'applicazione può ricevere l'input in modalità interattiva, utilizzando la notazione algebrica italiana, oppure in   
-modalità batch con una partita registrata in formato PGN <em>(Portable Game Notation)</em>, utilizzando la notazione   
-algebrica inglese.   
-<p>Supporta partite interattive esclusivamente contro avversari umani.   
+<p>Questo documento è una relazione tecnica finale per il progetto che implementa il gioco <em>Il Labirinto di Cnosso</em> 
+del gruppo Troika.</p>     
+<p>Lo scopo di questo progetto è quello di creare un'avventura testuale che possa essere utilizzata da utenti che abbiano 
+una conoscenza almeno dilettantistica del suo funzionamento.</p>   
+<p>L'interfaccia utente è stata implementata sia in versione grafica <em>(Graphical User Interface - GUI)</em> sia a 
+riga di comando <em>(Command Line Interface - CLI).</em></p>   
 <p>Si osserva che l'obiettivo di questo progetto è quello di dimostrare le competenze acquisite durante le lezioni del   
-corso di Ingegneria del Software, piuttosto che produrre una soluzione completa e avanzata.    
+corso di Metodi Avanzati di Programmazione, piuttosto che produrre una soluzione completa e definitiva.</p>    
 
 <a href="#top">Torna all'inizio</a> 
 
