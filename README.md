@@ -41,7 +41,6 @@ corso di Metodi Avanzati di Programmazione, piuttosto che produrre una soluzione
 
 ## <span id = "1.1">1.1 Mappa del gioco</span> 
 ![Map](MapNew.svg)
-<br/>
 <p>Il gioco inizia con Tesèo posto all'esterno del labirinto, dirigendosi verso <b>Sud</b> si avrà modo di entrare nell'
 <em>Ala d'ingresso</em> in cui possiamo osservare un <b>gomitolo</b>. Raccogliere ed usare il gomitolo permetterà di 
 uscire automaticamente dal labirinto una volta sconfitto il Minotauro inserendo il comando <code>home</code>.</p>
