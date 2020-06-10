@@ -1,28 +1,12 @@
 # IL LABIRINTO DI CNOSSO: l'impresa di Tesèo contro il Minotauro<br/><br/>
 
-Sull’isola di Creta, nel periodo del regno di Minosse, che sposa Pasifae, in seguito ad un’offesa fatta ad Afrodite 
-nasce un figlio mostruoso, metà uomo e metà toro, il Minotauro. Minosse lo imprigiona in un labirinto e, per sfamarlo, 
-impone alle città sotto la sua dominazione un tributo annuale di sette fanciulle e sette fanciulli. Un anno, però, tra 
-loro viene condotto il principe di Atene, Tesèo, che non vuole arrendersi al tragico destino e tenterà di sconfiggere il
-letale mostro...<br/><br/><br/>![Map](MapNew.svg)<br/><br/><br/>Il gioco inizia con Tesèo posto all'esterno del labirinto, 
-dirigendosi verso **Sud** si avrà modo di entrare nell'*Ala d'ingresso* in cui possiamo osservare un 
-**gomitolo**. Raccogliere ed usare il **gomitolo** 
-permetterà di uscire automaticamente dal labirinto una volta sconfitto il Minotauro.<br/><br/>Dirigendosi verso **Est** si 
-entra nell'*Ala del bivio*.<br/><br/>Andando verso **Sud** si entra nell'*Ala della Spada* dove è appunto 
-possibile raccogliere la **spada** che servirà in seguito quando si incontrerà il Minotauro per sconfiggerlo. Da questa 
-stanza è possibile soltanto tornare alla 
-precedente inserendo **Nord** da cui poi si può proseguire il cammino.<br/><br/>Proseguendo quindi verso **Est**
-si entra nell'*Ala del grande passo*.<br/><br/>Verso **Nord** si entra 
-nella *Stanza della Battaglia* dove si dovrà affrontare il **Minotauro** se si è in possesso della **spada**, altrimenti 
-incontrarlo sarà letale e il gioco finirà.<br/><br/>A **Sud** dell'*Ala del grande passo* c'è l'*Ala finale*.
-
-
 # text adventure-troika <p> 
     
 # Indice  
 
 ### 1. [Introduzione](#1)  
-      
+ 1. [Mappa del gioco](#1.1)          
+
 ### 2. [Requisiti specifici](#2)          
  1. [Requisiti funzionali](#2.1)          
  2. [Requisiti non funzionali](#2.2)        
@@ -56,6 +40,24 @@ una conoscenza almeno dilettantistica del suo funzionamento.</p>
 riga di comando <em>(Command Line Interface - CLI).</em></p>   
 <p>Si osserva che l'obiettivo di questo progetto è quello di dimostrare le competenze acquisite durante le lezioni del   
 corso di Metodi Avanzati di Programmazione, piuttosto che produrre una soluzione completa e definitiva.</p>    
+
+## <span id = "1.1">1.1 Mappa del gioco</span> 
+![Map](MapNew.svg)
+<br/>
+<br/>
+<br/>
+<p>Il gioco inizia con Tesèo posto all'esterno del labirinto, dirigendosi verso <b>Sud</b> si avrà modo di entrare nell'
+<em>Ala d'ingresso</em> in cui possiamo osservare un <b>gomitolo</b>. Raccogliere ed usare il gomitolo permetterà di 
+uscire automaticamente dal labirinto una volta sconfitto il Minotauro inserendo il comando <code>home</code>.</p>
+<p>Dirigendosi verso <b>Est</b> si entra nell'<em>Ala del bivio</em>.</p>
+<p>Andando verso <b>Sud</b> si entra nell'<em>Ala della Spada</em> dove è appunto possibile raccogliere la <b>spada</b> 
+che servirà in seguito quando si incontrerà il Minotauro per sconfiggerlo. Da questa stanza è possibile soltanto tornare 
+alla precedente a <b>Nord</b> da cui poi si può proseguire.</p>
+<p>Proseguendo quindi verso <b>Est</b> si entra nell'<em>Ala del grande passo</em>>.</p>
+<p>Verso <b>Nord</b> si entra nella <em>Stanza della Battaglia</em> dove si dovrà affrontare il <b>Minotauro</b> se si è 
+in possesso della spada, altrimenti incontrarlo sarà letale e il gioco finirà.</p>
+<p>A <b>Sud</b> dell'<em>Ala del grande passo</em> c'è l'<em>Ala finale</em>.
+
 
 <a href="#top">Torna all'inizio</a> 
 
