@@ -1,12 +1,11 @@
-package it.uniba.controller;
+package it.uniba.model;
 
-import it.uniba.model.Item;
-import it.uniba.model.Player;
+import it.uniba.controller.Game;
 
 import java.util.ArrayList;
 
 /**
- * <p><code>Controller</code></p> La classe <code>Action</code> è una classe statica e contiene tutti i metodi
+ * <p><code>Entity</code></p> La classe <code>Action</code> è una classe statica e contiene tutti i metodi
  * corrispondenti alle azioni possibili da effettuare in gioco.
  */
 public final class Action {
@@ -43,7 +42,7 @@ public final class Action {
      * @param loader game loader
      * @return true/false
      */
-    public static boolean home(final GameLoader loader) {
+    public static boolean home(final Plot loader) {
         for (Item item : Player.getItemsList()) {
             if (item.getItemName().equals("gomitolo")) {
                 if (item.getUse()) {
@@ -68,7 +67,7 @@ public final class Action {
      * @param tk lista token input
      * @return true/false
      */
-    public static boolean pickUpItem(final GameLoader loader, final int roomId, final String[] tk) {
+    public static boolean pickUpItem(final Plot loader, final int roomId, final String[] tk) {
         if (tk.length == 1 && loader.getPlotRooms().get(roomId).getItemsList().size() == 1) {
             Item selI = loader.getPlotRooms().get(roomId).getItemsList().get(0);
             Player.addItemInventory(selI);
@@ -97,7 +96,7 @@ public final class Action {
      * @param tk lista token input
      * @return true/false
      */
-    public static boolean leaveItem(final GameLoader loader, final int roomId, final String[] tk) {
+    public static boolean leaveItem(final Plot loader, final int roomId, final String[] tk) {
         if (tk.length == 1 && Player.getItemsList().size() == 1) {
             Player.getItemsList().get(0).setUse(false);
             Player.setNItemUse(Player.getNItemUse() - 1);
@@ -159,7 +158,7 @@ public final class Action {
      * @param roomId stanza corrente
      * @return string
      */
-    public static String fight(final GameLoader loader, final int roomId) {
+    public static String fight(final Plot loader, final int roomId) {
         String out = "\033[2J\033[H";
         ArrayList<Item> roomItems = loader.getPlotRooms().get(roomId).getItemsList();
         Item enemy = null;
@@ -204,7 +203,7 @@ public final class Action {
      * @return output string
      */
     public static String position(final int roomId) {
-        GameLoader loader = new GameLoader();
+        Plot loader = new Plot();
         String out = "\033[2J\033[H";
         out += "Ti trovi nella stanza: ";
         out += loader.getPlotRooms().get(roomId).getTitle();
@@ -237,7 +236,7 @@ public final class Action {
      * @param roomId stanza corrente
      * @return output string
      */
-    public static String observeRoom(final GameLoader loader, final int roomId) {
+    public static String observeRoom(final Plot loader, final int roomId) {
         String out = "\033[2J\033[H";
         if (loader.getPlotRooms().get(roomId).getItemsList().size() != 0) {
             out += "guardati intorno: ";
@@ -261,7 +260,7 @@ public final class Action {
      * @return true/false
      */
     public static boolean goTo(final int roomId, final String cmd) {
-        GameLoader gLoader = new GameLoader();
+        Plot gLoader = new Plot();
         if (gLoader.getPlotRooms().get(roomId).getExitRoom(cmd) != null) {
             int destId = gLoader.getPlotRooms().get(roomId).getExitRoom(cmd);
             Game.setRoomId(destId);

@@ -1,5 +1,8 @@
 package it.uniba.controller;
 
+import it.uniba.model.Action;
+import it.uniba.model.Database;
+import it.uniba.model.Plot;
 import it.uniba.model.Player;
 
 import java.io.InputStream;
@@ -19,7 +22,7 @@ import java.util.Base64;
  * @author Nicole Stolbovoi
  */
 
-class Game implements Runnable {
+public class Game implements Runnable {
     private Socket s;
     private long id;
     private String name;
@@ -27,7 +30,7 @@ class Game implements Runnable {
     private OutputStream os;
     private PrintWriter pw;
     private static int roomId;
-    private GameLoader gLoader;
+    private Plot gLoader;
     private boolean authUser = false;
     private static boolean end = false;
     private boolean isQuit = false;
@@ -35,7 +38,7 @@ class Game implements Runnable {
     Game(final Socket s1) {
         this.s = s1;
         this.roomId = 0;
-        this.gLoader = new GameLoader();
+        this.gLoader = new Plot();
     }
 
     public long getId() {

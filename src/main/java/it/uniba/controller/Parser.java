@@ -1,7 +1,8 @@
 package it.uniba.controller;
 
+import it.uniba.model.Plot;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,7 +19,7 @@ public final class Parser {
 
     private Pattern patternCommand;
     private Pattern patternItem;
-    private GameLoader gLoader;
+    private Plot gLoader;
 
     /**
      * Crea un costruttore della classe <code>Parser</code> parametrizzato.
@@ -26,7 +27,7 @@ public final class Parser {
      * @param gl gioco caricato
      */
 
-    public Parser(final GameLoader gl) {
+    public Parser(final Plot gl) {
         this.gLoader = gl;
         // System.out.println("*** Parser!!!");
         // System.out.println("*** keySet:" + gl.getPlotCommands().keySet());
@@ -130,7 +131,7 @@ public final class Parser {
                 "spada prendo  gomitolo, gomitolo",
         };
 
-        Parser p = new Parser(new GameLoader());
+        Parser p = new Parser(new Plot());
 
         for (String t : testCaseIT) {
             System.out.printf("*** [%-20s]>>%s<<\n", String.join(", ", p.parse(t)), t);
