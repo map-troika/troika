@@ -233,6 +233,7 @@ public final class Action {
     /**
      * Restituisce la descrizione della stanza corrente
      *
+     * @param loader game loader
      * @param roomId stanza corrente
      * @return output string
      */
