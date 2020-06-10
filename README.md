@@ -71,7 +71,7 @@ Questa applicazione fornisce le seguenti funzionalità:
 | Requisito | Descrizione |
 |--|--|
 | Mostrare l'elenco dei comandi | Al comando <code>help</code> l'applicazione deve mostrare una lista di comandi, uno per <br>riga. |
-| Iniziare una nuova partita | Al comando <code>play</code> l'applicazione si deve predisporre a ricevere comandi <br>tra cui <br>la prima mossa del bianco ed è in grado di ricevere altri comandi <br>di gioco (es. <code>show</code>). |
+| Iniziare una nuova partita | Al comando <code>play</code> l'applicazione si deve predisporre a ricevere comandi tra cui <br>la prima mossa del bianco ed è in grado di ricevere altri comandi <br>di gioco (es. <code>show</code>). |
 | Mostrare la posizione | Al comando <code>position</code>, l'applicazione deve mostrare il nome della stanza in cui si <br>trova il giocatore. |
 | Muovere a Nord | Al comando <code>north</code> l'applicazione deve muovere il giocatore verso Nord, se <br>l'uscita non è valida è mostrato il messaggio <code>C'è un muro da questa parte!</code> <br>e l'applicazione rimane in attesa di un comando valido. |
 | Muovere a Sud | Al comando <code>south</code> l'applicazione deve muovere il giocatore verso Sud, se <br>l'uscita non è valida è mostrato il messaggio <code>C'è un muro da questa parte!</code> <br>e l'applicazione rimane in attesa di un comando valido. |
