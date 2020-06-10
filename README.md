@@ -1,5 +1,3 @@
-# IL LABIRINTO DI CNOSSO: l'impresa di Tesèo contro il Minotauro<br/><br/>
-
 # text adventure-troika <p> 
     
 # Indice  
