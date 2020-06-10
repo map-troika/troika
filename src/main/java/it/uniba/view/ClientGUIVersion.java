@@ -80,7 +80,7 @@ public final class ClientGUIVersion implements Runnable {
                 } else {
                     cGUI.clearOutputText();
                     cGUI.appendText("<br>" + "<br>" + "Response:" + "<br>" + response + "<br>");
-                    cGUI.appendText("<br>" + "command (help): ");
+                    //cGUI.appendText("<br>" + "command (help): ");
                 }
 
 
