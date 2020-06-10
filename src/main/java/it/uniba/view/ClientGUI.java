@@ -48,17 +48,26 @@ public class ClientGUI {
                 client = new ClientGUIVersion();
                 try {
                     client.runThreadClient();
+
+                    //update della GUI
+                    endSessionButton.setEnabled(true);
+                    startClientButton.setEnabled(false);
                 } catch (InterruptedException interruptedException) {
                     interruptedException.printStackTrace();
                 }
 
-                startClientButton.setEnabled(false);
+
             }
         });
         endSessionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                client.closeServerComunications();
+                client.sendRequestToServer("quit");
 
+                //update della GUI
+                endSessionButton.setEnabled(false);
+                startClientButton.setEnabled(true);
             }
         });
         buttonUp.addActionListener(new ActionListener() {

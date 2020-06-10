@@ -21,19 +21,9 @@ public final class ClientGUIVersion implements Runnable {
 
     private static ClientGUI cGUI;
 
-    //stream comunicazione server
+    private boolean quitThread = false;
+
     private PrintStream sps;
-
-    private Socket s;
-
-    // Server BufferedReader
-    private BufferedReader sbr;
-
-    // Console BufferedReader
-    private BufferedReader cbr;
-
-    // Console PrintStream
-    private PrintStream cps;
 
     public static void main(final String[] argv) {
         cGUI = new ClientGUI();
@@ -53,19 +43,17 @@ public final class ClientGUIVersion implements Runnable {
             Socket s = new Socket("localhost", PORT_NUMBER);
 
             // Apre i canali di comunicazione e la connessione con il  view
-
-            sbr = new BufferedReader(new InputStreamReader(s.getInputStream()));
-
-            // Server PrintStream
+            BufferedReader sbr = new BufferedReader(new InputStreamReader(s.getInputStream()));
             sps = new PrintStream(s.getOutputStream(), true);
 
             // Console BufferedReader
-            cbr = new BufferedReader(new InputStreamReader(System.in));
+            BufferedReader cbr = new BufferedReader(new InputStreamReader(System.in));
 
-            cps = new PrintStream(System.out, true);
+            // Console PrintStream
+            PrintStream cps = new PrintStream(System.out, true);
 
 
-            loop: while (true) {
+            while (!quitThread) {
                 //jframe inserimento credenziali
                 LoginRequestGUI credentialRequestGUI;
 
@@ -99,7 +87,12 @@ public final class ClientGUIVersion implements Runnable {
                 Thread.sleep(100);
             }
 
-
+            // Disalloca le risorse impiegate: chiude i canali di comunicazione e la connessione con il Server
+            cbr.close();
+            sps.close();
+            sbr.close();
+            s.close();
+            System.out.println("Client end");
 
         } catch (Exception e) {
             cGUI.appendText("\n" + "<br>" + e.getMessage());
@@ -112,13 +105,10 @@ public final class ClientGUIVersion implements Runnable {
         sps.println(userRequest);
     }
 
-    public void closeServerComunications () throws IOException {
-        // Chiude i canali di comunicazione e la connessione con il view
-        cbr.close();
-        sps.close();
-        sbr.close();
-        s.close();
+    public void closeServerComunications () {
+        quitThread = true;
     }
+
     /**
      * Il metodo <code>runThreadClient</code> permette di avviare un flusso che gestisce le operazioni
      * del Client
