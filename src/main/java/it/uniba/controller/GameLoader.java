@@ -72,8 +72,11 @@ public class GameLoader {
             generatedItems.put(
                     rowItems.get(i).get("name").toString(),
                     new Item(
-                            rowItems.get(i).get("name").toString(),
-                            rowItems.get(i).get("pattern").toString()
+                        rowItems.get(i).get("name").toString(),
+                        rowItems.get(i).get("pattern").toString(),
+                        rowItems.get(i).get("description").toString(),
+                        (boolean)rowItems.get(i).get("isEnemy"),
+                        (boolean)rowItems.get(i).get("isWeapon")
                     )
             );
         }
@@ -145,7 +148,10 @@ public class GameLoader {
         Item newDumpedItem;
         newDumpedItem = new Item(
                 plotItems.get(itemName).getItemName(),
-                plotItems.get(itemName).getItemPattern()
+                plotItems.get(itemName).getItemPattern(),
+                plotItems.get(itemName).getDescription(),
+                plotItems.get(itemName).getIsEnemy(),
+                plotItems.get(itemName).getIsWeapon()
         );
 
         return newDumpedItem;
