@@ -44,11 +44,8 @@ incontrarlo sarà letale e il gioco finirà.<br/><br/>A **Sud** dell'*Ala del gr
      1.1 [Checkstyle](#5.1.1)  
 
 ### 6. [Processo di sviluppo e organizzazione del lavoro](#8)  
- 1. [Manifesto Agile](#8.1)  
- 2. [Scrum](#8.2)  
-    2.1 [Product backlog](#8.2.1)  
-    2.2 [Sprint goals](#8.2.2)  
-  3. [Strumenti di lavoro](#8.3)
+  1. [Product backlog](#6.1)  
+  2. [Strumenti di lavoro](#6.2)
        
 # <span id = "1">1. Introduzione</span> 
 <p>Questo documento è una relazione tecnica finale per il progetto che implementa il gioco <em>Il Labirinto di Cnosso</em> 
@@ -66,7 +63,7 @@ corso di Metodi Avanzati di Programmazione, piuttosto che produrre una soluzione
 Questa sezione specifica tutti i requisiti per il software <em>Il Labirinto di Cnosso</em>. I requisiti si riferiscono a 
 funzionalità e vincoli.     
   
-## <span id = "3.1">3.1 Requisiti funzionali</span> 
+## <span id = "2.1">2.1 Requisiti funzionali</span> 
 I FUR *(Functional User Requirement)* descrivono le funzionalità del software in termini di:
  - servizi che il software stesso deve fornire;
  - risposte che l’utente aspetta dal software in determinate condizioni;
@@ -90,7 +87,7 @@ Questa applicazione fornisce le seguenti funzionalità:
 | Mostrare l'inventario | Al comando <code>moves</code> l'applicazione deve mostrare la storia delle mosse con <br>[notazione algebrica abbreviata in italiano](https://it.wikipedia.org/wiki/Notazione_algebrica). |
 | Chiudere il gioco | Al comando <code>quit</code> l'applicazione si deve chiude e compare il prompt del <br>sistema operativo. |
 
-## <span id = "3.2">3.2 Requisiti non funzionali</span>  
+## <span id = "2.2">2.2 Requisiti non funzionali</span>  
 I NFR *(Non Functional Requirement)* descrivono le caratteristiche di qualità del prodotto software da sviluppare, i 
 requisiti di sistema/ambiente, le tecnologie e gli standard di cui il software deve tenere conto.
 
@@ -142,11 +139,11 @@ requisiti di sistema/ambiente, le tecnologie e gli standard di cui il software d
 </table>  
 <a href="#top">Torna all'inizio</a>
 
-# <span id = "4">4. System Design</span> 
+# <span id = "3">3. System Design</span> 
 Questa sezione si occupa dell'identificazione dei principali componenti e delle relazioni tra questi, definendo un 
 modello compatto del modo in cui il sistema è strutturato. 
 
-## <span id = "4.1">4.1 Stile architetturale</span>
+## <span id = "3.1">3.1 Stile architetturale</span>
 Questo software e la sua interfaccia utente possono essere interpretati come un **MVC** 
 *(Model-View-Controller)*, un modello architettonico che isola l'amministrazione del gioco (business logic - Model), 
 dalla presentazione dei dati (View).
@@ -163,7 +160,7 @@ effettuando chiamate sugli oggetti del Model e modificando lo stato degli altri 
 <p>Il <b>Model</b> fornisce i metodi per accedere ai dati del dominio su cui opera l'applicazione, come le informazioni 
 sulla posizione corrente del giocatore.</p>
 
-## <span id = "4.2">4.2 Rappresentazione dell’architettura</span> 
+## <span id = "3.2">3.2 Rappresentazione dell’architettura</span> 
 ![](res/img/unibaPackageDiagram3.svg)
 >_Diagramma dei package di uniba._
 
@@ -178,12 +175,12 @@ meno validi in un dato contesto di gioco.
 
 <p><a href="#top">Torna all'inizio</a>
 
-# <span id = "5">5. OO Design</span>  
+# <span id = "4">4. OO Design</span>  
 Questa sezione specifica attraverso riferimenti diretti alle <em>user story</em> più significative, che identificano le 
 decisioni di progetto, in che modo è stato applicato l’OO Design <em>(Object Oriented Design)</em> all’interno
 del software.
 
-## <span id = "5.1">5.1 Information hiding</span>        
+## <span id = "4.1">4.1 Information hiding</span>        
 Per il principio di *information hiding* ogni componente deve custodire dei segreti al proprio interno per
 salvaguardare la propria integrità e correttezza. 
 <p>Questo è permesso grazie a classi composte generalmente da attributi e metodi privati che favoriscono l'incapsulamento 
@@ -208,7 +205,7 @@ La classe <code>BasePiece</code> ne è un esempio poichè:
 Con questo principio l'applicazione ci permette di isolare le modifiche dovute a scelte progettuali o
 correzioni di bug, senza compromettere le classi esterne a quella in questione.
 
-## <span id = "5.2">5.2 Alta coesione</span> 
+## <span id = "4.2">4.2 Alta coesione</span> 
 Il concetto di coesione rappresenta il grado di dipendenza tra elementi di uno stesso componente.
 
 Un componente ad alta coesione ha una responsabilità ben definita, che ne favorisce la:
@@ -233,7 +230,7 @@ tramite l'uso di <em>regular expression</em> ne restituirà la tipologia.
 <p>La scelta di avere un componente specifico per esaudire tale necessità, rende la decodifica dell’input più compatta e
 ottimizzata. A questo si aggiunge una maggiore leggibilità ed estensibilità del codice.
 
-## <span id = "5.3">5.3 Basso accoppiamento</span>  
+## <span id = "4.3">4.3 Basso accoppiamento</span>  
 L’accoppiamento misura il grado di dipendenza tra componenti diversi.
 <p>Un basso accoppiamento fa si che un cambiamento ad un componente non si propaghi su altri
 componenti.
@@ -257,7 +254,7 @@ Solo dopo queste due verifiche il Re crea una <code>Move</code> che viene restit
 <p>In questo senso le classi ignorano azioni e/o controlli che riguardino altre, ad esempio la gestione delle ambiguità
 che nel pezzo <code>King</code> non avviene mai.
 
-## <span id = "5.4">5.4 Don't Repeat Yourself (DRY)</span> 
+## <span id = "4.4">4.4 Don't Repeat Yourself (DRY)</span> 
 Il principio DRY <em>(Don't Repeat Yourself)</em> prevede che ogni parte significativa di una funzionalità dovrebbe 
 essere implementata in un unico posto del codice sorgente, evitando sequenze di istruzioni uguali fra loro.
 <p>Una rappresentazione di questo impiego si può osservare attraverso il diagramma di sequenza che descrive
@@ -278,14 +275,14 @@ volta, rendendo il codice più leggibile, snello e facilmente manutenibile.
 
 <a href="#top">Torna all'inizio</a>
  
-# <span id = "6">6. Riepilogo del test</span> 
+# <span id = "5">5. Riepilogo del test</span> 
 Questa sezione espone i risultati e le modalità con cui è stato testato il software.
-## <span id = "6.1">6.1 Analisi statica del codice</span>
+## <span id = "5.1">5.1 Analisi statica del codice</span>
 
 L'analisi statica del codice è l'analisi del software che viene eseguita senza l'esecuzione del programma. 
 In questo caso l'analisi viene eseguita da strumenti automatizzati.
 
-### <span id = "6.1.1">6.1.1 Checkstyle</span>
+### <span id = "5.1.1">5.1.1 Checkstyle</span>
 Il tool di *Checkstyle* ha permesso di scoprire e correggere violazioni dello stile di programmazione. 
 <br><br>
 Tutte le violazioni sono state risolte nelle classi del <code>main</code> <br><br>
@@ -293,12 +290,11 @@ Tutte le violazioni sono state risolte nelle classi del <code>main</code> <br><b
 ![](res/img/CheckstyleMain2.png)  
 >_Risultato di Checkstyle del main._
 
-
   
-# <span id = "8">8. Processo di sviluppo e organizzazione del lavoro</span>
+# <span id = "6">6. Processo di sviluppo e organizzazione del lavoro</span>
 Questa sezione descrive i metodi e la dinamica per lo sviluppo del software.
 
-### <span id = "8.2.1">8.2.1 Product backlog</span>
+### <span id = "6.1">6.1 Product backlog</span>
 
 ![](res/img/productbacklog.PNG)
 >_Parte della product backlog del gruppo Thacker._ 
@@ -312,7 +308,7 @@ la loro comprensione del sistema e del suo contesto.
 **N.B.:** non tutte le _user story_ della product backlog 
 sono state implementate, dando la priorità a quelle previste per gli _sprint goal_.
 
-## <span id = "8.3">8.3 Strumenti di lavoro</span>
+## <span id = "6.2">6.2 Strumenti di lavoro</span>
 Questo gruppo ha utilizzato principalmente l'hub di collaborazione [Microsoft Teams](https://www.microsoft.com/it-it/microsoft-365/microsoft-teams/group-chat-software?&ef_id=CjwKCAjwtqj2BRBYEiwAqfzur0-16AYE21Zo35HZJYxTFy1__i_I2fgJjivVgf8EXDfD9K-1gHHbrRoCUIkQAvD_BwE:G:s&OCID=AID2001446_SEM_CjwKCAjwtqj2BRBYEiwAqfzur0-16AYE21Zo35HZJYxTFy1__i_I2fgJjivVgf8EXDfD9K-1gHHbrRoCUIkQAvD_BwE:G:s)
 e la piattaforma di sviluppo software [GitHub](https://github.com/) 
 per condividere il lavoro tra gli sviluppatori del prodotto.
