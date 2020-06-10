@@ -36,6 +36,8 @@ class Game implements Runnable {
         this.s = s1;
         this.roomId = 0;
         this.gLoader = new GameLoader();
+        isQuit = false;
+        end = false;
     }
 
     public long getId() {
