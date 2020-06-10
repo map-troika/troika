@@ -1,10 +1,10 @@
+
 package it.uniba.controller;
 
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
 /**
  * La classe <code>Server</code> estendendo la classe <code>Thread</code> realizza un multithreading, in questo modo il
@@ -16,7 +16,7 @@ import java.net.UnknownHostException;
  * @author Nicole Stolbovoi
  */
 
-public final class Server implements Runnable {
+public final class Server extends Thread {
 
     static final int MAX_SESSION = 10;
     static final int PORT_NUMBER = 4000;
@@ -29,15 +29,6 @@ public final class Server implements Runnable {
      */
 
     public static void main(final String[] args) throws IOException {
-        //avvia thread server
-        Server server = new Server();
-        server.runThreadServer();
-    }
-
-    @Override
-    public void run() {
-
-
         int count = 0; // 2 ?
         int initialCount = Thread.activeCount(); // 2 ?
         long[] ids = new long[MAX_SESSION];
@@ -47,7 +38,7 @@ public final class Server implements Runnable {
         System.out.println("*** Server Host Name: " + inetAddress.getHostName());
 
         new Server();
-      
+
         try (ServerSocket ss = new ServerSocket(PORT_NUMBER)) {
             System.out.println("*** Listening...");
             System.out.println("*** initialCount = " + initialCount);
@@ -74,10 +65,7 @@ public final class Server implements Runnable {
 
                 System.out.println("*** Connected clients: " + (Thread.activeCount() - initialCount));
                 System.out.println("*** ids count: " + ids[count]);
-
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 }
