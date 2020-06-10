@@ -152,7 +152,7 @@ public class ClientGUI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-        frame.setResizable(false);
+        frame.setResizable(true);
 
         //posiziona frame al centro dello schermo
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
