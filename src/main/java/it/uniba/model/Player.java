@@ -40,4 +40,8 @@ public final class Player {
     public static boolean getIsWinner() {
         return isWinner;
     }
+
+    public static void resetInventory() {
+        inventory = new ArrayList<>();
+    }
 }

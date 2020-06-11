@@ -38,6 +38,9 @@ class Game implements Runnable {
         this.gLoader = new GameLoader();
         isQuit = false;
         end = false;
+        Player.setIsWinner(false);
+        Player.setNItemUse(0);
+        Player.resetInventory();
     }
 
     public long getId() {
