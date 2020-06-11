@@ -152,7 +152,7 @@ Questo software e la sua interfaccia utente possono essere interpretati come un 
 *(Model-View-Controller)*, un modello architettonico che isola l'amministrazione del gioco (business logic - Model), 
 dalla presentazione dei dati (View).
 
-![](res/img/MVC.svg)
+![](MVC.svg)
 >_Diagramma del funzionamento di un'architettura MVC._
 
 <br>
