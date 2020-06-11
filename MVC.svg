@@ -3,60 +3,77 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 200 100" style="enable-background:new 0 0 200 100;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#FFFEC3;stroke:#5A5A5A;stroke-width:0.25;stroke-miterlimit:10;}
-	.st1{fill:#5A5A5A;}
-	.st2{font-family:'MyriadPro-Regular';}
-	.st3{font-size:3.1027px;}
-	.st4{fill:none;stroke:#5A5A5A;stroke-width:0.25;stroke-miterlimit:10;}
+	.st0{fill:#7ACFF5;stroke:#000000;stroke-width:0.25;stroke-miterlimit:10;}
+	.st1{font-family:'MyriadPro-Regular';}
+	.st2{font-size:3.1027px;}
+	.st3{fill:none;stroke:#000000;stroke-width:0.25;stroke-miterlimit:10;}
 </style>
+<rect x="29.3" y="54.9" class="st0" width="12.2" height="6.6"/>
+<g>
+	<text transform="matrix(1 0 0 1 31.3791 59.0791)" class="st1 st2">Model</text>
+</g>
+<rect x="27" y="37.5" class="st0" width="16.7" height="6.6"/>
+<text transform="matrix(1 0 0 1 28.9422 41.644)" class="st1 st2">Controller</text>
+<rect x="87.4" y="30.5" class="st0" width="37.3" height="39.1"/>
+<g>
+	<text transform="matrix(1 0 0 1 114.075 51.3564)" class="st1 st2">View</text>
+</g>
+<rect x="92.8" y="36.4" class="st0" width="15.9" height="10.7"/>
+<g>
+	<text transform="matrix(1 0 0 1 97.4744 40.7333)" class="st1 st2">User </text>
+</g>
+<g>
+	<text transform="matrix(1 0 0 1 94.9744 44.4333)" class="st1 st2">interface</text>
+</g>
+<rect x="92.8" y="53" class="st0" width="15.9" height="10.7"/>
+<g>
+	<text transform="matrix(1 0 0 1 96.5896 57.3208)" class="st1 st2">Model</text>
+</g>
+<g>
+	<text transform="matrix(1 0 0 1 96.0896 61.0208)" class="st1 st2">display</text>
+</g>
+<circle class="st0" cx="168.3" cy="42.5" r="2.9"/>
+<line class="st3" x1="168.3" y1="45.5" x2="168.3" y2="55.9"/>
+<g>
+	<line class="st3" x1="168.3" y1="55.9" x2="163.6" y2="60.5"/>
+	<line class="st3" x1="168.3" y1="55.9" x2="172.9" y2="60.5"/>
+</g>
+<line class="st3" x1="163.6" y1="49.4" x2="172.9" y2="49.4"/>
+<line class="st3" x1="92.8" y1="41.7" x2="43.7" y2="41.7"/>
 <g>
 	<g>
-		<rect x="29.3" y="54.9" class="st0" width="12.2" height="6.6"/>
-		<text transform="matrix(1 0 0 1 31.3791 59.0791)" class="st1 st2 st3">Model</text>
+		<line class="st3" x1="43.7" y1="41.7" x2="46.1" y2="44"/>
+		<line class="st3" x1="43.7" y1="41.7" x2="46.1" y2="39.4"/>
 	</g>
+</g>
+<g>
 	<g>
-		<rect x="27" y="37.5" class="st0" width="16.7" height="6.6"/>
-		<text transform="matrix(1 0 0 1 28.9422 41.644)" class="st1 st2 st3">Controller</text>
-	</g>
-	<rect x="87.4" y="30.5" class="st0" width="37.3" height="39.1"/>
-	<text transform="matrix(1 0 0 1 114.075 51.3564)" class="st1 st2 st3">View</text>
-	<rect x="92.8" y="36.4" class="st0" width="15.9" height="10.7"/>
-	<text transform="matrix(1 0 0 1 97.4744 40.7333)" class="st1 st2 st3">User </text>
-	<text transform="matrix(1 0 0 1 94.9744 44.4333)" class="st1 st2 st3">interface</text>
-	<rect x="92.8" y="53" class="st0" width="15.9" height="10.7"/>
-	<text transform="matrix(1 0 0 1 96.5896 57.3208)" class="st1 st2 st3">Model</text>
-	<text transform="matrix(1 0 0 1 96.0896 61.0208)" class="st1 st2 st3">display</text>
-	<g>
-		<circle class="st0" cx="168.3" cy="42.5" r="2.9"/>
-		<line class="st4" x1="168.3" y1="45.5" x2="168.3" y2="55.9"/>
+		<line class="st3" x1="35.4" y1="44" x2="35.4" y2="54.8"/>
 		<g>
-			<line class="st4" x1="168.3" y1="55.9" x2="163.6" y2="60.5"/>
-			<line class="st4" x1="168.3" y1="55.9" x2="172.9" y2="60.5"/>
-		</g>
-		<line class="st4" x1="163.6" y1="49.4" x2="172.9" y2="49.4"/>
-	</g>
-	<line class="st4" x1="92.8" y1="41.7" x2="43.7" y2="41.7"/>
-	<g>
-		<line class="st4" x1="43.7" y1="41.7" x2="46.1" y2="44"/>
-		<line class="st4" x1="43.7" y1="41.7" x2="46.1" y2="39.4"/>
-	</g>
-	<g>
-		<line class="st4" x1="35.4" y1="44" x2="35.4" y2="54.8"/>
-		<g>
-			<line class="st4" x1="35.4" y1="54.8" x2="37.7" y2="52.4"/>
-			<line class="st4" x1="35.4" y1="54.8" x2="33" y2="52.4"/>
+			<line class="st3" x1="35.4" y1="54.8" x2="37.7" y2="52.4"/>
+			<line class="st3" x1="35.4" y1="54.8" x2="33" y2="52.4"/>
 		</g>
 	</g>
-	<line class="st4" x1="157.6" y1="41.8" x2="108.7" y2="41.8"/>
+</g>
+<line class="st3" x1="157.6" y1="41.8" x2="108.7" y2="41.8"/>
+<g>
 	<g>
-		<line class="st4" x1="108.7" y1="41.7" x2="111" y2="44"/>
-		<line class="st4" x1="108.7" y1="41.7" x2="111" y2="39.4"/>
+		<line class="st3" x1="108.7" y1="41.7" x2="111" y2="44"/>
+		<line class="st3" x1="108.7" y1="41.7" x2="111" y2="39.4"/>
 	</g>
-	<line class="st4" x1="108.7" y1="58.2" x2="157.6" y2="58.2"/>
+</g>
+<line class="st3" x1="108.7" y1="58.2" x2="157.6" y2="58.2"/>
+<g>
 	<g>
-		<line class="st4" x1="157.6" y1="58.2" x2="155.4" y2="55.9"/>
-		<line class="st4" x1="157.6" y1="58.2" x2="155.4" y2="60.6"/>
+		<line class="st3" x1="157.6" y1="58.2" x2="155.4" y2="55.9"/>
+		<line class="st3" x1="157.6" y1="58.2" x2="155.4" y2="60.6"/>
 	</g>
-	<line class="st4" x1="41.4" y1="58.3" x2="92.6" y2="58.3"/>
+</g>
+<line class="st3" x1="41.4" y1="58.3" x2="92.6" y2="58.3"/>
+<g>
+	<g>
+		<line class="st3" x1="92.6" y1="58.2" x2="90.3" y2="55.9"/>
+		<line class="st3" x1="92.6" y1="58.2" x2="90.3" y2="60.7"/>
+	</g>
 </g>
 </svg>
