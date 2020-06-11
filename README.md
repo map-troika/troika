@@ -165,7 +165,7 @@ effettuando chiamate sugli oggetti del Model e modificando lo stato degli altri 
 sulla posizione corrente del giocatore.</p>
 
 ## <span id = "3.2">3.2 Rappresentazione dell’architettura</span> 
-![](unibaPackageDiagram3.svg)
+![](package1.png)
 >_Diagramma dei package di uniba._
 
 <br>
