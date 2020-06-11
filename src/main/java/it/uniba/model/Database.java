@@ -1,4 +1,4 @@
-package it.uniba.controller;
+package it.uniba.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
