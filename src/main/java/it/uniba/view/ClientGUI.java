@@ -4,10 +4,7 @@ import javax.swing.*;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.html.HTMLDocument;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.io.IOException;
 
 
@@ -29,10 +26,44 @@ public class ClientGUI {
 
     HTMLDocument document; //documento componente JtextPane
 
-    private final int NUM_MAX_LENGHT_CHAR_JTP=40;
+    private final int NUM_MAX_LENGHT_CHAR_JTP=40; //costante numero massimo caratteri textArea
+
+    private static final String TEXT_SUBMIT = "text-submit";
+    private static final String INSERT_BREAK = "insert-break";
 
     public ClientGUI() {
         this.startGUI();
+
+
+    }
+
+    public void startGUI() {
+
+        JFrame frame = new JFrame("Client");
+        frame.setContentPane(this.mainPanel);
+
+
+
+
+
+        //setta JtextPane per formato html
+        formattedOutputClient.setContentType("text/html");
+
+        //setta colore text input area
+        textUserInputArea.setBackground(new Color(219, 241, 255));
+        textUserInputArea.requestFocusInWindow();
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+        frame.setResizable(true);
+
+        //posiziona frame al centro dello schermo
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
+        int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
+        frame.setLocation(x, y);
+
 
         //inizializza documento rendering di stampa
         document = (HTMLDocument) formattedOutputClient.getStyledDocument();
@@ -63,6 +94,16 @@ public class ClientGUI {
 
             }
         });
+
+        /**
+         * focus sulla text area all'apertura della finestra
+         */
+        frame.addWindowFocusListener(new WindowAdapter() {
+            public void windowGainedFocus(WindowEvent e) {
+                textUserInputArea.requestFocusInWindow();
+            }
+        });
+
         endSessionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -137,6 +178,34 @@ public class ClientGUI {
         });
 
         /**
+         * Listener per riconoscere pressione del tasto invio all'interno della jtextPane
+         *
+         * l'evento del tasto invio in questo modo non avvierà l'operazione di new line "on enter"
+         */
+        InputMap input = textUserInputArea.getInputMap();
+        KeyStroke enter = KeyStroke.getKeyStroke("ENTER");
+        KeyStroke shiftEnter = KeyStroke.getKeyStroke("shift ENTER");
+        input.put(shiftEnter, INSERT_BREAK);  // input.get(enter)) = "insert-break"
+        input.put(enter, TEXT_SUBMIT);
+
+        ActionMap actions = textUserInputArea.getActionMap();
+        actions.put(TEXT_SUBMIT, new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (client != null) {
+                    client.sendRequestToServer(textUserInputArea.getText());
+                    textUserInputArea.setText(""); //pulisci testo input
+                } else {
+                    appendText("<br><font color='orange' face=\"Agency FB\"><b>" +
+                            "Attenzione:" +
+                            "</b></font> " +
+                            "comando non disponbile, avvia una partita");
+                }
+
+            }
+        });
+
+        /**
          * listender per verificare limite caratteri
          */
         textUserInputArea.addKeyListener(new KeyAdapter() {
@@ -146,29 +215,6 @@ public class ClientGUI {
                     e.consume();
             }
         });
-    }
-
-    public void startGUI() {
-
-        JFrame frame = new JFrame("Client");
-        frame.setContentPane(this.mainPanel);
-
-        //setta JtextPane per formato html
-        formattedOutputClient.setContentType("text/html");
-
-        //setta colore text input area
-        textUserInputArea.setBackground(new Color(219, 241, 255));
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-        frame.setResizable(true);
-
-        //posiziona frame al centro dello schermo
-        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-        int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
-        int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
-        frame.setLocation(x, y);
     }
 
 
@@ -226,5 +272,8 @@ public class ClientGUI {
         //update della GUI
         endSessionButton.setEnabled(false);
         startClientButton.setEnabled(true);
+
+
+        client = null;
     }
 }

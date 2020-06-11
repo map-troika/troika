@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class LoginRequestGUI implements Runnable {
     private boolean isdataConfirmed = false;
@@ -22,15 +24,17 @@ public class LoginRequestGUI implements Runnable {
         confermaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //bottone conferma premuto
-                stringUserResponse = textFieldCredenziale.getText(); //set variabile credenziale inserita
+                confirmCredential();
+            }
+        });
 
-                //dati inseriti il thread può terminare
-                isdataConfirmed = true;
-
-                //distruggi finestra
-                frame.setVisible(false);
-                frame.dispose();
+        textFieldCredenziale.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER)
+                {
+                    confirmCredential();
+                }
             }
         });
     }
@@ -38,7 +42,6 @@ public class LoginRequestGUI implements Runnable {
     public void startGUI (String title) {
         frame = new JFrame(title);
         frame.setContentPane(this.mainPanel);
-
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         frame.pack();
@@ -56,6 +59,21 @@ public class LoginRequestGUI implements Runnable {
         return stringUserResponse;
     }
 
+    private void confirmCredential () {
+        //bottone conferma premuto
+        stringUserResponse = textFieldCredenziale.getText(); //set variabile credenziale inserita
+
+        //dati inseriti il thread può terminare
+        isdataConfirmed = true;
+
+        //distruggi finestra
+        frame.setVisible(false);
+        frame.dispose();
+    }
+
+    /**
+     * codice del thread loginRequest
+     */
     @Override
     public void run() {
         while (!isdataConfirmed) {
