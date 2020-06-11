@@ -95,7 +95,7 @@ public final class ClientGUIVersion implements Runnable {
                     cGUI.clearOutputText();
                     cGUI.appendText(
                             response.replaceAll("\u001B\\[2J\u001B\\[H", "")
-                            .replaceAll("(?<=\\{).*?(?=\\})", "")
+                            .replaceAll("\\{[^{}]*}", "")
                     );
                     //cGUI.appendText("<br>" + "command (help): ");
                 }

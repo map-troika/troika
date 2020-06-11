@@ -6,12 +6,14 @@ import javax.swing.text.html.HTMLDocument;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
+
+
 
 public class ClientGUI {
     private JPanel mainPanel;
-
-
     private JButton startClientButton;
     private JButton endSessionButton;
     private JScrollPane scrollBar;
@@ -25,7 +27,9 @@ public class ClientGUI {
 
     private ClientGUIVersion client; //classe operazioni Client
 
-    HTMLDocument document; //documento componente text
+    HTMLDocument document; //documento componente JtextPane
+
+    private final int NUM_MAX_LENGHT_CHAR_JTP=40;
 
     public ClientGUI() {
         this.startGUI();
@@ -129,6 +133,17 @@ public class ClientGUI {
                             "</b></font> " +
                             "comando non disponbile, avvia una partita");
                 }
+            }
+        });
+
+        /**
+         * listender per verificare limite caratteri
+         */
+        textUserInputArea.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if (textUserInputArea.getText().length() >= NUM_MAX_LENGHT_CHAR_JTP ) // limita caratteri
+                    e.consume();
             }
         });
     }
