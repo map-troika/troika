@@ -82,7 +82,7 @@ Questa applicazione fornisce le seguenti funzionalità:
 | Lasciare un articolo | Al comando <code>leave</code> l'applicazione deve lasciare l'articolo nella stanza corrente, <br>rimuovendolo dall'inventario, se non ci sono oggetti è mostrato il messaggio <br><code>Nel tuo inventario non è presente l'oggetto</code> |
 | Combattere un personaggio | Al comando <code>fight</code> l'applicazione deve sconfiggere il personaggio. |
 | Mostrare l'inventario | Al comando <code>inventory</code> l'applicazione deve mostrare la lista degli articoli raccolti. |
-| Chiudere il gioco | Al comando <code>quit</code> l'applicazione si deve chiude e compare il prompt del <br>sistema operativo. |
+| Chiudere il gioco | Al comando <code>quit</code> l'applicazione si deve chiude e compare il prompt del sistema <br>operativo. |
 
 ## <span id = "2.2">2.2 Requisiti non funzionali</span>  
 I NFR *(Non Functional Requirement)* descrivono le caratteristiche di qualità del prodotto software da sviluppare, i 
