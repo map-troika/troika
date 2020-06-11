@@ -1,4 +1,4 @@
-package it.uniba.controller;
+package it.uniba.model;
 
 import it.uniba.model.Item;
 import it.uniba.model.Room;
@@ -14,12 +14,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Boundary Class
- *
- * La classe implementa metodo per estrarre e inizializzare i dati del plot da un file di configurazione,
- * mettendo a disposizione dei metodi per ottenere gli oggetti del plot inizializzati
+ *  <p><code>Entity</code></p> La classe <code>Plot</code> implementa metodo per estrarre e inizializzare
+ *  i dati del plot da un file di configurazione, mettendo a disposizione dei metodi per ottenere
+ *  gli oggetti del plot inizializzati
  */
-public class GameLoader {
+public class Plot {
     private HashMap<String, Item> plotItems;
     private HashMap<Integer, Room> plotRooms;
     private HashMap<String, String> plotCommands;
@@ -31,7 +30,7 @@ public class GameLoader {
     /**
      * Costruttore, inizializza le strutture dati e avvia l'estrazione del file Yaml
      */
-    public GameLoader() {
+    public Plot() {
         plotItems = new HashMap<String, Item>();
         plotRooms = new HashMap<Integer, Room>();
         plotCommands = new HashMap<String, String>();

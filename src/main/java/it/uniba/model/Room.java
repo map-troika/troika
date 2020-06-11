@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-
+/**
+ * <p><code>Entity</code></p> La classe <code>Room</code> rappresenta una stanza della mappa.
+ * Questa classe contiene per verificare gli attributi di una stanza.
+ */
 public class Room {
 
     private int id;
