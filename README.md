@@ -21,13 +21,20 @@
  5. [Polimorfismo per inclusione](#4.5)     
  6. [Polimorfismo parametrico](#4.6)     
 
-### 5. [Riepilogo del test](#5)   
- 1. [Analisi statica del codice](#5.1)   
-     1.1 [Checkstyle](#5.1.1)  
+### 5. [Contenuti rilevanti](#5)        
+ 1. [Trattamento delle eccezioni](#5.1)          
+ 2. [I/O da file](#5.2)          
+ 3. [Connessione a database](#5.3)     
+ 4. [GUI mediante SWING](#5.4)     
+ 5. [Client-server multithreading](#5.5)     
 
-### 6. [Processo di sviluppo e organizzazione del lavoro](#8)  
-  1. [Product backlog](#6.1)  
-  2. [Strumenti di lavoro](#6.2)
+### 6. [Riepilogo del test](#6)   
+ 1. [Analisi statica del codice](#6.1)   
+     1.1 [Checkstyle](#6.1.1)  
+
+### 7. [Processo di sviluppo e organizzazione del lavoro](#7)  
+  1. [Product backlog](#7.1)  
+  2. [Strumenti di lavoro](#7.2)
        
 # <span id = "1">1. Introduzione</span> 
 <p>Questo documento è una relazione tecnica finale per il progetto che implementa il gioco <em>Il Labirinto di Cnosso</em> 
@@ -272,14 +279,26 @@ volta, rendendo il codice più leggibile, snello e facilmente manutenibile.
 
 <a href="#top">Torna all'inizio</a>
  
-# <span id = "5">5. Riepilogo del test</span> 
+# <span id = "5">5. Contenuti rilevanti</span> 
+
+## <span id = "5.1">5.1 Trattamento delle eccezioni</span>
+
+## <span id = "5.2">5.2 I/O da file</span>
+
+## <span id = "5.3">5.3 Connessione a database</span>
+
+## <span id = "5.4">5.4 GUI mediante SWING</span>
+
+## <span id = "5.5">5.5 Client-server multithreading</span>
+
+# <span id = "6">6. Riepilogo del test</span> 
 Questa sezione espone i risultati e le modalità con cui è stato testato il software.
-## <span id = "5.1">5.1 Analisi statica del codice</span>
+## <span id = "6.1">6.1 Analisi statica del codice</span>
 
 L'analisi statica del codice è l'analisi del software che viene eseguita senza l'esecuzione del programma. 
 In questo caso l'analisi viene eseguita da strumenti automatizzati.
 
-### <span id = "5.1.1">5.1.1 Checkstyle</span>
+### <span id = "6.1.1">6.1.1 Checkstyle</span>
 Il tool di *Checkstyle* ha permesso di scoprire e correggere violazioni dello stile di programmazione. 
 <br><br>
 Tutte le violazioni sono state risolte nelle classi del <code>main</code> <br><br>
@@ -288,10 +307,10 @@ Tutte le violazioni sono state risolte nelle classi del <code>main</code> <br><b
 >_Risultato di Checkstyle del main._
 
   
-# <span id = "6">6. Processo di sviluppo e organizzazione del lavoro</span>
+# <span id = "7">7. Processo di sviluppo e organizzazione del lavoro</span>
 Questa sezione descrive i metodi e la dinamica per lo sviluppo del software.
 
-### <span id = "6.1">6.1 Product backlog</span>
+### <span id = "7.1">7.1 Product backlog</span>
 
 ![](res/img/productbacklog.PNG)
 >_Parte della product backlog del gruppo Thacker._ 
@@ -305,7 +324,7 @@ la loro comprensione del sistema e del suo contesto.
 **N.B.:** non tutte le _user story_ della product backlog 
 sono state implementate, dando la priorità a quelle previste per gli _sprint goal_.
 
-## <span id = "6.2">6.2 Strumenti di lavoro</span>
+## <span id = "7.2">7.2 Strumenti di lavoro</span>
 Questo gruppo ha utilizzato principalmente l'hub di collaborazione [Microsoft Teams](https://www.microsoft.com/it-it/microsoft-365/microsoft-teams/group-chat-software?&ef_id=CjwKCAjwtqj2BRBYEiwAqfzur0-16AYE21Zo35HZJYxTFy1__i_I2fgJjivVgf8EXDfD9K-1gHHbrRoCUIkQAvD_BwE:G:s&OCID=AID2001446_SEM_CjwKCAjwtqj2BRBYEiwAqfzur0-16AYE21Zo35HZJYxTFy1__i_I2fgJjivVgf8EXDfD9K-1gHHbrRoCUIkQAvD_BwE:G:s)
 e la piattaforma di sviluppo software [GitHub](https://github.com/) 
 per condividere il lavoro tra gli sviluppatori del prodotto.
