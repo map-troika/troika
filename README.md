@@ -137,7 +137,7 @@ requisiti di sistema/ambiente, le tecnologie e gli standard di cui il software d
   </tr>
   <tr>
     <td>Installabilità</td>
-    <td> L'unico software da installare per far funzionare l'applicazione è Docker che consente di creare ed eseguire container su Linux, Windows e macOS.</td>
+    <td> Il pacchetto JDK 11 è installabile sui sistemi operativi Windows NT, macOS, Linux e Oracle Solaris.</td>
   </tr>
 </tbody>
 </table>  
