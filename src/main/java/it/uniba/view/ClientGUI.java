@@ -81,12 +81,11 @@ public class ClientGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 client = new ClientGUIVersion();
+                startClientButton.setEnabled(false); //disabilita tasto start
                 try {
                     client.runThreadClient();
 
-                    //update della GUI
-                    endSessionButton.setEnabled(true);
-                    startClientButton.setEnabled(false);
+
                 } catch (InterruptedException interruptedException) {
                     interruptedException.printStackTrace();
                 }
@@ -275,5 +274,11 @@ public class ClientGUI {
 
 
         client = null;
+    }
+
+    public void startSession () {
+        //update della GUI
+        endSessionButton.setEnabled(true);
+
     }
 }

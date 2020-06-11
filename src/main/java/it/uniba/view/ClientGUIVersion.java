@@ -54,6 +54,8 @@ public final class ClientGUIVersion implements Runnable {
 
 
             while (!quitThread) {
+                cGUI.startSession(); //avvia sessione lato GUI
+
                 //jframe inserimento credenziali
                 LoginRequestGUI credentialRequestGUI;
 
@@ -92,6 +94,7 @@ public final class ClientGUIVersion implements Runnable {
                     cGUI.quitSession();
                     quitThread = true;
                 } else {
+                    System.out.println("provaaaaa");
                     cGUI.clearOutputText();
                     cGUI.appendText(
                             response.replaceAll("\u001B\\[2J\u001B\\[H", "")
@@ -113,13 +116,23 @@ public final class ClientGUIVersion implements Runnable {
 
         } catch (Exception e) {
             cGUI.appendText("\n" + "<br>" + e.getMessage());
+
+            cGUI.appendText("<br>sessione terminata");
+            cGUI.quitSession();
+
+
+
+            closeServerComunications();
         }
     }
 
     public void sendRequestToServer(String userRequest) {
         // Send messaggio letto dal console a view
         userRequest = Base64.getEncoder().encodeToString(userRequest.getBytes());
-        sps.println(userRequest);
+        if(sps!=null)
+        {
+            sps.println(userRequest);
+        }
     }
 
     public void closeServerComunications() {
