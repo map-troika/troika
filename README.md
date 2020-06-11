@@ -71,7 +71,7 @@ Questa applicazione fornisce le seguenti funzionalità:
 | Requisito | Descrizione |
 |--|--|
 | Mostrare l'elenco dei comandi | Al comando <code>help</code> l'applicazione deve mostrare una lista di comandi, uno per riga. |
-| Iniziare una nuova partita | Al Run del <code>Client</code> parte l'applicazione, nella GUI dopo aver cliccato sul botton <code>Inizia partita</code>|
+| Iniziare una nuova partita | Al Run del <code>Client</code> parte l'applicazione, nella GUI dopo aver cliccato sul button <br><code>Inizia partita</code>|
 | Mostrare la posizione | Al comando <code>position</code>, l'applicazione deve mostrare il nome della stanza in cui si <br>trova il giocatore. |
 | Muovere a Nord | Al comando <code>north</code> l'applicazione deve muovere il giocatore verso Nord, se l'uscita<br> non è valida è mostrato il messaggio <code>C'è un muro da questa parte!</code> e l'applicazione<br> rimane in attesa di un comando valido. |
 | Muovere a Sud | Al comando <code>south</code> l'applicazione deve muovere il giocatore verso Sud, se l'uscita<br> non è valida è mostrato il messaggio <code>C'è un muro da questa parte!</code> e l'applicazione<br> rimane in attesa di un comando valido. |
@@ -79,7 +79,7 @@ Questa applicazione fornisce le seguenti funzionalità:
 | Muovere a Ovest | Al comando <code>west</code> l'applicazione deve muovere il giocatore verso Ovest, se l'uscita<br> non è valida è mostrato il messaggio <code>C'è un muro da questa parte!</code> e l'applicazione<br> rimane in attesa di un comando valido. |
 | Prendere un articolo | Al comando <code>take</code> l'applicazione deve prendere l'articolo, porlo nell'inventario ed<br> eliminarlo dalla stanza, se non ci sono oggetti è mostrato il messaggio <code>In questa</code><br> <code>stanza non è presente l'oggetto</code> e l'applicazione rimane in attesa di un comando<br> valido. |
 | Usare un articolo | Al comando <code>use</code> l'applicazione deve usare le proprietà dell'articolo, se non ci <br>sono oggetti è mostrato il messaggio <code>Nel tuo inventario non è presente l'oggetto</code> <br>e l'applicazione rimane in attesa di un comando valido. E possibile usare al massimo <br>due articoli contemporaneamente |
-| Lasciare un articolo | Al comando <code>leave</code> l'applicazione deve lasciare l'articolo nella stanza corrente, rimuovendolo dall'inventario, se non ci <br>sono oggetti è mostrato il messaggio <code>Nel tuo inventario non è presente l'oggetto</code> |
+| Lasciare un articolo | Al comando <code>leave</code> l'applicazione deve lasciare l'articolo nella stanza corrente, <br>rimuovendolo dall'inventario, se non ci <br>sono oggetti è mostrato il messaggio <code>Nel tuo inventario non è presente l'oggetto</code> |
 | Combattere un personaggio | Al comando <code>fight</code> l'applicazione deve sconfiggere il personaggio. |
 | Mostrare l'inventario | Al comando <code>inventory</code> l'applicazione deve mostrare la lista degli articoli raccolti. |
 | Chiudere il gioco | Al comando <code>quit</code> l'applicazione si deve chiude e compare il prompt del <br>sistema operativo. |
