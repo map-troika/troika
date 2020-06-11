@@ -165,18 +165,19 @@ effettuando chiamate sugli oggetti del Model e modificando lo stato degli altri 
 sulla posizione corrente del giocatore.</p>
 
 ## <span id = "3.2">3.2 Rappresentazione dell’architettura</span> 
-![](res/img/unibaPackageDiagram3.svg)
+![](unibaPackageDiagram3.svg)
 >_Diagramma dei package di uniba._
 
 <br>
-Il <code>Package main</code>, che si occupa di avviare una partita, è messo in relazione con il 
-<code>Package gameController</code> per il suo compito di iniziare e contestualizzare il gioco, e verificare l'input 
-ricevuto dall'utente. 
-<p>Questo è connesso con il <code>Package gameElements</code> per permettere di istanziare gli elementi di una partita, 
-come i pezzi e la scacchiera. 
-<p>La dipendenza diretta con il <code>Package subTypeMenu</code> è data dalla possibilità che specifici comandi siano o 
-meno validi in un dato contesto di gioco.
-
+Il <code>Package controller</code>, che si occupa di avviare una partita per ogni connessione del <code>Client</code> al
+<code>Server</code> e verificare l'input ricevuto dall'utente, ha una dipendenza diretta con il <code>Package model</code>
+per permettere:
+ 
+ - di istanziare gli elementi di una partita come una <code>Room</code> o un <code>Item</code>;
+ 
+ - che specifici comandi della <code>Plot</code> estratti da un dato file YAML siano o meno validi attraverso il 
+ <code>Parser</code>
+ 
 <p><a href="#top">Torna all'inizio</a>
 
 # <span id = "4">4. OO Design</span>  
