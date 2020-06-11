@@ -1,4 +1,4 @@
-package it.uniba.controller;
+package it.uniba.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.DriverManager;
 
 /**
- * La classe <code>Database</code> consente di accedere ad un database SQLite tramite il protocollo JDBC.
+ * <p><code>Entity</code></p> La classe <code>Database</code> consente di accedere ad un database SQLite tramite il protocollo JDBC.
  *
  * @author Nicole Stolbovoi
  */

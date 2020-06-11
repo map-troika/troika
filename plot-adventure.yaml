@@ -6,28 +6,28 @@ commands:
   - name: back
     pattern: "back|b"
   - name: quit
-    pattern: "quit|q"
+    pattern: "quit|esc.*"
   - name: home
-    pattern: "home|h"
+    pattern: "home|casa"
 
   - name: prendo    # item
-    pattern: "prend.*|racco.*"
+    pattern: "prend.*|racco.*|take"
   - name: uso       # item
-    pattern: "us.*"
+    pattern: "us.*|use"
   - name: lascio    # item
-    pattern: "lasci.*|pos"
+    pattern: "lasci.*|leave"
   - name: aiuto     # help menu
     pattern: "aiuto|aiut.*"
   - name: posizione # restituisce la stanza corrente
     pattern: "posizione|pos|dove"
   - name: inventario    # mostra gli items
-    pattern: "inventario"
+    pattern: "inventario|inventory"
   - name: osservo   # restituisce descrizione degli oggetti presenti nella stanza e numero di uscite
     pattern: "osserv.*|oss"
   - name: indietro  # torna nella stanza precedente
     pattern: "indietro|indietr.*"
   - name: combatto  # minotauro
-    pattern: "combatt.*|sconfigg.*|uccid.*"
+    pattern: "combatt.*|sconfigg.*|uccid.*|fight"
   - name: nord
     pattern: "nord|north"
   - name: est
@@ -40,19 +40,19 @@ commands:
 # articoli disponibili in questo gioco
 items:
   - name: gomitolo
-    pattern: "gomitolo|gom"
+    pattern: "gomitolo|gom|clew"
     description: |
       per terra cè un gomitolo, potrebbe aiutarti a tornare sui tuoi passi
     isEnemy: false
     isWeapon: false
   - name: minotauro
-    pattern: "minotauro|min"
+    pattern: "minotauro|min|minotaur"
     description: |
       hai di fronte il minotauro, pronto all'attacco
     isEnemy: true
     isWeapon: false
   - name: spada
-    pattern: "spada|spad"
+    pattern: "spada|spad|sword"
     description: |
       in lontananza cè una spada, degna dei più nobili guerrieri
     isEnemy: false

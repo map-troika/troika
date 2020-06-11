@@ -133,7 +133,6 @@ class Game implements Runnable {
                     case "nord":
                     case "est":
                     case "ovest":
-
                         if (Action.goTo(roomId, cp[0])) {
                             response = printRoom(roomId);
                         } else {
@@ -261,6 +260,7 @@ class Game implements Runnable {
 
         out += "-".repeat(titleWithNoTag.length()) + "\n"; // separatori lunghezza titolo
         out += gLoader.getPlotRooms().get(id1).getDescription() + "\n";
+
         return out;
     }
 }
