@@ -82,7 +82,7 @@ rooms:
     title: ""
     # http://patorjk.com/software/taag/#p=display&h=0&v=1&f=Calvin%20S&t=IL%20LABIRINTO%20DI%20CNOSSO%0A------------------%0A
     descr: |
-      <font face="Agency FB" size="10"><b>IL LABIRINTO DI CNOSSO</b></font>
+      <font face="Agency FB" size="10"><b>[IL LABIRINTO DI CNOSSO]</b></font>
       <hr>
       <br>
       {
@@ -90,25 +90,27 @@ rooms:
       ║║    ║  ╠═╣╠╩╗║╠╦╝║║║║ ║ ║ ║   ║║║  ║  ║║║║ ║╚═╗╚═╗║ ║
       ╩╩═╝  ╩═╝╩ ╩╚═╝╩╩╚═╩╝╚╝ ╩ ╚═╝  ═╩╝╩  ╚═╝╝╚╝╚═╝╚═╝╚═╝╚═╝
       ──────────────────────────────────────────────────────}
-      <font color='red' face="Agency FB" size="6"><b>L'impresa di Tesèo contro il Minotauro</b></font>
+      <font color='red' face="Agency FB" size="6"><b>L'impresa di Tesèo contro il Minotauro</b></font><br>
       <br>
-      <br>
-      <font color='red' face="Agency FB"><b>BENVENUTO!</b></font>
-      Sull’isola di Creta, nel periodo del regno di Minosse, in seguito ad un’offesa fatta ad Afrodite nasce un figlio mostruoso,<br>
-      metà uomo e metà toro, il Minotauro. Minosse lo imprigiona in un labirinto e, per sfamarlo, impone alle città sotto la sua<br>
-      dominazione un tributo annuale di sette fanciulle e sette fanciulli. Un anno, però, tra loro viene condotto il principe di Atene,<br>
-      Tesèo, che non vuole arrendersi al tragico destino e tenterà di sconfiggere il letale <font color='red' face="Agency FB"><b>mostro</b></font>.<br>
-      <br>
+      <font color='red' face="Agency FB"><b>BENVENUTO!</b></font><font face="Agency FB" size="5"><b> Sull’isola di Creta, nel periodo del regno di Minosse, in seguito ad<br>
+      un’offesa fatta ad Afrodite nasce un figlio mostruoso, metà uomo e metà toro,<br>
+      il Minotauro. Minosse lo imprigiona in un labirinto e, per sfamarlo, impone<br>
+      alle città sotto la sua dominazione un tributo annuale di sette fanciulle e<br>
+      sette fanciulli. Un anno, però, tra loro viene condotto il principe di Atene,<br>
+      Tesèo, che non vuole arrendersi al tragico destino e tenterà di sconfiggere il<br>
+      letale mostro.<br><br>
+
       Sei nel giardino profumato che costeggia il labirinto, a sud si scorge un<br>
-      ingresso malridotto...<br>
+      ingresso malridotto...<br></b></font>
     exits:
       sud: 1
 
   - id: 1
     title: <font face="Agency FB" size="6"><b>Ala d'ingresso</b></font><hr>
     descr: |
-      Sei nell'ala d'ingresso e non sai cosa fare, la stanza è buia e sul lato est si intravede
-      una porta piuttosto grande, a nord si intravedono ancora i fiori del giardino...
+      Sei nell'ala d'ingresso e non sai cosa fare, la stanza è buia e sul lato est<br>
+      si intravede una porta piuttosto grande, a nord si intravedono ancora i fiori<br>
+      del giardino...<br>
     items:
       - gomitolo
     exits:
@@ -118,8 +120,8 @@ rooms:
   - id: 2
     title: Ala del bivio
     descr: |
-      Che stanza tetra! Segui il tuo istinto, ci sono tre  passaggi: ad ovest,
-      sud ed est...
+      Che stanza tetra! Segui il tuo istinto, ci sono tre  passaggi: ad ovest,<br>
+      sud ed est...<br>
     exits:
       ovest: 1
       sud: 3
@@ -128,8 +130,9 @@ rooms:
   - id: 3
     title: Ala della spada
     descr: |
-      Ehi! Sei nell'ala della spada...potresti trovare un' arma degna di un guerriero, se nessuno ti ha preceduto!
-      Questa stanza sembra non avere altre uscite oltre quella a nord per tornare indietro...
+      Ehi! Sei nell'ala della spada...potresti trovare un' arma degna di un<br>
+      guerriero, se nessuno ti ha preceduto! Questa stanza sembra non avere<br>
+      altre uscite oltre quella a nord per tornare indietro...<br>
     items:
       - spada
     exits:
@@ -138,9 +141,9 @@ rooms:
   - id: 4
     title: Ala del grande passo
     descr: |
-      Verso nord si riescono già a sentire dei versi spaventosi, vai pure
-      se ti senti pronto... Altrimenti procedi verso ovest per tornare
-      nell'Ala del bivio o verso sud...
+      Verso nord si riescono già a sentire dei versi spaventosi, vai pure<br>
+      se ti senti pronto... Altrimenti procedi verso ovest per tornare<br>
+      nell'Ala del bivio o verso sud...<br>
     exits:
       nord: 5
       sud: 6
@@ -149,9 +152,9 @@ rooms:
   - id: 5
     title: Stanza della battaglia
     descr: |
-      GULP! Sei davanti ad un'enorme ombra che soffia fiato dal naso umido...
-      fagli vedere di che pasta sei fatto con la tua preziosa spada...
-      Altrimenti torna verso sud finchè sei ancora in tempo!
+      GULP! Sei davanti ad un'enorme ombra che soffia fiato dal naso umido...<br>
+      fagli vedere di che pasta sei fatto con la tua preziosa spada...<br>
+      Altrimenti torna verso sud finchè sei ancora in tempo!<br>
       {
                      -*@*                      *@*-
                    -@WW*                        *WW@-
@@ -181,7 +184,7 @@ rooms:
   - id: 6
     title: Ala finale
     descr: |
-      Ora che non puoi più scoprire nuove stanze dovresti iniziare a pensare
-      a come uscire da qui...
+      Ora che non puoi più scoprire nuove stanze dovresti iniziare a pensare<br>
+      a come uscire da qui...<br>
     exits:
       nord: 4

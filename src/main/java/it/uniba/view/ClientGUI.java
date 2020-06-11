@@ -26,7 +26,7 @@ public class ClientGUI {
 
     HTMLDocument document; //documento componente JtextPane
 
-    private final int NUM_MAX_LENGHT_CHAR_JTP=40; //costante numero massimo caratteri textArea
+    private final int NUM_MAX_LENGHT_CHAR_JTA=40; //costante numero massimo caratteri textArea
 
     private static final String TEXT_SUBMIT = "text-submit";
     private static final String INSERT_BREAK = "insert-break";
@@ -210,7 +210,7 @@ public class ClientGUI {
         textUserInputArea.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-                if (textUserInputArea.getText().length() >= NUM_MAX_LENGHT_CHAR_JTP ) // limita caratteri
+                if (textUserInputArea.getText().length() >= NUM_MAX_LENGHT_CHAR_JTA) // limita caratteri
                     e.consume();
             }
         });

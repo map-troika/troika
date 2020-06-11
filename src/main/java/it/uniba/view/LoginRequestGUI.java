@@ -11,30 +11,43 @@ public class LoginRequestGUI implements Runnable {
     private boolean isdataConfirmed = false;
 
     private JPanel mainPanel;
-    private JTextField textFieldCredenziale;
-    private JButton confermaButton;
+    private JTextField textFieldCredential;
+    private JButton confirmButton;
     private JLabel requestedValue;
 
     private JFrame frame;
 
     private String stringUserResponse = "error";
 
+    private final int NUM_MAX_LENGHT_CHAR_JTP=40; //costante numero massimo caratteri textArea
+
     public LoginRequestGUI (String title) {
         this.startGUI(title);
-        confermaButton.addActionListener(new ActionListener() {
+        confirmButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 confirmCredential();
             }
         });
 
-        textFieldCredenziale.addKeyListener(new KeyAdapter() {
+        textFieldCredential.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER)
                 {
                     confirmCredential();
                 }
+            }
+        });
+
+        /**
+         * listender per verificare limite caratteri
+         */
+        textFieldCredential.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if (textFieldCredential.getText().length() >= NUM_MAX_LENGHT_CHAR_JTP ) // limita caratteri
+                    e.consume();
             }
         });
     }
@@ -61,7 +74,7 @@ public class LoginRequestGUI implements Runnable {
 
     private void confirmCredential () {
         //bottone conferma premuto
-        stringUserResponse = textFieldCredenziale.getText(); //set variabile credenziale inserita
+        stringUserResponse = textFieldCredential.getText(); //set variabile credenziale inserita
 
         //dati inseriti il thread può terminare
         isdataConfirmed = true;
