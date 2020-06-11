@@ -115,7 +115,7 @@ requisiti di sistema/ambiente, le tecnologie e gli standard di cui il software d
   </tr>
   <tr>
     <td>Estetica dell’interfaccia utente</td>
-    <td>Il software implementata una GUI in cui i comandi principali sono rappresentati da dei buttons. La gradevolezza dell’uso dell’interfaccia utente è garantita da uno profondo studio dei simboli su diverse tipologie di OS.</td>
+    <td>Il software implementa una GUI in cui i comandi principali sono rappresentati da dei buttons. La gradevolezza dell’uso dell’interfaccia utente è garantita da uno profondo studio dei simboli su diverse tipologie di OS.</td>
   </tr>
   <tr>
     <td rowspan="3">Manutenibilità</td>
