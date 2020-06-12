@@ -290,6 +290,14 @@ volta, rendendo il codice più leggibile, snello e facilmente manutenibile.
 ## <span id = "5.2">5.2 I/O da file</span>
 
 ## <span id = "5.3">5.3 Connessione a database</span>
+Questa sezione descrive l'uso dello standard JDBC <em>(Java Data Base Connectivity)</em>.
+
+<p>Per questa applicazione è stato utilizzato il Database SQLite essendo più compatto e non supportando la gestione della 
+concorrenza, non necessaria nell'uso da parte di una singola applicazione e da un singolo utente.</p>
+
+![](Asset6.png)
+
+
 
 ## <span id = "5.4">5.4 GUI mediante SWING</span>
 Come illustrato nello stile architetturale **MVC**, il corretto funzionamento dell'intero sistema prevede l'utilizzo
