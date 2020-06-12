@@ -1,7 +1,5 @@
 package it.uniba.model;
 
-import it.uniba.model.Item;
-import it.uniba.model.Room;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.File;
@@ -74,8 +72,8 @@ public class Plot {
                         rowItems.get(i).get("name").toString(),
                         rowItems.get(i).get("pattern").toString(),
                         rowItems.get(i).get("description").toString(),
-                        (boolean)rowItems.get(i).get("isEnemy"),
-                        (boolean)rowItems.get(i).get("isWeapon")
+                        (boolean) rowItems.get(i).get("isEnemy"),
+                        (boolean) rowItems.get(i).get("isWeapon")
                     )
             );
         }
