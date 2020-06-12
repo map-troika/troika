@@ -130,7 +130,7 @@ rooms:
   - id: 3
     title: <font color='gray' face="Verdana" size="6"><b>Ala della spada</b></font><hr>
     descr: |
-      <font face="Verdana" size="3">Ehi! Sei nell'ala della spada...potresti trovare un' arma degna di un<br>
+      <font face="Verdana" size="3">Ehi! Potresti trovare un' arma degna di un<br>
       guerriero, se nessuno ti ha preceduto! Questa stanza sembra non avere<br>
       altre uscite oltre quella a <font color='green' face="Verdana"><b>nord</b></font> per tornare indietro...<br></font>
     items:

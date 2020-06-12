@@ -197,7 +197,7 @@ dei dati).
 <br>
 <br>
 
-![Item](informationhiding.png)
+![Item](img/informationhiding.png)
 >_Diagramma di classe di <code>Item</code>._
 
 <br>
@@ -223,7 +223,7 @@ e a prescindere dal contesto di gioco attuale.
 <br>
 <br>
 
-![Parser](altacoesione.png)
+![Parser](img/altacoesione.png)
 >_Diagramma delle classi per la decodifica di un input._
 
 <br>
@@ -238,7 +238,7 @@ L’accoppiamento misura il grado di dipendenza tra componenti diversi.
 <p>Un basso accoppiamento fa si che un cambiamento ad un componente non si propaghi su altri
 componenti.
 
-![](bassoaccoppiamento.png)
+![](img/bassoaccoppiamento.png)
 >_Diagramma delle classi di <code>Game</code> e <code>Action</code>._
 
 <p>La scelta progettuale di delegare ad una classe apposita <code>Action</code> la realizzazione dei comandi dati 
@@ -256,7 +256,7 @@ l’utilizzo del metodo <code>goTO</code> all’interno della <em>user story</em
 <br>
 <br>
 
-![goTO](DRY.png)
+![goTO](img/DRY.png)
 >_Diagramma di sequenza di <code>goTo</code>._
 
 <br>
@@ -267,7 +267,7 @@ metodo non viene clonato, andando potenzialmente incontro ad errori di <em>copy 
 volta, rendendo il codice più leggibile, snello e facilmente manutenibile.
 
 ## <span id = "4.5">Relazioni tra classi</span> 
-![classDiagram](classDiagram.png)
+![classDiagram](img/classDiagram.png)
 >_Diagramma delle classi dell'estrazione dello yaml fatta da <code>Plot</code>._
 
 <br>
@@ -333,6 +333,7 @@ di fine riga siano interpretati come invio. Il metodo <code>readLine()</code> co
 il contenuto della riga, esclusi i caratteri di fine riga, oppure null se è stata raggiunta la fine del flusso senza 
 leggere alcun carattere.</p>
 
+<a href="#top">Torna all'inizio</a>
 # <span id = "6">6. Riepilogo del test</span> 
 Questa sezione espone i risultati e le modalità con cui è stato testato il software.
 ## <span id = "6.1">6.1 Analisi statica del codice</span>
@@ -348,7 +349,7 @@ Tutte le violazioni sono state risolte nelle classi del <code>main</code> <br><b
 ![](res/img/CheckstyleMain2.png)  
 >_Risultato di Checkstyle del main._
 
-  
+<a href="#top">Torna all'inizio</a>
 # <span id = "7">7. Processo di sviluppo e organizzazione del lavoro</span>
 Questa sezione descrive i metodi e la dinamica per lo sviluppo del software.
 
