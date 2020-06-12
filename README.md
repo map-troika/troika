@@ -310,7 +310,55 @@ il metodo <code>run()</code> del <code>Game</code>.
 ![](img/content.svg)
 >_Contenuto della tabella users del database users._
 
-## <span id = "5.3">5.3 GUI mediante SWING</span>
+## <span id = "5.3">5.4 GUI mediante SWING</span>
+Come illustrato nello stile architetturale **MVC**, il corretto funzionamento dell'intero sistema prevede l'utilizzo
+di un applicativo <code>Client</code> in grado di comunicare con l'applicativo remoto <code>Server</code>.
+Oltre alla versione Client, eseguibile da terminale a singolo flusso di esecuzione, è stato sviluppata una classe
+client con interfacce grafiche usando il framework <code>Swing</code> di Java. Questa versione del <code>Client</code>
+usa flussi di thread implementando l'interfaccia "Runnable" nelle classi implicate, tutto questo per gestire i singoli
+task del Client in fase di esecuzione.<br><br><br><br>
+![](img/ClientGui/default.png)<br>
+>_Illustrazione del client con interface Swing._
+### <span id = "5.3.1">5.4.1 Componenti SWING</span>
+Il frame principale (top level) contenitore radice, contiene i vari componenti della GUI.<br>
+Per visualizzare i response del server è stato implementato il componente <code>JTextPane</code>, che permette di
+renderizzare il codice html contenuto all'interno del modello di dati di tipo<code>HTMLDocument</code>.<br><br>
+![](img/ClientGui/illustrazioneGUIHTML.png)<br><br>
+>_Illustrazione del render del JTextPane di un modello dati <code>HTMLDocument</code>._
+
+<br>
+
+Avviando una nuova partita dalla classe <code>ClientGUI</code>, verrà avviato il thread principale del 
+<code>Client</code> che si occuperà di mettersi in ascolto con il Server. Quando il thread del <code>Client</code> 
+riceverà dal Server un messaggio response **"username:"** o **"password:"**, il thread del <code>Client</code> avvierà 
+un nuovo thread la cui implementazione che si trova nella classe <code>LoginRequestGUI</code> si occuperà di 
+raccogliere le credenziali dell'utente. Il thread principale del <code>Client</code> resterà in attesa fino a quando 
+l'utente non confermerà le credenziali inserite. Quando le credenziali saranno inserite il flusso del thread per 
+raccogliere le credenziali terminerà, a questo punto il thread principale del <code>Client</code> terminerà la sua 
+attesa e continuerà la sua attività.<br>Le varie porzioni della Gui si disattiveranno in fase di esecuzione rendendo 
+possibile o impossibile l'accesso a determinate funzionalità.<br><br><br>
+
+![](img/ClientGui/illustrazioneAccessoConCredenziali.png)<br><br>
+>_Illustrazione della richiesta di credenziali all'utente._
+
+<br>
+
+Dopo aver effettuato l'autenticazione, l'utente potrà utilizzare le aree di input di <code>ClientGUI</code> per 
+inviare le richieste al <code>Server</code>.<br>
+Con le frecce direzionali l'utente potrà comunicare rispettivamente i comandi: sud, nord, ovest, est. Nella JTextArea
+l'utente inserirà i comandi più complessi, anch'essi verranno comunicati al Server.<br>
+Per facilitare il flow nell'utilizzo dell'applicazione, ogni comando potrà essere inviato premendo direttamente 
+il tasto "invio" che genererà un evento <code>actionPerformed</code> che a sua volta gestirà l'invio del comando.
+Ad ogni evento generato da un componente, di natura "input", verrà avviato il metodo <code>
+requestFocusInWindow()</code> sul componente del <code>JTextArea</code>, che si occuperà di portare il puntatore 
+all'interno della zona JtextArea, questo meccanismo influenzerà in positivo la User experience.
+
+![](img/ClientGui/areaInput.png)<br><br>
+>_Illustrazione dell'area di input'._
+
+<br>
+Premendo il pulsante <b>"Termina la sessione"</b> si genererà un evento che si occuperà di terminare la sessione con il 
+<code>Server</code> e di chiudere il mainThread del <code>Client</code>
 
 ## <span id = "5.4">5.4 Client-server multithreading</span>
 Questa sezione descrive l'uso della programmazione in rete.
