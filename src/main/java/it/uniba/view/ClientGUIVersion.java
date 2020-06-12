@@ -146,8 +146,8 @@ public final class ClientGUIVersion implements Runnable {
             cGUI.appendText("\n" + "<br>" +
                     "<font color='red' face=\"Verdana\"><b>" +
                     "Console:" +
-                    "</b></font> " +
-                    e.getMessage());
+                    "</b></font> "); /*+
+                    e.getMessage());*/
 
             cGUI.appendText("<br>" +
                     "<font color='orange' face=\"Verdana\"><b>" +

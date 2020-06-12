@@ -259,8 +259,11 @@ public class ClientGUI {
     }
 
     public void quitSession () {
-        client.closeServerComunications();
-        client.sendRequestToServer("quit");
+        if(client!=null) {
+            client.closeServerComunications();
+            client.sendRequestToServer("quit");
+        }
+
 
         //update della GUI
         endSessionButton.setEnabled(false);

@@ -92,7 +92,7 @@ rooms:
       ──────────────────────────────────────────────────────}
       <font color='red' face="Verdana" size="5"><b>L'impresa di Tesèo contro il Minotauro</b></font><br>
       <br>
-      <font color='red' face="Verdana"><b>BENVENUTO!</b></font><font face="Verdana" size="3"><b> Sull’isola di Creta, nel periodo del regno di Minosse, in seguito ad<br>
+      <font color='red' face="Verdana"><b>BENVENUTO!</b></font><font face="Verdana" size="3">Sull’isola di Creta, nel periodo del regno di Minosse, in seguito ad<br>
       un’offesa fatta ad Afrodite nasce un figlio mostruoso, metà uomo e metà toro,<br>
       il Minotauro. Minosse lo imprigiona in un labirinto e, per sfamarlo, impone<br>
       alle città sotto la sua dominazione un tributo annuale di sette fanciulle e<br>
@@ -101,16 +101,16 @@ rooms:
       letale mostro.<br><br>
 
       Sei nel giardino profumato che costeggia il labirinto, a <font color='green' face="Verdana"><b>sud</b></font> si scorge un<br>
-      ingresso malridotto...<br></b></font>
+      ingresso malridotto...<br></font>
     exits:
       sud: 1
 
   - id: 1
     title: <font color='gray' face="Verdana" size="6"><b>Ala d'ingresso</b></font><hr>
     descr: |
-      <font face="Verdana" size="3"><b>Sei nell'ala d'ingresso e non sai cosa fare, la stanza è buia e sul lato <font color='green' face="Verdana"><b>est</b></font><br>
+      <font face="Verdana" size="3">Sei nell'ala d'ingresso e non sai cosa fare, la stanza è buia e sul lato <font color='green' face="Verdana"><b>est</b></font><br>
       si intravede una porta piuttosto grande, a <font color='green' face="Verdana"><b>nord</b></font> si intravedono ancora i fiori<br>
-      del giardino...<br></b></font>
+      del giardino...<br></font>
     items:
       - gomitolo
     exits:
@@ -120,8 +120,8 @@ rooms:
   - id: 2
     title: <font color='gray' face="Verdana" size="6"><b>Ala del bivio</b></font><hr>
     descr: |
-      <font face="Verdana" size="3"><b>Che stanza tetra! Segui il tuo istinto, ci sono tre  passaggi: ad <font color='green' face="Verdana"><b>ovest</b></font>,<br>
-      <font color='green' face="Verdana"><b>sud</b></font> ed <font color='green' face="Verdana"><b>est</b></font>...<br></b></font>
+      <font face="Verdana" size="3">Che stanza tetra! Segui il tuo istinto, ci sono tre  passaggi: ad <font color='green' face="Verdana"><b>ovest</b></font>,<br>
+      <font color='green' face="Verdana"><b>sud</b></font> ed <font color='green' face="Verdana"><b>est</b></font>...<br></font>
     exits:
       ovest: 1
       sud: 3
@@ -130,9 +130,9 @@ rooms:
   - id: 3
     title: <font color='gray' face="Verdana" size="6"><b>Ala della spada</b></font><hr>
     descr: |
-      <font face="Verdana" size="3"><b>Ehi! Sei nell'ala della spada...potresti trovare un' arma degna di un<br>
+      <font face="Verdana" size="3">Ehi! Sei nell'ala della spada...potresti trovare un' arma degna di un<br>
       guerriero, se nessuno ti ha preceduto! Questa stanza sembra non avere<br>
-      altre uscite oltre quella a <font color='green' face="Verdana"><b>nord</b></font> per tornare indietro...<br></b></font>
+      altre uscite oltre quella a <font color='green' face="Verdana"><b>nord</b></font> per tornare indietro...<br></font>
     items:
       - spada
     exits:
@@ -141,20 +141,20 @@ rooms:
   - id: 4
     title: <font color='gray' face="Verdana" size="6"><b>Ala del grande passo</b></font><hr>
     descr: |
-      <font face="Verdana" size="3"><b>Verso <font color='green' face="Verdana"><b>nord</b></font> si riescono già a sentire dei versi spaventosi, vai pure<br>
+      <font face="Verdana" size="3">Verso <font color='green' face="Verdana"><b>nord</b></font> si riescono già a sentire dei versi spaventosi, vai pure<br>
       se ti senti pronto... Altrimenti procedi verso <font color='green' face="Verdana"><b>ovest</b></font> per tornare<br>
-      nell'Ala del bivio o verso <font color='green' face="Verdana"><b>sud</b></font>...<br></b></font>
+      nell'Ala del bivio o verso <font color='green' face="Verdana"><b>sud</b></font>...<br></font>
     exits:
       nord: 5
       sud: 6
       ovest: 2
 
   - id: 5
-    title: <font color='gray' face="Verdana" size="6"><b>Stanza della battaglia</b></font><hr>
+    title: <font color='gray' face="Verdana" size="6">Stanza della battaglia</b></font><hr>
     descr: |
-      <font face="Verdana" size="3"><b>GULP! Sei davanti ad un'enorme ombra che soffia fiato dal naso umido...<br>
+      <font face="Verdana" size="3">GULP! Sei davanti ad un'enorme ombra che soffia fiato dal naso umido...<br>
       fagli vedere di che pasta sei fatto con la tua preziosa <font color='orange' face="Verdana"><b>spada</b></font>...<br>
-      Altrimenti torna verso <font color='green' face="Verdana"><b>sud</b></font> finchè sei ancora in tempo!<br></b></font>
+      Altrimenti torna verso <font color='green' face="Verdana"><b>sud</b></font> finchè sei ancora in tempo!<br></font>
       <img src="https://i.dlpng.com/static/png/387300_preview.png" width=200 height=200></img>
       {
                      -*@*                      *@*-
@@ -185,7 +185,7 @@ rooms:
   - id: 6
     title: <font color='gray' face="Verdana" size="6"><b>Ala finale</b></font><hr>
     descr: |
-      <font face="Verdana" size="3"><b>Ora che non puoi più scoprire nuove stanze dovresti iniziare a pensare<br>
-      a come uscire da qui...<br></b></font>
+      <font face="Verdana" size="3">Ora che non puoi più scoprire nuove stanze dovresti iniziare a pensare<br>
+      a come uscire da qui...<br></font>
     exits:
       nord: 4

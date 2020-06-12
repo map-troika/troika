@@ -36,9 +36,9 @@ public final class Action {
                 "<font color='white' face=\"Verdana\" size=\"5\"><b>" +
                 "\tprendo:" +
                 "</b></font></td>             <td bgcolor=\"Gray\" align=\"center\">" +
-                "<font face=\"Verdana\" size=\"5\"><b>" +
+                "<font face=\"Verdana\" size=\"5\">" +
                 "raccoglie un oggetto\n" +
-                "</b></font>" +
+                "</font>" +
                 "</td></tr>";
 
         out += "<tr><td bgcolor=\"Silver\" align=\"center\">" +
@@ -46,36 +46,36 @@ public final class Action {
                 "\tlascio:" +
                 "</b></font" +
                 "></td>             <td bgcolor=\"Silver\" align=\"center\">" +
-                "<font face=\"Verdana\" size=\"5\"><b>" +
+                "<font face=\"Verdana\" size=\"5\">" +
                 "lascia un oggetto\n" +
-                "</b></font>" +
+                "</font>" +
                 "</td></tr>";
 
         out += "<tr><td bgcolor=\"Gray\" align=\"center\">" +
                 "<font color='white' face=\"Verdana\" size=\"5\"><b>" +
                 "\tposizione:" +
                 "</b></font</td>          <td bgcolor=\"Gray\" align=\"center\">" +
-                "<font face=\"Verdana\" size=\"5\"><b>" +
+                "<font face=\"Verdana\" size=\"5\">" +
                 "stanza corrente\n" +
-                "</b></font>" +
+                "</font>" +
                 "</td></tr>";
 
         out += "<tr><td bgcolor=\"Silver\" align=\"center\">" +
                 "<font color='white' face=\"Verdana\" size=\"5\"><b>" +
                 "\tinventario:</b></font>" +
                 "</td>         <td bgcolor=\"Silver\" align=\"center\">" +
-                "<font face=\"Verdana\" size=\"5\"><b>" +
+                "<font face=\"Verdana\" size=\"5\">" +
                 "lista oggetti nell'inventario\n" +
-                "</b></font>" +
+                "</font>" +
                 "</td></td></tr>";
 
         out += "<tr><td bgcolor=\"Gray\" align=\"center\">" +
                 "<font color='white' face=\"Verdana\" size=\"5\"><b>" +
                 "\tosserva:" +
                 "</b></font></td>            <td bgcolor=\"Gray\" align=\"center\">" +
-                "<font face=\"Verdana\" size=\"5\"><b>" +
+                "<font face=\"Verdana\" size=\"5\">" +
                 "descrive la stanza\n" +
-                "</b></font>" +
+                "</font>" +
                 "</td></tr>";
 
         out += "<tr><td bgcolor=\"Silver\" align=\"center\">" +
@@ -83,9 +83,9 @@ public final class Action {
                 "\tnord/sud/est/ovest:" +
                 "</b></font>" +
                 "</td> <td bgcolor=\"Silver\" align=\"center\">" +
-                "<font face=\"Verdana\" size=\"5\"><b>" +
+                "<font face=\"Verdana\" size=\"5\">" +
                 "movimenti tra le stanze\n" +
-                "</b></font>" +
+                "</font>" +
                 "</td></tr></table></center>";
         return out;
 
@@ -284,7 +284,7 @@ public final class Action {
             out += "\n" + "L'inventario è vuoto" + "\n";
         } else {
             out += "<center><table border=0 width=200><tr><td align=\"center\" bgcolor=\"Gray\" align=\"left\" colspan=\"2\">" +
-                    "<font color='black' face=\"Verdana\" size=\"5\"><b>" +
+                    "<font color='white' face=\"Verdana\" size=\"5\"><b>" +
                     "Il tuo inventario\n<br>" +
                     "</b></font>" +
                     "</td></tr>";

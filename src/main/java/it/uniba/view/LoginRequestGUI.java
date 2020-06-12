@@ -92,7 +92,7 @@ public class LoginRequestGUI implements Runnable {
         while (!isdataConfirmed) {
             try {
                 Thread.sleep(1000);
-                System.out.println("Inserimento dati login");
+                //System.out.println("Inserimento dati login");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
