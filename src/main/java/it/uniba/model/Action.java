@@ -24,13 +24,69 @@ public final class Action {
      */
     public static String help() {
         String out = "\033[2J\033[H";
-        out += "Lista comandi:\n";
-        out += "\tprendo:             raccoglie un oggetto\n";
-        out += "\tlascio:             lascia un oggetto\n";
-        out += "\tposizione:          stanza corrente\n";
-        out += "\tinventario:         lista oggetti nell'inventario\n";
-        out += "\tosserva:            descrive la stanza\n";
-        out += "\tnord/sud/est/ovest: movimenti tra le stanze\n";
+
+        out += "<center><table border=0 ><tr><td bgcolor=\"Silver\" align=\"left\" colspan=\"2\">" +
+                "<font face=\"Verdana\" size=\"5\"><b>" +
+                "Lista comandi:\n" +
+                "</b></font>" +
+                "</td></tr>";
+
+
+        out += "<tr><td bgcolor=\"Gray\" align=\"center\">" +
+                "<font color='white' face=\"Verdana\" size=\"5\"><b>" +
+                "\tprendo:" +
+                "</b></font></td>             <td bgcolor=\"Gray\" align=\"center\">" +
+                "<font face=\"Verdana\" size=\"5\">" +
+                "raccoglie un oggetto\n" +
+                "</font>" +
+                "</td></tr>";
+
+        out += "<tr><td bgcolor=\"Silver\" align=\"center\">" +
+                "<font color='white' face=\"Verdana\" size=\"5\"><b>" +
+                "\tlascio:" +
+                "</b></font" +
+                "></td>             <td bgcolor=\"Silver\" align=\"center\">" +
+                "<font face=\"Verdana\" size=\"5\">" +
+                "lascia un oggetto\n" +
+                "</font>" +
+                "</td></tr>";
+
+        out += "<tr><td bgcolor=\"Gray\" align=\"center\">" +
+                "<font color='white' face=\"Verdana\" size=\"5\"><b>" +
+                "\tposizione:" +
+                "</b></font</td>          <td bgcolor=\"Gray\" align=\"center\">" +
+                "<font face=\"Verdana\" size=\"5\">" +
+                "stanza corrente\n" +
+                "</font>" +
+                "</td></tr>";
+
+        out += "<tr><td bgcolor=\"Silver\" align=\"center\">" +
+                "<font color='white' face=\"Verdana\" size=\"5\"><b>" +
+                "\tinventario:</b></font>" +
+                "</td>         <td bgcolor=\"Silver\" align=\"center\">" +
+                "<font face=\"Verdana\" size=\"5\">" +
+                "lista oggetti nell'inventario\n" +
+                "</font>" +
+                "</td></td></tr>";
+
+        out += "<tr><td bgcolor=\"Gray\" align=\"center\">" +
+                "<font color='white' face=\"Verdana\" size=\"5\"><b>" +
+                "\tosserva:" +
+                "</b></font></td>            <td bgcolor=\"Gray\" align=\"center\">" +
+                "<font face=\"Verdana\" size=\"5\">" +
+                "descrive la stanza\n" +
+                "</font>" +
+                "</td></tr>";
+
+        out += "<tr><td bgcolor=\"Silver\" align=\"center\">" +
+                "<font color='white' face=\"Verdana\" size=\"5\"><b>" +
+                "\tnord/sud/est/ovest:" +
+                "</b></font>" +
+                "</td> <td bgcolor=\"Silver\" align=\"center\">" +
+                "<font face=\"Verdana\" size=\"5\">" +
+                "movimenti tra le stanze\n" +
+                "</font>" +
+                "</td></tr></table></center>";
         return out;
 
     }
@@ -179,15 +235,20 @@ public final class Action {
             if (weapon.getUse()) {
                 loader.getPlotRooms().get(roomId)
                         .removeItemRoom(enemy);
-                out += "Armato di " + weapon.getItemName() + " hai sconfitto il " + enemy.getItemName();
+                out += "Armato di " + weapon.getItemName() + " hai sconfitto il " +
+                        "<font color='red' face=\"Verdana\"><b>" +
+                        enemy.getItemName() + "</b></font>";
+
                 Player.setIsWinner(true);
             } else {
-                out += "Come pensavi di sconfiggere il " + enemy.getItemName()
-                        + " senza l'uso di un' arma";
+                out += "Come pensavi di sconfiggere il " + "<font color='red' face=\"Verdana\"><b>" +
+                        enemy.getItemName() +
+                        "</b></font>" + " senza l'uso di un' arma";
                 Game.setEnd(true);
             }
         } else if (enemy != null && weapon == null) {
-            out += "Come pensavi di sconfiggere il " + enemy.getItemName()
+            out += "Come pensavi di sconfiggere il " + "<font color='red' face=\"Verdana\"><b>" + enemy.getItemName()
+                    + "</b></font>"
                     + " senza l'uso di un' arma";
             Game.setEnd(true);
         } else {
@@ -205,7 +266,7 @@ public final class Action {
     public static String position(final int roomId) {
         Plot loader = new Plot();
         String out = "\033[2J\033[H";
-        out += "Ti trovi nella stanza: ";
+        out += "Ti trovi nella stanza: <br>";
         out += loader.getPlotRooms().get(roomId).getTitle();
         return out;
     }
@@ -222,10 +283,20 @@ public final class Action {
         if (Player.getItemsList().size() == 0) {
             out += "\n" + "L'inventario è vuoto" + "\n";
         } else {
-            out += "Il tuo inventario\n";
+            out += "<center><table border=0 width=200><tr><td align=\"center\" bgcolor=\"Gray\" align=\"left\" colspan=\"2\">" +
+                    "<font color='white' face=\"Verdana\" size=\"5\"><b>" +
+                    "Il tuo inventario\n<br>" +
+                    "</b></font>" +
+                    "</td></tr>";
+
             for (Item i : Player.getItemsList()) {
-                out += "\n" + i.getItemName() + "\n" + "-".repeat(i.getItemName().length());
+                out += "\n" +  "<tr><td align=\"center\" bgcolor=\"Silver\" align=\"left\" colspan=\"2\">" +
+                        "<font color='orange' face=\"Verdana\" size=\"4\"><b>" +
+                        i.getItemName() + "<br>" +
+                        "</b></font></td></tr> " +
+                        "\n" + "-".repeat(i.getItemName().length());
             }
+            out += "</table></center>";
         }
         return out;
     }
@@ -240,7 +311,7 @@ public final class Action {
     public static String observeRoom(final Plot loader, final int roomId) {
         String out = "\033[2J\033[H";
         if (loader.getPlotRooms().get(roomId).getItemsList().size() != 0) {
-            out += "guardati intorno: ";
+            out += "guardati intorno: <br>";
             for (Item item : loader.getPlotRooms().get(roomId).getItemsList()) {
                 out += "\n" + item.getDescription();
             }

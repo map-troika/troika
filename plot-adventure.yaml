@@ -42,19 +42,19 @@ items:
   - name: gomitolo
     pattern: "gomitolo|gom|clew"
     description: |
-      per terra cè un gomitolo, potrebbe aiutarti a tornare sui tuoi passi
+      per terra cè un <font color='orange' face="Verdana"><b>gomitolo</b></font>, potrebbe aiutarti a tornare sui tuoi passi
     isEnemy: false
     isWeapon: false
   - name: minotauro
     pattern: "minotauro|min|minotaur"
     description: |
-      hai di fronte il minotauro, pronto all'attacco
+      hai di fronte il <font color='red' face="Verdana"><b>minotauro</b></font>, pronto all'attacco
     isEnemy: true
     isWeapon: false
   - name: spada
     pattern: "spada|spad|sword"
     description: |
-      in lontananza cè una spada, degna dei più nobili guerrieri
+      in lontananza cè una <font color='orange' face="Verdana"><b>spada</b></font>, degna dei più nobili guerrieri
     isEnemy: false
     isWeapon: true
 
@@ -82,30 +82,35 @@ rooms:
     title: ""
     # http://patorjk.com/software/taag/#p=display&h=0&v=1&f=Calvin%20S&t=IL%20LABIRINTO%20DI%20CNOSSO%0A------------------%0A
     descr: |
+      <font face="Verdana" size="7"><b>[IL LABIRINTO DI CNOSSO]</b></font>
+      <hr>
+      <br>
+      {
       ╦╦    ╦  ╔═╗╔╗ ╦╦═╗╦╔╗╔╔╦╗╔═╗  ╔╦╗╦  ╔═╗╔╗╔╔═╗╔═╗╔═╗╔═╗
       ║║    ║  ╠═╣╠╩╗║╠╦╝║║║║ ║ ║ ║   ║║║  ║  ║║║║ ║╚═╗╚═╗║ ║
       ╩╩═╝  ╩═╝╩ ╩╚═╝╩╩╚═╩╝╚╝ ╩ ╚═╝  ═╩╝╩  ╚═╝╝╚╝╚═╝╚═╝╚═╝╚═╝
-      ──────────────────────────────────────────────────────
-      L'impresa di Tesèo contro il Minotauro
+      ──────────────────────────────────────────────────────}
+      <font color='red' face="Verdana" size="5"><b>L'impresa di Tesèo contro il Minotauro</b></font><br>
+      <br>
+      <font color='red' face="Verdana"><b>BENVENUTO!</b></font><font face="Verdana" size="3">Sull’isola di Creta, nel periodo del regno di Minosse, in seguito ad<br>
+      un’offesa fatta ad Afrodite nasce un figlio mostruoso, metà uomo e metà toro,<br>
+      il Minotauro. Minosse lo imprigiona in un labirinto e, per sfamarlo, impone<br>
+      alle città sotto la sua dominazione un tributo annuale di sette fanciulle e<br>
+      sette fanciulli. Un anno, però, tra loro viene condotto il principe di Atene,<br>
+      Tesèo, che non vuole arrendersi al tragico destino e tenterà di sconfiggere il<br>
+      letale mostro.<br><br>
 
-      BENVENUTO! Sull’isola di Creta, nel periodo del regno di Minosse, in seguito ad
-      un’offesa fatta ad Afrodite nasce un figlio mostruoso, metà uomo e metà toro,
-      il Minotauro. Minosse lo imprigiona in un labirinto e, per sfamarlo, impone
-      alle città sotto la sua dominazione un tributo annuale di sette fanciulle e
-      sette fanciulli. Un anno, però, tra loro viene condotto il principe di Atene,
-      Tesèo, che non vuole arrendersi al tragico destino e tenterà di sconfiggere il
-      letale mostro.
-
-      Sei nel giardino profumato che costeggia il labirinto, a sud si scorge un
-      ingresso malridotto...
+      Sei nel giardino profumato che costeggia il labirinto, a <font color='green' face="Verdana"><b>sud</b></font> si scorge un<br>
+      ingresso malridotto...<br></font>
     exits:
       sud: 1
 
   - id: 1
-    title: Ala d'ingresso
+    title: <font color='gray' face="Verdana" size="6"><b>Ala d'ingresso</b></font><hr>
     descr: |
-      Sei nell'ala d'ingresso e non sai cosa fare, la stanza è buia e sul lato est si intravede
-      una porta piuttosto grande, a nord si intravedono ancora i fiori del giardino...
+      <font face="Verdana" size="3">Sei nell'ala d'ingresso e non sai cosa fare, la stanza è buia e sul lato <font color='green' face="Verdana"><b>est</b></font><br>
+      si intravede una porta piuttosto grande, a <font color='green' face="Verdana"><b>nord</b></font> si intravedono ancora i fiori<br>
+      del giardino...<br></font>
     items:
       - gomitolo
     exits:
@@ -113,43 +118,45 @@ rooms:
       est: 2
 
   - id: 2
-    title: Ala del bivio
+    title: <font color='gray' face="Verdana" size="6"><b>Ala del bivio</b></font><hr>
     descr: |
-      Che stanza tetra! Segui il tuo istinto, ci sono tre  passaggi: ad ovest,
-      sud ed est...
+      <font face="Verdana" size="3">Che stanza tetra! Segui il tuo istinto, ci sono tre  passaggi: ad <font color='green' face="Verdana"><b>ovest</b></font>,<br>
+      <font color='green' face="Verdana"><b>sud</b></font> ed <font color='green' face="Verdana"><b>est</b></font>...<br></font>
     exits:
       ovest: 1
       sud: 3
       est: 4
 
   - id: 3
-    title: Ala della spada
+    title: <font color='gray' face="Verdana" size="6"><b>Ala della spada</b></font><hr>
     descr: |
-      Ehi! Sei nell'ala della spada...potresti trovare un' arma degna di un guerriero, se nessuno ti ha preceduto!
-      Questa stanza sembra non avere altre uscite oltre quella a nord per tornare indietro...
+      <font face="Verdana" size="3">Ehi! Sei nell'ala della spada...potresti trovare un' arma degna di un<br>
+      guerriero, se nessuno ti ha preceduto! Questa stanza sembra non avere<br>
+      altre uscite oltre quella a <font color='green' face="Verdana"><b>nord</b></font> per tornare indietro...<br></font>
     items:
       - spada
     exits:
       nord: 2
 
   - id: 4
-    title: Ala del grande passo
+    title: <font color='gray' face="Verdana" size="6"><b>Ala del grande passo</b></font><hr>
     descr: |
-      Verso nord si riescono già a sentire dei versi spaventosi, vai pure
-      se ti senti pronto... Altrimenti procedi verso ovest per tornare
-      nell'Ala del bivio o verso sud...
+      <font face="Verdana" size="3">Verso <font color='green' face="Verdana"><b>nord</b></font> si riescono già a sentire dei versi spaventosi, vai pure<br>
+      se ti senti pronto... Altrimenti procedi verso <font color='green' face="Verdana"><b>ovest</b></font> per tornare<br>
+      nell'Ala del bivio o verso <font color='green' face="Verdana"><b>sud</b></font>...<br></font>
     exits:
       nord: 5
       sud: 6
       ovest: 2
 
   - id: 5
-    title: Stanza della battaglia
+    title: <font color='gray' face="Verdana" size="6">Stanza della battaglia</b></font><hr>
     descr: |
-      GULP! Sei davanti ad un'enorme ombra che soffia fiato dal naso umido...
-      fagli vedere di che pasta sei fatto con la tua preziosa spada...
-      Altrimenti torna verso sud finchè sei ancora in tempo!
-
+      <font face="Verdana" size="3">GULP! Sei davanti ad un'enorme ombra che soffia fiato dal naso umido...<br>
+      fagli vedere di che pasta sei fatto con la tua preziosa <font color='orange' face="Verdana"><b>spada</b></font>...<br>
+      Altrimenti torna verso <font color='green' face="Verdana"><b>sud</b></font> finchè sei ancora in tempo!<br></font>
+      <img src="https://i.dlpng.com/static/png/387300_preview.png" width=200 height=200></img>
+      {
                      -*@*                      *@*-
                    -@WW*                        *WW@-
                   :WWW@           :++:           @WWW:
@@ -169,16 +176,16 @@ rooms:
                              +W@  =WW=  @W+
                               -+-WWWWWW-+-
                                =W-    -W=
-                                *W@==@W*
+                                *W@==@W*}
     items:
       - minotauro
     exits:
       sud: 4
 
   - id: 6
-    title: Ala finale
+    title: <font color='gray' face="Verdana" size="6"><b>Ala finale</b></font><hr>
     descr: |
-      Ora che non puoi più scoprire nuove stanze dovresti iniziare a pensare
-      a come uscire da qui...
+      <font face="Verdana" size="3">Ora che non puoi più scoprire nuove stanze dovresti iniziare a pensare<br>
+      a come uscire da qui...<br></font>
     exits:
       nord: 4

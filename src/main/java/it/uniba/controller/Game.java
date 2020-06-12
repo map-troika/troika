@@ -2,8 +2,8 @@ package it.uniba.controller;
 
 import it.uniba.model.Action;
 import it.uniba.model.Database;
-import it.uniba.model.Plot;
 import it.uniba.model.Player;
+import it.uniba.model.Plot;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -39,6 +39,11 @@ public class Game implements Runnable {
         this.s = s1;
         this.roomId = 0;
         this.gLoader = new Plot();
+        isQuit = false;
+        end = false;
+        Player.setIsWinner(false);
+        Player.setNItemUse(0);
+        Player.resetInventory();
     }
 
     public long getId() {
@@ -134,79 +139,120 @@ public class Game implements Runnable {
                         if (Action.goTo(roomId, cp[0])) {
                             response = printRoom(roomId);
                         } else {
-                            response = "C'è un muro da questa parte!";
+                            response = "<font face=\"Verdana\" size=\"3\">C'è un muro da questa parte!</font><br>";
                         }
                         break;
                     case "prendo":
                             if (Action.pickUpItem(gLoader, roomId, cp)) {
                                 if (cp.length == 1) {
-                                    response = "Hai raccolto l'oggetto "
-                                            + Player.getItemsList().get(Player.getItemsList().size() - 1).getItemName();
+                                    response =
+                                            "<font face=\"Verdana\" size=\"3\">Hai raccolto l'oggetto " +
+                                                    "</font>" +
+                                                    "<font color='orange' face=\"Verdana\"><b>" +
+                                                    Player.getItemsList().get(Player.getItemsList().size() - 1).getItemName() +
+                                                    "</b></font>"
+                                    + "</b></font>";
                                 } else {
-                                    response = "Hai raccolto l'oggetto " + cp[1];
+                                    response =
+                                            "<font face=\"Verdana\" size=\"3\">Hai raccolto l'oggetto " +
+                                                    "</font>" +
+                                                    "<font color='orange' face=\"Verdana\"><b>"+ cp[1] + "</b></font>";
                                 }
 
                             } else {
                                 if (cp.length == 1) {
-                                    response = "Specifica un oggetto valido da raccogliere";
+                                    response =
+                                            "<font face=\"Verdana\" size=\"3\">" +
+                                                    "Specifica un oggetto valido da raccogliere</font>";
                                 } else {
-                                    response = "In questa stanza non è presente l'oggetto " + cp[1];
+                                    response = "<font face=\"Verdana\" size=\"3\">" +
+                                            "In questa stanza non è presente l'oggetto " +
+                                            "</font>" +
+                                            "<font color='orange' face=\"Verdana\"><b>"+ cp[1] + "</b></font>";
                                 }
 
                             }
                         break;
                     case "uso":
                         if (Player.getNItemUse() == 2) {
-                            response = "Hai già due oggetti in uso";
+                            response = "<font face=\"Verdana\" size=\"5\">Hai già due oggetti in uso</font>";
                         } else {
                             if (Action.useItem(cp)) {
                                 if (cp.length == 1) {
-                                    response = "L'oggetto "
-                                            + Player.getItemsList().get(Player.getItemsList().size() - 1).getItemName()
-                                            + " è ora in uso";
+                                    response = "<font face=\"Verdana\" size=\"5\">L'oggetto " +
+                                            "<font color='orange' face=\"Verdana\"><b>" +
+                                            Player.getItemsList().get(Player.getItemsList().size() - 1).getItemName() +
+                                            "</b></font>" +
+                                            " è ora in uso</font>";
                                 } else {
-                                    response = "L'oggetto " + cp[1] + " è ora in uso";
+                                    response = "<font face=\"Verdana\" size=\"5\">L'oggetto " +
+                                            "<font color='orange' face=\"Verdana\"><b>" +
+                                            cp[1] +
+                                            "</b></font>" +
+                                            " è ora in uso</font>";
                                 }
                             } else {
                                 if (cp.length == 1) {
-                                    response = "Specifica un oggetto valido da usare";
+                                    response = "<font face=\"Verdana\" size=\"5\">"
+                                            + "Specifica un oggetto valido da usare</font>";
                                 } else {
-                                    response = "Nel tuo inventario non è presente l'oggetto " + cp[1];
+                                    response = "<font face=\"Verdana\" size=\"5\">" +
+                                            "Nel tuo inventario non è presente l'oggetto " +
+                                            "<font color='orange' face=\"Verdana\"><b>" +
+                                            cp[1] +
+                                            "</b></font>" +
+                                            "</font>";
                                 }
                             }
                         }
                         break;
                     case "combatto":
-                        response = Action.fight(gLoader, roomId);
+                        response = "<font face=\"Verdana\" size=\"5\">" + Action.fight(gLoader, roomId)
+                                + "</font>";
                         break;
                     case "lascio":
                         if (Action.leaveItem(gLoader, roomId, cp)) {
                             if (cp.length == 1) {
-                                response = "Hai lasciato l'oggetto "
-                                        + gLoader.getPlotRooms().get(roomId).getItemsList()
-                                        .get(gLoader.getPlotRooms().get(roomId).getItemsList().size() - 1).getItemName();
+                                response = "<font face=\"Verdana\" size=\"5\">Hai lasciato l'oggetto " +
+                                "<font color='orange' face=\"Verdana\"><b>" +
+                                        gLoader.getPlotRooms().get(roomId).getItemsList()
+                                        .get(gLoader.getPlotRooms().get(roomId).getItemsList().size() - 1)
+                                        .getItemName() +
+                                        "</b></font>" +
+                                        "</font>";
                             } else {
-                                response = "Hai lasciato l'oggetto " + cp[1];
+                                response = "<font face=\"Verdana\" size=\"5\">Hai lasciato l'oggetto " +
+                                        "<font color='orange' face=\"Verdana\"><b>" +
+                                        cp[1] +
+                                        "</b></font>" +
+                                        "</font>";
                             }
                         } else {
                             if (cp.length == 1) {
-                                response = "Specifica un oggetto valido da lasciare";
+                                response = "<font face=\"Verdana\" size=\"5\">" +
+                                        "Specifica un oggetto valido da lasciare</font>";
                             } else {
-                                response = "Nel tuo inventario non è presente l'oggetto " + cp[1];
+                                response = "<font face=\"Verdana\" size=\"5\">" +
+                                        "Nel tuo inventario non è presente l'oggetto " +
+                                        "<font color='orange' face=\"Verdana\"><b>" +
+                                        cp[1] +
+                                        "</b></font>" +
+                                        "</font>";
                             }
                         }
                         break;
                     case "aiuto":
-                        response = Action.help();
+                        response = "<font face=\"Verdana\" size=\"5\">" + Action.help() + "</font>";
                         break;
                     case "posizione":
-                        response = Action.position(roomId);
+                        response = "<font face=\"Verdana\" size=\"5\">" + Action.position(roomId) + "</font>";
                         break;
                     case "inventario":
-                        response = Action.showInventory();
+                        response = "<font face=\"Verdana\" size=\"5\">" + Action.showInventory() + "</font>";
                         break;
                     case "osservo":
-                        response = Action.observeRoom(gLoader, roomId);
+                        response = "<font face=\"Verdana\" size=\"5\">" +
+                                Action.observeRoom(gLoader, roomId) + "</font>";
                         break;
                     case "quit":
                         //response = "quit";
@@ -217,21 +263,24 @@ public class Game implements Runnable {
                         isQuit = true;
                     default:
                         System.out.println("*** Invalid command: " + cmd);
-                        response = "me, non so che cz vuoi (" + request + ").  Riprova!";
+                        response = "<font face=\"Verdana\" size=\"5\">" +
+                                "me, non so che cz vuoi (" +
+                                "<font color='red' face=\"Verdana\"><b>" + request +  "</b></font>" +
+                                ").  Riprova!" + "</font>";
                 }
             }
             String exitMessage;
             if (isQuit) {
-                exitMessage = "Uscita in corso...";
+                exitMessage = "<font face=\"Verdana\" size=\"5\">Uscita in corso...</font>";
                 exitMessage = Base64.getEncoder().encodeToString(exitMessage.getBytes());
                 pw.println(exitMessage);
             } else {
                 if (Player.getIsWinner()) {
-                    exitMessage = "Hai vinto!";
+                    exitMessage = "<font face=\"Verdana\" size=\"5\">Hai vinto!</font>";
                     exitMessage = Base64.getEncoder().encodeToString(exitMessage.getBytes());
                     pw.println(exitMessage);
                 } else {
-                    exitMessage = "Sei stato ucciso, hai perso!";
+                    exitMessage = "<font face=\"Verdana\" size=\"5\">Sei stato ucciso, hai perso!</font>";
                     exitMessage = Base64.getEncoder().encodeToString(exitMessage.getBytes());
                     pw.println(exitMessage);
                 }
@@ -247,9 +296,16 @@ public class Game implements Runnable {
 
     public String printRoom(final int id1) {
         String out = "\033[2J\033[H"; // pulisce lo schermo e va in alto a sinistra
+        String titleWithNoTag;
 
         out += "\n" + gLoader.getPlotRooms().get(id1).getTitle() + "\n";
-        out += "-".repeat(gLoader.getPlotRooms().get(id1).getTitle().length()) + "\n"; // separatori lunghezza titolo
+
+        //rimuovi tag html prima della creazione dei separatori
+        titleWithNoTag = gLoader.getPlotRooms().get(id1).getTitle()
+                .replaceAll("\\<[^>]*>","");
+
+
+        out += "-".repeat(titleWithNoTag.length()) + "\n"; // separatori lunghezza titolo
         out += gLoader.getPlotRooms().get(id1).getDescription() + "\n";
 
         return out;
