@@ -315,12 +315,18 @@ il metodo <code>run()</code> del <code>Game</code>.
 ## <span id = "5.4">5.4 GUI mediante SWING</span>
 
 ## <span id = "5.5">5.5 Client-server multithreading</span>
-L'identificazione dell'IP <em>(Internet Protocol)</em> avviene tramite dot notation. La porta sulla quale sia il server 
-che il client si connettono è la <code>port:4000</code>.
- - server istanzia game per ogni connessione del client, in un thread
- - è possibile connettere più client contemporaneamete, multithreading
- - la connessione tra client e server è codificata per evitare che new line nelle stampe viene interpretato come invio dall'utente
- - 
+Questa sezione descrive l'uso della programmazione in rete.
+
+<p>L'identificazione dell'IP <em>(Internet Protocol)</em> avviene tramite dot notation e la porta sulla quale sia il 
+<code>Server</code> che il <code>Client</code> si connettono è la <code>port:4000</code>.</p>
+<p>Quando il <code>Server</code> è in ascolto e <code>accept()</code> termina la sua esecuzione si utilizza il Socket 
+ottenuto in un nuovo thread utilizzato per servire un particolare <code>Client</code>. Il thread principale, intanto, 
+richiamerà <code>accept()</code> per attendere un nuovo <code>Client</code>.</p>
+<p>Per ogni connessione di un <code>Client</code> il <code>Server</code> istanzia un nuovo Game nel thread.</p>
+<p>Il messaggio stampato sulla console è codificato utilizzando lo schema di codifica Base64 per evitare che i caratteri 
+di fine riga siano interpretati come invio. Il metodo <code>readLine()</code> consente di ottenere una stringa contenente 
+il contenuto della riga, esclusi i caratteri di fine riga, oppure null se è stata raggiunta la fine del flusso senza 
+leggere alcun carattere.</p>
 
 # <span id = "6">6. Riepilogo del test</span> 
 Questa sezione espone i risultati e le modalità con cui è stato testato il software.
