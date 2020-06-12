@@ -146,29 +146,29 @@ public class Game implements Runnable {
                             if (Action.pickUpItem(gLoader, roomId, cp)) {
                                 if (cp.length == 1) {
                                     response =
-                                            "<font face=\"Verdana\" size=\"3\">Hai raccolto l'oggetto " +
-                                                    "</font>" +
-                                                    "<font color='orange' face=\"Verdana\"><b>" +
-                                                    Player.getItemsList().get(Player.getItemsList().size() - 1).getItemName() +
-                                                    "</b></font>"
+                                            "<font face=\"Verdana\" size=\"3\">Hai raccolto l'oggetto "
+                                                    + "</font>"
+                                                    + "<font color='orange' face=\"Verdana\"><b>"
+                                                    + Player.getItemsList().get(Player.getItemsList().size() - 1).getItemName()
+                                                    + "</b></font>"
                                     + "</b></font>";
                                 } else {
                                     response =
-                                            "<font face=\"Verdana\" size=\"3\">Hai raccolto l'oggetto " +
-                                                    "</font>" +
-                                                    "<font color='orange' face=\"Verdana\"><b>"+ cp[1] + "</b></font>";
+                                            "<font face=\"Verdana\" size=\"3\">Hai raccolto l'oggetto "
+                                                    + "</font>"
+                                                    + "<font color='orange' face=\"Verdana\"><b>" + cp[1] + "</b></font>";
                                 }
 
                             } else {
                                 if (cp.length == 1) {
                                     response =
-                                            "<font face=\"Verdana\" size=\"3\">" +
-                                                    "Specifica un oggetto valido da raccogliere</font>";
+                                            "<font face=\"Verdana\" size=\"3\">"
+                                                    + "Specifica un oggetto valido da raccogliere</font>";
                                 } else {
-                                    response = "<font face=\"Verdana\" size=\"3\">" +
-                                            "In questa stanza non è presente l'oggetto " +
-                                            "</font>" +
-                                            "<font color='orange' face=\"Verdana\"><b>"+ cp[1] + "</b></font>";
+                                    response = "<font face=\"Verdana\" size=\"3\">"
+                                            + "In questa stanza non è presente l'oggetto "
+                                            + "</font>"
+                                            + "<font color='orange' face=\"Verdana\"><b>" + cp[1] + "</b></font>";
                                 }
 
                             }
@@ -179,29 +179,29 @@ public class Game implements Runnable {
                         } else {
                             if (Action.useItem(cp)) {
                                 if (cp.length == 1) {
-                                    response = "<font face=\"Verdana\" size=\"5\">L'oggetto " +
-                                            "<font color='orange' face=\"Verdana\"><b>" +
-                                            Player.getItemsList().get(Player.getItemsList().size() - 1).getItemName() +
-                                            "</b></font>" +
-                                            " è ora in uso</font>";
+                                    response = "<font face=\"Verdana\" size=\"5\">L'oggetto "
+                                            + "<font color='orange' face=\"Verdana\"><b>"
+                                            + Player.getItemsList().get(Player.getItemsList().size() - 1).getItemName()
+                                            + "</b></font>"
+                                            + " è ora in uso</font>";
                                 } else {
-                                    response = "<font face=\"Verdana\" size=\"5\">L'oggetto " +
-                                            "<font color='orange' face=\"Verdana\"><b>" +
-                                            cp[1] +
-                                            "</b></font>" +
-                                            " è ora in uso</font>";
+                                    response = "<font face=\"Verdana\" size=\"5\">L'oggetto "
+                                            + "<font color='orange' face=\"Verdana\"><b>"
+                                            + cp[1]
+                                            + "</b></font>"
+                                            + " è ora in uso</font>";
                                 }
                             } else {
                                 if (cp.length == 1) {
                                     response = "<font face=\"Verdana\" size=\"5\">"
                                             + "Specifica un oggetto valido da usare</font>";
                                 } else {
-                                    response = "<font face=\"Verdana\" size=\"5\">" +
-                                            "Nel tuo inventario non è presente l'oggetto " +
-                                            "<font color='orange' face=\"Verdana\"><b>" +
-                                            cp[1] +
-                                            "</b></font>" +
-                                            "</font>";
+                                    response = "<font face=\"Verdana\" size=\"5\">"
+                                            + "Nel tuo inventario non è presente l'oggetto "
+                                            + "<font color='orange' face=\"Verdana\"><b>"
+                                            + cp[1]
+                                            + "</b></font>"
+                                            + "</font>";
                                 }
                             }
                         }
@@ -213,31 +213,31 @@ public class Game implements Runnable {
                     case "lascio":
                         if (Action.leaveItem(gLoader, roomId, cp)) {
                             if (cp.length == 1) {
-                                response = "<font face=\"Verdana\" size=\"5\">Hai lasciato l'oggetto " +
-                                "<font color='orange' face=\"Verdana\"><b>" +
-                                        gLoader.getPlotRooms().get(roomId).getItemsList()
+                                response = "<font face=\"Verdana\" size=\"5\">Hai lasciato l'oggetto "
+                                        + "<font color='orange' face=\"Verdana\"><b>"
+                                        + gLoader.getPlotRooms().get(roomId).getItemsList()
                                         .get(gLoader.getPlotRooms().get(roomId).getItemsList().size() - 1)
-                                        .getItemName() +
-                                        "</b></font>" +
-                                        "</font>";
+                                        .getItemName()
+                                        + "</b></font>"
+                                        + "</font>";
                             } else {
-                                response = "<font face=\"Verdana\" size=\"5\">Hai lasciato l'oggetto " +
-                                        "<font color='orange' face=\"Verdana\"><b>" +
-                                        cp[1] +
-                                        "</b></font>" +
-                                        "</font>";
+                                response = "<font face=\"Verdana\" size=\"5\">Hai lasciato l'oggetto "
+                                        + "<font color='orange' face=\"Verdana\"><b>"
+                                        + cp[1]
+                                        + "</b></font>"
+                                        + "</font>";
                             }
                         } else {
                             if (cp.length == 1) {
-                                response = "<font face=\"Verdana\" size=\"5\">" +
-                                        "Specifica un oggetto valido da lasciare</font>";
+                                response = "<font face=\"Verdana\" size=\"5\">"
+                                        + "Specifica un oggetto valido da lasciare</font>";
                             } else {
-                                response = "<font face=\"Verdana\" size=\"5\">" +
-                                        "Nel tuo inventario non è presente l'oggetto " +
-                                        "<font color='orange' face=\"Verdana\"><b>" +
-                                        cp[1] +
-                                        "</b></font>" +
-                                        "</font>";
+                                response = "<font face=\"Verdana\" size=\"5\">"
+                                        + "Nel tuo inventario non è presente l'oggetto "
+                                        + "<font color='orange' face=\"Verdana\"><b>"
+                                        + cp[1]
+                                        + "</b></font>"
+                                        + "</font>";
                             }
                         }
                         break;
@@ -251,8 +251,8 @@ public class Game implements Runnable {
                         response = "<font face=\"Verdana\" size=\"5\">" + Action.showInventory() + "</font>";
                         break;
                     case "osservo":
-                        response = "<font face=\"Verdana\" size=\"5\">" +
-                                Action.observeRoom(gLoader, roomId) + "</font>";
+                        response = "<font face=\"Verdana\" size=\"5\">"
+                                + Action.observeRoom(gLoader, roomId) + "</font>";
                         break;
                     case "quit":
                         //response = "quit";
@@ -263,10 +263,10 @@ public class Game implements Runnable {
                         isQuit = true;
                     default:
                         System.out.println("*** Invalid command: " + cmd);
-                        response = "<font face=\"Verdana\" size=\"5\">" +
-                                "me, non so che cz vuoi (" +
-                                "<font color='red' face=\"Verdana\"><b>" + request +  "</b></font>" +
-                                ").  Riprova!" + "</font>";
+                        response = "<font face=\"Verdana\" size=\"5\">"
+                                + "me, non so che cz vuoi ("
+                                + "<font color='red' face=\"Verdana\"><b>" + request +  "</b></font>"
+                                + ").  Riprova!" + "</font>";
                 }
             }
             String exitMessage;
@@ -303,8 +303,6 @@ public class Game implements Runnable {
         //rimuovi tag html prima della creazione dei separatori
         titleWithNoTag = gLoader.getPlotRooms().get(id1).getTitle()
                 .replaceAll("\\<[^>]*>","");
-
-
         out += "-".repeat(titleWithNoTag.length()) + "\n"; // separatori lunghezza titolo
         out += gLoader.getPlotRooms().get(id1).getDescription() + "\n";
 
