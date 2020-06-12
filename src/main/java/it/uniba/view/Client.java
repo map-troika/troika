@@ -50,7 +50,7 @@ public final class Client {
                     cps.print(response);
                 } else {
                     cps.println("Response:\n" + response.replaceAll("<br>", "")
-                            .replaceAll("\\<[^>]*>","")
+                            .replaceAll("\\<[^>]*>", "")
                             .replaceAll("[{}]", " ")
                             .replaceAll("\\[[^\\[\\]]*\\]", "")
                     );
