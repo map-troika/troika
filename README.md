@@ -298,6 +298,7 @@ concorrenza, non necessaria nell'uso da parte di una singola applicazione e da u
 <p>Il create della tabella <code>users</code> del database <code>users.db</code> è composto da quattro colonne:
 
 ![](img/Schema.svg)
+>_Colonne della tabella users del database users._
 
 Entrambi i vincoli <code>UNIQUE</code> e <code>PRIMARY KEY</code> offrono una garanzia di unicità per l'insieme di 
 colonne, e in questo caso anche che il valore non sia mai nullo. Il vincolo <code>PRIMARY KEY</code> consente di 
@@ -308,6 +309,7 @@ del <code>Client</code> l'username e la password i quali vengono validati all'in
 il metodo <code>run()</code> del <code>Game</code>.
 
 ![](img/content.svg)
+>_Contenuto della tabella users del database users._
 
 ## <span id = "5.4">5.4 GUI mediante SWING</span>
 
