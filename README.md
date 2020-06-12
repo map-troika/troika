@@ -20,12 +20,11 @@
  4. [Don't Repeat Yourself (DRY)](#4.4)   
  5. [Relazioni tra classi](#4.5)     
 
-### 5. [Contenuti rilevanti](#5)        
- 1. [Trattamento delle eccezioni](#5.1)          
- 2. [I/O da file](#5.2)          
- 3. [Connessione a database](#5.3)     
- 4. [GUI mediante SWING](#5.4)     
- 5. [Client-server multithreading](#5.5)     
+### 5. [Contenuti rilevanti](#5)             
+ 1. [I/O da file](#5.1)          
+ 2. [Connessione a database](#5.2)     
+ 3. [GUI mediante SWING](#5.3)     
+ 4. [Client-server multithreading](#5.4)     
 
 ### 6. [Riepilogo del test](#6)   
  1. [Analisi statica del codice](#6.1)   
@@ -286,13 +285,11 @@ tra <code>Room</code> e <code>Item</code>.
  
 # <span id = "5">5. Contenuti rilevanti</span> 
 
-## <span id = "5.1">5.1 Trattamento delle eccezioni</span>
-
-## <span id = "5.2">5.2 I/O da file</span>
+## <span id = "5.1">5.1 I/O da file</span>
 - il parser cerca di intercettare dall'input dell'utente i comandi da eseguire (inglese o italiano) e gli item
 - le regular expression viene costruita dinamicamnete in base ai contenuti del file di configurazione/yaml
 
-## <span id = "5.3">5.3 Connessione a database</span>
+## <span id = "5.2">5.2 Connessione a database</span>
 Questa sezione descrive l'uso dello standard JDBC <em>(Java Data Base Connectivity)</em>.
 
 <p>Per questa applicazione è stato utilizzato il Database SQLite essendo più compatto e non supportando la gestione della 
@@ -313,9 +310,9 @@ il metodo <code>run()</code> del <code>Game</code>.
 ![](img/content.svg)
 >_Contenuto della tabella users del database users._
 
-## <span id = "5.4">5.4 GUI mediante SWING</span>
+## <span id = "5.3">5.3 GUI mediante SWING</span>
 
-## <span id = "5.5">5.5 Client-server multithreading</span>
+## <span id = "5.4">5.4 Client-server multithreading</span>
 Questa sezione descrive l'uso della programmazione in rete.
 
 <p>L'identificazione dell'IP <em>(Internet Protocol)</em> avviene tramite dot notation e la porta sulla quale sia il 
@@ -327,7 +324,7 @@ richiamerà <code>accept()</code> per attendere un nuovo <code>Client</code>.</p
 ![](img/Multithread.svg)
 >_Esempio di Client e ClientGUI concorrenti._
 
-<p>Per ogni connessione di un <code>Client</code> il <code>Server</code> istanzia un nuovo Game nel thread.</p>
+<p>Per ogni connessione di un <code>Client</code> il <code>Server</code> istanzia un nuovo <code>Game</code> nel thread.</p>
 <p>Il messaggio stampato sulla console è codificato utilizzando lo schema di codifica Base64 per evitare che i caratteri 
 di fine riga siano interpretati come invio. Il metodo <code>readLine()</code> consente di ottenere una stringa contenente 
 il contenuto della riga, esclusi i caratteri di fine riga, oppure null se è stata raggiunta la fine del flusso senza 
@@ -357,29 +354,19 @@ Questa sezione descrive i metodi e la dinamica per lo sviluppo del software.
 ![](res/img/productbacklog.PNG)
 >_Parte della product backlog del gruppo Thacker._ 
 
-La product backlog di questo gruppo è stata modificata dinamicamente,
-sprint dopo sprint, con l'aggiunta di **user stories** in base alle richieste del committente.
-Le _user story_ sono un tipo di oggetto limite che facilitano la sensibilizzazione 
-e la comunicazione: aiutano, quindi, l'organizzazione dei team,
-la loro comprensione del sistema e del suo contesto.
-
-**N.B.:** non tutte le _user story_ della product backlog 
-sono state implementate, dando la priorità a quelle previste per gli _sprint goal_.
+La product backlog di questo progetto è stata modificata dinamicamente,
+dopo ogni riunione interna, con l'aggiunta di nuove feature in base agli argomenti 
+studiati e il tempo a disposizione.
 
 ## <span id = "7.2">7.2 Strumenti di lavoro</span>
 Questo gruppo ha utilizzato principalmente l'hub di collaborazione [Microsoft Teams](https://www.microsoft.com/it-it/microsoft-365/microsoft-teams/group-chat-software?&ef_id=CjwKCAjwtqj2BRBYEiwAqfzur0-16AYE21Zo35HZJYxTFy1__i_I2fgJjivVgf8EXDfD9K-1gHHbrRoCUIkQAvD_BwE:G:s&OCID=AID2001446_SEM_CjwKCAjwtqj2BRBYEiwAqfzur0-16AYE21Zo35HZJYxTFy1__i_I2fgJjivVgf8EXDfD9K-1gHHbrRoCUIkQAvD_BwE:G:s)
 e la piattaforma di sviluppo software [GitHub](https://github.com/) 
-per condividere il lavoro tra gli sviluppatori del prodotto.
-GitHub, infatti, è stato utilizzato per il Version Control per gestire il controllo del lavoro da remoto,
-adattandosi dunque alle restrizioni dovute all'emergenza CoVid-19;
-di notevole importanza, inoltre, è stato il tool di [GitHub Actions](https://github.com/marketplace?type=actions), 
+per condividere il lavoro.
+GitHub, infatti, è stato utilizzato per il Version Control per gestire il controllo del lavoro da remoto.
+di notevole importanza, inoltre, è stato il tool di GitHub Actions, 
 il cui compito è stato quello di automatizzare il workflow development relativo al prodotto da realizzare.
 Tutti i membri del gruppo hanno utilizzato di comune accordo l'ambiente di sviluppo 
 [IntelliJ IDEA](https://www.jetbrains.com/idea/).
-
-
-![](res/img/githubactions.PNG)
->_Esempio di workflow automatizzato con GitHub Actions._
 
 
 
