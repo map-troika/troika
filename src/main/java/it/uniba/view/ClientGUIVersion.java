@@ -1,8 +1,6 @@
 package it.uniba.view;
 
-import javax.swing.text.BadLocationException;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
@@ -25,6 +23,9 @@ public final class ClientGUIVersion implements Runnable {
 
     private PrintStream sps;
 
+    private final int threadSleep = 2000;
+    private final int threadSleep2 = 100;
+
     public static void main(final String[] argv) {
         cGUI = new ClientGUI();
 
@@ -36,17 +37,15 @@ public final class ClientGUIVersion implements Runnable {
     @Override
     public void run() {
         System.out.println(
-                        "<br><font color='orange' face=\"Verdana\"><b>" +
-                        "Client: " +
-                        "</b></font> " +
-                        clientName);
-
+                "<br><font color='orange' face=\"Verdana\"><b>"
+                        + "Client: "
+                        + "</b></font> "
+                        + clientName);
         try {
-            cGUI.appendText("\n" + "<br>" +
-                    "<font color='orange' face=\"Verdana\"><b>" +
-                    "Console:" +
-                    "</b></font> " +
-                    "Apre una comunicazione socket");
+            cGUI.appendText("\n" + "<br>"
+                    + "<font color='orange' face=\"Verdana\"><b>"
+                    + "Console:" + "</b></font> "
+                    + "Apre una comunicazione socket");
             Socket s = new Socket("localhost", PORT_NUMBER);
 
             // Apre i canali di comunicazione e la connessione con il  view
@@ -71,15 +70,14 @@ public final class ClientGUIVersion implements Runnable {
                     credentialRequestGUI = new LoginRequestGUI(response);
                     Thread reqGUIt = new Thread(credentialRequestGUI, "thread credential req");
                     reqGUIt.start();
-                    cGUI.appendText("\n" + "<br>" +
-                            "<font color='orange' face=\"Verdana\"><b>" +
-                            "Console:" +
-                            "</b></font> " +
-                            "In attesa della credenziale"
+                    cGUI.appendText("\n" + "<br>"
+                            + "<font color='orange' face=\"Verdana\"><b>"
+                            + "Console:" + "</b></font> "
+                            + "In attesa della credenziale"
                     ); //imposta titolo
                     while (reqGUIt.isAlive()) {
 
-                        Thread.sleep(2000);
+                        Thread.sleep(threadSleep);
                     }
                     cps.print(credentialRequestGUI.getStringUserResponse());
 
@@ -92,47 +90,40 @@ public final class ClientGUIVersion implements Runnable {
                     cGUI.clearOutputText();
                     cGUI.appendText(
                             response.replaceAll("\u001B\\[2J\u001B\\[H", ""));
-                    cGUI.appendText("<br>" +
-                            "<font color='orange' face=\"Verdana\"><b>" +
-                            "Console:" +
-                            "</b></font> " +
-                            "sessione terminata");
+                    cGUI.appendText("<br>"
+                            + "<font color='orange' face=\"Verdana\"><b>"
+                            + "Console:" + "</b></font> " + "sessione terminata");
                     cGUI.quitSession();
                     quitThread = true;
                 } else if (response.contains("Uscita in corso...")) {
                     cGUI.clearOutputText();
                     cGUI.appendText(
                             response.replaceAll("\u001B\\[2J\u001B\\[H", ""));
-                    cGUI.appendText("<br>" +
-                            "<font color='orange' face=\"Verdana\"><b>" +
-                            "Console:" +
-                            "</b></font> " +
-                            "sessione terminata");
+                    cGUI.appendText("<br>"
+                            + "<font color='orange' face=\"Verdana\"><b>"
+                            + "Console:" + "</b></font> " + "sessione terminata");
                     cGUI.quitSession();
                     quitThread = true;
-                } else if(response.contains("Sei stato ucciso, hai perso!")) {
+                } else if (response.contains("Sei stato ucciso, hai perso!")) {
                     cGUI.clearOutputText();
                     cGUI.appendText(
                             response.replaceAll("\u001B\\[2J\u001B\\[H", ""));
-                    cGUI.appendText("<br>" +
-                            "<font color='orange' face=\"Verdana\"><b>" +
-                            "Console:" +
-                            "</b></font> " +
-                            "sessione terminata");
+                    cGUI.appendText("<br>" + "<font color='orange' face=\"Verdana\"><b>"
+                            + "Console:" + "</b></font> " + "sessione terminata");
                     cGUI.quitSession();
                     quitThread = true;
                 } else {
                     cGUI.clearOutputText();
                     cGUI.appendText(
                             response.replaceAll("\u001B\\[2J\u001B\\[H", "")
-                            .replaceAll("\\{[^{}]*}", "")
-                            .replaceAll("[\\[\\]]", " ")
+                                    .replaceAll("\\{[^{}]*}", "")
+                                    .replaceAll("[\\[\\]]", " ")
                     );
                     //cGUI.appendText("<br>" + "command (help): ");
                 }
 
 
-                Thread.sleep(100);
+                Thread.sleep(threadSleep2);
             }
 
             // Disalloca le risorse impiegate: chiude i canali di comunicazione e la connessione con il Server
@@ -143,30 +134,24 @@ public final class ClientGUIVersion implements Runnable {
             System.out.println("Client end");
 
         } catch (Exception e) {
-            cGUI.appendText("\n" + "<br>" +
-                    "<font color='red' face=\"Verdana\"><b>" +
-                    "Console:" +
-                    "</b></font> Nessun server attivo"); /*+
-                    e.getMessage());*/
+            cGUI.appendText("\n" + "<br>" + "<font color='red' face=\"Verdana\"><b>"
+                    + "Console:" + "</b></font> Nessun server attivo");
 
-            cGUI.appendText("<br>" +
-                    "<font color='orange' face=\"Verdana\"><b>" +
-                    "Console:" +
-                    "</b></font> " +
-                    "Sessione terminata");
+            cGUI.appendText("<br>" + "<font color='orange' face=\"Verdana\"><b>"
+                    + "Console:" + "</b></font> " + "Sessione terminata");
             cGUI.quitSession();
-
 
 
             closeServerComunications();
         }
     }
 
-    public void sendRequestToServer(String userRequest) {
+    public void sendRequestToServer(final String userRequest) {
+
         // Send messaggio letto dal console a view
-        userRequest = Base64.getEncoder().encodeToString(userRequest.getBytes());
-        if(sps!=null)
-        {
+        String str = userRequest;
+        str = Base64.getEncoder().encodeToString(str.getBytes());
+        if (sps != null) {
             sps.println(userRequest);
         }
     }
@@ -182,11 +167,9 @@ public final class ClientGUIVersion implements Runnable {
      * @throws InterruptedException
      */
     public Thread runThreadClient() throws InterruptedException {
-        cGUI.appendText("\n" + "<br>" +
-                "<font color='orange' face=\"Verdana\"><b>" +
-                "Console:" +
-                "</b></font> " +
-                "Client start");
+        cGUI.appendText("\n" + "<br>"
+                + "<font color='orange' face=\"Verdana\"><b>"
+                + "Console:" + "</b></font> " + "Client start");
         Runnable c = this;
         Thread t = new Thread(c); // Create task (Application)
         t.start();
