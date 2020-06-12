@@ -26,64 +26,64 @@ public final class Action {
         String out = "\033[2J\033[H";
 
         out += "<center><table border=0 width=400><tr><td bgcolor=\"Silver\" align=\"left\" colspan=\"2\">" +
-                "<font face=\"Agency FB\" size=\"5\"><b>" +
+                "<font face=\"Impact\" size=\"5\"><b>" +
                 "Lista comandi:\n" +
                 "</b></font>" +
                 "</td></tr>";
 
 
         out += "<tr><td bgcolor=\"Gray\" align=\"center\">" +
-                "<font color='white' face=\"Agency FB\" size=\"5\"><b>" +
+                "<font color='white' face=\"Impact\" size=\"5\"><b>" +
                 "\tprendo:" +
                 "</b></font></td>             <td bgcolor=\"Gray\" align=\"center\">" +
-                "<font face=\"Agency FB\" size=\"5\"><b>" +
+                "<font face=\"Impact\" size=\"5\"><b>" +
                 "raccoglie un oggetto\n" +
                 "</b></font>" +
                 "</td></tr>";
 
         out += "<tr><td bgcolor=\"Silver\" align=\"center\">" +
-                "<font color='white' face=\"Agency FB\" size=\"5\"><b>" +
+                "<font color='white' face=\"Impact\" size=\"5\"><b>" +
                 "\tlascio:" +
                 "</b></font" +
                 "></td>             <td bgcolor=\"Silver\" align=\"center\">" +
-                "<font face=\"Agency FB\" size=\"5\"><b>" +
+                "<font face=\"Impact\" size=\"5\"><b>" +
                 "lascia un oggetto\n" +
                 "</b></font>" +
                 "</td></tr>";
 
         out += "<tr><td bgcolor=\"Gray\" align=\"center\">" +
-                "<font color='white' face=\"Agency FB\" size=\"5\"><b>" +
+                "<font color='white' face=\"Impact\" size=\"5\"><b>" +
                 "\tposizione:" +
                 "</b></font</td>          <td bgcolor=\"Gray\" align=\"center\">" +
-                "<font face=\"Agency FB\" size=\"5\"><b>" +
+                "<font face=\"Impact\" size=\"5\"><b>" +
                 "stanza corrente\n" +
                 "</b></font>" +
                 "</td></tr>";
 
         out += "<tr><td bgcolor=\"Silver\" align=\"center\">" +
-                "<font color='white' face=\"Agency FB\" size=\"5\"><b>" +
+                "<font color='white' face=\"Impact\" size=\"5\"><b>" +
                 "\tinventario:</b></font>" +
                 "</td>         <td bgcolor=\"Silver\" align=\"center\">" +
-                "<font face=\"Agency FB\" size=\"5\"><b>" +
+                "<font face=\"Impact\" size=\"5\"><b>" +
                 "lista oggetti nell'inventario\n" +
                 "</b></font>" +
                 "</td></td></tr>";
 
         out += "<tr><td bgcolor=\"Gray\" align=\"center\">" +
-                "<font color='white' face=\"Agency FB\" size=\"5\"><b>" +
+                "<font color='white' face=\"Impact\" size=\"5\"><b>" +
                 "\tosserva:" +
                 "</b></font></td>            <td bgcolor=\"Gray\" align=\"center\">" +
-                "<font face=\"Agency FB\" size=\"5\"><b>" +
+                "<font face=\"Impact\" size=\"5\"><b>" +
                 "descrive la stanza\n" +
                 "</b></font>" +
                 "</td></tr>";
 
         out += "<tr><td bgcolor=\"Silver\" align=\"center\">" +
-                "<font color='white' face=\"Agency FB\" size=\"5\"><b>" +
+                "<font color='white' face=\"Impact\" size=\"5\"><b>" +
                 "\tnord/sud/est/ovest:" +
                 "</b></font>" +
                 "</td> <td bgcolor=\"Silver\" align=\"center\">" +
-                "<font face=\"Agency FB\" size=\"5\"><b>" +
+                "<font face=\"Impact\" size=\"5\"><b>" +
                 "movimenti tra le stanze\n" +
                 "</b></font>" +
                 "</td></tr></table></center>";
@@ -236,18 +236,18 @@ public final class Action {
                 loader.getPlotRooms().get(roomId)
                         .removeItemRoom(enemy);
                 out += "Armato di " + weapon.getItemName() + " hai sconfitto il " +
-                        "<font color='red' face=\"Agency FB\"><b>" +
+                        "<font color='red' face=\"Impact\"><b>" +
                         enemy.getItemName() + "</b></font>";
 
                 Player.setIsWinner(true);
             } else {
-                out += "Come pensavi di sconfiggere il " + "<font color='red' face=\"Agency FB\"><b>" +
+                out += "Come pensavi di sconfiggere il " + "<font color='red' face=\"Impact\"><b>" +
                         enemy.getItemName() +
                         "</b></font>" + " senza l'uso di un' arma";
                 Game.setEnd(true);
             }
         } else if (enemy != null && weapon == null) {
-            out += "Come pensavi di sconfiggere il " + "<font color='red' face=\"Agency FB\"><b>" + enemy.getItemName()
+            out += "Come pensavi di sconfiggere il " + "<font color='red' face=\"Impact\"><b>" + enemy.getItemName()
                     + "</b></font>"
                     + " senza l'uso di un' arma";
             Game.setEnd(true);
@@ -284,14 +284,14 @@ public final class Action {
             out += "\n" + "L'inventario è vuoto" + "\n";
         } else {
             out += "<center><table border=0 width=200><tr><td align=\"center\" bgcolor=\"Gray\" align=\"left\" colspan=\"2\">" +
-                    "<font color='black' face=\"Agency FB\" size=\"5\"><b>" +
+                    "<font color='black' face=\"Impact\" size=\"5\"><b>" +
                     "Il tuo inventario\n<br>" +
                     "</b></font>" +
                     "</td></tr>";
 
             for (Item i : Player.getItemsList()) {
                 out += "\n" +  "<tr><td align=\"center\" bgcolor=\"Silver\" align=\"left\" colspan=\"2\">" +
-                        "<font color='orange' face=\"Agency FB\" size=\"4\"><b>" +
+                        "<font color='orange' face=\"Impact\" size=\"4\"><b>" +
                         i.getItemName() + "<br>" +
                         "</b></font></td></tr> " +
                         "\n" + "-".repeat(i.getItemName().length());

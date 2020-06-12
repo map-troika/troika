@@ -234,7 +234,7 @@ public class ClientGUI {
         formattedOutputClient.setText("");
     }
     private void appendCommandNotValid() {
-        appendText("<br><font color='orange' face=\"Agency FB\"><b>" +
+        appendText("<br><font color='orange' face=\"Impact\"><b>" +
                 "Console:" +
                 "</b></font> " +
                 "comando non disponbile, avvia una partita");

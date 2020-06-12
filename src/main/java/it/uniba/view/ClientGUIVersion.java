@@ -36,14 +36,14 @@ public final class ClientGUIVersion implements Runnable {
     @Override
     public void run() {
         System.out.println(
-                        "<br><font color='orange' face=\"Agency FB\"><b>" +
+                        "<br><font color='orange' face=\"Impact\"><b>" +
                         "Client: " +
                         "</b></font> " +
                         clientName);
 
         try {
             cGUI.appendText("\n" + "<br>" +
-                    "<font color='orange' face=\"Agency FB\"><b>" +
+                    "<font color='orange' face=\"Impact\"><b>" +
                     "Console:" +
                     "</b></font> " +
                     "Apre una comunicazione socket");
@@ -72,7 +72,7 @@ public final class ClientGUIVersion implements Runnable {
                     Thread reqGUIt = new Thread(credentialRequestGUI, "thread credential req");
                     reqGUIt.start();
                     cGUI.appendText("\n" + "<br>" +
-                            "<font color='orange' face=\"Agency FB\"><b>" +
+                            "<font color='orange' face=\"Impact\"><b>" +
                             "Console:" +
                             "</b></font> " +
                             "in attesa della credenziale"
@@ -93,7 +93,7 @@ public final class ClientGUIVersion implements Runnable {
                     cGUI.appendText(
                             response.replaceAll("\u001B\\[2J\u001B\\[H", ""));
                     cGUI.appendText("<br>" +
-                            "<font color='orange' face=\"Agency FB\"><b>" +
+                            "<font color='orange' face=\"Impact\"><b>" +
                             "Console:" +
                             "</b></font> " +
                             "sessione terminata");
@@ -104,7 +104,7 @@ public final class ClientGUIVersion implements Runnable {
                     cGUI.appendText(
                             response.replaceAll("\u001B\\[2J\u001B\\[H", ""));
                     cGUI.appendText("<br>" +
-                            "<font color='orange' face=\"Agency FB\"><b>" +
+                            "<font color='orange' face=\"Impact\"><b>" +
                             "Console:" +
                             "</b></font> " +
                             "sessione terminata");
@@ -115,7 +115,7 @@ public final class ClientGUIVersion implements Runnable {
                     cGUI.appendText(
                             response.replaceAll("\u001B\\[2J\u001B\\[H", ""));
                     cGUI.appendText("<br>" +
-                            "<font color='orange' face=\"Agency FB\"><b>" +
+                            "<font color='orange' face=\"Impact\"><b>" +
                             "Console:" +
                             "</b></font> " +
                             "sessione terminata");
@@ -144,13 +144,13 @@ public final class ClientGUIVersion implements Runnable {
 
         } catch (Exception e) {
             cGUI.appendText("\n" + "<br>" +
-                    "<font color='red' face=\"Agency FB\"><b>" +
+                    "<font color='red' face=\"Impact\"><b>" +
                     "Console:" +
                     "</b></font> " +
                     e.getMessage());
 
             cGUI.appendText("<br>" +
-                    "<font color='orange' face=\"Agency FB\"><b>" +
+                    "<font color='orange' face=\"Impact\"><b>" +
                     "Console:" +
                     "</b></font> " +
                     "sessione terminata");
@@ -183,7 +183,7 @@ public final class ClientGUIVersion implements Runnable {
      */
     public Thread runThreadClient() throws InterruptedException {
         cGUI.appendText("\n" + "<br>" +
-                "<font color='orange' face=\"Agency FB\"><b>" +
+                "<font color='orange' face=\"Impact\"><b>" +
                 "Console:" +
                 "</b></font> " +
                 "Client start");
