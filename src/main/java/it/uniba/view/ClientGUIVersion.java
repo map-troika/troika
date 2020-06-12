@@ -152,7 +152,7 @@ public final class ClientGUIVersion implements Runnable {
         String str = userRequest;
         str = Base64.getEncoder().encodeToString(str.getBytes());
         if (sps != null) {
-            sps.println(userRequest);
+            sps.println(str);
         }
     }
 
