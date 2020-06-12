@@ -288,13 +288,14 @@ volta, rendendo il codice più leggibile, snello e facilmente manutenibile.
 ## <span id = "5.1">5.1 Trattamento delle eccezioni</span>
 
 ## <span id = "5.2">5.2 I/O da file</span>
-
+- il parser cerca di intercettare dall'input dell'utente i comandi da eseguire (inglese o italiano) e gli item
+- le regular expression viene costruita dinamicamnete in base ai contenuti del file di configurazione/yaml 
 ## <span id = "5.3">5.3 Connessione a database</span>
 Questa sezione descrive l'uso dello standard JDBC <em>(Java Data Base Connectivity)</em>.
 
 <p>Per questa applicazione è stato utilizzato il Database SQLite essendo più compatto e non supportando la gestione della 
 concorrenza, non necessaria nell'uso da parte di una singola applicazione e da un singolo utente.</p>
-<p>Lo schema del database <code>users</code></p> è rappresentato da una relazione con tre attributi.
+<p>Il create della tabella <code>users</code></p> del database <code>users.db</code> è rappresentato da quattro colonne:
 
 ![](img/)
 
@@ -302,9 +303,17 @@ Entrambi i vincoli <code>UNIQUE</code> e <code>PRIMARY KEY</code> offrono una ga
 colonne, e in questo caso anche che il valore non sia mai nullo. Il vincolo <code>PRIMARY KEY</code> consente di 
 accedere univocamente alla riga.
 
+Nell'apllicazione viene utilizzato per verificare se l'utente è abilitato o meno per accedere al gioco.
+
+
 ## <span id = "5.4">5.4 GUI mediante SWING</span>
 
 ## <span id = "5.5">5.5 Client-server multithreading</span>
+
+ - server istanzia game per ogni connessione del client, in un thread
+ - è possibile connettere più client contemporaneamete, multithreading
+ - la connessione tra client e server è codificata per evitare che new line nelle stampe viene interpretato come invio dall'utente
+ - 
 
 # <span id = "6">6. Riepilogo del test</span> 
 Questa sezione espone i risultati e le modalità con cui è stato testato il software.
