@@ -295,16 +295,19 @@ Questa sezione descrive l'uso dello standard JDBC <em>(Java Data Base Connectivi
 
 <p>Per questa applicazione è stato utilizzato il Database SQLite essendo più compatto e non supportando la gestione della 
 concorrenza, non necessaria nell'uso da parte di una singola applicazione e da un singolo utente.</p>
-<p>Il create della tabella <code>users</code></p> del database <code>users.db</code> è rappresentato da quattro colonne:
+<p>Il create della tabella <code>users</code> del database <code>users.db</code> è composto da quattro colonne:
 
-![](img/)
+![](img/Schema.svg)
 
 Entrambi i vincoli <code>UNIQUE</code> e <code>PRIMARY KEY</code> offrono una garanzia di unicità per l'insieme di 
 colonne, e in questo caso anche che il valore non sia mai nullo. Il vincolo <code>PRIMARY KEY</code> consente di 
 accedere univocamente alla riga.
 
-Nell'apllicazione viene utilizzato per verificare se l'utente è abilitato o meno per accedere al gioco.
+Il database viene utilizzato per verificare se l'utente è abilitato o meno ad accedere al gioco. Si inseriscono all'avvio 
+del <code>Client</code> l'username e la password i quali vengono validati all'interno del <code>Server</code> che chiama
+il metodo <code>run()</code> del <code>Game</code>.
 
+![](img/content.svg)
 
 ## <span id = "5.4">5.4 GUI mediante SWING</span>
 
