@@ -98,7 +98,7 @@ public class ClientGUI {
         //creazione listner (events)
         startClientButton.addActionListener(new ActionListener() {
             @Override
-            public final void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 client = new ClientGUIVersion();
                 startClientButton.setEnabled(false); //disabilita tasto start
                 try {
@@ -124,14 +124,14 @@ public class ClientGUI {
 
         endSessionButton.addActionListener(new ActionListener() {
             @Override
-            public final void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 quitSession();
             }
         });
 
         buttonUp.addActionListener(new ActionListener() {
             @Override
-            public final void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 if (client != null) {
                     client.sendRequestToServer("nord");
                     textUserInputArea.requestFocusInWindow(); //focus su textArea
@@ -142,7 +142,7 @@ public class ClientGUI {
         });
         buttonDown.addActionListener(new ActionListener() {
             @Override
-            public final void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 if (client != null) {
                     client.sendRequestToServer("sud");
                     textUserInputArea.requestFocusInWindow(); //focus su textArea
@@ -153,7 +153,7 @@ public class ClientGUI {
         });
         buttonLeft.addActionListener(new ActionListener() {
             @Override
-            public final void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 if (client != null) {
                     client.sendRequestToServer("ovest");
                     textUserInputArea.requestFocusInWindow(); //focus su textArea
@@ -164,7 +164,7 @@ public class ClientGUI {
         });
         buttonRight.addActionListener(new ActionListener() {
             @Override
-            public final void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 if (client != null) {
                     client.sendRequestToServer("est");
                     textUserInputArea.requestFocusInWindow(); //focus su textArea
@@ -175,7 +175,7 @@ public class ClientGUI {
         });
         inviaComandoButton.addActionListener(new ActionListener() {
             @Override
-            public final void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 if (client != null) {
                     client.sendRequestToServer(textUserInputArea.getText());
                 } else {
