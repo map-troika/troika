@@ -293,6 +293,7 @@ utente potrà scrivere un proprio plot, in cui si potranno aggiungere gli elemen
 - delle actions
 - delle room
 - degli items
+
 La classe <code>Plot</code> provvederà ad estrarre gli elementi dal file plot dal formato <code>Yaml</code>, 
 caricandoli all'interno di strutture dati adeguate, il cui numero degli elementi e delle relazioni tra gli elementi 
 sarà dinamico. Sarà quindi possibile creare molteplici plot con relazioni e caratteristiche differenti, il 
@@ -300,9 +301,9 @@ funzionamento del plot non dipenderà strettamente dal sistema ma da come sarà 
 Dopo aver estratto l'intero **plot** dal file yaml, la classe <code>Parser</code> provvederà a:
   
 - cercare di intercettare dall'input dell'utente i comandi, matchandoli con i pattern caricati dal file di configurazione, 
-inoltre il matching dei pattern è compatibile con la lingua italiana e inglese
+inoltre il matching dei pattern è compatibile con la lingua italiana e inglese.
 - costruire dinamicamente le regular expression in base al pattern dei comandi e degli item estratti dal file di 
-configurazione/yaml, i pattern matcheranno sia in lingua italiana che in lingua inglese.
+configurazione/yaml.
 
 ## <span id = "5.2">5.2 Connessione a database</span>
 Questa sezione descrive l'uso dello standard JDBC <em>(Java Data Base Connectivity)</em>.
