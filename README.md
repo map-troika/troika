@@ -47,7 +47,7 @@ riga di comando <em>(Command Line Interface - CLI).</em></p>
 corso di Metodi Avanzati di Programmazione, piuttosto che produrre una soluzione completa e definitiva.</p>    
 
 ## <span id = "1.1">1.1 Mappa del gioco</span> 
-![Map](MapNew.svg)
+![Map](img/MapNew.svg)
 <p>Il gioco inizia con Tesèo posto all'esterno del labirinto, dirigendosi verso <b>Sud</b> si avrà modo di entrare nell'
 <em>Ala d'ingresso</em> in cui possiamo osservare un <b>gomitolo</b>. Raccogliere ed usare il gomitolo permetterà di 
 uscire automaticamente dal labirinto una volta sconfitto il Minotauro inserendo il comando <code>home</code>.</p>
@@ -152,7 +152,7 @@ Questo software e la sua interfaccia utente possono essere interpretati come un 
 *(Model-View-Controller)*, un modello architettonico che isola l'amministrazione del gioco (business logic - Model), 
 dalla presentazione dei dati (View).
 
-![](MVC.svg)
+![](img/MVC.svg)
 >_Diagramma del funzionamento di un'architettura MVC._
 
 <br>
@@ -165,7 +165,7 @@ effettuando chiamate sugli oggetti del Model e modificando lo stato degli altri 
 sulla posizione corrente del giocatore.</p>
 
 ## <span id = "3.2">3.2 Rappresentazione dell’architettura</span> 
-![](package1.png)
+![](img/package1.png)
 >_Diagramma dei package di uniba._
 
 <br>
@@ -294,10 +294,13 @@ Questa sezione descrive l'uso dello standard JDBC <em>(Java Data Base Connectivi
 
 <p>Per questa applicazione è stato utilizzato il Database SQLite essendo più compatto e non supportando la gestione della 
 concorrenza, non necessaria nell'uso da parte di una singola applicazione e da un singolo utente.</p>
+<p>Lo schema del database <code>users</code></p> è rappresentato da una relazione con tre attributi.
 
-![](Asset6.png)
+![](img/)
 
-
+Entrambi i vincoli <code>UNIQUE</code> e <code>PRIMARY KEY</code> offrono una garanzia di unicità per l'insieme di 
+colonne, e in questo caso anche che il valore non sia mai nullo. Il vincolo <code>PRIMARY KEY</code> consente di 
+accedere univocamente alla riga.
 
 ## <span id = "5.4">5.4 GUI mediante SWING</span>
 
