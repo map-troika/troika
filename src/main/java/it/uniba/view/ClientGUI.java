@@ -160,11 +160,11 @@ public class ClientGUI {
             public void actionPerformed(ActionEvent e) {
                 if (client != null) {
                     client.sendRequestToServer(textUserInputArea.getText());
-                    textUserInputArea.setText("");
-                    textUserInputArea.requestFocusInWindow(); //focus su textArea
                 } else {
                     appendCommandNotValid();
                 }
+                textUserInputArea.setText("");
+                textUserInputArea.requestFocusInWindow(); //focus su textArea
             }
         });
 
