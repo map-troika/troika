@@ -42,19 +42,19 @@ items:
   - name: gomitolo
     pattern: "gomitolo|gom|clew"
     description: |
-      per terra cè un <font color='orange' face="Impact"><b>gomitolo</b></font>, potrebbe aiutarti a tornare sui tuoi passi
+      per terra cè un <font color='orange' face="Verdana"><b>gomitolo</b></font>, potrebbe aiutarti a tornare sui tuoi passi
     isEnemy: false
     isWeapon: false
   - name: minotauro
     pattern: "minotauro|min|minotaur"
     description: |
-      hai di fronte il <font color='red' face="Impact"><b>minotauro</b></font>, pronto all'attacco
+      hai di fronte il <font color='red' face="Verdana"><b>minotauro</b></font>, pronto all'attacco
     isEnemy: true
     isWeapon: false
   - name: spada
     pattern: "spada|spad|sword"
     description: |
-      in lontananza cè una <font color='orange' face="Impact"><b>spada</b></font>, degna dei più nobili guerrieri
+      in lontananza cè una <font color='orange' face="Verdana"><b>spada</b></font>, degna dei più nobili guerrieri
     isEnemy: false
     isWeapon: true
 
@@ -82,7 +82,7 @@ rooms:
     title: ""
     # http://patorjk.com/software/taag/#p=display&h=0&v=1&f=Calvin%20S&t=IL%20LABIRINTO%20DI%20CNOSSO%0A------------------%0A
     descr: |
-      <font face="Impact" size="10"><b>[IL LABIRINTO DI CNOSSO]</b></font>
+      <font face="Verdana" size="7"><b>[IL LABIRINTO DI CNOSSO]</b></font>
       <hr>
       <br>
       {
@@ -90,9 +90,9 @@ rooms:
       ║║    ║  ╠═╣╠╩╗║╠╦╝║║║║ ║ ║ ║   ║║║  ║  ║║║║ ║╚═╗╚═╗║ ║
       ╩╩═╝  ╩═╝╩ ╩╚═╝╩╩╚═╩╝╚╝ ╩ ╚═╝  ═╩╝╩  ╚═╝╝╚╝╚═╝╚═╝╚═╝╚═╝
       ──────────────────────────────────────────────────────}
-      <font color='red' face="Impact" size="6"><b>L'impresa di Tesèo contro il Minotauro</b></font><br>
+      <font color='red' face="Verdana" size="5"><b>L'impresa di Tesèo contro il Minotauro</b></font><br>
       <br>
-      <font color='red' face="Impact"><b>BENVENUTO!</b></font><font face="Impact" size="5"><b> Sull’isola di Creta, nel periodo del regno di Minosse, in seguito ad<br>
+      <font color='red' face="Verdana"><b>BENVENUTO!</b></font><font face="Verdana" size="3"><b> Sull’isola di Creta, nel periodo del regno di Minosse, in seguito ad<br>
       un’offesa fatta ad Afrodite nasce un figlio mostruoso, metà uomo e metà toro,<br>
       il Minotauro. Minosse lo imprigiona in un labirinto e, per sfamarlo, impone<br>
       alle città sotto la sua dominazione un tributo annuale di sette fanciulle e<br>
@@ -100,16 +100,16 @@ rooms:
       Tesèo, che non vuole arrendersi al tragico destino e tenterà di sconfiggere il<br>
       letale mostro.<br><br>
 
-      Sei nel giardino profumato che costeggia il labirinto, a <font color='green' face="Impact"><b>sud</b></font> si scorge un<br>
+      Sei nel giardino profumato che costeggia il labirinto, a <font color='green' face="Verdana"><b>sud</b></font> si scorge un<br>
       ingresso malridotto...<br></b></font>
     exits:
       sud: 1
 
   - id: 1
-    title: <font color='gray' face="Impact" size="6"><b>Ala d'ingresso</b></font><hr>
+    title: <font color='gray' face="Verdana" size="6"><b>Ala d'ingresso</b></font><hr>
     descr: |
-      <font face="Impact" size="5"><b>Sei nell'ala d'ingresso e non sai cosa fare, la stanza è buia e sul lato <font color='green' face="Impact"><b>est</b></font><br>
-      si intravede una porta piuttosto grande, a <font color='green' face="Impact"><b>nord</b></font> si intravedono ancora i fiori<br>
+      <font face="Verdana" size="3"><b>Sei nell'ala d'ingresso e non sai cosa fare, la stanza è buia e sul lato <font color='green' face="Verdana"><b>est</b></font><br>
+      si intravede una porta piuttosto grande, a <font color='green' face="Verdana"><b>nord</b></font> si intravedono ancora i fiori<br>
       del giardino...<br></b></font>
     items:
       - gomitolo
@@ -118,43 +118,43 @@ rooms:
       est: 2
 
   - id: 2
-    title: <font color='gray' face="Impact" size="6"><b>Ala del bivio</b></font><hr>
+    title: <font color='gray' face="Verdana" size="6"><b>Ala del bivio</b></font><hr>
     descr: |
-      <font face="Impact" size="5"><b>Che stanza tetra! Segui il tuo istinto, ci sono tre  passaggi: ad <font color='green' face="Impact"><b>ovest</b></font>,<br>
-      <font color='green' face="Impact"><b>sud</b></font> ed <font color='green' face="Impact"><b>est</b></font>...<br></b></font>
+      <font face="Verdana" size="3"><b>Che stanza tetra! Segui il tuo istinto, ci sono tre  passaggi: ad <font color='green' face="Verdana"><b>ovest</b></font>,<br>
+      <font color='green' face="Verdana"><b>sud</b></font> ed <font color='green' face="Verdana"><b>est</b></font>...<br></b></font>
     exits:
       ovest: 1
       sud: 3
       est: 4
 
   - id: 3
-    title: <font color='gray' face="Impact" size="6"><b>Ala della spada</b></font><hr>
+    title: <font color='gray' face="Verdana" size="6"><b>Ala della spada</b></font><hr>
     descr: |
-      <font face="Impact" size="5"><b>Ehi! Sei nell'ala della spada...potresti trovare un' arma degna di un<br>
+      <font face="Verdana" size="3"><b>Ehi! Sei nell'ala della spada...potresti trovare un' arma degna di un<br>
       guerriero, se nessuno ti ha preceduto! Questa stanza sembra non avere<br>
-      altre uscite oltre quella a <font color='green' face="Impact"><b>nord</b></font> per tornare indietro...<br></b></font>
+      altre uscite oltre quella a <font color='green' face="Verdana"><b>nord</b></font> per tornare indietro...<br></b></font>
     items:
       - spada
     exits:
       nord: 2
 
   - id: 4
-    title: <font color='gray' face="Impact" size="6"><b>Ala del grande passo</b></font><hr>
+    title: <font color='gray' face="Verdana" size="6"><b>Ala del grande passo</b></font><hr>
     descr: |
-      <font face="Impact" size="5"><b>Verso <font color='green' face="Impact"><b>nord</b></font> si riescono già a sentire dei versi spaventosi, vai pure<br>
-      se ti senti pronto... Altrimenti procedi verso <font color='green' face="Impact"><b>ovest</b></font> per tornare<br>
-      nell'Ala del bivio o verso <font color='green' face="Impact"><b>sud</b></font>...<br></b></font>
+      <font face="Verdana" size="3"><b>Verso <font color='green' face="Verdana"><b>nord</b></font> si riescono già a sentire dei versi spaventosi, vai pure<br>
+      se ti senti pronto... Altrimenti procedi verso <font color='green' face="Verdana"><b>ovest</b></font> per tornare<br>
+      nell'Ala del bivio o verso <font color='green' face="Verdana"><b>sud</b></font>...<br></b></font>
     exits:
       nord: 5
       sud: 6
       ovest: 2
 
   - id: 5
-    title: <font color='gray' face="Impact" size="6"><b>Stanza della battaglia</b></font><hr>
+    title: <font color='gray' face="Verdana" size="6"><b>Stanza della battaglia</b></font><hr>
     descr: |
-      <font face="Impact" size="5"><b>GULP! Sei davanti ad un'enorme ombra che soffia fiato dal naso umido...<br>
-      fagli vedere di che pasta sei fatto con la tua preziosa <font color='orange' face="Impact"><b>spada</b></font>...<br>
-      Altrimenti torna verso <font color='green' face="Impact"><b>sud</b></font> finchè sei ancora in tempo!<br></b></font>
+      <font face="Verdana" size="3"><b>GULP! Sei davanti ad un'enorme ombra che soffia fiato dal naso umido...<br>
+      fagli vedere di che pasta sei fatto con la tua preziosa <font color='orange' face="Verdana"><b>spada</b></font>...<br>
+      Altrimenti torna verso <font color='green' face="Verdana"><b>sud</b></font> finchè sei ancora in tempo!<br></b></font>
       <img src="https://i.dlpng.com/static/png/387300_preview.png" width=200 height=200></img>
       {
                      -*@*                      *@*-
@@ -183,9 +183,9 @@ rooms:
       sud: 4
 
   - id: 6
-    title: <font color='gray' face="Impact" size="6"><b>Ala finale</b></font><hr>
+    title: <font color='gray' face="Verdana" size="6"><b>Ala finale</b></font><hr>
     descr: |
-      <font face="Impact" size="5"><b>Ora che non puoi più scoprire nuove stanze dovresti iniziare a pensare<br>
+      <font face="Verdana" size="3"><b>Ora che non puoi più scoprire nuove stanze dovresti iniziare a pensare<br>
       a come uscire da qui...<br></b></font>
     exits:
       nord: 4

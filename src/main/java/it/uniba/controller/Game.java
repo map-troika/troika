@@ -139,94 +139,100 @@ public class Game implements Runnable {
                         if (Action.goTo(roomId, cp[0])) {
                             response = printRoom(roomId);
                         } else {
-                            response = "<font face=\"Impact\" size=\"5\"><b>C'è un muro da questa parte!<br>";
+                            response = "<font face=\"Verdana\" size=\"3\"><b>C'è un muro da questa parte!<br>";
                         }
                         break;
                     case "prendo":
                             if (Action.pickUpItem(gLoader, roomId, cp)) {
                                 if (cp.length == 1) {
                                     response =
-                                            "<font face=\"Impact\" size=\"5\"><b>Hai raccolto l'oggetto "
-                                            + Player.getItemsList().get(Player.getItemsList().size() - 1).getItemName()
+                                            "<font face=\"Verdana\" size=\"3\"><b>Hai raccolto l'oggetto " +
+                                                    "</b></font>" +
+                                                    "<font color='orange' face=\"Verdana\"><b>" +
+                                                    Player.getItemsList().get(Player.getItemsList().size() - 1).getItemName() +
+                                                    "</b></font>"
                                     + "</b></font>";
                                 } else {
                                     response =
-                                            "<font face=\"Impact\" size=\"5\"><b>Hai raccolto l'oggetto "
-                                                    + cp[1] + "</b></font>";
+                                            "<font face=\"Verdana\" size=\"3\"><b>Hai raccolto l'oggetto " +
+                                                    "</b></font>" +
+                                                    "<font color='orange' face=\"Verdana\"><b>"+ cp[1] + "</b></font>";
                                 }
 
                             } else {
                                 if (cp.length == 1) {
                                     response =
-                                            "<font face=\"Impact\" size=\"5\">" +
+                                            "<font face=\"Verdana\" size=\"3\">" +
                                                     "<b>Specifica un oggetto valido da raccogliere</b></font>";
                                 } else {
-                                    response = "<font face=\"Impact\" size=\"5\"><b>" +
-                                            "In questa stanza non è presente l'oggetto " + cp[1] + "</b></font>";
+                                    response = "<font face=\"Verdana\" size=\"3\"><b>" +
+                                            "In questa stanza non è presente l'oggetto " +
+                                            "</b></font>" +
+                                            "<font color='orange' face=\"Verdana\"><b>"+ cp[1] + "</b></font>";
                                 }
 
                             }
                         break;
                     case "uso":
                         if (Player.getNItemUse() == 2) {
-                            response = "<font face=\"Impact\" size=\"5\"><b>Hai già due oggetti in uso</b></font>";
+                            response = "<font face=\"Verdana\" size=\"5\"><b>Hai già due oggetti in uso</b></font>";
                         } else {
                             if (Action.useItem(cp)) {
                                 if (cp.length == 1) {
-                                    response = "<font face=\"Impact\" size=\"5\"><b>L'oggetto "
+                                    response = "<font face=\"Verdana\" size=\"5\"><b>L'oggetto "
                                             + Player.getItemsList().get(Player.getItemsList().size() - 1).getItemName()
                                             + " è ora in uso</b></font>";
                                 } else {
-                                    response = "<font face=\"Impact\" size=\"5\"><b>L'oggetto "
+                                    response = "<font face=\"Verdana\" size=\"5\"><b>L'oggetto "
                                             + cp[1] + " è ora in uso</b></font>";
                                 }
                             } else {
                                 if (cp.length == 1) {
-                                    response = "<font face=\"Impact\" size=\"5\"><b>"
+                                    response = "<font face=\"Verdana\" size=\"5\"><b>"
                                             + "Specifica un oggetto valido da usare</b></font>";
                                 } else {
-                                    response = "<font face=\"Impact\" size=\"5\"><b>" +
+                                    response = "<font face=\"Verdana\" size=\"5\"><b>" +
                                             "Nel tuo inventario non è presente l'oggetto " + cp[1] + "</b></font>";
                                 }
                             }
                         }
                         break;
                     case "combatto":
-                        response = "<font face=\"Impact\" size=\"5\"><b>" + Action.fight(gLoader, roomId)
+                        response = "<font face=\"Verdana\" size=\"5\"><b>" + Action.fight(gLoader, roomId)
                                 + "</b></font>";
                         break;
                     case "lascio":
                         if (Action.leaveItem(gLoader, roomId, cp)) {
                             if (cp.length == 1) {
-                                response = "<font face=\"Impact\" size=\"5\"><b>Hai lasciato l'oggetto "
+                                response = "<font face=\"Verdana\" size=\"5\"><b>Hai lasciato l'oggetto "
                                         + gLoader.getPlotRooms().get(roomId).getItemsList()
                                         .get(gLoader.getPlotRooms().get(roomId).getItemsList().size() - 1)
                                         .getItemName() + "</b></font>";
                             } else {
-                                response = "<font face=\"Impact\" size=\"5\"><b>Hai lasciato l'oggetto " +
+                                response = "<font face=\"Verdana\" size=\"5\"><b>Hai lasciato l'oggetto " +
                                         cp[1] + "</b></font>";
                             }
                         } else {
                             if (cp.length == 1) {
-                                response = "<font face=\"Impact\" size=\"5\"><b>" +
+                                response = "<font face=\"Verdana\" size=\"5\"><b>" +
                                         "Specifica un oggetto valido da lasciare</b></font>";
                             } else {
-                                response = "<font face=\"Impact\" size=\"5\"><b>" +
+                                response = "<font face=\"Verdana\" size=\"5\"><b>" +
                                         "Nel tuo inventario non è presente l'oggetto " + cp[1] + "</b></font>";
                             }
                         }
                         break;
                     case "aiuto":
-                        response = "<font face=\"Impact\" size=\"5\"><b>" + Action.help() + "</b></font>";
+                        response = "<font face=\"Verdana\" size=\"5\"><b>" + Action.help() + "</b></font>";
                         break;
                     case "posizione":
-                        response = "<font face=\"Impact\" size=\"5\"><b>" + Action.position(roomId) + "</b></font>";
+                        response = "<font face=\"Verdana\" size=\"5\"><b>" + Action.position(roomId) + "</b></font>";
                         break;
                     case "inventario":
-                        response = "<font face=\"Impact\" size=\"5\"><b>" + Action.showInventory() + "</b></font>";
+                        response = "<font face=\"Verdana\" size=\"5\"><b>" + Action.showInventory() + "</b></font>";
                         break;
                     case "osservo":
-                        response = "<font face=\"Impact\" size=\"5\"><b>" +
+                        response = "<font face=\"Verdana\" size=\"5\"><b>" +
                                 Action.observeRoom(gLoader, roomId) + "</b></font>";
                         break;
                     case "quit":
@@ -238,24 +244,24 @@ public class Game implements Runnable {
                         isQuit = true;
                     default:
                         System.out.println("*** Invalid command: " + cmd);
-                        response = "<font face=\"Impact\" size=\"5\"><b>" +
+                        response = "<font face=\"Verdana\" size=\"5\"><b>" +
                                 "me, non so che cz vuoi (" +
-                                "<font color='red' face=\"Impact\"><b>" + request +  "</b></font>" +
+                                "<font color='red' face=\"Verdana\"><b>" + request +  "</b></font>" +
                                 ").  Riprova!" + "</b></font>";
                 }
             }
             String exitMessage;
             if (isQuit) {
-                exitMessage = "<font face=\"Impact\" size=\"5\"><b>Uscita in corso...</b></font>";
+                exitMessage = "<font face=\"Verdana\" size=\"5\"><b>Uscita in corso...</b></font>";
                 exitMessage = Base64.getEncoder().encodeToString(exitMessage.getBytes());
                 pw.println(exitMessage);
             } else {
                 if (Player.getIsWinner()) {
-                    exitMessage = "<font face=\"Impact\" size=\"5\"><b>Hai vinto!</b></font>";
+                    exitMessage = "<font face=\"Verdana\" size=\"5\"><b>Hai vinto!</b></font>";
                     exitMessage = Base64.getEncoder().encodeToString(exitMessage.getBytes());
                     pw.println(exitMessage);
                 } else {
-                    exitMessage = "<font face=\"Impact\" size=\"5\"><b>Sei stato ucciso, hai perso!</b></font>";
+                    exitMessage = "<font face=\"Verdana\" size=\"5\"><b>Sei stato ucciso, hai perso!</b></font>";
                     exitMessage = Base64.getEncoder().encodeToString(exitMessage.getBytes());
                     pw.println(exitMessage);
                 }
