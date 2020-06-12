@@ -305,8 +305,11 @@ di un applicativo <code>Client</code> in grado di comunicare con l'applicativo r
 Oltre alla versione Client, eseguibile da terminale a singolo flusso di esecuzione, è stato sviluppato un client con
 interfacce grafiche usando il framework <code>Swing</code> di Java. Questa versione del <code>Client</code> usa
 flussi multithread implementando l'interfaccia "Runnable", tutto questo per gestire i singoli task del Client in fase
-di esecuzione.
-
+di esecuzione.<br>
+![](img/ClientGui/default.png)
+### <span id = "5.4.1">5.4.1 Componenti SWING ed eventi</span>
+Il frame principale (contenitore top level) contenitore radice, contiene
+Per visualizzare i response del server 
 ## <span id = "5.5">5.5 Client-server multithreading</span>
 
 # <span id = "6">6. Riepilogo del test</span> 
