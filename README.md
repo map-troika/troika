@@ -333,6 +333,7 @@ di fine riga siano interpretati come invio. Il metodo <code>readLine()</code> co
 il contenuto della riga, esclusi i caratteri di fine riga, oppure null se è stata raggiunta la fine del flusso senza 
 leggere alcun carattere.</p>
 
+<a href="#top">Torna all'inizio</a>
 # <span id = "6">6. Riepilogo del test</span> 
 Questa sezione espone i risultati e le modalità con cui è stato testato il software.
 ## <span id = "6.1">6.1 Analisi statica del codice</span>
@@ -348,7 +349,7 @@ Tutte le violazioni sono state risolte nelle classi del <code>main</code> <br><b
 ![](res/img/CheckstyleMain2.png)  
 >_Risultato di Checkstyle del main._
 
-  
+<a href="#top">Torna all'inizio</a>
 # <span id = "7">7. Processo di sviluppo e organizzazione del lavoro</span>
 Questa sezione descrive i metodi e la dinamica per lo sviluppo del software.
 
