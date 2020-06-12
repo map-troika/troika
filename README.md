@@ -250,20 +250,19 @@ che la modifica, la manutenzione e la correzione di una classe non interessino l
 
 ## <span id = "4.4">4.4 Don't Repeat Yourself (DRY)</span> 
 Il principio DRY <em>(Don't Repeat Yourself)</em> prevede che ogni parte significativa di una funzionalità dovrebbe 
-essere implementata in un unico posto del codice sorgente, evitando sequenze di istruzioni uguali fra loro.
+essere implementata in un unico posto del codice sorgente, evitando sequenze d'istruzioni uguali fra loro.
 <p>Una rappresentazione di questo impiego si può osservare attraverso il diagramma di sequenza che descrive
-l’utilizzo del metodo <code>kingThreatened</code> all’interno della <em>user story</em> del movimento di
-un qualsiasi pezzo.
+l’utilizzo del metodo <code>goTO</code> all’interno della <em>user story</em> del movimento in qualsiasi direzione.
 <br>
 <br>
 
-![kingThreatened](res/img/kingThreatened.png)
->_Diagramma di sequenza di <code>kingThreatened</code>._
+![goTO](DRY.png)
+>_Diagramma di sequenza di <code>goTo</code>._
 
 <br>
-<p>Il metodo <code>kingThreatened</code> effettua l’ultimo controllo prima che un pezzo possa effettuare una mossa 
-verificando che quest’ultima non lasci sotto scacco il proprio Re. Questo controllo viene effettuato in modo identico a 
-prescindere da quale sia il tipo del pezzo che effettui la mossa. Di conseguenza, stando al principio <b>DRY</b>, il 
+<p>Il metodo <code>goTo</code> effettua il controllo che dalla stanza corrente sia possibile muoversi nella direzione
+richiesta dall'utente. Essendo la stanza corrente e la direzione passati come parametri, il metodo resta invariato a 
+prescindere da quale sia la direzione. Di conseguenza, stando al principio <b>DRY</b>, il 
 metodo non viene clonato, andando potenzialmente incontro ad errori di <em>copy and paste</em>, bensì è scritto una sola 
 volta, rendendo il codice più leggibile, snello e facilmente manutenibile.
 
