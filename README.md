@@ -313,7 +313,11 @@ Il frame principale (top level) contenitore radice, contiene i vari componenti d
 Per visualizzare i response del server è stato implementato il componente <code>JTextPane</code>, che permette di
 renderizzare il codice html contenuto all'interno del modello di dati di tipo<code>HTMLDocument</code>.<br><br>
 ![](img/ClientGui/illustrazioneGUIHTML.png)<br>
->_Illustrazione del rendering di un <code>HTMLDocument</code>._
+>_Illustrazione del render del JTextPane di un modello dati <code>HTMLDocument</code>._
+
+<br>
+Il bottone 
+
 ## <span id = "5.5">5.5 Client-server multithreading</span>
 
 # <span id = "6">6. Riepilogo del test</span> 
