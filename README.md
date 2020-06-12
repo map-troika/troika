@@ -219,22 +219,22 @@ Il concetto di coesione rappresenta il grado di dipendenza tra elementi di uno s
 Un componente ad alta coesione ha una responsabilità ben definita, che ne favorisce la:
  - riutilizzabilità;
  - manutenibilità;
+ - verificabilità;
  - leggibilità → coaudiuvata dall'utilizzo del tool <em>Checkstyle</em> per la verifica della conformità del codice alle 
- regole di codifica;
- - verificabilità → in quanto la correttezza del sistema è certificata dall'utilizzo del tool <em>SpotBugs</em>.
+ regole di codifica.
     
-Il manifesto di questo principio si trova all’interno della classe <code>ParserPGN</code>, a cui è delegata la 
-responsabilità di decifrare la tipologia di input (es: xa4 <code>isCapture</code>) a prescindere dal contesto di gioco. 
+Il manifesto di questo principio si trova all’interno della classe <code>Parser</code>, a cui è delegata la 
+responsabilità di decifrare la tipologia di input a prescindere dal contesto di gioco. 
 <br>
 <br>
 
-![Parser](res/img/parser_gameController.png)
->_Diagramma di classe per la decodifica di un input._
+![Parser](altacoesione.png)
+>_Diagramma delle classi per la decodifica di un input._
 
 <br>
-<p>Questo diagramma di classe mostra la relazione tra la classe <code>GameController</code> (che richiede l'input
-alla classe <code>InputManager</code>) e la classe <code>ParserPGN</code> a cui verrà passato l'input ricevuto, e che 
-tramite l'uso di <em>regular expression</em> ne restituirà la tipologia. 
+<p>Questo diagramma delle classi mostra la relazione tra la classe <code>Game</code> (che riceve l'input utente) e la
+classe <code>Parser</code> a cui verrà passato l'input ricevuto sotto forma di stringa, e che ne verificherà
+la validità intercettando comandi e/o item.
 <p>La scelta di avere un componente specifico per esaudire tale necessità, rende la decodifica dell’input più compatta e
 ottimizzata. A questo si aggiunge una maggiore leggibilità ed estensibilità del codice.
 
