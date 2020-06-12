@@ -1,7 +1,13 @@
 package it.uniba.view;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JFrame;
+
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -19,9 +25,9 @@ public class LoginRequestGUI implements Runnable {
 
     private String stringUserResponse = "error";
 
-    private final int NUM_MAX_LENGHT_CHAR_JTP=40; //costante numero massimo caratteri textArea
+    private final int numMaxChar = 40; //costante numero massimo caratteri textArea
 
-    public LoginRequestGUI (String title) {
+    public LoginRequestGUI(String title) {
         this.startGUI(title);
         confirmButton.addActionListener(new ActionListener() {
             @Override
@@ -33,8 +39,7 @@ public class LoginRequestGUI implements Runnable {
         textFieldCredential.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_ENTER)
-                {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     confirmCredential();
                 }
             }
@@ -46,13 +51,14 @@ public class LoginRequestGUI implements Runnable {
         textFieldCredential.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-                if (textFieldCredential.getText().length() >= NUM_MAX_LENGHT_CHAR_JTP ) // limita caratteri
-                    e.consume();
+                if (textFieldCredential.getText().length() >= numMaxChar) {
+                    e.consume();// limita caratteri
+                }
             }
         });
     }
 
-    public void startGUI (String title) {
+    public void startGUI(String title) {
         frame = new JFrame(title);
         frame.setContentPane(this.mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -72,7 +78,7 @@ public class LoginRequestGUI implements Runnable {
         return stringUserResponse;
     }
 
-    private void confirmCredential () {
+    private void confirmCredential() {
         //bottone conferma premuto
         stringUserResponse = textFieldCredential.getText(); //set variabile credenziale inserita
 
