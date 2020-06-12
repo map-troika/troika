@@ -17,9 +17,7 @@
  1. [Information hiding](#4.1)          
  2. [Alta coesione](#4.2)          
  3. [Basso accoppiamento](#4.3)     
- 4. [Don't Repeat Yourself (DRY)](#4.4)     
- 5. [Polimorfismo per inclusione](#4.5)     
- 6. [Polimorfismo parametrico](#4.6)     
+ 4. [Don't Repeat Yourself (DRY)](#4.4)      
 
 ### 5. [Contenuti rilevanti](#5)        
  1. [Trattamento delle eccezioni](#5.1)          
