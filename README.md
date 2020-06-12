@@ -407,8 +407,8 @@ Il tool di *Checkstyle* ha permesso di scoprire e correggere violazioni dello st
 <br><br>
 Tutte le violazioni sono state risolte nelle classi del <code>main</code> <br><br>
 
-![](res/img/CheckstyleMain2.png)  
->_Risultato di Checkstyle del main._
+![](img/checkStyleResults.png)  
+>_Risultato di Checkstyle._
 
 <a href="#top">Torna all'inizio</a>
 # <span id = "7">7. Processo di sviluppo e organizzazione del lavoro</span>

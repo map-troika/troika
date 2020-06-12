@@ -27,18 +27,20 @@ public class LoginRequestGUI implements Runnable {
 
     private final int numMaxChar = 40; //costante numero massimo caratteri textArea
 
-    public LoginRequestGUI(String title) {
+    private final int threadSleep = 500;
+
+    public LoginRequestGUI(final String title) {
         this.startGUI(title);
         confirmButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 confirmCredential();
             }
         });
 
         textFieldCredential.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e) {
+            public void keyPressed(final KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     confirmCredential();
                 }
@@ -50,15 +52,19 @@ public class LoginRequestGUI implements Runnable {
          */
         textFieldCredential.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyTyped(KeyEvent e) {
+            public void keyTyped(final KeyEvent e) {
                 if (textFieldCredential.getText().length() >= numMaxChar) {
-                    e.consume();// limita caratteri
+                    e.consume(); // limita caratteri
                 }
             }
         });
     }
 
-    public void startGUI(String title) {
+    /**
+     * Inizializza la gui della finestra credenziale
+     * @param title titolo della credenziale richiesta
+     */
+    public void startGUI(final String title) {
         frame = new JFrame(title);
         frame.setContentPane(this.mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -74,6 +80,10 @@ public class LoginRequestGUI implements Runnable {
         frame.setLocation(x, y);
     }
 
+    /**
+     * metodo per ottenere il testo inserito dall'utente del game JTextField
+     * @return
+     */
     public String getStringUserResponse() {
         return stringUserResponse;
     }
@@ -97,7 +107,7 @@ public class LoginRequestGUI implements Runnable {
     public void run() {
         while (!isdataConfirmed) {
             try {
-                Thread.sleep(1000);
+                Thread.sleep(threadSleep);
                 //System.out.println("Inserimento dati login");
             } catch (InterruptedException e) {
                 e.printStackTrace();
