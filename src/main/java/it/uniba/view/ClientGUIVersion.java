@@ -75,7 +75,7 @@ public final class ClientGUIVersion implements Runnable {
                             "<font color='orange' face=\"Verdana\"><b>" +
                             "Console:" +
                             "</b></font> " +
-                            "in attesa della credenziale"
+                            "In attesa della credenziale"
                     ); //imposta titolo
                     while (reqGUIt.isAlive()) {
 
