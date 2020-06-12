@@ -17,9 +17,8 @@
  1. [Information hiding](#4.1)          
  2. [Alta coesione](#4.2)          
  3. [Basso accoppiamento](#4.3)     
- 4. [Don't Repeat Yourself (DRY)](#4.4)     
- 5. [Polimorfismo per inclusione](#4.5)     
- 6. [Polimorfismo parametrico](#4.6)     
+ 4. [Don't Repeat Yourself (DRY)](#4.4)   
+ 5. [Relazioni tra classi](#4.5)     
 
 ### 5. [Contenuti rilevanti](#5)        
  1. [Trattamento delle eccezioni](#5.1)          
@@ -198,17 +197,12 @@ dei dati).
 <br>
 <br>
 
-![BasePiece](res/img/BasePiece.png)
->_Diagramma di classe di <code>BasePiece</code>._
+![Item](informationhiding.png)
+>_Diagramma di classe di <code>Item</code>._
 
 <br>
-La classe <code>BasePiece</code> ne è un esempio poichè:
-
- - i metodi necessari per l'interazione con le altre classi sono pubblici, come quelli <code>possibleMovePiece</code>che 
- restituisce alla classe <code>Match</code> la disponibilità della mossa a seconda del contesto di gioco;
- 
- - gli attributi sono privati a cui sono annessi metodi <code>get</code> e <code>set</code> pubblici per l'accesso e 
- l'impostazione dei valori.
+La classe <code>Item</code> ne è un esempio poichè contine attributi privati a cui sono annessi metodi <code>get</code>
+e <code>set</code> pubblici per l'accesso e l'impostazione dei valori.
 
 Con questo principio l'applicazione ci permette di isolare le modifiche dovute a scelte progettuali o
 correzioni di bug, senza compromettere le classi esterne a quella in questione.
@@ -219,22 +213,23 @@ Il concetto di coesione rappresenta il grado di dipendenza tra elementi di uno s
 Un componente ad alta coesione ha una responsabilità ben definita, che ne favorisce la:
  - riutilizzabilità;
  - manutenibilità;
+ - verificabilità;
  - leggibilità → coaudiuvata dall'utilizzo del tool <em>Checkstyle</em> per la verifica della conformità del codice alle 
- regole di codifica;
- - verificabilità → in quanto la correttezza del sistema è certificata dall'utilizzo del tool <em>SpotBugs</em>.
+ regole di codifica.
     
-Il manifesto di questo principio si trova all’interno della classe <code>ParserPGN</code>, a cui è delegata la 
-responsabilità di decifrare la tipologia di input (es: xa4 <code>isCapture</code>) a prescindere dal contesto di gioco. 
+Il manifesto di questo principio si trova all’interno della classe <code>Parser</code>, a cui è delegata la 
+responsabilità di decifrare la tipologia di input indipendentemente da quale sia il gioco caricato tramite file yaml
+e a prescindere dal contesto di gioco attuale. 
 <br>
 <br>
 
-![Parser](res/img/parser_gameController.png)
->_Diagramma di classe per la decodifica di un input._
+![Parser](altacoesione.png)
+>_Diagramma delle classi per la decodifica di un input._
 
 <br>
-<p>Questo diagramma di classe mostra la relazione tra la classe <code>GameController</code> (che richiede l'input
-alla classe <code>InputManager</code>) e la classe <code>ParserPGN</code> a cui verrà passato l'input ricevuto, e che 
-tramite l'uso di <em>regular expression</em> ne restituirà la tipologia. 
+<p>Questo diagramma delle classi mostra la relazione tra la classe <code>Game</code> (che riceve l'input utente) e la
+classe <code>Parser</code> a cui verrà passato l'input ricevuto sotto forma di stringa, e che ne verificherà
+la validità intercettando comandi e/o item.
 <p>La scelta di avere un componente specifico per esaudire tale necessità, rende la decodifica dell’input più compatta e
 ottimizzata. A questo si aggiunge una maggiore leggibilità ed estensibilità del codice.
 
@@ -242,44 +237,50 @@ ottimizzata. A questo si aggiunge una maggiore leggibilità ed estensibilità de
 L’accoppiamento misura il grado di dipendenza tra componenti diversi.
 <p>Un basso accoppiamento fa si che un cambiamento ad un componente non si propaghi su altri
 componenti.
-<p>La scelta progettuale di delegare ai singoli tipi di pezzo il controllo sulle proprie mosse permette di avere per ogni 
-pezzo una gestione ottimizzata delle mosse, rendendo la modifica, la manutenzione e la correzione indipendenti.
+
+![](bassoaccoppiamento.png)
+>_Diagramma delle classi di <code>Game</code> e <code>Action</code>._
+
+<p>La scelta progettuale di delegare ad una classe apposita <code>Action</code> la realizzazione dei comandi dati 
+in input dall'utente e gestiti dalla classe <code>Game</code> rende le classi indipendenti reciprocamente, facendo sì
+che la modifica, la manutenzione e la correzione di una classe non interessino l'altra.
 <br>
 <br>
-
-![KingMove](res/img/kingMove.png)
->_Diagramma di sequenza di <code>possibleMovePiece</code>._
-
 <br>
-<p>Nel diagramma di sequenza riportato è facile osservare come la delega del controllo della mossa al pezzo specifico 
-(in questo caso <code>King</code>), fa sì che il pezzo possa gestirla in maniera consona alle proprie esigenze: 
-
- - il metodo <code>check</code> verifica che la casa di destinazione sia raggiungibile dal Re;
- 
- - il metodo <code>isThreatened</code> verifica che la mossa restituita non metta il Re sotto scacco; 
- 
-Solo dopo queste due verifiche il Re crea una <code>Move</code> che viene restituita alla classe <code>Match</code>.
-<p>In questo senso le classi ignorano azioni e/o controlli che riguardino altre, ad esempio la gestione delle ambiguità
-che nel pezzo <code>King</code> non avviene mai.
 
 ## <span id = "4.4">4.4 Don't Repeat Yourself (DRY)</span> 
 Il principio DRY <em>(Don't Repeat Yourself)</em> prevede che ogni parte significativa di una funzionalità dovrebbe 
-essere implementata in un unico posto del codice sorgente, evitando sequenze di istruzioni uguali fra loro.
+essere implementata in un unico posto del codice sorgente, evitando sequenze d'istruzioni uguali fra loro.
 <p>Una rappresentazione di questo impiego si può osservare attraverso il diagramma di sequenza che descrive
-l’utilizzo del metodo <code>kingThreatened</code> all’interno della <em>user story</em> del movimento di
-un qualsiasi pezzo.
+l’utilizzo del metodo <code>goTO</code> all’interno della <em>user story</em> del movimento in qualsiasi direzione.
 <br>
 <br>
 
-![kingThreatened](res/img/kingThreatened.png)
->_Diagramma di sequenza di <code>kingThreatened</code>._
+![goTO](DRY.png)
+>_Diagramma di sequenza di <code>goTo</code>._
 
 <br>
-<p>Il metodo <code>kingThreatened</code> effettua l’ultimo controllo prima che un pezzo possa effettuare una mossa 
-verificando che quest’ultima non lasci sotto scacco il proprio Re. Questo controllo viene effettuato in modo identico a 
-prescindere da quale sia il tipo del pezzo che effettui la mossa. Di conseguenza, stando al principio <b>DRY</b>, il 
+<p>Il metodo <code>goTo</code> effettua il controllo che dalla stanza corrente sia possibile muoversi nella direzione
+richiesta dall'utente. Essendo la stanza corrente e la direzione passati come parametri, il metodo resta invariato a 
+prescindere da quale sia la direzione. Di conseguenza, stando al principio <b>DRY</b>, il 
 metodo non viene clonato, andando potenzialmente incontro ad errori di <em>copy and paste</em>, bensì è scritto una sola 
 volta, rendendo il codice più leggibile, snello e facilmente manutenibile.
+
+## <span id = "4.5">Relazioni tra classi</span> 
+![classDiagram](classDiagram.png)
+>_Diagramma delle classi dell'estrazione dello yaml fatta da <code>Plot</code>._
+
+<br>
+<p>Il diagramma sopra riportato rappresenta le relazioni tra le classi coinvolte nell'estrazione 
+del gioco dal file yaml. La relazione tra la classe <code>Server</code> e <code>Thread</code> è una generalizzazione, 
+in quanto <code>Server</code> estende <code>Thread</code>; tra <code>Server</code> e <code>Game</code> c'è 
+un'aggregazione di molteplcità "zero o più" in quanto il <code>Server</code> può istanziare più di un <code>Game</code>; 
+<code>Game</code> implementa l'interfaccia <code>Runnable</code> e ha una relazione di aggregazione con 
+<code>Plot</code>, che è la classe che si occupa di estrarre dal file yaml gli HashMap contenenti le informazioni
+sul gioco caricato, come le <code>Room</code>, con cui <code>Plot</code> detiene una relazione di composizione, che
+a loro volta istanziano i vari <code>Item</code> contenuti al loro interno; quest'ultima è una relazione di aggregazione
+tra <code>Room</code> e <code>Item</code>.
+
 
 <a href="#top">Torna all'inizio</a>
  
