@@ -304,8 +304,8 @@ Come illustrato nello stile architetturale **MVC**, il corretto funzionamento de
 di un applicativo <code>Client</code> in grado di comunicare con l'applicativo remoto <code>Server</code>.
 Oltre alla versione Client, eseguibile da terminale a singolo flusso di esecuzione, è stato sviluppata una classe
 client con interfacce grafiche usando il framework <code>Swing</code> di Java. Questa versione del <code>Client</code>
-usa flussi di thread implementando l'interfaccia "Runnable", tutto questo per gestire i singoli task del Client in fase
-di esecuzione.<br><br>
+usa flussi di thread implementando l'interfaccia "Runnable" nelle classi implicate, tutto questo per gestire i singoli
+task del Client in fase di esecuzione.<br><br>
 ![](img/ClientGui/default.png)<br>
 >_Illustrazione del client con interface Swing._
 ### <span id = "5.4.1">5.4.1 Componenti SWING</span>
