@@ -110,11 +110,13 @@ public class ClientGUI {
                 quitSession();
             }
         });
+
         buttonUp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (client != null) {
                     client.sendRequestToServer("nord");
+                    textUserInputArea.requestFocusInWindow(); //focus su textArea
                 } else {
                     appendCommandNotValid();
                 }
@@ -125,6 +127,7 @@ public class ClientGUI {
             public void actionPerformed(ActionEvent e) {
                 if (client != null) {
                     client.sendRequestToServer("sud");
+                    textUserInputArea.requestFocusInWindow(); //focus su textArea
                 } else {
                     appendCommandNotValid();
                 }
@@ -135,6 +138,7 @@ public class ClientGUI {
             public void actionPerformed(ActionEvent e) {
                 if (client != null) {
                     client.sendRequestToServer("ovest");
+                    textUserInputArea.requestFocusInWindow(); //focus su textArea
                 } else {
                     appendCommandNotValid();
                 }
@@ -145,6 +149,7 @@ public class ClientGUI {
             public void actionPerformed(ActionEvent e) {
                 if (client != null) {
                     client.sendRequestToServer("est");
+                    textUserInputArea.requestFocusInWindow(); //focus su textArea
                 } else {
                     appendCommandNotValid();
                 }
@@ -156,6 +161,7 @@ public class ClientGUI {
                 if (client != null) {
                     client.sendRequestToServer(textUserInputArea.getText());
                     textUserInputArea.setText("");
+                    textUserInputArea.requestFocusInWindow(); //focus su textArea
                 } else {
                     appendCommandNotValid();
                 }
