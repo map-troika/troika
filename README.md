@@ -217,7 +217,8 @@ Un componente ad alta coesione ha una responsabilità ben definita, che ne favor
  regole di codifica.
     
 Il manifesto di questo principio si trova all’interno della classe <code>Parser</code>, a cui è delegata la 
-responsabilità di decifrare la tipologia di input a prescindere dal contesto di gioco. 
+responsabilità di decifrare la tipologia di input indipendentemente da quale sia il gioco caricato tramite file yaml
+e a prescindere dal contesto di gioco attuale. 
 <br>
 <br>
 
