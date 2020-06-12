@@ -70,7 +70,7 @@ public final class Database {
     private void connect(final String dbpath) {
         try {
             // Parametri del database
-            String url = "jdbc:sqlite:" + dbpath;
+            String url = "jdbc:sqlite:" + dbpath; // stringa di connessione
             // Crea una connessione con il database
             this.conn = DriverManager.getConnection(url);
             System.out.println("*** Connection to " + dbpath + " SQLite has been established.");
