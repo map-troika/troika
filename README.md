@@ -17,7 +17,8 @@
  1. [Information hiding](#4.1)          
  2. [Alta coesione](#4.2)          
  3. [Basso accoppiamento](#4.3)     
- 4. [Don't Repeat Yourself (DRY)](#4.4)      
+ 4. [Don't Repeat Yourself (DRY)](#4.4)   
+ 5. [Relazioni tra classi](#4.5)     
 
 ### 5. [Contenuti rilevanti](#5)        
  1. [Trattamento delle eccezioni](#5.1)          
@@ -264,6 +265,22 @@ richiesta dall'utente. Essendo la stanza corrente e la direzione passati come pa
 prescindere da quale sia la direzione. Di conseguenza, stando al principio <b>DRY</b>, il 
 metodo non viene clonato, andando potenzialmente incontro ad errori di <em>copy and paste</em>, bensì è scritto una sola 
 volta, rendendo il codice più leggibile, snello e facilmente manutenibile.
+
+## <span id = "4.5">Relazioni tra classi</span> 
+![classDiagram](classDiagram.png)
+>_Diagramma delle classi dell'estrazione dello yaml fatta da <code>Plot</code>._
+
+<br>
+<p>Il diagramma sopra riportato rappresenta le relazioni tra le classi coinvolte nell'estrazione 
+del gioco dal file yaml. La relazione tra la classe <code>Server</code> e <code>Thread</code> è una generalizzazione, 
+in quanto <code>Server</code> estende <code>Thread</code>; tra <code>Server</code> e <code>Game</code> c'è 
+un'aggregazione di molteplcità "zero o più" in quanto il <code>Server</code> può istanziare più di un <code>Game</code>; 
+<code>Game</code> implementa l'interfaccia <code>Runnable</code> e ha una relazione di aggregazione con 
+<code>Plot</code>, che è la classe che si occupa di estrarre dal file yaml gli HashMap contenenti le informazioni
+sul gioco caricato, come le <code>Room</code>, con cui <code>Plot</code> detiene una relazione di composizione, che
+a loro volta istanziano i vari <code>Item</code> contenuti al loro interno; quest'ultima è una relazione di aggregazione
+tra <code>Room</code> e <code>Item</code>.
+
 
 <a href="#top">Torna all'inizio</a>
  
