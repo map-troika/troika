@@ -20,8 +20,6 @@ import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 
 import java.io.IOException;
@@ -42,17 +40,21 @@ public class ClientGUI {
 
     private ClientGUIVersion client; //classe operazioni Client
 
-    HTMLDocument document; //documento componente JtextPane
-
-    private final int numMaxChar = 40; //costante numero massimo caratteri textArea
+    private HTMLDocument document; //documento componente JtextPane
 
     private static final String TEXT_SUBMIT = "text-submit";
     private static final String INSERT_BREAK = "insert-break";
 
+    //colore textAreaInput
+    private final int r = 219;
+    private final int g = 241;
+    private final int b = 255;
+
+    //thread sleep
+    private final int thredSleep = 100;
+
     public ClientGUI() {
         this.startGUI();
-
-
     }
 
     /**
@@ -63,12 +65,11 @@ public class ClientGUI {
         JFrame frame = new JFrame("Client");
         frame.setContentPane(this.mainPanel);
 
-
         //setta JtextPane per formato html
         formattedOutputClient.setContentType("text/html");
 
         //setta colore text input area
-        textUserInputArea.setBackground(new Color(219, 241, 255));
+        textUserInputArea.setBackground(new Color(r, g, b));
         textUserInputArea.requestFocusInWindow();
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -81,7 +82,6 @@ public class ClientGUI {
         int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
         frame.setLocation(x, y);
-
 
         //inizializza documento rendering di stampa
         document = (HTMLDocument) formattedOutputClient.getStyledDocument();
@@ -103,13 +103,9 @@ public class ClientGUI {
                 startClientButton.setEnabled(false); //disabilita tasto start
                 try {
                     client.runThreadClient();
-
-
                 } catch (InterruptedException interruptedException) {
                     interruptedException.printStackTrace();
                 }
-
-
             }
         });
 
@@ -117,7 +113,7 @@ public class ClientGUI {
          * focus sulla text area all'apertura della finestra
          */
         frame.addWindowFocusListener(new WindowAdapter() {
-            public final void windowGainedFocus(WindowEvent e) {
+            public void windowGainedFocus(final WindowEvent e) {
                 textUserInputArea.requestFocusInWindow();
             }
         });
@@ -128,7 +124,6 @@ public class ClientGUI {
                 quitSession();
             }
         });
-
         buttonUp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
@@ -200,7 +195,7 @@ public class ClientGUI {
         ActionMap actions = textUserInputArea.getActionMap();
         actions.put(TEXT_SUBMIT, new AbstractAction() {
             @Override
-            public final void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 if (client != null) {
                     client.sendRequestToServer(textUserInputArea.getText());
                     textUserInputArea.setText(""); //pulisci testo input
@@ -208,17 +203,6 @@ public class ClientGUI {
                     appendCommandNotValid();
                 }
 
-            }
-        });
-
-        /**
-         * listender per verificare limite caratteri
-         */
-        textUserInputArea.addKeyListener(new KeyAdapter() {
-            @Override
-            public final void keyTyped(KeyEvent e) {
-                if (textUserInputArea.getText().length() >= numMaxChar) // limita caratteri
-                    e.consume();
             }
         });
     }
@@ -230,7 +214,7 @@ public class ClientGUI {
      * @param textToAppend parametro stringa "to append"
      * @throws InterruptedException
      */
-    public void appendText(String textToAppend) {
+    public void appendText(final String textToAppend) {
 
         try {
             document.insertAfterEnd(
@@ -253,10 +237,10 @@ public class ClientGUI {
     }
 
     private void appendCommandNotValid() {
-        appendText("<br><font color='orange' face=\"Impact\"><b>" +
-                "Console:" +
-                "</b></font> " +
-                "comando non disponbile, avvia una partita");
+        appendText("<br><font color='orange' face=\"Impact\"><b>"
+                + "Console:"
+                + "</b></font> "
+                + "comando non disponbile, avvia una partita");
     }
 
     /**
@@ -266,7 +250,7 @@ public class ClientGUI {
      */
     public void scrollToEnd() {
         try {
-            Thread.sleep(100);
+            Thread.sleep(thredSleep);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -278,12 +262,14 @@ public class ClientGUI {
         formattedOutputClient.repaint();
     }
 
+    /**
+     * metodo per aggiornare l'interfaccia, uscendo dalla sessione
+     */
     public void quitSession() {
         if (client != null) {
             client.closeServerComunications();
             client.sendRequestToServer("quit");
         }
-
 
         //update della GUI
         endSessionButton.setEnabled(false);
@@ -293,6 +279,9 @@ public class ClientGUI {
         client = null;
     }
 
+    /**
+     * metodo per aggiornare l'interfaccia, avviando la sessione
+     */
     public void startSession() {
         //update della GUI
         endSessionButton.setEnabled(true);
