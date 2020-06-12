@@ -316,7 +316,7 @@ renderizzare il codice html contenuto all'interno del modello di dati di tipo<co
 >_Illustrazione del render del JTextPane di un modello dati <code>HTMLDocument</code>._
 
 <br>
-Il bottone 
+Il bottone "Avvia Partita" avvierà il thread del Client, avviando una sessione con il Server.
 
 ## <span id = "5.5">5.5 Client-server multithreading</span>
 
