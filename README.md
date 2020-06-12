@@ -322,6 +322,10 @@ Questa sezione descrive l'uso della programmazione in rete.
 <p>Quando il <code>Server</code> è in ascolto e <code>accept()</code> termina la sua esecuzione si utilizza il Socket 
 ottenuto in un nuovo thread utilizzato per servire un particolare <code>Client</code>. Il thread principale, intanto, 
 richiamerà <code>accept()</code> per attendere un nuovo <code>Client</code>.</p>
+
+![](img/Multithread.svg)
+>_Esempio di Client e ClientGUI concorrenti._
+
 <p>Per ogni connessione di un <code>Client</code> il <code>Server</code> istanzia un nuovo Game nel thread.</p>
 <p>Il messaggio stampato sulla console è codificato utilizzando lo schema di codifica Base64 per evitare che i caratteri 
 di fine riga siano interpretati come invio. Il metodo <code>readLine()</code> consente di ottenere una stringa contenente 
