@@ -329,7 +329,13 @@ renderizzare il codice html contenuto all'interno del modello di dati di tipo<co
 >_Illustrazione del render del JTextPane di un modello dati <code>HTMLDocument</code>._
 
 <br>
-Il bottone "Avvia Partita" avvierà il thread del Client, avviando una sessione con il Server.
+Avviando una nuova partita dalla finestra GUI, verrà avviato un thread che si occuperà di mettersi in ascolto con il
+Server. Quando il thread del <code>Client</code> riceverà dal Server un messaggio response "username:" o "password:", il 
+thread del <code>Client</code> avvierà un nuovo thread la cui implementazione che si trova nella classe 
+<code>LoginRequestGUI</code> si occuperà di raccogliere le credenziali dell'utente. Il thread principale del 
+<code>Client</code> resterà in attesa fino a quando l'utente non confermerà le credenziali inserite. Quando le 
+credenziali saranno inserite il flusso del thread per raccogliere le credenziali terminerà, a questo punto il thread 
+principale del <code>Client</code> terminerà la sua attesa e continuerà la sua attività. 
 
 ## <span id = "5.5">5.5 Client-server multithreading</span>
 Questa sezione descrive l'uso della programmazione in rete.
