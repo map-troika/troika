@@ -47,7 +47,7 @@ riga di comando <em>(Command Line Interface - CLI).</em></p>
 corso di Metodi Avanzati di Programmazione, piuttosto che produrre una soluzione completa e definitiva.</p>    
 
 ## <span id = "1.1">1.1 Mappa del gioco</span> 
-![Map](MapNew.svg)
+![Map](img/MapNew.svg)
 <p>Il gioco inizia con Tesèo posto all'esterno del labirinto, dirigendosi verso <b>Sud</b> si avrà modo di entrare nell'
 <em>Ala d'ingresso</em> in cui possiamo osservare un <b>gomitolo</b>. Raccogliere ed usare il gomitolo permetterà di 
 uscire automaticamente dal labirinto una volta sconfitto il Minotauro inserendo il comando <code>home</code>.</p>
@@ -152,7 +152,7 @@ Questo software e la sua interfaccia utente possono essere interpretati come un 
 *(Model-View-Controller)*, un modello architettonico che isola l'amministrazione del gioco (business logic - Model), 
 dalla presentazione dei dati (View).
 
-![](MVC.svg)
+![](img/MVC.svg)
 >_Diagramma del funzionamento di un'architettura MVC._
 
 <br>
@@ -165,7 +165,7 @@ effettuando chiamate sugli oggetti del Model e modificando lo stato degli altri 
 sulla posizione corrente del giocatore.</p>
 
 ## <span id = "3.2">3.2 Rappresentazione dell’architettura</span> 
-![](package1.png)
+![](img/package1.png)
 >_Diagramma dei package di uniba._
 
 <br>
@@ -288,16 +288,29 @@ volta, rendendo il codice più leggibile, snello e facilmente manutenibile.
 ## <span id = "5.1">5.1 Trattamento delle eccezioni</span>
 
 ## <span id = "5.2">5.2 I/O da file</span>
+- il parser cerca di intercettare dall'input dell'utente i comandi da eseguire (inglese o italiano) e gli item
+- le regular expression viene costruita dinamicamnete in base ai contenuti del file di configurazione/yaml
 
 ## <span id = "5.3">5.3 Connessione a database</span>
 Questa sezione descrive l'uso dello standard JDBC <em>(Java Data Base Connectivity)</em>.
 
 <p>Per questa applicazione è stato utilizzato il Database SQLite essendo più compatto e non supportando la gestione della 
 concorrenza, non necessaria nell'uso da parte di una singola applicazione e da un singolo utente.</p>
+<p>Il create della tabella <code>users</code> del database <code>users.db</code> è composto da quattro colonne:
 
-![](Asset6.png)
+![](img/Schema.svg)
+>_Colonne della tabella users del database users._
 
+Entrambi i vincoli <code>UNIQUE</code> e <code>PRIMARY KEY</code> offrono una garanzia di unicità per l'insieme di 
+colonne, e in questo caso anche che il valore non sia mai nullo. Il vincolo <code>PRIMARY KEY</code> consente di 
+accedere univocamente alla riga.
 
+Il database viene utilizzato per verificare se l'utente è abilitato o meno ad accedere al gioco. Si inseriscono all'avvio 
+del <code>Client</code> l'username e la password i quali vengono validati all'interno del <code>Server</code> che chiama
+il metodo <code>run()</code> del <code>Game</code>.
+
+![](img/content.svg)
+>_Contenuto della tabella users del database users._
 
 ## <span id = "5.4">5.4 GUI mediante SWING</span>
 Come illustrato nello stile architetturale **MVC**, il corretto funzionamento dell'intero sistema prevede l'utilizzo
@@ -319,6 +332,22 @@ renderizzare il codice html contenuto all'interno del modello di dati di tipo<co
 Il bottone "Avvia Partita" avvierà il thread del Client, avviando una sessione con il Server.
 
 ## <span id = "5.5">5.5 Client-server multithreading</span>
+Questa sezione descrive l'uso della programmazione in rete.
+
+<p>L'identificazione dell'IP <em>(Internet Protocol)</em> avviene tramite dot notation e la porta sulla quale sia il 
+<code>Server</code> che il <code>Client</code> si connettono è la <code>port:4000</code>.</p>
+<p>Quando il <code>Server</code> è in ascolto e <code>accept()</code> termina la sua esecuzione si utilizza il Socket 
+ottenuto in un nuovo thread utilizzato per servire un particolare <code>Client</code>. Il thread principale, intanto, 
+richiamerà <code>accept()</code> per attendere un nuovo <code>Client</code>.</p>
+
+![](img/Multithread.svg)
+>_Esempio di Client e ClientGUI concorrenti._
+
+<p>Per ogni connessione di un <code>Client</code> il <code>Server</code> istanzia un nuovo Game nel thread.</p>
+<p>Il messaggio stampato sulla console è codificato utilizzando lo schema di codifica Base64 per evitare che i caratteri 
+di fine riga siano interpretati come invio. Il metodo <code>readLine()</code> consente di ottenere una stringa contenente 
+il contenuto della riga, esclusi i caratteri di fine riga, oppure null se è stata raggiunta la fine del flusso senza 
+leggere alcun carattere.</p>
 
 # <span id = "6">6. Riepilogo del test</span> 
 Questa sezione espone i risultati e le modalità con cui è stato testato il software.
