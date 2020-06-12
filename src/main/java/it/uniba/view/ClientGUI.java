@@ -1,12 +1,30 @@
 package it.uniba.view;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
+import javax.swing.JTextArea;
+import javax.swing.JFrame;
+import javax.swing.InputMap;
+import javax.swing.KeyStroke;
+import javax.swing.ActionMap;
+import javax.swing.AbstractAction;
+
 import javax.swing.text.BadLocationException;
 import javax.swing.text.html.HTMLDocument;
-import java.awt.*;
-import java.awt.event.*;
-import java.io.IOException;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
+
+import java.io.IOException;
 
 
 public class ClientGUI {
@@ -26,7 +44,7 @@ public class ClientGUI {
 
     HTMLDocument document; //documento componente JtextPane
 
-    private final int NUM_MAX_LENGHT_CHAR_JTA=40; //costante numero massimo caratteri textArea
+    private final int numMaxChar = 40; //costante numero massimo caratteri textArea
 
     private static final String TEXT_SUBMIT = "text-submit";
     private static final String INSERT_BREAK = "insert-break";
@@ -37,13 +55,13 @@ public class ClientGUI {
 
     }
 
+    /**
+     * metodo che inizializza i componenti e implementa gli eventi
+     */
     public void startGUI() {
 
         JFrame frame = new JFrame("Client");
         frame.setContentPane(this.mainPanel);
-
-
-
 
 
         //setta JtextPane per formato html
@@ -80,7 +98,7 @@ public class ClientGUI {
         //creazione listner (events)
         startClientButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 client = new ClientGUIVersion();
                 startClientButton.setEnabled(false); //disabilita tasto start
                 try {
@@ -99,21 +117,21 @@ public class ClientGUI {
          * focus sulla text area all'apertura della finestra
          */
         frame.addWindowFocusListener(new WindowAdapter() {
-            public void windowGainedFocus(WindowEvent e) {
+            public final void windowGainedFocus(WindowEvent e) {
                 textUserInputArea.requestFocusInWindow();
             }
         });
 
         endSessionButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 quitSession();
             }
         });
 
         buttonUp.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 if (client != null) {
                     client.sendRequestToServer("nord");
                     textUserInputArea.requestFocusInWindow(); //focus su textArea
@@ -124,7 +142,7 @@ public class ClientGUI {
         });
         buttonDown.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 if (client != null) {
                     client.sendRequestToServer("sud");
                     textUserInputArea.requestFocusInWindow(); //focus su textArea
@@ -135,7 +153,7 @@ public class ClientGUI {
         });
         buttonLeft.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 if (client != null) {
                     client.sendRequestToServer("ovest");
                     textUserInputArea.requestFocusInWindow(); //focus su textArea
@@ -146,7 +164,7 @@ public class ClientGUI {
         });
         buttonRight.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 if (client != null) {
                     client.sendRequestToServer("est");
                     textUserInputArea.requestFocusInWindow(); //focus su textArea
@@ -157,7 +175,7 @@ public class ClientGUI {
         });
         inviaComandoButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 if (client != null) {
                     client.sendRequestToServer(textUserInputArea.getText());
                 } else {
@@ -182,7 +200,7 @@ public class ClientGUI {
         ActionMap actions = textUserInputArea.getActionMap();
         actions.put(TEXT_SUBMIT, new AbstractAction() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public final void actionPerformed(ActionEvent e) {
                 if (client != null) {
                     client.sendRequestToServer(textUserInputArea.getText());
                     textUserInputArea.setText(""); //pulisci testo input
@@ -198,8 +216,8 @@ public class ClientGUI {
          */
         textUserInputArea.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyTyped(KeyEvent e) {
-                if (textUserInputArea.getText().length() >= NUM_MAX_LENGHT_CHAR_JTA) // limita caratteri
+            public final void keyTyped(KeyEvent e) {
+                if (textUserInputArea.getText().length() >= numMaxChar) // limita caratteri
                     e.consume();
             }
         });
@@ -233,12 +251,14 @@ public class ClientGUI {
     public void clearOutputText() {
         formattedOutputClient.setText("");
     }
+
     private void appendCommandNotValid() {
         appendText("<br><font color='orange' face=\"Impact\"><b>" +
                 "Console:" +
                 "</b></font> " +
                 "comando non disponbile, avvia una partita");
     }
+
     /**
      * Scrolla fino alla fine del componente text
      *
@@ -258,8 +278,8 @@ public class ClientGUI {
         formattedOutputClient.repaint();
     }
 
-    public void quitSession () {
-        if(client!=null) {
+    public void quitSession() {
+        if (client != null) {
             client.closeServerComunications();
             client.sendRequestToServer("quit");
         }
@@ -273,7 +293,7 @@ public class ClientGUI {
         client = null;
     }
 
-    public void startSession () {
+    public void startSession() {
         //update della GUI
         endSessionButton.setEnabled(true);
 

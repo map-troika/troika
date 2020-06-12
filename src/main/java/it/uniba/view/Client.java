@@ -18,13 +18,15 @@ public final class Client {
 
     static final int PORT_NUMBER = 4000;
 
+    private Client() {
+
+    }
     /**
      * Crea un costruttore della classe <code>Client</code> parametrizzato.
      *
      * @param clientName nome del client
      */
-
-    public Client(final String clientName) {
+    private Client(final String clientName) {
 
         System.out.println("Client: " + clientName);
 
