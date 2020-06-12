@@ -308,8 +308,9 @@ flussi multithread implementando l'interfaccia "Runnable", tutto questo per gest
 di esecuzione.<br>
 ![](img/ClientGui/default.png)
 ### <span id = "5.4.1">5.4.1 Componenti SWING ed eventi</span>
-Il frame principale (contenitore top level) contenitore radice, contiene
-Per visualizzare i response del server 
+Il frame principale (contenitore top level) contenitore radice, contiene i vari componenti della GUI.
+Il <code>ClientGUI</code> per visualizzare i response del server è stato implementato il componente JtextPane, che permette di visualizzare il
+modello di dati <code>Document</code>
 ## <span id = "5.5">5.5 Client-server multithreading</span>
 
 # <span id = "6">6. Riepilogo del test</span> 
