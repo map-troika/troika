@@ -198,17 +198,12 @@ dei dati).
 <br>
 <br>
 
-![BasePiece](res/img/BasePiece.png)
->_Diagramma di classe di <code>BasePiece</code>._
+![Item](informationhiding.png)
+>_Diagramma di classe di <code>Item</code>._
 
 <br>
-La classe <code>BasePiece</code> ne è un esempio poichè:
-
- - i metodi necessari per l'interazione con le altre classi sono pubblici, come quelli <code>possibleMovePiece</code>che 
- restituisce alla classe <code>Match</code> la disponibilità della mossa a seconda del contesto di gioco;
- 
- - gli attributi sono privati a cui sono annessi metodi <code>get</code> e <code>set</code> pubblici per l'accesso e 
- l'impostazione dei valori.
+La classe <code>Item</code> ne è un esempio poichè contine attributi privati a cui sono annessi metodi <code>get</code>
+e <code>set</code> pubblici per l'accesso e l'impostazione dei valori.
 
 Con questo principio l'applicazione ci permette di isolare le modifiche dovute a scelte progettuali o
 correzioni di bug, senza compromettere le classi esterne a quella in questione.
