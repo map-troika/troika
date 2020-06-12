@@ -242,25 +242,16 @@ ottimizzata. A questo si aggiunge una maggiore leggibilità ed estensibilità de
 L’accoppiamento misura il grado di dipendenza tra componenti diversi.
 <p>Un basso accoppiamento fa si che un cambiamento ad un componente non si propaghi su altri
 componenti.
-<p>La scelta progettuale di delegare ai singoli tipi di pezzo il controllo sulle proprie mosse permette di avere per ogni 
-pezzo una gestione ottimizzata delle mosse, rendendo la modifica, la manutenzione e la correzione indipendenti.
+
+![](bassoaccoppiamento.png)
+>_Diagramma delle classi di <code>Game</code> e <code>Action</code>._
+
+<p>La scelta progettuale di delegare ad una classe apposita <code>Action</code> la realizzazione dei comandi dati 
+in input dall'utente e gestiti dalla classe <code>Game</code> rende le classi indipendenti reciprocamente, facendo sì
+che la modifica, la manutenzione e la correzione di una classe non interessino l'altra.
 <br>
 <br>
-
-![KingMove](res/img/kingMove.png)
->_Diagramma di sequenza di <code>possibleMovePiece</code>._
-
 <br>
-<p>Nel diagramma di sequenza riportato è facile osservare come la delega del controllo della mossa al pezzo specifico 
-(in questo caso <code>King</code>), fa sì che il pezzo possa gestirla in maniera consona alle proprie esigenze: 
-
- - il metodo <code>check</code> verifica che la casa di destinazione sia raggiungibile dal Re;
- 
- - il metodo <code>isThreatened</code> verifica che la mossa restituita non metta il Re sotto scacco; 
- 
-Solo dopo queste due verifiche il Re crea una <code>Move</code> che viene restituita alla classe <code>Match</code>.
-<p>In questo senso le classi ignorano azioni e/o controlli che riguardino altre, ad esempio la gestione delle ambiguità
-che nel pezzo <code>King</code> non avviene mai.
 
 ## <span id = "4.4">4.4 Don't Repeat Yourself (DRY)</span> 
 Il principio DRY <em>(Don't Repeat Yourself)</em> prevede che ogni parte significativa di una funzionalità dovrebbe 
