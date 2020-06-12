@@ -289,7 +289,8 @@ volta, rendendo il codice più leggibile, snello e facilmente manutenibile.
 
 ## <span id = "5.2">5.2 I/O da file</span>
 - il parser cerca di intercettare dall'input dell'utente i comandi da eseguire (inglese o italiano) e gli item
-- le regular expression viene costruita dinamicamnete in base ai contenuti del file di configurazione/yaml 
+- le regular expression viene costruita dinamicamnete in base ai contenuti del file di configurazione/yaml
+
 ## <span id = "5.3">5.3 Connessione a database</span>
 Questa sezione descrive l'uso dello standard JDBC <em>(Java Data Base Connectivity)</em>.
 
@@ -314,7 +315,8 @@ il metodo <code>run()</code> del <code>Game</code>.
 ## <span id = "5.4">5.4 GUI mediante SWING</span>
 
 ## <span id = "5.5">5.5 Client-server multithreading</span>
-
+L'identificazione dell'IP <em>(Internet Protocol)</em> avviene tramite dot notation. La porta sulla quale sia il server 
+che il client si connettono è la <code>port:4000</code>.
  - server istanzia game per ogni connessione del client, in un thread
  - è possibile connettere più client contemporaneamete, multithreading
  - la connessione tra client e server è codificata per evitare che new line nelle stampe viene interpretato come invio dall'utente
