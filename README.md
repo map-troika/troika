@@ -292,6 +292,12 @@ volta, rendendo il codice più leggibile, snello e facilmente manutenibile.
 ## <span id = "5.3">5.3 Connessione a database</span>
 
 ## <span id = "5.4">5.4 GUI mediante SWING</span>
+Come illustrato nello stile architetturale **MVC**, il corretto funzionamento dell'intero sistema prevede l'utilizzo
+di un applicativo <code>Client</code> in grado di comunicare con l'applicativo remoto <code>Server</code>.
+Oltre alla versione Client, eseguibile da terminale a singolo flusso di esecuzione, è stato sviluppato un client con
+interfacce grafiche usando il framework <code>Swing</code> di Java. Questa versione del <code>Client</code> usa
+flussi multithread implementando l'interfaccia "Runnable", tutto questo per gestire i singoli task del Client in fase
+di esecuzione.
 
 ## <span id = "5.5">5.5 Client-server multithreading</span>
 
