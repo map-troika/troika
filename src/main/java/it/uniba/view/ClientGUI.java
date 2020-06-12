@@ -70,6 +70,7 @@ public class ClientGUI {
         try {
             //inizializza tags html
             document.insertAfterEnd(document.getCharacterElement(document.getLength()), "<html><body>");
+            appendText("");
         } catch (BadLocationException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -115,10 +116,7 @@ public class ClientGUI {
                 if (client != null) {
                     client.sendRequestToServer("nord");
                 } else {
-                    appendText("<br><font color='orange' face=\"Agency FB\"><b>" +
-                            "Attenzione:" +
-                            "</b></font> " +
-                            "comando non disponbile, avvia una partita");
+                    appendCommandNotValid();
                 }
             }
         });
@@ -128,10 +126,7 @@ public class ClientGUI {
                 if (client != null) {
                     client.sendRequestToServer("sud");
                 } else {
-                    appendText("<br><font color='orange' face=\"Agency FB\"><b>" +
-                            "Attenzione:" +
-                            "</b></font> " +
-                            "comando non disponbile, avvia una partita");
+                    appendCommandNotValid();
                 }
             }
         });
@@ -141,10 +136,7 @@ public class ClientGUI {
                 if (client != null) {
                     client.sendRequestToServer("ovest");
                 } else {
-                    appendText("<br><font color='orange' face=\"Agency FB\"><b>" +
-                            "Attenzione:" +
-                            "</b></font> " +
-                            "comando non disponbile, avvia una partita");
+                    appendCommandNotValid();
                 }
             }
         });
@@ -154,10 +146,7 @@ public class ClientGUI {
                 if (client != null) {
                     client.sendRequestToServer("est");
                 } else {
-                    appendText("<br><font color='orange' face=\"Agency FB\"><b>" +
-                            "Attenzione:" +
-                            "</b></font> " +
-                            "comando non disponbile, avvia una partita");
+                    appendCommandNotValid();
                 }
             }
         });
@@ -168,10 +157,7 @@ public class ClientGUI {
                     client.sendRequestToServer(textUserInputArea.getText());
                     textUserInputArea.setText("");
                 } else {
-                    appendText("<br><font color='orange' face=\"Agency FB\"><b>" +
-                            "Attenzione:" +
-                            "</b></font> " +
-                            "comando non disponbile, avvia una partita");
+                    appendCommandNotValid();
                 }
             }
         });
@@ -195,10 +181,7 @@ public class ClientGUI {
                     client.sendRequestToServer(textUserInputArea.getText());
                     textUserInputArea.setText(""); //pulisci testo input
                 } else {
-                    appendText("<br><font color='orange' face=\"Agency FB\"><b>" +
-                            "Attenzione:" +
-                            "</b></font> " +
-                            "comando non disponbile, avvia una partita");
+                    appendCommandNotValid();
                 }
 
             }
@@ -244,7 +227,12 @@ public class ClientGUI {
     public void clearOutputText() {
         formattedOutputClient.setText("");
     }
-
+    private void appendCommandNotValid() {
+        appendText("<br><font color='orange' face=\"Agency FB\"><b>" +
+                "Console:" +
+                "</b></font> " +
+                "comando non disponbile, avvia una partita");
+    }
     /**
      * Scrolla fino alla fine del componente text
      *

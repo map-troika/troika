@@ -35,23 +35,27 @@ public final class ClientGUIVersion implements Runnable {
      */
     @Override
     public void run() {
-        System.out.println("Client: " + clientName);
-
+        System.out.println(
+                        "<br><font color='orange' face=\"Agency FB\"><b>" +
+                        "Client: " +
+                        "</b></font> " +
+                        clientName);
 
         try {
-            cGUI.appendText("\n" + "<br>" + "Apre una comunicazione socket");
+            cGUI.appendText("\n" + "<br>" +
+                    "<font color='orange' face=\"Agency FB\"><b>" +
+                    "Console:" +
+                    "</b></font> " +
+                    "Apre una comunicazione socket");
             Socket s = new Socket("localhost", PORT_NUMBER);
 
             // Apre i canali di comunicazione e la connessione con il  view
             BufferedReader sbr = new BufferedReader(new InputStreamReader(s.getInputStream()));
             sps = new PrintStream(s.getOutputStream(), true);
-
             // Console BufferedReader
             BufferedReader cbr = new BufferedReader(new InputStreamReader(System.in));
-
             // Console PrintStream
             PrintStream cps = new PrintStream(System.out, true);
-
 
             while (!quitThread) {
                 cGUI.startSession(); //avvia sessione lato GUI
@@ -67,7 +71,12 @@ public final class ClientGUIVersion implements Runnable {
                     credentialRequestGUI = new LoginRequestGUI(response);
                     Thread reqGUIt = new Thread(credentialRequestGUI, "thread credential req");
                     reqGUIt.start();
-                    cGUI.appendText("\n" + "<br>" + "in attesa della credenziale"); //imposta titolo
+                    cGUI.appendText("\n" + "<br>" +
+                            "<font color='orange' face=\"Agency FB\"><b>" +
+                            "Console:" +
+                            "</b></font> " +
+                            "in attesa della credenziale"
+                    ); //imposta titolo
                     while (reqGUIt.isAlive()) {
 
                         Thread.sleep(2000);
@@ -83,18 +92,36 @@ public final class ClientGUIVersion implements Runnable {
                     cGUI.clearOutputText();
                     cGUI.appendText(
                             response.replaceAll("\u001B\\[2J\u001B\\[H", ""));
-                    cGUI.appendText("<br>sessione terminata");
+                    cGUI.appendText("<br>" +
+                            "<font color='orange' face=\"Agency FB\"><b>" +
+                            "Console:" +
+                            "</b></font> " +
+                            "sessione terminata");
                     cGUI.quitSession();
                     quitThread = true;
                 } else if (response.contains("Uscita in corso...")) {
                     cGUI.clearOutputText();
                     cGUI.appendText(
                             response.replaceAll("\u001B\\[2J\u001B\\[H", ""));
-                    cGUI.appendText("<br>sessione terminata");
+                    cGUI.appendText("<br>" +
+                            "<font color='orange' face=\"Agency FB\"><b>" +
+                            "Console:" +
+                            "</b></font> " +
+                            "sessione terminata");
+                    cGUI.quitSession();
+                    quitThread = true;
+                } else if(response.contains("Sei stato ucciso, hai perso!")) {
+                    cGUI.clearOutputText();
+                    cGUI.appendText(
+                            response.replaceAll("\u001B\\[2J\u001B\\[H", ""));
+                    cGUI.appendText("<br>" +
+                            "<font color='orange' face=\"Agency FB\"><b>" +
+                            "Console:" +
+                            "</b></font> " +
+                            "sessione terminata");
                     cGUI.quitSession();
                     quitThread = true;
                 } else {
-                    System.out.println("provaaaaa");
                     cGUI.clearOutputText();
                     cGUI.appendText(
                             response.replaceAll("\u001B\\[2J\u001B\\[H", "")
@@ -116,9 +143,17 @@ public final class ClientGUIVersion implements Runnable {
             System.out.println("Client end");
 
         } catch (Exception e) {
-            cGUI.appendText("\n" + "<br>" + e.getMessage());
+            cGUI.appendText("\n" + "<br>" +
+                    "<font color='red' face=\"Agency FB\"><b>" +
+                    "Console:" +
+                    "</b></font> " +
+                    e.getMessage());
 
-            cGUI.appendText("<br>sessione terminata");
+            cGUI.appendText("<br>" +
+                    "<font color='orange' face=\"Agency FB\"><b>" +
+                    "Console:" +
+                    "</b></font> " +
+                    "sessione terminata");
             cGUI.quitSession();
 
 
@@ -147,7 +182,11 @@ public final class ClientGUIVersion implements Runnable {
      * @throws InterruptedException
      */
     public Thread runThreadClient() throws InterruptedException {
-        cGUI.appendText("\n" + "<br>" + "Client start");
+        cGUI.appendText("\n" + "<br>" +
+                "<font color='orange' face=\"Agency FB\"><b>" +
+                "Console:" +
+                "</b></font> " +
+                "Client start");
         Runnable c = this;
         Thread t = new Thread(c); // Create task (Application)
         t.start();

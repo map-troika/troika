@@ -139,79 +139,95 @@ public class Game implements Runnable {
                         if (Action.goTo(roomId, cp[0])) {
                             response = printRoom(roomId);
                         } else {
-                            response = "C'è un muro da questa parte!";
+                            response = "<font face=\"Agency FB\" size=\"5\"><b>C'è un muro da questa parte!<br>";
                         }
                         break;
                     case "prendo":
                             if (Action.pickUpItem(gLoader, roomId, cp)) {
                                 if (cp.length == 1) {
-                                    response = "Hai raccolto l'oggetto "
-                                            + Player.getItemsList().get(Player.getItemsList().size() - 1).getItemName();
+                                    response =
+                                            "<font face=\"Agency FB\" size=\"5\"><b>Hai raccolto l'oggetto "
+                                            + Player.getItemsList().get(Player.getItemsList().size() - 1).getItemName()
+                                    + "</b></font>";
                                 } else {
-                                    response = "Hai raccolto l'oggetto " + cp[1];
+                                    response =
+                                            "<font face=\"Agency FB\" size=\"5\"><b>Hai raccolto l'oggetto "
+                                                    + cp[1] + "</b></font>";
                                 }
 
                             } else {
                                 if (cp.length == 1) {
-                                    response = "Specifica un oggetto valido da raccogliere";
+                                    response =
+                                            "<font face=\"Agency FB\" size=\"5\">" +
+                                                    "<b>Specifica un oggetto valido da raccogliere</b></font>";
                                 } else {
-                                    response = "In questa stanza non è presente l'oggetto " + cp[1];
+                                    response = "<font face=\"Agency FB\" size=\"5\"><b>" +
+                                            "In questa stanza non è presente l'oggetto " + cp[1] + "</b></font>";
                                 }
 
                             }
                         break;
                     case "uso":
                         if (Player.getNItemUse() == 2) {
-                            response = "Hai già due oggetti in uso";
+                            response = "<font face=\"Agency FB\" size=\"5\"><b>Hai già due oggetti in uso</b></font>";
                         } else {
                             if (Action.useItem(cp)) {
                                 if (cp.length == 1) {
-                                    response = "L'oggetto "
+                                    response = "<font face=\"Agency FB\" size=\"5\"><b>L'oggetto "
                                             + Player.getItemsList().get(Player.getItemsList().size() - 1).getItemName()
-                                            + " è ora in uso";
+                                            + " è ora in uso</b></font>";
                                 } else {
-                                    response = "L'oggetto " + cp[1] + " è ora in uso";
+                                    response = "<font face=\"Agency FB\" size=\"5\"><b>L'oggetto "
+                                            + cp[1] + " è ora in uso</b></font>";
                                 }
                             } else {
                                 if (cp.length == 1) {
-                                    response = "Specifica un oggetto valido da usare";
+                                    response = "<font face=\"Agency FB\" size=\"5\"><b>"
+                                            + "Specifica un oggetto valido da usare</b></font>";
                                 } else {
-                                    response = "Nel tuo inventario non è presente l'oggetto " + cp[1];
+                                    response = "<font face=\"Agency FB\" size=\"5\"><b>" +
+                                            "Nel tuo inventario non è presente l'oggetto " + cp[1] + "</b></font>";
                                 }
                             }
                         }
                         break;
                     case "combatto":
-                        response = Action.fight(gLoader, roomId);
+                        response = "<font face=\"Agency FB\" size=\"5\"><b>" + Action.fight(gLoader, roomId)
+                                + "</b></font>";
                         break;
                     case "lascio":
                         if (Action.leaveItem(gLoader, roomId, cp)) {
                             if (cp.length == 1) {
-                                response = "Hai lasciato l'oggetto "
+                                response = "<font face=\"Agency FB\" size=\"5\"><b>Hai lasciato l'oggetto "
                                         + gLoader.getPlotRooms().get(roomId).getItemsList()
-                                        .get(gLoader.getPlotRooms().get(roomId).getItemsList().size() - 1).getItemName();
+                                        .get(gLoader.getPlotRooms().get(roomId).getItemsList().size() - 1)
+                                        .getItemName() + "</b></font>";
                             } else {
-                                response = "Hai lasciato l'oggetto " + cp[1];
+                                response = "<font face=\"Agency FB\" size=\"5\"><b>Hai lasciato l'oggetto " +
+                                        cp[1] + "</b></font>";
                             }
                         } else {
                             if (cp.length == 1) {
-                                response = "Specifica un oggetto valido da lasciare";
+                                response = "<font face=\"Agency FB\" size=\"5\"><b>" +
+                                        "Specifica un oggetto valido da lasciare</b></font>";
                             } else {
-                                response = "Nel tuo inventario non è presente l'oggetto " + cp[1];
+                                response = "<font face=\"Agency FB\" size=\"5\"><b>" +
+                                        "Nel tuo inventario non è presente l'oggetto " + cp[1] + "</b></font>";
                             }
                         }
                         break;
                     case "aiuto":
-                        response = Action.help();
+                        response = "<font face=\"Agency FB\" size=\"5\"><b>" + Action.help() + "</b></font>";
                         break;
                     case "posizione":
-                        response = Action.position(roomId);
+                        response = "<font face=\"Agency FB\" size=\"5\"><b>" + Action.position(roomId) + "</b></font>";
                         break;
                     case "inventario":
-                        response = Action.showInventory();
+                        response = "<font face=\"Agency FB\" size=\"5\"><b>" + Action.showInventory() + "</b></font>";
                         break;
                     case "osservo":
-                        response = Action.observeRoom(gLoader, roomId);
+                        response = "<font face=\"Agency FB\" size=\"5\"><b>" +
+                                Action.observeRoom(gLoader, roomId) + "</b></font>";
                         break;
                     case "quit":
                         //response = "quit";
@@ -222,21 +238,24 @@ public class Game implements Runnable {
                         isQuit = true;
                     default:
                         System.out.println("*** Invalid command: " + cmd);
-                        response = "me, non so che cz vuoi (" + request + ").  Riprova!";
+                        response = "<font face=\"Agency FB\" size=\"5\"><b>" +
+                                "me, non so che cz vuoi (" +
+                                "<font color='red' face=\"Agency FB\"><b>" + request +  "</b></font>" +
+                                ").  Riprova!" + "</b></font>";
                 }
             }
             String exitMessage;
             if (isQuit) {
-                exitMessage = "Uscita in corso...";
+                exitMessage = "<font face=\"Agency FB\" size=\"5\"><b>Uscita in corso...</b></font>";
                 exitMessage = Base64.getEncoder().encodeToString(exitMessage.getBytes());
                 pw.println(exitMessage);
             } else {
                 if (Player.getIsWinner()) {
-                    exitMessage = "Hai vinto!";
+                    exitMessage = "<font face=\"Agency FB\" size=\"5\"><b>Hai vinto!</b></font>";
                     exitMessage = Base64.getEncoder().encodeToString(exitMessage.getBytes());
                     pw.println(exitMessage);
                 } else {
-                    exitMessage = "Sei stato ucciso, hai perso!";
+                    exitMessage = "<font face=\"Agency FB\" size=\"5\"><b>Sei stato ucciso, hai perso!</b></font>";
                     exitMessage = Base64.getEncoder().encodeToString(exitMessage.getBytes());
                     pw.println(exitMessage);
                 }

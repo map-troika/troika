@@ -42,19 +42,19 @@ items:
   - name: gomitolo
     pattern: "gomitolo|gom|clew"
     description: |
-      per terra cè un gomitolo, potrebbe aiutarti a tornare sui tuoi passi
+      per terra cè un <font color='orange' face="Agency FB"><b>gomitolo</b></font>, potrebbe aiutarti a tornare sui tuoi passi
     isEnemy: false
     isWeapon: false
   - name: minotauro
     pattern: "minotauro|min|minotaur"
     description: |
-      hai di fronte il minotauro, pronto all'attacco
+      hai di fronte il <font color='red' face="Agency FB"><b>minotauro</b></font>, pronto all'attacco
     isEnemy: true
     isWeapon: false
   - name: spada
     pattern: "spada|spad|sword"
     description: |
-      in lontananza cè una spada, degna dei più nobili guerrieri
+      in lontananza cè una <font color='orange' face="Agency FB"><b>spada</b></font>, degna dei più nobili guerrieri
     isEnemy: false
     isWeapon: true
 
@@ -106,11 +106,11 @@ rooms:
       sud: 1
 
   - id: 1
-    title: <font face="Agency FB" size="6"><b>Ala d'ingresso</b></font><hr>
+    title: <font color='gray' face="Agency FB" size="6"><b>Ala d'ingresso</b></font><hr>
     descr: |
-      Sei nell'ala d'ingresso e non sai cosa fare, la stanza è buia e sul lato est<br>
-      si intravede una porta piuttosto grande, a nord si intravedono ancora i fiori<br>
-      del giardino...<br>
+      <font face="Agency FB" size="5"><b>Sei nell'ala d'ingresso e non sai cosa fare, la stanza è buia e sul lato <font color='green' face="Agency FB"><b>est</b></font><br>
+      si intravede una porta piuttosto grande, a <font color='green' face="Agency FB"><b>nord</b></font> si intravedono ancora i fiori<br>
+      del giardino...<br></b></font>
     items:
       - gomitolo
     exits:
@@ -118,43 +118,44 @@ rooms:
       est: 2
 
   - id: 2
-    title: Ala del bivio
+    title: <font color='gray' face="Agency FB" size="6"><b>Ala del bivio</b></font><hr>
     descr: |
-      Che stanza tetra! Segui il tuo istinto, ci sono tre  passaggi: ad ovest,<br>
-      sud ed est...<br>
+      <font face="Agency FB" size="5"><b>Che stanza tetra! Segui il tuo istinto, ci sono tre  passaggi: ad <font color='green' face="Agency FB"><b>ovest</b></font>,<br>
+      <font color='green' face="Agency FB"><b>sud</b></font> ed <font color='green' face="Agency FB"><b>est</b></font>...<br></b></font>
     exits:
       ovest: 1
       sud: 3
       est: 4
 
   - id: 3
-    title: Ala della spada
+    title: <font color='gray' face="Agency FB" size="6"><b>Ala della spada</b></font><hr>
     descr: |
-      Ehi! Sei nell'ala della spada...potresti trovare un' arma degna di un<br>
+      <font face="Agency FB" size="5"><b>Ehi! Sei nell'ala della spada...potresti trovare un' arma degna di un<br>
       guerriero, se nessuno ti ha preceduto! Questa stanza sembra non avere<br>
-      altre uscite oltre quella a nord per tornare indietro...<br>
+      altre uscite oltre quella a <font color='green' face="Agency FB"><b>nord</b></font> per tornare indietro...<br></b></font>
     items:
       - spada
     exits:
       nord: 2
 
   - id: 4
-    title: Ala del grande passo
+    title: <font color='gray' face="Agency FB" size="6"><b>Ala del grande passo</b></font><hr>
     descr: |
-      Verso nord si riescono già a sentire dei versi spaventosi, vai pure<br>
-      se ti senti pronto... Altrimenti procedi verso ovest per tornare<br>
-      nell'Ala del bivio o verso sud...<br>
+      <font face="Agency FB" size="5"><b>Verso <font color='green' face="Agency FB"><b>nord</b></font> si riescono già a sentire dei versi spaventosi, vai pure<br>
+      se ti senti pronto... Altrimenti procedi verso <font color='green' face="Agency FB"><b>ovest</b></font> per tornare<br>
+      nell'Ala del bivio o verso <font color='green' face="Agency FB"><b>sud</b></font>...<br></b></font>
     exits:
       nord: 5
       sud: 6
       ovest: 2
 
   - id: 5
-    title: Stanza della battaglia
+    title: <font color='gray' face="Agency FB" size="6"><b>Stanza della battaglia</b></font><hr>
     descr: |
-      GULP! Sei davanti ad un'enorme ombra che soffia fiato dal naso umido...<br>
-      fagli vedere di che pasta sei fatto con la tua preziosa spada...<br>
-      Altrimenti torna verso sud finchè sei ancora in tempo!<br>
+      <font face="Agency FB" size="5"><b>GULP! Sei davanti ad un'enorme ombra che soffia fiato dal naso umido...<br>
+      fagli vedere di che pasta sei fatto con la tua preziosa <font color='orange' face="Agency FB"><b>spada</b></font>...<br>
+      Altrimenti torna verso <font color='green' face="Agency FB"><b>sud</b></font> finchè sei ancora in tempo!<br></b></font>
+      <img src="https://i.dlpng.com/static/png/387300_preview.png" width=200 height=200></img>
       {
                      -*@*                      *@*-
                    -@WW*                        *WW@-
@@ -182,9 +183,9 @@ rooms:
       sud: 4
 
   - id: 6
-    title: Ala finale
+    title: <font color='gray' face="Agency FB" size="6"><b>Ala finale</b></font><hr>
     descr: |
-      Ora che non puoi più scoprire nuove stanze dovresti iniziare a pensare<br>
-      a come uscire da qui...<br>
+      <font face="Agency FB" size="5"><b>Ora che non puoi più scoprire nuove stanze dovresti iniziare a pensare<br>
+      a come uscire da qui...<br></b></font>
     exits:
       nord: 4
