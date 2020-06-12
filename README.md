@@ -304,14 +304,16 @@ Come illustrato nello stile architetturale **MVC**, il corretto funzionamento de
 di un applicativo <code>Client</code> in grado di comunicare con l'applicativo remoto <code>Server</code>.
 Oltre alla versione Client, eseguibile da terminale a singolo flusso di esecuzione, è stato sviluppato un client con
 interfacce grafiche usando il framework <code>Swing</code> di Java. Questa versione del <code>Client</code> usa
-flussi multithread implementando l'interfaccia "Runnable", tutto questo per gestire i singoli task del Client in fase
-di esecuzione.<br>
-![](img/ClientGui/default.png)
+flussi di thread implementando l'interfaccia "Runnable", tutto questo per gestire i singoli task del Client in fase
+di esecuzione.<br><br>
+![](img/ClientGui/default.png)<br>
+>_Illustrazione del client con interface Swing._
 ### <span id = "5.4.1">5.4.1 Componenti SWING</span>
 Il frame principale (contenitore top level) contenitore radice, contiene i vari componenti della GUI.<br>
 Per visualizzare i response del server è stato implementato il componente <code>JTextPane</code>, che permette di
-renderizzare il codice html contenuto all'interno del modello di dati di tipo<code>HTMLDocument</code>.<br>
-![](img/ClientGui/illustrazioneGUIHTML.png)
+renderizzare il codice html contenuto all'interno del modello di dati di tipo<code>HTMLDocument</code>.<br><br>
+![](img/ClientGui/illustrazioneGUIHTML.png)<br>
+>_Illustrazione del rendering di un <code>HTMLDocument</code>._
 ## <span id = "5.5">5.5 Client-server multithreading</span>
 
 # <span id = "6">6. Riepilogo del test</span> 
