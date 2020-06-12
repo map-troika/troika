@@ -307,11 +307,11 @@ interfacce grafiche usando il framework <code>Swing</code> di Java. Questa versi
 flussi multithread implementando l'interfaccia "Runnable", tutto questo per gestire i singoli task del Client in fase
 di esecuzione.<br>
 ![](img/ClientGui/default.png)
-### <span id = "5.4.1">5.4.1 Componenti SWING ed eventi</span>
+### <span id = "5.4.1">5.4.1 Componenti SWING</span>
 Il frame principale (contenitore top level) contenitore radice, contiene i vari componenti della GUI.<br>
 Per visualizzare i response del server è stato implementato il componente <code>JTextPane</code>, che permette di
 renderizzare il codice html contenuto all'interno del modello di dati di tipo<code>HTMLDocument</code>.<br>
-
+![](img/ClientGui/illustrazioneGUIHTML.png)
 ## <span id = "5.5">5.5 Client-server multithreading</span>
 
 # <span id = "6">6. Riepilogo del test</span> 
