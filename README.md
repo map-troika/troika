@@ -169,15 +169,18 @@ sulla posizione corrente del giocatore.</p>
 >_Diagramma dei package di uniba._
 
 <br>
-Il <code>Package controller</code>, che si occupa di avviare una partita per ogni connessione del <code>Client</code> al
+<p>Il <code>Package controller</code>, che si occupa di avviare una partita per ogni connessione del <code>Client</code> al
 <code>Server</code> e verificare l'input ricevuto dall'utente, ha una dipendenza diretta con il <code>Package model</code>
 per permettere:
  
- - di istanziare gli elementi di una partita come una <code>Room</code> o un <code>Item</code>;
+ - di istanziare gli elementi di un <code>Game</code> come una <code>Room</code> o un <code>Item</code>;
  
  - che specifici comandi della <code>Plot</code> estratti da un dato file YAML siano o meno validi attraverso il 
- <code>Parser</code>
+ <code>Parser</code>;</p>
  
+<p>Il <code>Package view</code> è totalmente indipendente dalla gestione delle richieste dell'utente, la selezione 
+della risposta e l'implementazione delle funzionalità degli oggetti.</p>
+<br>
 <p><a href="#top">Torna all'inizio</a>
 
 # <span id = "4">4. OO Design</span>  
