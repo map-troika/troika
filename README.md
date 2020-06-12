@@ -349,11 +349,7 @@ Tutte le violazioni sono state risolte nelle classi del <code>main</code> <br><b
 # <span id = "7">7. Processo di sviluppo e organizzazione del lavoro</span>
 Questa sezione descrive i metodi e la dinamica per lo sviluppo del software.
 
-### <span id = "7.1">7.1 Product backlog</span>
-
-![](res/img/productbacklog.PNG)
->_Parte della product backlog del gruppo Thacker._ 
-
+### <span id = "7.1">7.1 Product backlog</span> 
 La product backlog di questo progetto è stata modificata dinamicamente,
 dopo ogni riunione interna, con l'aggiunta di nuove feature in base agli argomenti 
 studiati e il tempo a disposizione.
