@@ -54,7 +54,7 @@ public final class Client {
                             .replaceAll("[{}]", " ")
                             .replaceAll("\\[[^\\[\\]]*\\]", "")
                     );
-                    cps.print("command (help): ");
+                    cps.print("Inserisci comando: ");
                 }
 
                 // Lettura del messaggio ricevuto dalla console

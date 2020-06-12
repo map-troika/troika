@@ -27,14 +27,14 @@ public final class Action {
 
         out += "<center><table border=0 ><tr><td bgcolor=\"Silver\" align=\"left\" colspan=\"2\">"
                 + "<font face=\"Verdana\" size=\"5\"><b>"
-                + "Lista comandi:\n"
+                + "Lista comandi\n"
                 + "</b></font>"
                 + "</td></tr>";
 
 
         out += "<tr><td bgcolor=\"Gray\" align=\"center\">"
                 + "<font color='white' face=\"Verdana\" size=\"5\"><b>"
-                + "\tprendo:"
+                + "\tprendo"
                 + "</b></font></td>             <td bgcolor=\"Gray\" align=\"center\">"
                 + "<font face=\"Verdana\" size=\"5\">"
                 + "raccoglie un oggetto\n"
@@ -43,7 +43,7 @@ public final class Action {
 
         out += "<tr><td bgcolor=\"Silver\" align=\"center\">"
                 + "<font color='white' face=\"Verdana\" size=\"5\"><b>"
-                + "\tlascio:"
+                + "\tlascio"
                 + "</b></font"
                 + "></td>             <td bgcolor=\"Silver\" align=\"center\">"
                 + "<font face=\"Verdana\" size=\"5\">"
@@ -53,7 +53,7 @@ public final class Action {
 
         out += "<tr><td bgcolor=\"Gray\" align=\"center\">"
                 + "<font color='white' face=\"Verdana\" size=\"5\"><b>"
-                + "\tposizione:"
+                + "\tposizione"
                 + "</b></font</td>          <td bgcolor=\"Gray\" align=\"center\">"
                 + "<font face=\"Verdana\" size=\"5\">"
                 + "stanza corrente\n"
@@ -62,7 +62,7 @@ public final class Action {
 
         out += "<tr><td bgcolor=\"Silver\" align=\"center\">"
                 + "<font color='white' face=\"Verdana\" size=\"5\"><b>"
-                + "\tinventario:</b></font>"
+                + "\tinventario</b></font>"
                 + "</td>         <td bgcolor=\"Silver\" align=\"center\">"
                 + "<font face=\"Verdana\" size=\"5\">"
                 + "lista oggetti nell'inventario\n"
@@ -71,7 +71,7 @@ public final class Action {
 
         out += "<tr><td bgcolor=\"Gray\" align=\"center\">"
                 + "<font color='white' face=\"Verdana\" size=\"5\"><b>"
-                + "\tosserva:"
+                + "\tosserva"
                 + "</b></font></td>            <td bgcolor=\"Gray\" align=\"center\">"
                 + "<font face=\"Verdana\" size=\"5\">"
                 + "descrive la stanza\n"
@@ -80,7 +80,7 @@ public final class Action {
 
         out += "<tr><td bgcolor=\"Silver\" align=\"center\">"
                 + "<font color='white' face=\"Verdana\" size=\"5\"><b>"
-                + "\tnord/sud/est/ovest:"
+                + "\tnord/sud/est/ovest"
                 + "</b></font>"
                 + "</td> <td bgcolor=\"Silver\" align=\"center\">"
                 + "<font face=\"Verdana\" size=\"5\">"
