@@ -177,7 +177,7 @@ public final class Parser {
         // System.out.println("*** itemList:" + itemList);
 
         // Dichiarazione e inizializzazione di String Array
-        String rc[] = new String[Math.max(commandList.size() + itemList.size(), 1)];
+        String[] rc = new String[Math.max(commandList.size() + itemList.size(), 1)];
 
         // Converte ArrayList in Object Array
         Object[] commandObj = commandList.toArray();
