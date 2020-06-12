@@ -75,7 +75,7 @@ public final class ClientGUIVersion implements Runnable {
                             "<font color='orange' face=\"Verdana\"><b>" +
                             "Console:" +
                             "</b></font> " +
-                            "in attesa della credenziale"
+                            "In attesa della credenziale"
                     ); //imposta titolo
                     while (reqGUIt.isAlive()) {
 
@@ -146,14 +146,14 @@ public final class ClientGUIVersion implements Runnable {
             cGUI.appendText("\n" + "<br>" +
                     "<font color='red' face=\"Verdana\"><b>" +
                     "Console:" +
-                    "</b></font> "); /*+
+                    "</b></font> Nessun server attivo"); /*+
                     e.getMessage());*/
 
             cGUI.appendText("<br>" +
                     "<font color='orange' face=\"Verdana\"><b>" +
                     "Console:" +
                     "</b></font> " +
-                    "sessione terminata");
+                    "Sessione terminata");
             cGUI.quitSession();
 
 
