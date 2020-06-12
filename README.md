@@ -335,7 +335,12 @@ thread del <code>Client</code> avvierà un nuovo thread la cui implementazione c
 <code>LoginRequestGUI</code> si occuperà di raccogliere le credenziali dell'utente. Il thread principale del 
 <code>Client</code> resterà in attesa fino a quando l'utente non confermerà le credenziali inserite. Quando le 
 credenziali saranno inserite il flusso del thread per raccogliere le credenziali terminerà, a questo punto il thread 
-principale del <code>Client</code> terminerà la sua attesa e continuerà la sua attività. 
+principale del <code>Client</code> terminerà la sua attesa e continuerà la sua attività.<br>
+
+![](img/ClientGui/illustrazioneAccessoConCredenziali.png)<br>
+>_Illustrazione del render del JTextPane di un modello dati <code>HTMLDocument</code>._
+
+<br>
 
 ## <span id = "5.5">5.5 Client-server multithreading</span>
 Questa sezione descrive l'uso della programmazione in rete.
