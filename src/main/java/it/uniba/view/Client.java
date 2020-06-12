@@ -50,11 +50,11 @@ public final class Client {
                     cps.print(response);
                 } else {
                     cps.println("Response:\n" + response.replaceAll("<br>", "")
-                            .replaceAll("\\<[^>]*>","")
+                            .replaceAll("\\<[^>]*>", "")
                             .replaceAll("[{}]", " ")
                             .replaceAll("\\[[^\\[\\]]*\\]", "")
                     );
-                    cps.print("command (help): ");
+                    cps.print("Inserisci comando: ");
                 }
 
                 // Lettura del messaggio ricevuto dalla console

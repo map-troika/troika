@@ -20,12 +20,11 @@
  4. [Don't Repeat Yourself (DRY)](#4.4)   
  5. [Relazioni tra classi](#4.5)     
 
-### 5. [Contenuti rilevanti](#5)        
- 1. [Trattamento delle eccezioni](#5.1)          
- 2. [I/O da file](#5.2)          
- 3. [Connessione a database](#5.3)     
- 4. [GUI mediante SWING](#5.4)     
- 5. [Client-server multithreading](#5.5)     
+### 5. [Contenuti rilevanti](#5)             
+ 1. [I/O da file](#5.1)          
+ 2. [Connessione a database](#5.2)     
+ 3. [GUI mediante SWING](#5.3)     
+ 4. [Client-server multithreading](#5.4)     
 
 ### 6. [Riepilogo del test](#6)   
  1. [Analisi statica del codice](#6.1)   
@@ -197,7 +196,7 @@ dei dati).
 <br>
 <br>
 
-![Item](informationhiding.png)
+![Item](img/informationhiding.png)
 >_Diagramma di classe di <code>Item</code>._
 
 <br>
@@ -223,7 +222,7 @@ e a prescindere dal contesto di gioco attuale.
 <br>
 <br>
 
-![Parser](altacoesione.png)
+![Parser](img/altacoesione.png)
 >_Diagramma delle classi per la decodifica di un input._
 
 <br>
@@ -238,7 +237,7 @@ L’accoppiamento misura il grado di dipendenza tra componenti diversi.
 <p>Un basso accoppiamento fa si che un cambiamento ad un componente non si propaghi su altri
 componenti.
 
-![](bassoaccoppiamento.png)
+![](img/bassoaccoppiamento.png)
 >_Diagramma delle classi di <code>Game</code> e <code>Action</code>._
 
 <p>La scelta progettuale di delegare ad una classe apposita <code>Action</code> la realizzazione dei comandi dati 
@@ -256,7 +255,7 @@ l’utilizzo del metodo <code>goTO</code> all’interno della <em>user story</em
 <br>
 <br>
 
-![goTO](DRY.png)
+![goTO](img/DRY.png)
 >_Diagramma di sequenza di <code>goTo</code>._
 
 <br>
@@ -267,7 +266,7 @@ metodo non viene clonato, andando potenzialmente incontro ad errori di <em>copy 
 volta, rendendo il codice più leggibile, snello e facilmente manutenibile.
 
 ## <span id = "4.5">Relazioni tra classi</span> 
-![classDiagram](classDiagram.png)
+![classDiagram](img/classDiagram.png)
 >_Diagramma delle classi dell'estrazione dello yaml fatta da <code>Plot</code>._
 
 <br>
@@ -286,13 +285,11 @@ tra <code>Room</code> e <code>Item</code>.
  
 # <span id = "5">5. Contenuti rilevanti</span> 
 
-## <span id = "5.1">5.1 Trattamento delle eccezioni</span>
-
-## <span id = "5.2">5.2 I/O da file</span>
+## <span id = "5.1">5.1 I/O da file</span>
 - il parser cerca di intercettare dall'input dell'utente i comandi da eseguire (inglese o italiano) e gli item
 - le regular expression viene costruita dinamicamnete in base ai contenuti del file di configurazione/yaml
 
-## <span id = "5.3">5.3 Connessione a database</span>
+## <span id = "5.2">5.2 Connessione a database</span>
 Questa sezione descrive l'uso dello standard JDBC <em>(Java Data Base Connectivity)</em>.
 
 <p>Per questa applicazione è stato utilizzato il Database SQLite essendo più compatto e non supportando la gestione della 
@@ -313,7 +310,7 @@ il metodo <code>run()</code> del <code>Game</code>.
 ![](img/content.svg)
 >_Contenuto della tabella users del database users._
 
-## <span id = "5.4">5.4 GUI mediante SWING</span>
+## <span id = "5.3">5.4 GUI mediante SWING</span>
 Come illustrato nello stile architetturale **MVC**, il corretto funzionamento dell'intero sistema prevede l'utilizzo
 di un applicativo <code>Client</code> in grado di comunicare con l'applicativo remoto <code>Server</code>.
 Oltre alla versione Client, eseguibile da terminale a singolo flusso di esecuzione, è stato sviluppata una classe
@@ -322,7 +319,7 @@ usa flussi di thread implementando l'interfaccia "Runnable" nelle classi implica
 task del Client in fase di esecuzione.<br><br><br><br>
 ![](img/ClientGui/default.png)<br>
 >_Illustrazione del client con interface Swing._
-### <span id = "5.4.1">5.4.1 Componenti SWING</span>
+### <span id = "5.3.1">5.4.1 Componenti SWING</span>
 Il frame principale (top level) contenitore radice, contiene i vari componenti della GUI.<br>
 Per visualizzare i response del server è stato implementato il componente <code>JTextPane</code>, che permette di
 renderizzare il codice html contenuto all'interno del modello di dati di tipo<code>HTMLDocument</code>.<br><br>
@@ -362,8 +359,8 @@ all'interno della zona JtextArea, questo meccanismo influenzerà in positivo la 
 <br>
 Premendo il pulsante <b>"Termina la sessione"</b> si genererà un evento che si occuperà di terminare la sessione con il 
 <code>Server</code> e di chiudere il mainThread del <code>Client</code>
- 
-## <span id = "5.5">5.5 Client-server multithreading</span>
+
+## <span id = "5.4">5.4 Client-server multithreading</span>
 Questa sezione descrive l'uso della programmazione in rete.
 
 <p>L'identificazione dell'IP <em>(Internet Protocol)</em> avviene tramite dot notation e la porta sulla quale sia il 
@@ -375,12 +372,13 @@ richiamerà <code>accept()</code> per attendere un nuovo <code>Client</code>.</p
 ![](img/Multithread.svg)
 >_Esempio di Client e ClientGUI concorrenti._
 
-<p>Per ogni connessione di un <code>Client</code> il <code>Server</code> istanzia un nuovo Game nel thread.</p>
+<p>Per ogni connessione di un <code>Client</code> il <code>Server</code> istanzia un nuovo <code>Game</code> nel thread.</p>
 <p>Il messaggio stampato sulla console è codificato utilizzando lo schema di codifica Base64 per evitare che i caratteri 
 di fine riga siano interpretati come invio. Il metodo <code>readLine()</code> consente di ottenere una stringa contenente 
 il contenuto della riga, esclusi i caratteri di fine riga, oppure null se è stata raggiunta la fine del flusso senza 
 leggere alcun carattere.</p>
 
+<a href="#top">Torna all'inizio</a>
 # <span id = "6">6. Riepilogo del test</span> 
 Questa sezione espone i risultati e le modalità con cui è stato testato il software.
 ## <span id = "6.1">6.1 Analisi statica del codice</span>
@@ -396,38 +394,24 @@ Tutte le violazioni sono state risolte nelle classi del <code>main</code> <br><b
 ![](res/img/CheckstyleMain2.png)  
 >_Risultato di Checkstyle del main._
 
-  
+<a href="#top">Torna all'inizio</a>
 # <span id = "7">7. Processo di sviluppo e organizzazione del lavoro</span>
 Questa sezione descrive i metodi e la dinamica per lo sviluppo del software.
 
-### <span id = "7.1">7.1 Product backlog</span>
-
-![](res/img/productbacklog.PNG)
->_Parte della product backlog del gruppo Thacker._ 
-
-La product backlog di questo gruppo è stata modificata dinamicamente,
-sprint dopo sprint, con l'aggiunta di **user stories** in base alle richieste del committente.
-Le _user story_ sono un tipo di oggetto limite che facilitano la sensibilizzazione 
-e la comunicazione: aiutano, quindi, l'organizzazione dei team,
-la loro comprensione del sistema e del suo contesto.
-
-**N.B.:** non tutte le _user story_ della product backlog 
-sono state implementate, dando la priorità a quelle previste per gli _sprint goal_.
+### <span id = "7.1">7.1 Product backlog</span> 
+La product backlog di questo progetto è stata modificata dinamicamente,
+dopo ogni riunione interna, con l'aggiunta di nuove feature in base agli argomenti 
+studiati e il tempo a disposizione.
 
 ## <span id = "7.2">7.2 Strumenti di lavoro</span>
 Questo gruppo ha utilizzato principalmente l'hub di collaborazione [Microsoft Teams](https://www.microsoft.com/it-it/microsoft-365/microsoft-teams/group-chat-software?&ef_id=CjwKCAjwtqj2BRBYEiwAqfzur0-16AYE21Zo35HZJYxTFy1__i_I2fgJjivVgf8EXDfD9K-1gHHbrRoCUIkQAvD_BwE:G:s&OCID=AID2001446_SEM_CjwKCAjwtqj2BRBYEiwAqfzur0-16AYE21Zo35HZJYxTFy1__i_I2fgJjivVgf8EXDfD9K-1gHHbrRoCUIkQAvD_BwE:G:s)
 e la piattaforma di sviluppo software [GitHub](https://github.com/) 
-per condividere il lavoro tra gli sviluppatori del prodotto.
-GitHub, infatti, è stato utilizzato per il Version Control per gestire il controllo del lavoro da remoto,
-adattandosi dunque alle restrizioni dovute all'emergenza CoVid-19;
-di notevole importanza, inoltre, è stato il tool di [GitHub Actions](https://github.com/marketplace?type=actions), 
+per condividere il lavoro.
+GitHub, infatti, è stato utilizzato per il Version Control per gestire il controllo del lavoro da remoto.
+di notevole importanza, inoltre, è stato il tool di GitHub Actions, 
 il cui compito è stato quello di automatizzare il workflow development relativo al prodotto da realizzare.
 Tutti i membri del gruppo hanno utilizzato di comune accordo l'ambiente di sviluppo 
 [IntelliJ IDEA](https://www.jetbrains.com/idea/).
-
-
-![](res/img/githubactions.PNG)
->_Esempio di workflow automatizzato con GitHub Actions._
 
 
 

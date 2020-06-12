@@ -186,10 +186,10 @@ public final class Parser {
         // Iterazione e conversione in String
         int i = 0;
         for (Object obj : commandObj) {
-            rc[i++] = (String)obj;
+            rc[i++] = (String) obj;
         }
         for (Object obj : itemObj) {
-            rc[i++] = (String)obj;
+            rc[i++] = (String) obj;
         }
 
         // Controllo conformità di action: se combinazione command-item è presente in Actions
