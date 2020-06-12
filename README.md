@@ -309,7 +309,7 @@ di esecuzione.<br>
 ![](img/ClientGui/default.png)
 ### <span id = "5.4.1">5.4.1 Componenti SWING ed eventi</span>
 Il frame principale (contenitore top level) contenitore radice, contiene i vari componenti della GUI.
-Il <code>ClientGUIVersion</code> per visualizzare i response del server utilizza il componente JtextPane,
+Il <code>ClientGUIVersion</code> per visualizzare i response del server utilizza il componente JTextPane,
 che permette di visualizzare il modello di dati <code>Document</code>
 ## <span id = "5.5">5.5 Client-server multithreading</span>
 
