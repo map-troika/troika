@@ -295,7 +295,7 @@ Questa sezione descrive l'uso dello standard JDBC <em>(Java Data Base Connectivi
 <p>Per questa applicazione è stato utilizzato il Database SQLite essendo più compatto e non supportando la gestione della 
 concorrenza, non necessaria nell'uso da parte di una singola applicazione e da un singolo utente.</p>
 
-![](schema.svg)
+![](Asset%206.png)
 
 
 
