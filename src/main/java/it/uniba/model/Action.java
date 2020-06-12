@@ -311,14 +311,13 @@ public final class Action {
     public static String observeRoom(final Plot loader, final int roomId) {
         String out = "\033[2J\033[H";
         if (loader.getPlotRooms().get(roomId).getItemsList().size() != 0) {
-            out += "guardati intorno: <br>";
             for (Item item : loader.getPlotRooms().get(roomId).getItemsList()) {
                 out += "\n" + item.getDescription();
             }
 
         } else {
             out = "\033[2J\033[H";
-            out += "In questa stanza non cè niente da vedere, continua ad esplorare";
+            out += "In questa stanza non c'è niente da vedere, continua ad esplorare";
         }
         return out;
     }

@@ -264,7 +264,7 @@ public class Game implements Runnable {
                     default:
                         System.out.println("*** Invalid command: " + cmd);
                         response = "<font face=\"Verdana\" size=\"5\">"
-                                + "me, non so che cz vuoi ("
+                                + "Comando non valido ("
                                 + "<font color='red' face=\"Verdana\"><b>" + request +  "</b></font>"
                                 + ").  Riprova!" + "</font>";
                 }
