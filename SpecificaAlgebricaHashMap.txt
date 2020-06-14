@@ -1,0 +1,66 @@
+SPECIFICA ALGEBRICA
+
+    SPECIFICA SINTATTICA
+
+    Tipi:
+
+    hashmap, key, value, boolean, int
+
+    Operatori:
+
+    new() -> hashmap                            crea nuove hashmap
+    put(key, value, hashmap) -> hashmap         aggiunge una coppia <key, value>
+    remove(key, hashmap) -> hashmap             rimuove una coppia <key, value>
+    get(key, hashmap) -> value                  restituisce il value associato alla key
+    size(hashmap) -> int                        restituisce il numero di coppie <key, value>
+    containsKey(key, hashmap) -> boolean        stabilisce se la key è presente
+    containsValue(value, hashmap) -> boolean    stabilisce se contiene almeno una key con questo value
+    isEmpty(hashmap) -> boolean                 stabilisce se è vuoto
+    equals(hashmap, hashmap) -> boolean         stabilisce se sono equivalenti
+
+
+    SPECIFICA SEMANTICA
+
+    Tipi:
+
+    hashmap = insieme di coppie di tipo (k, v) ∈ H dove ∅ denota l'insieme vuoto
+    boolean = insieme dei valori di verità {vero, falso}
+    int     = insieme dei numeri naturali
+
+    Operatori:
+
+    new() = H'
+    POST: H' = ∅
+
+    put(k, v, H) = H'
+    POST: H' = H ∪ {(k, v)}
+
+    remove(put(k, v, H)) = if isEmpty(H) then new() else put(remove(H), k, v)
+    PRE: (k, v) ∈ H
+    POST: H' = H - {(k, v)}
+
+    get(put(k, v, H)) = if containsKey(k, H) then v else error
+    PRE: ∃(k', v') ∈ H t.c. k' = k
+    POST: v = v'
+
+    size(H) = i
+    POST: i = |H|
+
+    containsKey(k, H) = b
+    POST: b = vero se k ∈ H, falso altrimenti
+
+    containsValue(v, H) = b
+    POST: b = vero se ∃(k', v') ∈ H t.c. v' = v
+
+    isEmpty(new()) = true
+
+    isEmpty(put(k, v, H)) = false
+
+    equals(H, H') = b
+    POST: b = vero se ∀(k, v) ∈ H, ∃(k', v') ∈ H' t.c. k = k' e v = v', falso altrimenti
+
+    SPECIFICA DI RESTRIZIONE
+
+    remove(key, hashmap) = error if !(containsKey(k, H))
+
+    get(key, hashmap) = error if !(containsKey(k, H)) or isEmpty(new())
