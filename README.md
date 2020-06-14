@@ -202,7 +202,7 @@ dei dati).
 <br>
 La classe <code>Item</code> ne è un esempio poichè contine attributi privati a cui sono annessi metodi <code>get</code>
 e <code>set</code> pubblici per l'accesso e l'impostazione dei valori.
-
+<br>
 Con questo principio l'applicazione ci permette di isolare le modifiche dovute a scelte progettuali o
 correzioni di bug, senza compromettere le classi esterne a quella in questione.
 
@@ -217,8 +217,8 @@ Un componente ad alta coesione ha una responsabilità ben definita, che ne favor
  regole di codifica.
     
 Il manifesto di questo principio si trova all’interno della classe <code>Parser</code>, a cui è delegata la 
-responsabilità di decifrare la tipologia di input indipendentemente da quale sia il gioco caricato tramite file yaml
-e a prescindere dal contesto di gioco attuale. 
+responsabilità di determinarne la correttezza di un input indipendentemente da quale sia il gioco caricato dal file YAML
+e a prescindere dal contesto in cui si trova il giocatore. 
 <br>
 <br>
 
@@ -226,9 +226,9 @@ e a prescindere dal contesto di gioco attuale.
 >_Diagramma delle classi per la decodifica di un input._
 
 <br>
-<p>Questo diagramma delle classi mostra la relazione tra la classe <code>Game</code> (che riceve l'input utente) e la
-classe <code>Parser</code> a cui verrà passato l'input ricevuto sotto forma di stringa, e che ne verificherà
-la validità intercettando comandi e/o item.
+<p>Questo diagramma delle classi mostra la relazione tra la classe <code>Game</code> (che legge la richiesta da un 
+<code>Client</code> e fornisce una risposta) e la classe <code>Parser</code> che analizza la richiesta ricevuta e ne 
+verificherà la validità intercettando comandi e/o item.
 <p>La scelta di avere un componente specifico per esaudire tale necessità, rende la decodifica dell’input più compatta e
 ottimizzata. A questo si aggiunge una maggiore leggibilità ed estensibilità del codice.
 
@@ -240,8 +240,8 @@ componenti.
 ![](img/bassoaccoppiamento.png)
 >_Diagramma delle classi di <code>Game</code> e <code>Action</code>._
 
-<p>La scelta progettuale di delegare ad una classe apposita <code>Action</code> la realizzazione dei comandi dati 
-in input dall'utente e gestiti dalla classe <code>Game</code> rende le classi indipendenti reciprocamente, facendo sì
+<p>La scelta progettuale di delegare ad una classe <code>Action</code> la realizzazione dei comandi e le azioni presenti 
+nel gioco e gestiti dalla classe <code>Game</code> rende le classi indipendenti reciprocamente, facendo sì
 che la modifica, la manutenzione e la correzione di una classe non interessino l'altra.
 <br>
 <br>
@@ -251,7 +251,7 @@ che la modifica, la manutenzione e la correzione di una classe non interessino l
 Il principio DRY <em>(Don't Repeat Yourself)</em> prevede che ogni parte significativa di una funzionalità dovrebbe 
 essere implementata in un unico posto del codice sorgente, evitando sequenze d'istruzioni uguali fra loro.
 <p>Una rappresentazione di questo impiego si può osservare attraverso il diagramma di sequenza che descrive
-l’utilizzo del metodo <code>goTO</code> all’interno della <em>user story</em> del movimento in qualsiasi direzione.
+l’utilizzo del metodo <code>goTo</code> all’interno della <em>user story</em> del movimento in qualsiasi direzione.
 <br>
 <br>
 
@@ -267,43 +267,47 @@ volta, rendendo il codice più leggibile, snello e facilmente manutenibile.
 
 ## <span id = "4.5">Relazioni tra classi</span> 
 ![classDiagram](img/classDiagram.png)
->_Diagramma delle classi dell'estrazione dello yaml fatta da <code>Plot</code>._
-
+>_Diagramma delle classi delle relazioni che partono dal <code>Server</code>._
 <br>
-<p>Il diagramma sopra riportato rappresenta le relazioni tra le classi coinvolte nell'estrazione 
-del gioco dal file yaml. La relazione tra la classe <code>Server</code> e <code>Thread</code> è una generalizzazione, 
-in quanto <code>Server</code> estende <code>Thread</code>; tra <code>Server</code> e <code>Game</code> c'è 
-un'aggregazione di molteplcità "zero o più" in quanto il <code>Server</code> può istanziare più di un <code>Game</code>; 
-<code>Game</code> implementa l'interfaccia <code>Runnable</code> e ha una relazione di aggregazione con 
-<code>Plot</code>, che è la classe che si occupa di estrarre dal file yaml gli HashMap contenenti le informazioni
-sul gioco caricato, come le <code>Room</code>, con cui <code>Plot</code> detiene una relazione di composizione, che
-a loro volta istanziano i vari <code>Item</code> contenuti al loro interno; quest'ultima è una relazione di aggregazione
-tra <code>Room</code> e <code>Item</code>.
-
+<p>Il diagramma rappresenta le relazioni tra le classi che partono dal <code>Server</code>:
+- la relazione tra la classe <code>Server</code> e <code>Thread</code> è una <b>relazione di generalizzazione</b>, 
+in quanto la prima estende la seconda; 
+- la relazione tra la classe <code>Server</code> e <code>Game</code> è una <b>relazione di aggregazione</b> 
+con molteplcità "zero o più" in quanto la prima può istanziare più di un <code>Game</code>; 
+- la relazione tra la classe <code>Game</code> e l'interfaccia <code>Runnable</code> è una 
+<b>relazione di realizzazione</b> in quanto la prima implementa la seconda;
+- la relazione tra la classe <code>Game</code> e la classe <code>Plot</code> è una <b>relazione di aggregazione</b> 
+con molteplicità singola in quanto ogni <code>Game</code> carica una <code>Plot</code>;
+- la relazione tra la classe <code>Plot</code> e la classe <code>Room</code> è una <b>relazione di composizione</b>, 
+in quanto ogni trama del gioco può avere più stanze;
+- la relazione tra la classe <code>Room</code> e la classe <code>Item</code> è una <b>relazione di aggregazione</b>
+con molteplcità "zero o più" in quanto la prima può istanziare più di un <code>Item</code>.</p>
 
 <a href="#top">Torna all'inizio</a>
  
 # <span id = "5">5. Contenuti rilevanti</span> 
 
 ## <span id = "5.1">5.1 I/O da file</span>
-Per serializzare i dati del plot abbiamo deciso di utilizzare un file <code>Yaml</code>. All'interno del file ogni 
-utente potrà scrivere un proprio plot, in cui si potranno aggiungere gli elementi di gioco e le relazioni tra le entità.
-<br> Il file di configurazione plot dovrà rispettare uno standard che prevede l'inserimento di:
-- dei commands
-- delle actions
-- delle room
-- degli items
+Questa sezione descrive l'uso dell'I/O da file.
 
-La classe <code>Plot</code> provvederà ad estrarre gli elementi dal file plot dal formato <code>Yaml</code>, 
-caricandoli all'interno di strutture dati adeguate, il cui numero degli elementi e delle relazioni tra gli elementi 
-sarà dinamico. Sarà quindi possibile creare molteplici plot con relazioni e caratteristiche differenti, il 
-funzionamento del plot non dipenderà strettamente dal sistema ma da come sarà costruito il file plot.yaml.<br>
-Dopo aver estratto l'intero **plot** dal file yaml, la classe <code>Parser</code> provvederà a:
-  
-- cercare di intercettare dall'input dell'utente i comandi, matchandoli con i pattern caricati dal file di configurazione, 
-inoltre il matching dei pattern è compatibile con la lingua italiana e inglese.
+Per serializzare i dati della trama si è utilizzato un file <code>YAML</code>. All'interno del file un 
+utente scrive la propria trama, in cui è possibile aggiungere qualsiasi comando, articolo e relazione tra i due.
+<br> Il file di configurazione YAML dovrà rispettare uno standard che prevede l'inserimento di:
+- commands
+- items
+- actions
+- rooms
+
+La classe <code>Plot</code> estrae gli elementi dal file YAML, 
+caricandoli all'interno di strutture dati adeguate, il cui numero degli elementi e delle relazioni tra essi 
+sarà dinamico. È possibile creare file con relazioni e caratteristiche differenti senza dover modificare il sistema.<br>
+Dopo aver estratto gli elementi del gioco dal file YAML, la classe <code>Parser</code> provvederà a:
+
 - costruire dinamicamente le regular expression in base al pattern dei comandi e degli item estratti dal file di 
-configurazione/yaml.
+configurazione YAML;
+- intercettare dall'input dell'utente prima il comando, che sarà unico e occuperà la prima posizione dell'Array, 
+poi eventuali articoli collegati all'azione da compiere. In questo modo l'ordine e il modo con il quale si compone una 
+frase di input non sarà importante.
 
 ## <span id = "5.2">5.2 Connessione a database</span>
 Questa sezione descrive l'uso dello standard JDBC <em>(Java Data Base Connectivity)</em>.
@@ -327,14 +331,17 @@ il metodo <code>run()</code> del <code>Game</code>.
 >_Contenuto della tabella users del database users._
 
 ## <span id = "5.3">5.4 GUI mediante SWING</span>
+Questa sezione descrive l'uso del framework di JAVA che permette la realizzazione di interfacce grafiche.
+
 Come illustrato nello stile architetturale **MVC**, il corretto funzionamento dell'intero sistema prevede l'utilizzo
 di un applicativo <code>Client</code> in grado di comunicare con l'applicativo remoto <code>Server</code>.
-Oltre alla versione Client, eseguibile da terminale a singolo flusso di esecuzione, è stato sviluppata una classe
-client con interfacce grafiche usando il framework <code>Swing</code> di Java. Questa versione del <code>Client</code>
-usa flussi di thread implementando l'interfaccia "Runnable" nelle classi implicate, tutto questo per gestire i singoli
+Oltre alla versione eseguibile da terminale a singolo flusso di esecuzione, è stato sviluppata una classe
+con interfacce grafiche usando il framework **Swing** di Java. Questa versione del <code>Client</code>
+usa flussi di thread implementando l'interfaccia <code>Runnable</code> nelle classi implicate, tutto questo per gestire i singoli
 task del Client in fase di esecuzione.<br><br><br><br>
 ![](img/ClientGui/default.png)<br>
 >_Illustrazione del client con interface Swing._
+
 ### <span id = "5.3.1">5.4.1 Componenti SWING</span>
 Il frame principale (top level) contenitore radice, contiene i vari componenti della GUI.<br>
 Per visualizzare i response del server è stato implementato il componente <code>JTextPane</code>, che permette di
