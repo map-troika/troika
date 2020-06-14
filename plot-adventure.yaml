@@ -2,9 +2,9 @@
 # comandi disponibili in questo gioco
 commands:
   - name: go
-    pattern: "go|g"
+    pattern: "go|g|vai|avanti"
   - name: back
-    pattern: "back|b"
+    pattern: "back|b|indietro"
   - name: quit
     pattern: "quit|esc.*"
   - name: home
@@ -17,17 +17,17 @@ commands:
   - name: lascio    # item
     pattern: "lasci.*|leave"
   - name: aiuto     # help menu
-    pattern: "aiuto|aiut.*"
+    pattern: "aiuto|aiut.*|help"
   - name: posizione # restituisce la stanza corrente
-    pattern: "posizione|pos|dove"
+    pattern: "posizione|pos|dove|position"
   - name: inventario    # mostra gli items
     pattern: "inventario|inventory"
   - name: osservo   # restituisce descrizione degli oggetti presenti nella stanza e numero di uscite
-    pattern: "osserv.*|oss"
+    pattern: "osserv.*|oss|look"
   - name: indietro  # torna nella stanza precedente
     pattern: "indietro|indietr.*"
   - name: combatto  # minotauro
-    pattern: "combatt.*|sconfigg.*|uccid.*|fight"
+    pattern: "combatt.*|sconfigg.*|uccid.*|fight|kill"
   - name: nord
     pattern: "nord|north"
   - name: est
