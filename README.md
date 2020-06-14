@@ -270,8 +270,10 @@ volta, rendendo il codice più leggibile, snello e facilmente manutenibile.
 >_Diagramma delle classi delle relazioni che partono dal <code>Server</code>._
 <br>
 <p>Il diagramma rappresenta le relazioni tra le classi che partono dal <code>Server</code>:
+    
 - la relazione tra la classe <code>Server</code> e <code>Thread</code> è una <b>relazione di generalizzazione</b>, 
 in quanto la prima estende la seconda; 
+
 - la relazione tra la classe <code>Server</code> e <code>Game</code> è una <b>relazione di aggregazione</b> 
 con molteplcità "zero o più" in quanto la prima può istanziare più di un <code>Game</code>; 
 - la relazione tra la classe <code>Game</code> e l'interfaccia <code>Runnable</code> è una 
