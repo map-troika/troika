@@ -7,7 +7,8 @@ import java.sql.SQLException;
 import java.sql.DriverManager;
 
 /**
- * <p><code>Entity</code></p> La classe <code>Database</code> consente di accedere ad un database SQLite tramite il protocollo JDBC.
+ * <p><code>Entity</code></p> La classe <code>Database</code> consente di accedere ad un database SQLite tramite il
+ * protocollo JDBC.
  *
  * @author Nicole Stolbovoi
  */
@@ -36,15 +37,16 @@ public final class Database {
      */
 
     public boolean getLogin(final String username, final String password) {
-        String sql = "SELECT * FROM users WHERE username=? and password=?";
+        String sql = "SELECT * FROM users WHERE username=? and password=?"; // ? è un segnaposto
         boolean rc = false;
 
+        // Statement preimpostato in cui sostituisce a dei segnaposto della query SQL dei valori
         try (PreparedStatement pstmt = this.conn.prepareStatement(sql)) {
 
             // Imposta il valore
-            pstmt.setString(1, username);
+            pstmt.setString(1, username);  // inserisce i letterali nella query SQL
             pstmt.setString(2, password);
-            ResultSet rs = pstmt.executeQuery();
+            ResultSet rs = pstmt.executeQuery(); // esegue la query SQL nel PreparedStatement
 
             // loop through the result set
             while (rs.next()) {
@@ -71,12 +73,12 @@ public final class Database {
         try {
             // Parametri del database
             String url = "jdbc:sqlite:" + dbpath; // stringa di connessione
-            // Crea una connessione con il database
+            // Stabilisce una connessione con il database
             this.conn = DriverManager.getConnection(url);
             System.out.println("*** Connection to " + dbpath + " SQLite has been established.");
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println(e.getMessage()); // descrizione testuale dell’errore
         }
     }
 }

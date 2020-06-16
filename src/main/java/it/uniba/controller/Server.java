@@ -16,7 +16,7 @@ import java.net.Socket;
  * @author Nicole Stolbovoi
  */
 
-public final class Server extends Thread {
+public final class Server extends Thread { // implementa tutte le funzionalità di un singolo thread
 
     static final int MAX_SESSION = 10;
     static final int PORT_NUMBER = 4000;
@@ -55,7 +55,7 @@ public final class Server extends Thread {
                 Socket s = ss.accept(); // si pone in attesa di una richiesta
                 // arrivata la richiesta la accetta e costituisce una connessione
                 Runnable r = new Game(s);
-                Thread t = new Thread(r); // Create task (Application)
+                Thread t = new Thread(r); // Create task (Application) L’oggetto Runnable va eseguito all’interno di un Thread
                 t.setName("*** client thread " + count);
                 System.out.println("Thread = " + t);
                 t.start(); // lancia un nuovo thread

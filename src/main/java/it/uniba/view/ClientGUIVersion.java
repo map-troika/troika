@@ -59,10 +59,10 @@ public final class ClientGUIVersion implements Runnable {
             while (!quitThread) {
                 cGUI.startSession(); //avvia sessione lato GUI
 
-                //jframe inserimento credenziali
+                // Jframe inserimento credenziali
                 LoginRequestGUI credentialRequestGUI;
 
-                // Stampa messagio ricevuto
+                // Stampa messaggio ricevuto
                 String response = new String(Base64.getDecoder().decode(sbr.readLine()));
                 if (response.contains("username:") || response.contains("password:")) {
 
@@ -77,6 +77,7 @@ public final class ClientGUIVersion implements Runnable {
                     ); //imposta titolo
                     while (reqGUIt.isAlive()) {
 
+                        // Sospende l’esecuzione del thread corrente e si rende disponibile del tempo per l’esecuzione di altri thread
                         Thread.sleep(threadSleep);
                     }
                     cps.print(credentialRequestGUI.getStringUserResponse());
