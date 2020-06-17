@@ -75,7 +75,7 @@ public class Game implements Runnable {
     }
 
     /**
-     * Insert the {@inheritDoc} inline tag in a method main description
+     * Codice che deve eseguire il thread
      */
 
     @Override

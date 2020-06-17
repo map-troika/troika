@@ -2,9 +2,9 @@
 # comandi disponibili in questo gioco
 commands:
   - name: go
-    pattern: "go|g"
+    pattern: "go|g|vai|avanti"
   - name: back
-    pattern: "back|b"
+    pattern: "back|b|indietro"
   - name: quit
     pattern: "quit|esc.*"
   - name: home
@@ -17,17 +17,17 @@ commands:
   - name: lascio    # item
     pattern: "lasci.*|leave"
   - name: aiuto     # help menu
-    pattern: "aiuto|aiut.*"
+    pattern: "aiuto|aiut.*|help"
   - name: posizione # restituisce la stanza corrente
-    pattern: "posizione|pos|dove"
+    pattern: "posizione|pos|dove|position"
   - name: inventario    # mostra gli items
     pattern: "inventario|inventory"
   - name: osservo   # restituisce descrizione degli oggetti presenti nella stanza e numero di uscite
-    pattern: "osserv.*|oss"
+    pattern: "osserv.*|oss|look"
   - name: indietro  # torna nella stanza precedente
     pattern: "indietro|indietr.*"
   - name: combatto  # minotauro
-    pattern: "combatt.*|sconfigg.*|uccid.*|fight"
+    pattern: "combatt.*|sconfigg.*|uccid.*|fight|kill"
   - name: nord
     pattern: "nord|north"
   - name: est
@@ -42,19 +42,19 @@ items:
   - name: gomitolo
     pattern: "gomitolo|gom|clew"
     description: |
-      per terra cè un <font color='orange' face="Verdana"><b>gomitolo</b></font>, potrebbe aiutarti a tornare sui tuoi passi
+      Per terra c'è un <font color='orange' face="Verdana"><b>gomitolo</b></font>, potrebbe aiutarti a tornare sui tuoi passi
     isEnemy: false
     isWeapon: false
   - name: minotauro
     pattern: "minotauro|min|minotaur"
     description: |
-      hai di fronte il <font color='red' face="Verdana"><b>minotauro</b></font>, pronto all'attacco
+      Hai di fronte il <font color='red' face="Verdana"><b>Minotauro</b></font>, pronto all'attacco
     isEnemy: true
     isWeapon: false
   - name: spada
     pattern: "spada|spad|sword"
     description: |
-      in lontananza cè una <font color='orange' face="Verdana"><b>spada</b></font>, degna dei più nobili guerrieri
+      In lontananza c'è una <font color='orange' face="Verdana"><b>spada</b></font>, degna dei più nobili guerrieri
     isEnemy: false
     isWeapon: true
 
@@ -92,7 +92,7 @@ rooms:
       ──────────────────────────────────────────────────────}
       <font color='red' face="Verdana" size="5"><b>L'impresa di Tesèo contro il Minotauro</b></font><br>
       <br>
-      <font color='red' face="Verdana"><b>BENVENUTO!</b></font><font face="Verdana" size="3">Sull’isola di Creta, nel periodo del regno di Minosse, in seguito ad<br>
+      <font color='red' face="Verdana"><b>BENVENUTO!</b></font><font face="Verdana" size="3"> Sull’isola di Creta, nel periodo del regno di Minosse, in seguito ad<br>
       un’offesa fatta ad Afrodite nasce un figlio mostruoso, metà uomo e metà toro,<br>
       il Minotauro. Minosse lo imprigiona in un labirinto e, per sfamarlo, impone<br>
       alle città sotto la sua dominazione un tributo annuale di sette fanciulle e<br>
